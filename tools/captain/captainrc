@@ -74,7 +74,7 @@ CACHE_ON_DISK=1
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
 # FUZZERS=(aflplusplus)
-FUZZERS=(aflplusplus_lto_entropy)
+FUZZERS=(insopt)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
@@ -85,7 +85,7 @@ FUZZERS=(aflplusplus_lto_entropy)
 
 # Instrumentation evaluation ONLY
 
-aflplusplus_lto_entropy_TARGETS=(poppler)
+insopt_TARGETS=(poppler)
 
 # aflplusplus_lto_entropy_TARGETS=(libxml2_xml_read_memory_fuzzer libxml2_reader_for_file_fuzzer poppler_pdfimages poppler_pdftoppm poppler_poppler libpng libsndfile libxml2 lua sqlite3 openssl php poppler)
 # aflplusplus_entropy_TARGETS=(libxml2_xml_read_memory_fuzzer libxml2_reader_for_file_fuzzer poppler_pdfimages poppler_pdftoppm poppler_poppler libpng libsndfile libxml2 lua sqlite3 openssl php poppler)
