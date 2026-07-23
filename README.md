@@ -32,11 +32,12 @@ The first layer of the project inherits the basic structure of the Magma benchma
 
 ````
 
-Specifically, you can find the implementation of our instrumentation in the following two files:
+Specifically, you can find the implementation of our instrumentation in the following two files (the rest are conventional AFL++):
 ````
-
-
+fuzzers/insopt/repo/instrumentation/SanitizerCoveragePCGUARD.so.cc
+fuzzers/insopt/repo/instrumentation/SanitizerCoverageLTO.so.cc
 ````
+to support regular compilation and LTO compilation, respectively.
 
 
 ### Reproduce procedure
@@ -72,6 +73,11 @@ Here is the main step to run:
 
 The instrumentation results can be found in `workdir/instrumentation_stats` to evaluate RQ(1-2) for checking the number of instrumentation node selected by our method, which is also the main contribution of this paper. The related statistics are shown in Figures 5-6 of the paper.
 
+For each project, e.g., libsndfile, you can find its data in the log file `insopt_libsndfile_build.log`.
+The data can be found through searching the following keywords as an indicator:
+````
+=== AFL++ LLVM_MODE Instrumentation Statistics ===
+```` 
 
 ### Backup data
 
@@ -85,6 +91,8 @@ The data can be found through searching the following keywords as an indicator:
 === AFL++ LLVM_MODE Instrumentation Statistics ===
 ```` 
 
+
+
 ### Fuzzer results for bug detection (RQ3)
 
 In addition, the fuzzer logs and outputs can be found in `workdir/insopt/TARGET_PROJECT/TARGET_PROGRAM/FUZZER_INSTANCE_INDEX/findings`. To see the result, please use the [tool](https://hexhive.epfl.ch/magma/docs/technical.html#:~:text=Benchd%20Toolset:%20Processing%20Results) provided by the Magma benchmark to see the bug detection speed, which is related to Table 3 and Figure 8 of the paper.
@@ -92,6 +100,7 @@ Here is the main step to run:
 ````
 tools/benchd/exp2json.py workdir bugs.json
 ````
+PS: Please ensure the `workdir` correlates to the output folder used in step 1.
 
 Here is the detailed usage from the Magma document:
 ````
@@ -110,6 +119,6 @@ Then the evaluation result in fuzzing should be found in the outfile.
 
 If everything works properly, an example folder named `tools/report_df/sanity_test_report` will appear in the `tools/report_df` folder. You can check the detection results in the `tools/report_df/sanity_test_report/data` folder to validate the bug detection performance mentioned in RQ3, Table 5.
 
-**PS: As fuzzing involves various randomness factors and environmental configuration, performance can vary across evaluation runs.**
+**PS: As the performance of fuzzing is determined by various randomness factors and environmental configuration, the results can vary across evaluation runs.**
 
 
