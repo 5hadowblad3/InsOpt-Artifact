@@ -13,7 +13,33 @@ Fuzzing performance improvements (RQ3)
 
 As InsOpt has been successfully integrated with the state-of-the-art fuzzer, AFL++, and evaluated on the Magma benchmark, the major evaluation results rely on the configuration provided by the Magma benchmark, as mentioned below. 
 
-### Reproduction procedure
+### Structure 
+
+The first layer of the project inherits the basic structure of the Magma benchmark. Our instrumentation code has been integrated with AFL++ so that you can find it in `fuzzers/insopt/repo`
+
+````
+   .
+   ├── build.sh                Build script in magma format
+   ├── Calculate.sh            Instrumentation statistic collection
+   ├── CountInstrument.sh      Instrumentation statistic collection
+   ├── fetch.sh                Build script in magma format
+   ├── findings.sh             Build script in magma format
+   ├── instrument.sh           Build script in magma format
+   ├── preinstall.sh           Build script in magma format
+   ├── repo                    Source code of Insopt
+   ├── runonce.sh              Build script in magma format
+   └── run.sh                  Build script in magma format
+
+````
+
+Specifically, you can find the implementation of our instrumentation in the following two files:
+````
+
+
+````
+
+
+### Reproduce procedure
 
 To reproduce the evaluation shown in the paper, please follow the document of Magma on [the Magma homepage]([https://hexhive.epfl.ch/magma](https://hexhive.epfl.ch/magma/docs/getting-started.html)).
 Here is the main step to run:
