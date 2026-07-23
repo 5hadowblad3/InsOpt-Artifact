@@ -101,7 +101,7 @@ cd sanitity-test
 make
 ````
 
-If there is no error message appear, then everything should work.
+If there is no error message appear (warning is acceptable, especially those coming from AFL++), then everything should work.
 
 
 ### Reproduce procedure
