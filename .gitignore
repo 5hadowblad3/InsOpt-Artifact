@@ -1,0 +1,10 @@
+.vscode/
+tools/captain/workdir/
+tools/captain/workdir*/
+tools/captain/aflppdata/
+tools/report_df/report*
+tools/report_old/
+
+
+.dockerignore
+README.gcc_plugin.md
