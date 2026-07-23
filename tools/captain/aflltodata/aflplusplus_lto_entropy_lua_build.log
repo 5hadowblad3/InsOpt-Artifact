@@ -1,0 +1,344 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/lua --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=lua --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 541.85kB 0.1s done
+#5 DONE 0.1s
+
+#6 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#6 CACHED
+
+#7 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#7 CACHED
+
+#8 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#8 CACHED
+
+#9 [ 8/19] RUN /magma/magma/preinstall.sh
+#9 CACHED
+
+#10 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#10 CACHED
+
+#11 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#11 CACHED
+
+#12 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#12 CACHED
+
+#13 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#13 CACHED
+
+#14 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#14 CACHED
+
+#15 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#15 CACHED
+
+#16 [ 9/19] RUN /magma/magma/prebuild.sh
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/lua && chown magma:magma /magma/targets/lua
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/lua /magma/targets/lua/
+#19 DONE 0.0s
+
+#20 [16/19] RUN /magma/targets/lua/preinstall.sh
+#20 1.190 Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.203 Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.420 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.636 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.754 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.854 Reading package lists...
+#20 3.345 Reading package lists...
+#20 4.812 Building dependency tree...
+#20 5.020 Reading state information...
+#20 5.167 make is already the newest version (4.1-9.1ubuntu1).
+#20 5.167 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 5.167 Suggested packages:
+#20 5.167   readline-doc
+#20 5.189 The following NEW packages will be installed:
+#20 5.190   libreadline-dev
+#20 5.824 0 upgraded, 1 newly installed, 0 to remove and 1 not upgraded.
+#20 5.824 Need to get 133 kB of archives.
+#20 5.824 After this operation, 728 kB of additional disk space will be used.
+#20 5.824 Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libreadline-dev amd64 7.0-3 [133 kB]
+#20 6.738 debconf: unable to initialize frontend: Dialog
+#20 6.738 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 6.738 debconf: falling back to frontend: Readline
+#20 6.745 debconf: unable to initialize frontend: Readline
+#20 6.745 debconf: (This frontend requires a controlling tty.)
+#20 6.745 debconf: falling back to frontend: Teletype
+#20 6.749 dpkg-preconfigure: unable to re-open stdin: 
+#20 6.776 Fetched 133 kB in 1s (96.9 kB/s)
+#20 6.792 Selecting previously unselected package libreadline-dev:amd64.
+#20 6.792 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24447 files and directories currently installed.)
+#20 6.807 Preparing to unpack .../libreadline-dev_7.0-3_amd64.deb ...
+#20 6.808 Unpacking libreadline-dev:amd64 (7.0-3) ...
+#20 6.844 Setting up libreadline-dev:amd64 (7.0-3) ...
+#20 DONE 6.9s
+
+#21 [17/19] RUN /magma/targets/lua/fetch.sh
+#21 0.538 Cloning into '/magma/targets/lua/repo'...
+#21 29.06 Note: checking out 'dbdc74dc5502c2e05e1c1e2ac894943f418c8431'.
+#21 29.06 
+#21 29.06 You are in 'detached HEAD' state. You can look around, make experimental
+#21 29.06 changes and commit them, and you can discard any commits you make in this
+#21 29.06 state without impacting any branches by performing another checkout.
+#21 29.06 
+#21 29.06 If you want to create a new branch to retain commits you create, you may
+#21 29.06 do so (now or later) by using -b with the checkout command again. Example:
+#21 29.06 
+#21 29.06   git checkout -b <new-branch-name>
+#21 29.06 
+#21 29.06 HEAD is now at dbdc74dc Simplification in the parameters of 'luaD_precall'
+#21 DONE 29.1s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.493 Applying /magma/targets/lua/patches/setup/lua.patch
+#22 0.495 patching file makefile
+#22 0.495 Applying /magma/targets/lua/patches/bugs/LUA004.patch
+#22 0.496 patching file ldebug.c
+#22 0.496 Hunk #1 succeeded at 133 (offset 3 lines).
+#22 0.496 Hunk #2 succeeded at 863 (offset 29 lines).
+#22 0.496 Hunk #3 succeeded at 887 (offset 29 lines).
+#22 0.496 patching file ldo.c
+#22 0.496 patching file lstate.c
+#22 0.497 patching file lstate.h
+#22 0.497 patching file lvm.c
+#22 0.498 Hunk #1 succeeded at 1819 (offset -1 lines).
+#22 0.500 Applying /magma/targets/lua/patches/bugs/LUA003.patch
+#22 0.501 patching file liolib.c
+#22 0.502 Applying /magma/targets/lua/patches/bugs/LUA002.patch
+#22 0.503 patching file ldebug.c
+#22 0.503 Hunk #1 succeeded at 828 (offset 33 lines).
+#22 0.504 Applying /magma/targets/lua/patches/bugs/LUA001.patch
+#22 0.505 patching file ldebug.c
+#22 0.505 Hunk #1 succeeded at 188 (offset 7 lines).
+#22 0.505 Hunk #2 succeeded at 210 (offset 7 lines).
+#22 DONE 0.5s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/Calculate.sh
+#23 0.697 rm -f liblua.a lua lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o ltests.o lua.o lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o lstrlib.o lutf8lib.o loadlib.o lcorolib.o linit.o
+#23 0.702 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lapi.o lapi.c
+#23 0.702 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lcode.o lcode.c
+#23 0.703 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lctype.o lctype.c
+#23 0.703 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldebug.o ldebug.c
+#23 0.703 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldo.o ldo.c
+#23 0.704 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldump.o ldump.c
+#23 0.704 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lfunc.o lfunc.c
+#23 0.704 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lgc.o lgc.c
+#23 0.704 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o llex.o llex.c
+#23 0.705 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lmem.o lmem.c
+#23 0.705 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lobject.o lobject.c
+#23 0.705 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lopcodes.o lopcodes.c
+#23 0.706 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lparser.o lparser.c
+#23 0.706 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lstate.o lstate.c
+#23 0.706 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lstring.o lstring.c
+#23 0.706 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltable.o ltable.c
+#23 0.707 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltm.o ltm.c
+#23 0.707 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lundump.o lundump.c
+#23 0.707 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lvm.o lvm.c
+#23 0.708 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lzio.o lzio.c
+#23 0.708 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltests.o ltests.c
+#23 0.708 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lauxlib.o lauxlib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lbaselib.o lbaselib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldblib.o ldblib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o liolib.o liolib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lmathlib.o lmathlib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o loslib.o loslib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltablib.o ltablib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lstrlib.o lstrlib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lutf8lib.o lutf8lib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o loadlib.o loadlib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lcorolib.o lcorolib.c
+#23 0.712 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o linit.o linit.c
+#23 0.727 warning: warning: warning: warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 
+#23 0.727 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: 
+#23 0.727 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.727 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.731 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.735 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.735 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.735 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.735 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.739 
+#23 0.739 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.739 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.739 2 warnings generated.
+#23 0.743 2 warnings generated.
+#23 0.747 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.747 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.747 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.751 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.751 2 warnings generated.
+#23 0.751 2 warnings generated.
+#23 0.755 2 warnings generated.
+#23 0.755 2 warnings generated.
+#23 0.755 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.756 2 warnings generated.
+#23 0.759 2 warnings generated.
+#23 0.759 2 warnings generated.
+#23 0.759 2 warnings generated.
+#23 0.759 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.759 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.767 2 warnings generated.
+#23 0.767 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.767 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.767 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.767 2 warnings generated.
+#23 0.771 2 warnings generated.
+#23 0.771 2 warnings generated.
+#23 0.771 2 warnings generated.
+#23 0.773 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.773 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.773 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.774 2 warnings generated.
+#23 0.774 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.774 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.775 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.777 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.777 2 warnings generated.
+#23 0.779 2 warnings generated.
+#23 0.783 2 warnings generated.
+#23 0.783 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.783 2 warnings generated.
+#23 0.784 2 warnings generated.
+#23 0.786 2 warnings generated.
+#23 0.796 2 warnings generated.
+#23 0.797 2 warnings generated.
+#23 0.798 2 warnings generated.
+#23 0.799 2 warnings generated.
+#23 0.799 2 warnings generated.
+#23 0.805 2 warnings generated.
+#23 0.809 2 warnings generated.
+#23 0.822 2 warnings generated.
+#23 0.840 2 warnings generated.
+#23 0.845 2 warnings generated.
+#23 0.914 2 warnings generated.
+#23 0.919 ar rc liblua.a lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o ltests.o lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o lstrlib.o lutf8lib.o loadlib.o lcorolib.o linit.o
+#23 0.949 ranlib liblua.a
+#23 0.981 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lua.o lua.c
+#23 1.003 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 1.005 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 1.044 2 warnings generated.
+#23 1.050 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -o lua -L/magma_out -g -L/magma_out/afl  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -Wl,-E lua.o liblua.a -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a -lm -ldl -lreadline 
+#23 1.671 WARNING: dlopen() detected. To have coverage for a library that your target dlopen()'s this must either happen before __AFL_INIT() or you must use AFL_PRELOAD to preload all dlopen()'ed libraries!
+#23 1.676 
+#23 1.676 === AFL++ LTO Instrumentation Statistics ===
+#23 1.676 Total Basic Blocks: 9835
+#23 1.676 Instrumented Times: 0
+#23 1.676 Instrumented Basic Blocks: 1256
+#23 1.676 Instrumentation Ratio: 12.77%
+#23 1.676 Total Predecessors: 2956
+#23 1.676 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 1.676   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 1.676   Instrumented BasicBlocks with 2 predecessor(s): 1021
+#23 1.676   Instrumented BasicBlocks with 3 predecessor(s): 161
+#23 1.676   Instrumented BasicBlocks with 4 predecessor(s): 41
+#23 1.676   Instrumented BasicBlocks with 5 predecessor(s): 10
+#23 1.676   Instrumented BasicBlocks with 6 predecessor(s): 5
+#23 1.676   Instrumented BasicBlocks with 7 predecessor(s): 5
+#23 1.676   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 1.676   Instrumented BasicBlocks with 9 predecessor(s): 2
+#23 1.676   Instrumented BasicBlocks with >=10 predecessors: 9
+#23 1.676 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 1.676   Non-Instrumented BasicBlocks with 1 predecessor(s): 4641
+#23 1.676   Non-Instrumented BasicBlocks with 2 predecessor(s): 1111
+#23 1.676   Non-Instrumented BasicBlocks with 3 predecessor(s): 33
+#23 1.676   Non-Instrumented BasicBlocks with 4 predecessor(s): 13
+#23 1.676   Non-Instrumented BasicBlocks with 5 predecessor(s): 9
+#23 1.676   Non-Instrumented BasicBlocks with 6 predecessor(s): 5
+#23 1.676   Non-Instrumented BasicBlocks with 7 predecessor(s): 9
+#23 1.676   Non-Instrumented BasicBlocks with 8 predecessor(s): 4
+#23 1.676   Non-Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 1.676   Non-Instrumented BasicBlocks with >=10 predecessors: 9
+#23 1.676 Average Global Entropy: 1.03
+#23 1.676 =======================================
+#23 1.676 
+#23 DONE 3.0s
+
+#24 exporting to image
+#24 exporting layers 0.0s done
+#24 writing image sha256:e39cfdcd02861e63f6db251a514bd93c1ca943cc98e40f709e4a32fb91911d68 done
+#24 naming to docker.io/magma/aflplusplus_lto_entropy/lua done
+#24 DONE 0.0s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_lto_entropy/lua

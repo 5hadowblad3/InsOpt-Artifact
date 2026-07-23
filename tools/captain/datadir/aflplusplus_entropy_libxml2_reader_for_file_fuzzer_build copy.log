@@ -1,0 +1,2318 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_entropy/libxml2_reader_for_file_fuzzer --build-arg fuzzer_name=aflplusplus_entropy --build-arg target_name=libxml2_reader_for_file_fuzzer --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 12.87MB 0.4s done
+#5 DONE 0.4s
+
+#6 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#6 CACHED
+
+#7 [ 9/19] RUN /magma/magma/prebuild.sh
+#7 CACHED
+
+#8 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#8 CACHED
+
+#9 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_entropy && chown magma:magma /magma/fuzzers/aflplusplus_entropy
+#9 CACHED
+
+#10 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#10 CACHED
+
+#11 [ 8/19] RUN /magma/magma/preinstall.sh
+#11 CACHED
+
+#12 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#12 CACHED
+
+#13 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#13 CACHED
+
+#14 [12/19] RUN /magma/fuzzers/aflplusplus_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_entropy
+#14 CACHED
+
+#15 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#15 CACHED
+
+#16 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_entropy /magma/fuzzers/aflplusplus_entropy/
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/libxml2_reader_for_file_fuzzer && chown magma:magma /magma/targets/libxml2_reader_for_file_fuzzer
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/libxml2_reader_for_file_fuzzer /magma/targets/libxml2_reader_for_file_fuzzer/
+#19 DONE 0.5s
+
+#20 [16/19] RUN /magma/targets/libxml2_reader_for_file_fuzzer/preinstall.sh
+#20 1.061 Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.301 Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.473 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.516 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.733 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.837 Reading package lists...
+#20 3.339 Reading package lists...
+#20 4.724 Building dependency tree...
+#20 4.929 Reading state information...
+#20 5.074 make is already the newest version (4.1-9.1ubuntu1).
+#20 5.074 pkg-config is already the newest version (0.29.1-0ubuntu2).
+#20 5.074 pkg-config set to manually installed.
+#20 5.074 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 5.074 zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2.2).
+#20 5.074 zlib1g-dev set to manually installed.
+#20 5.074 The following additional packages will be installed:
+#20 5.075   autotools-dev libltdl-dev libltdl7 libsigsegv2 m4
+#20 5.075 Suggested packages:
+#20 5.075   autoconf-archive gnu-standards autoconf-doc gettext libtool-doc liblzma-doc
+#20 5.075   gfortran | fortran95-compiler gcj-jdk m4-doc
+#20 5.107 The following NEW packages will be installed:
+#20 5.107   autoconf automake autotools-dev libltdl-dev libltdl7 liblzma-dev libsigsegv2
+#20 5.107   libtool m4
+#20 5.952 0 upgraded, 9 newly installed, 0 to remove and 1 not upgraded.
+#20 5.952 Need to get 1622 kB of archives.
+#20 5.952 After this operation, 7291 kB of additional disk space will be used.
+#20 5.952 Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]
+#20 6.494 Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]
+#20 7.219 Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]
+#20 7.695 Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+#20 7.696 Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]
+#20 8.011 Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl7 amd64 2.4.6-2 [38.8 kB]
+#20 8.019 Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl-dev amd64 2.4.6-2 [162 kB]
+#20 8.541 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]
+#20 9.660 Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblzma-dev amd64 5.2.2-1.3ubuntu0.1 [145 kB]
+#20 9.947 debconf: unable to initialize frontend: Dialog
+#20 9.947 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 9.947 debconf: falling back to frontend: Readline
+#20 9.954 debconf: unable to initialize frontend: Readline
+#20 9.954 debconf: (This frontend requires a controlling tty.)
+#20 9.954 debconf: falling back to frontend: Teletype
+#20 9.958 dpkg-preconfigure: unable to re-open stdin: 
+#20 9.985 Fetched 1622 kB in 5s (348 kB/s)
+#20 10.00 Selecting previously unselected package libsigsegv2:amd64.
+#20 10.00 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22653 files and directories currently installed.)
+#20 10.01 Preparing to unpack .../0-libsigsegv2_2.12-1_amd64.deb ...
+#20 10.02 Unpacking libsigsegv2:amd64 (2.12-1) ...
+#20 10.03 Selecting previously unselected package m4.
+#20 10.04 Preparing to unpack .../1-m4_1.4.18-1_amd64.deb ...
+#20 10.04 Unpacking m4 (1.4.18-1) ...
+#20 10.07 Selecting previously unselected package autoconf.
+#20 10.07 Preparing to unpack .../2-autoconf_2.69-11_all.deb ...
+#20 10.07 Unpacking autoconf (2.69-11) ...
+#20 10.12 Selecting previously unselected package autotools-dev.
+#20 10.12 Preparing to unpack .../3-autotools-dev_20180224.1_all.deb ...
+#20 10.12 Unpacking autotools-dev (20180224.1) ...
+#20 10.14 Selecting previously unselected package automake.
+#20 10.14 Preparing to unpack .../4-automake_1%3a1.15.1-3ubuntu2_all.deb ...
+#20 10.14 Unpacking automake (1:1.15.1-3ubuntu2) ...
+#20 10.19 Selecting previously unselected package libltdl7:amd64.
+#20 10.19 Preparing to unpack .../5-libltdl7_2.4.6-2_amd64.deb ...
+#20 10.20 Unpacking libltdl7:amd64 (2.4.6-2) ...
+#20 10.21 Selecting previously unselected package libltdl-dev:amd64.
+#20 10.21 Preparing to unpack .../6-libltdl-dev_2.4.6-2_amd64.deb ...
+#20 10.21 Unpacking libltdl-dev:amd64 (2.4.6-2) ...
+#20 10.25 Selecting previously unselected package libtool.
+#20 10.25 Preparing to unpack .../7-libtool_2.4.6-2_all.deb ...
+#20 10.25 Unpacking libtool (2.4.6-2) ...
+#20 10.28 Selecting previously unselected package liblzma-dev:amd64.
+#20 10.28 Preparing to unpack .../8-liblzma-dev_5.2.2-1.3ubuntu0.1_amd64.deb ...
+#20 10.28 Unpacking liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 10.32 Setting up libsigsegv2:amd64 (2.12-1) ...
+#20 10.32 Setting up m4 (1.4.18-1) ...
+#20 10.33 Setting up autotools-dev (20180224.1) ...
+#20 10.33 Setting up libltdl7:amd64 (2.4.6-2) ...
+#20 10.33 Setting up liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 10.33 Setting up libtool (2.4.6-2) ...
+#20 10.33 Setting up libltdl-dev:amd64 (2.4.6-2) ...
+#20 10.33 Setting up autoconf (2.69-11) ...
+#20 10.33 Setting up automake (1:1.15.1-3ubuntu2) ...
+#20 10.34 update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode
+#20 10.34 update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist
+#20 10.34 update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist
+#20 10.34 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#20 DONE 10.4s
+
+#21 [17/19] RUN /magma/targets/libxml2_reader_for_file_fuzzer/fetch.sh
+#21 0.531 Cloning into '/magma/targets/libxml2_reader_for_file_fuzzer/repo'...
+#21 24.39 Note: checking out 'ec6e3efb06d7b15cf5a2328fabd3845acea4c815'.
+#21 24.39 
+#21 24.39 You are in 'detached HEAD' state. You can look around, make experimental
+#21 24.39 changes and commit them, and you can discard any commits you make in this
+#21 24.39 state without impacting any branches by performing another checkout.
+#21 24.39 
+#21 24.39 If you want to create a new branch to retain commits you create, you may
+#21 24.39 do so (now or later) by using -b with the checkout command again. Example:
+#21 24.39 
+#21 24.39   git checkout -b <new-branch-name>
+#21 24.39 
+#21 24.39 HEAD is now at ec6e3efb Patch to forbid epsilon-reduction of final states
+#21 DONE 24.6s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.458 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/setup/libxml2.patch
+#22 0.459 patching file Makefile.am
+#22 0.460 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML004.patch
+#22 0.463 patching file xzlib.c
+#22 0.463 Hunk #1 succeeded at 591 (offset 4 lines).
+#22 0.464 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML016.patch
+#22 0.466 patching file xmlregexp.c
+#22 0.467 Hunk #1 succeeded at 5137 (offset 72 lines).
+#22 0.469 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML009.patch
+#22 0.472 patching file parser.c
+#22 0.472 Hunk #1 succeeded at 10432 (offset 102 lines).
+#22 0.474 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML011.patch
+#22 0.475 patching file xmlstring.c
+#22 0.475 Hunk #1 succeeded at 460 (offset 3 lines).
+#22 0.475 Hunk #2 succeeded at 499 (offset 3 lines).
+#22 0.475 Hunk #3 succeeded at 510 (offset 3 lines).
+#22 0.476 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML013.patch
+#22 0.478 patching file HTMLparser.c
+#22 0.479 Hunk #1 succeeded at 2964 (offset 164 lines).
+#22 0.479 Hunk #2 succeeded at 2977 (offset 164 lines).
+#22 0.479 Hunk #3 succeeded at 2998 (offset 164 lines).
+#22 0.479 Hunk #4 succeeded at 3028 (offset 164 lines).
+#22 0.479 Hunk #5 succeeded at 3044 (offset 164 lines).
+#22 0.479 Hunk #6 succeeded at 3065 (offset 164 lines).
+#22 0.482 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML010.patch
+#22 0.484 patching file parser.c
+#22 0.484 Hunk #1 succeeded at 2758 (offset 53 lines).
+#22 0.484 Hunk #2 succeeded at 2771 (offset 53 lines).
+#22 0.486 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML014.patch
+#22 0.488 patching file HTMLparser.c
+#22 0.488 Hunk #1 succeeded at 2651 (offset 178 lines).
+#22 0.490 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML003.patch
+#22 0.492 patching file parser.c
+#22 0.494 Hunk #1 succeeded at 8001 with fuzz 2 (offset 87 lines).
+#22 0.494 Hunk #2 succeeded at 8010 (offset 87 lines).
+#22 0.495 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML006.patch
+#22 0.497 patching file valid.c
+#22 0.498 Hunk #1 succeeded at 1367 (offset 43 lines).
+#22 0.499 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML002.patch
+#22 0.502 patching file valid.c
+#22 0.502 Hunk #1 succeeded at 4705 (offset 48 lines).
+#22 0.503 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML017.patch
+#22 0.506 patching file parser.c
+#22 0.506 Hunk #1 succeeded at 8414 (offset 103 lines).
+#22 0.507 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML007.patch
+#22 0.509 patching file HTMLparser.c
+#22 0.510 Hunk #1 succeeded at 5523 with fuzz 2 (offset 131 lines).
+#22 0.512 patching file parser.c
+#22 0.513 Hunk #1 succeeded at 12601 (offset 110 lines).
+#22 0.514 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML008.patch
+#22 0.516 patching file parser.c
+#22 0.517 Hunk #1 succeeded at 5033 (offset 55 lines).
+#22 0.518 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML012.patch
+#22 0.521 patching file parser.c
+#22 0.522 Hunk #1 succeeded at 3402 (offset 53 lines).
+#22 0.522 Hunk #2 succeeded at 3413 (offset 53 lines).
+#22 0.522 Hunk #3 succeeded at 3435 (offset 53 lines).
+#22 0.522 Hunk #4 succeeded at 3449 (offset 53 lines).
+#22 0.522 Hunk #5 succeeded at 3458 (offset 53 lines).
+#22 0.523 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML015.patch
+#22 0.525 patching file HTMLparser.c
+#22 0.525 Hunk #1 succeeded at 2701 (offset 182 lines).
+#22 0.525 Hunk #2 succeeded at 2709 (offset 182 lines).
+#22 0.526 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML001.patch
+#22 0.529 patching file valid.c
+#22 0.529 Hunk #1 succeeded at 1310 (offset 43 lines).
+#22 0.529 Hunk #2 succeeded at 1319 (offset 43 lines).
+#22 0.530 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML005.patch
+#22 0.531 patching file xmlmemory.c
+#22 DONE 0.5s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_entropy/Calculate.sh
+#23 0.522 
+#23 0.522 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.522 Total Basic Blocks: 19
+#23 0.522 Instrumented Times: 0
+#23 0.522 Instrumented Basic Blocks: 3
+#23 0.522 Instrumentation Ratio: 15.79%
+#23 0.522 Total Predecessors: 7
+#23 0.522 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.522   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.522   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.522   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.522   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.522 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.522   Non-Instrumented BasicBlocks with 1 predecessor(s): 8
+#23 0.522   Non-Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.522   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.522   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.522 =======================================
+#23 0.522 
+#23 0.570 
+#23 0.570 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.570 Total Basic Blocks: 40
+#23 0.570 Instrumented Times: 0
+#23 0.570 Instrumented Basic Blocks: 8
+#23 0.570 Instrumentation Ratio: 20.00%
+#23 0.570 Total Predecessors: 16
+#23 0.570 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.570   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 0.570   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.570   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.570 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.570   Non-Instrumented BasicBlocks with 1 predecessor(s): 21
+#23 0.570   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.570   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.570   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.570 =======================================
+#23 0.570 
+#23 4.218 libtoolize: putting auxiliary files in '.'.
+#23 4.218 libtoolize: copying file './ltmain.sh'
+#23 4.248 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+#23 4.248 libtoolize: copying file 'm4/libtool.m4'
+#23 4.274 libtoolize: copying file 'm4/ltoptions.m4'
+#23 4.301 libtoolize: copying file 'm4/ltsugar.m4'
+#23 4.324 libtoolize: copying file 'm4/ltversion.m4'
+#23 4.347 libtoolize: copying file 'm4/lt~obsolete.m4'
+#23 7.582 configure.ac:66: installing './compile'
+#23 7.583 configure.ac:13: installing './config.guess'
+#23 7.585 configure.ac:13: installing './config.sub'
+#23 7.587 configure.ac:58: installing './install-sh'
+#23 7.589 configure.ac:58: installing './missing'
+#23 7.664 Makefile.am: installing './depcomp'
+#23 8.272 checking whether to enable maintainer-specific portions of Makefiles... yes
+#23 8.284 checking build system type... x86_64-pc-linux-gnu
+#23 8.354 checking host system type... x86_64-pc-linux-gnu
+#23 8.362 extra=v2.9.12-13-gec6e3efb
+#23 8.362 checking for a BSD-compatible install... /usr/bin/install -c
+#23 8.372 checking whether build environment is sane... yes
+#23 8.384 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 8.386 checking for gawk... no
+#23 8.386 checking for mawk... mawk
+#23 8.387 checking whether make sets $(MAKE)... yes
+#23 8.399 checking whether make supports nested variables... yes
+#23 8.409 checking whether make supports nested variables... (cached) yes
+#23 8.410 checking for gcc... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast
+#23 8.526 checking whether the C compiler works... yes
+#23 8.615 checking for C compiler default output file name... a.out
+#23 8.617 checking for suffix of executables... 
+#23 8.709 checking whether we are cross compiling... no
+#23 8.802 checking for suffix of object files... o
+#23 8.838 checking whether we are using the GNU C compiler... yes
+#23 8.888 checking whether /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast accepts -g... yes
+#23 9.019 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to accept ISO C89... none needed
+#23 9.072 checking whether /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast understands -c and -o together... yes
+#23 9.145 checking for style of include used by make... GNU
+#23 9.150 checking dependency style of /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... gcc3
+#23 9.204 checking whether ln -s works... yes
+#23 9.204 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E
+#23 9.342 checking for mv... /bin/mv
+#23 9.342 checking for tar... /bin/tar
+#23 9.343 checking for perl... /usr/bin/perl
+#23 9.343 checking for wget... /usr/bin/wget
+#23 9.344 checking for xmllint... /usr/bin/xmllint
+#23 9.344 checking for xsltproc... /usr/bin/xsltproc
+#23 9.345 checking for pkg-config... /usr/bin/pkg-config
+#23 9.345 checking pkg-config is at least version 0.9.0... yes
+#23 9.347 checking how to print strings... printf
+#23 9.373 checking for a sed that does not truncate output... /bin/sed
+#23 9.379 checking for grep that handles long lines and -e... /bin/grep
+#23 9.381 checking for egrep... /bin/grep -E
+#23 9.385 checking for fgrep... /bin/grep -F
+#23 9.387 checking for ld used by /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... /usr/bin/ld
+#23 9.416 checking if the linker (/usr/bin/ld) is GNU ld... yes
+#23 9.418 checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm
+#23 9.419 checking the name lister (/usr/bin/nm) interface... BSD nm
+#23 9.480 checking the maximum length of command line arguments... 1572864
+#23 9.488 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 9.488 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 9.488 checking for /usr/bin/ld option to reload object files... -r
+#23 9.489 checking for objdump... objdump
+#23 9.489 checking how to recognize dependent libraries... pass_all
+#23 9.490 checking for dlltool... no
+#23 9.490 checking how to associate runtime and link libraries... printf %s\n
+#23 9.491 checking for archiver @FILE support... @
+#23 9.557 checking for strip... strip
+#23 9.557 checking for ranlib... /usr/bin/ranlib
+#23 9.558 checking command to parse /usr/bin/nm output from /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast object... ok
+#23 9.707 checking for sysroot... no
+#23 9.707 checking for a working dd... /bin/dd
+#23 9.714 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 9.755 checking for mt... no
+#23 9.755 checking if : is a manifest tool... no
+#23 9.761 checking for ANSI C header files... yes
+#23 9.983 checking for sys/types.h... yes
+#23 10.04 checking for sys/stat.h... yes
+#23 10.10 checking for stdlib.h... yes
+#23 10.15 checking for string.h... yes
+#23 10.21 checking for memory.h... yes
+#23 10.27 checking for strings.h... yes
+#23 10.32 checking for inttypes.h... yes
+#23 10.38 checking for stdint.h... yes
+#23 10.44 checking for unistd.h... yes
+#23 10.49 checking for dlfcn.h... yes
+#23 10.55 checking for objdir... .libs
+#23 10.69 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -fno-rtti -fno-exceptions... yes
+#23 10.73 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to produce PIC... -fPIC -DPIC
+#23 10.73 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast PIC flag -fPIC -DPIC works... yes
+#23 10.78 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast static flag -static works... yes
+#23 10.88 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... yes
+#23 10.93 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... (cached) yes
+#23 10.93 checking whether the /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#23 10.96 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 11.13 checking how to hardcode library paths into programs... immediate
+#23 11.13 checking whether stripping libraries is possible... yes
+#23 11.13 checking if libtool supports shared libraries... yes
+#23 11.13 checking whether to build shared libraries... no
+#23 11.13 checking whether to build static libraries... yes
+#23 11.14 Checking zlib
+#23 11.14 checking for Z... yes
+#23 11.15 Checking lzma
+#23 11.15 checking for LZMA... yes
+#23 11.16 Checking headers
+#23 11.16 checking for dirent.h that defines DIR... yes
+#23 11.21 checking for library containing opendir... none required
+#23 11.31 checking for ANSI C header files... (cached) yes
+#23 11.31 checking fcntl.h usability... yes
+#23 11.36 checking fcntl.h presence... yes
+#23 11.40 checking for fcntl.h... yes
+#23 11.40 checking for unistd.h... (cached) yes
+#23 11.40 checking ctype.h usability... yes
+#23 11.45 checking ctype.h presence... yes
+#23 11.49 checking for ctype.h... yes
+#23 11.49 checking dirent.h usability... yes
+#23 11.54 checking dirent.h presence... yes
+#23 11.57 checking for dirent.h... yes
+#23 11.58 checking errno.h usability... yes
+#23 11.63 checking errno.h presence... yes
+#23 11.66 checking for errno.h... yes
+#23 11.66 checking malloc.h usability... yes
+#23 11.72 checking malloc.h presence... yes
+#23 11.75 checking for malloc.h... yes
+#23 11.75 checking stdarg.h usability... yes
+#23 11.81 checking stdarg.h presence... yes
+#23 11.84 checking for stdarg.h... yes
+#23 11.84 checking for sys/stat.h... (cached) yes
+#23 11.84 checking for sys/types.h... (cached) yes
+#23 11.84 checking for stdint.h... (cached) yes
+#23 11.84 checking for inttypes.h... (cached) yes
+#23 11.85 checking time.h usability... yes
+#23 11.90 checking time.h presence... yes
+#23 11.94 checking for time.h... yes
+#23 11.94 checking math.h usability... yes
+#23 12.00 checking math.h presence... yes
+#23 12.04 checking for math.h... yes
+#23 12.04 checking limits.h usability... yes
+#23 12.09 checking limits.h presence... yes
+#23 12.12 checking for limits.h... yes
+#23 12.13 checking float.h usability... yes
+#23 12.18 checking float.h presence... yes
+#23 12.21 checking for float.h... yes
+#23 12.21 checking for stdlib.h... (cached) yes
+#23 12.22 checking for sys/socket.h... yes
+#23 12.26 checking for netinet/in.h... yes
+#23 12.30 checking for arpa/inet.h... yes
+#23 12.35 checking netdb.h usability... yes
+#23 12.41 checking netdb.h presence... yes
+#23 12.44 checking for netdb.h... yes
+#23 12.44 checking sys/time.h usability... yes
+#23 12.49 checking sys/time.h presence... yes
+#23 12.53 checking for sys/time.h... yes
+#23 12.53 checking sys/select.h usability... yes
+#23 12.58 checking sys/select.h presence... yes
+#23 12.61 checking for sys/select.h... yes
+#23 12.61 checking poll.h usability... yes
+#23 12.67 checking poll.h presence... yes
+#23 12.69 checking for poll.h... yes
+#23 12.70 checking sys/mman.h usability... yes
+#23 12.75 checking sys/mman.h presence... yes
+#23 12.79 checking for sys/mman.h... yes
+#23 12.79 checking sys/timeb.h usability... yes
+#23 12.84 checking sys/timeb.h presence... yes
+#23 12.88 checking for sys/timeb.h... yes
+#23 12.88 checking signal.h usability... yes
+#23 12.93 checking signal.h presence... yes
+#23 12.97 checking for signal.h... yes
+#23 12.97 checking for arpa/nameser.h... yes
+#23 13.02 checking for resolv.h... yes
+#23 13.08 checking dl.h usability... no
+#23 13.13 checking dl.h presence... no
+#23 13.17 checking for dl.h... no
+#23 13.17 checking for dlfcn.h... (cached) yes
+#23 13.17 Checking types
+#23 13.17 checking for uint32_t... yes
+#23 13.23 Checking libraries
+#23 13.23 checking for strftime... yes
+#23 13.33 checking for strftime... (cached) yes
+#23 13.35 checking for localtime... yes
+#23 13.47 checking for gettimeofday... yes
+#23 13.57 checking for ftime... yes
+#23 13.69 checking for stat... yes
+#23 13.80 checking for signal... yes
+#23 13.92 checking for rand... yes
+#23 14.04 checking for rand_r... yes
+#23 14.14 checking for srand... yes
+#23 14.26 checking for time... yes
+#23 14.36 checking for isascii... yes
+#23 14.47 checking for mmap... yes
+#23 14.58 checking for munmap... yes
+#23 14.68 checking for putenv... yes
+#23 14.78 checking for va_copy... yes
+#23 14.88 checking whether va_list is an array type... yes
+#23 14.94 checking for library containing gethostent... none required
+#23 15.05 checking for library containing setsockopt... none required
+#23 15.14 checking for library containing connect... none required
+#23 15.24 checking for type of socket length (socklen_t)... configure: WARNING: could not determine
+#23 15.49 checking for const gethostbyname() argument... yes
+#23 15.60 checking for const send() second argument... yes
+#23 15.74 checking whether __attribute__((destructor)) is accepted... no
+#23 15.81 checking whether to enable IPv6... yes
+#23 15.85 checking struct sockaddr::ss_family... yes
+#23 15.90 checking for getaddrinfo... yes
+#23 16.00 checking for isnan... yes
+#23 16.10 checking for isinf... yes
+#23 16.20 checking for shl_load... no
+#23 16.30 checking for shl_load in -ldld... no
+#23 16.38 checking for dlopen... no
+#23 16.46 checking for dlopen in -ldl... yes
+#23 16.57 Checking configuration requirements
+#23 16.57 Disabling multithreaded support
+#23 16.57 Disabling HTTP support
+#23 16.57 Enabled Schematron support
+#23 16.57 checking iconv.h usability... yes
+#23 16.63 checking iconv.h presence... yes
+#23 16.66 checking for iconv.h... yes
+#23 16.66 checking for iconv... yes
+#23 16.77 checking for iconv declaration... 
+#23 16.82 	extern size_t iconv (iconv_t cd,  char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#23 16.82 Disabling ICU support
+#23 16.82 Enabled Schemas/Relax-NG support
+#23 16.82 checking for printf... yes
+#23 16.93 checking for sprintf... yes
+#23 17.04 checking for fprintf... yes
+#23 17.14 checking for snprintf... yes
+#23 17.25 checking for vfprintf... yes
+#23 17.36 checking for vsprintf... yes
+#23 17.46 checking for vsnprintf... yes
+#23 17.56 checking for sscanf... yes
+#23 17.67 Disabling code coverage for GCC
+#23 17.71 checking that generated files are newer than configure... done
+#23 17.71 configure: creating ./config.status
+#23 18.36 config.status: creating libxml2.spec
+#23 18.38 config.status: creating Makefile
+#23 18.39 config.status: creating include/Makefile
+#23 18.41 config.status: creating include/libxml/Makefile
+#23 18.43 config.status: creating doc/Makefile
+#23 18.44 config.status: creating doc/examples/Makefile
+#23 18.46 config.status: creating doc/devhelp/Makefile
+#23 18.48 config.status: creating example/Makefile
+#23 18.49 config.status: creating fuzz/Makefile
+#23 18.51 config.status: creating python/Makefile
+#23 18.53 config.status: creating python/tests/Makefile
+#23 18.55 config.status: creating xstc/Makefile
+#23 18.57 config.status: creating include/libxml/xmlversion.h
+#23 18.59 config.status: creating libxml-2.0.pc
+#23 18.61 config.status: creating libxml-2.0-uninstalled.pc
+#23 18.62 config.status: creating libxml2-config.cmake
+#23 18.63 config.status: creating python/setup.py
+#23 18.66 config.status: creating xml2-config
+#23 18.68 config.status: creating config.h
+#23 18.69 config.status: executing depfiles commands
+#23 19.08 config.status: executing libtool commands
+#23 19.10 Done configuring
+#23 19.13 
+#23 19.13 Now type 'make' to compile libxml2.
+#23 19.14 Making clean in include
+#23 19.15 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.15 Making clean in libxml
+#23 19.15 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 19.15 rm -rf .libs _libs
+#23 19.15 rm -f *.lo
+#23 19.16 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 19.16 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.16 rm -rf .libs _libs
+#23 19.16 rm -f *.lo
+#23 19.18 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.18 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.18 Making clean in .
+#23 19.18 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 19.18 test -z "runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res" || rm -f runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res
+#23 19.18 test -z "libxml2.la" || rm -f libxml2.la
+#23 19.18 rm -rf .libs _libs
+#23 19.18 test -z "testdso.la" || rm -f testdso.la
+#23 19.18 rm -f *.o
+#23 19.19 rm -f *.lo
+#23 19.19  rm -f testSchemas testRelax testSAX testHTML testXPath testURI testThreads testC14N testAutomata testRegexp testReader testapi testModule runtest runsuite testchar testdict runxmlconf testrecurse testlimits
+#23 19.19  rm -f xmllint xmlcatalog
+#23 19.19 rm -f ./so_locations
+#23 19.19 rm -f ./so_locations
+#23 19.19 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 19.19 Making clean in doc
+#23 19.20 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 19.20 Making clean in .
+#23 19.21 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 19.21 rm -rf .libs _libs
+#23 19.21 rm -f *~ *.bak *.hierarchy *.signals *-unused.txt
+#23 19.21 rm -f *.lo
+#23 19.21 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 19.21 Making clean in devhelp
+#23 19.21 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 19.21 rm -rf .libs _libs
+#23 19.21 rm -f *.lo
+#23 19.21 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 19.21 Making clean in examples
+#23 19.22 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 19.22 test -z "*.tmp" || rm -f *.tmp
+#23 19.22 rm -rf .libs _libs
+#23 19.22 test -f Makefile.am || rm -f test?.xml
+#23 19.22 rm -f *.o
+#23 19.22 rm -f *.lo
+#23 19.22  rm -f io1 io2 parse1 parse2 parse3 parse4 reader1 reader2 reader3 reader4 testWriter tree1 tree2 xpath1 xpath2
+#23 19.22 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 19.22 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 19.22 Making clean in example
+#23 19.23 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 19.23 rm -rf .libs _libs
+#23 19.23 rm -f *.o
+#23 19.23 rm -f *.lo
+#23 19.23  rm -f gjobread
+#23 19.23 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 19.23 Making clean in fuzz
+#23 19.23 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 19.23 test -z "genSeed html regexp schema uri xml xpath" || rm -f genSeed html regexp schema uri xml xpath
+#23 19.23 rm -rf .libs _libs
+#23 19.23 rm -f *.o
+#23 19.23 rm -f *.lo
+#23 19.23  rm -f testFuzzer
+#23 19.24 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 19.24 Making clean in xstc
+#23 19.24 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 19.24 test -z "nist-test.py ms-test.py sun-test.py test.log" || rm -f nist-test.py ms-test.py sun-test.py test.log
+#23 19.24 rm -rf .libs _libs
+#23 19.24 rm -f *.lo
+#23 19.24 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 19.26 make  all-recursive
+#23 19.26 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 19.27 Making all in include
+#23 19.27 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.28 Making all in libxml
+#23 19.28 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 19.28 make[3]: Nothing to be done for 'all'.
+#23 19.28 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 19.28 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.28 make[3]: Nothing to be done for 'all-am'.
+#23 19.28 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.28 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 19.28 Making all in .
+#23 19.29 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 19.29   CC       SAX.lo
+#23 19.29   CC       entities.lo
+#23 19.29   CC       encoding.lo
+#23 19.29   CC       error.lo
+#23 19.29   CC       parser.lo
+#23 19.29   CC       tree.lo
+#23 19.30   CC       hash.lo
+#23 19.30   CC       list.lo
+#23 19.30   CC       parserInternals.lo
+#23 19.30   CC       xmlIO.lo
+#23 19.30   CC       uri.lo
+#23 19.30   CC       valid.lo
+#23 19.30   CC       xmlmemory.lo
+#23 19.30   CC       xlink.lo
+#23 19.30   CC       HTMLparser.lo
+#23 19.30   CC       debugXML.lo
+#23 19.30   CC       xpath.lo
+#23 19.30   CC       xpointer.lo
+#23 19.30   CC       xinclude.lo
+#23 19.30   CC       catalog.lo
+#23 19.30   CC       nanoftp.lo
+#23 19.30   CC       globals.lo
+#23 19.30   CC       nanohttp.lo
+#23 19.30   CC       c14n.lo
+#23 19.30   CC       threads.lo
+#23 19.30   CC       buf.lo
+#23 19.30   CC       xmlschemas.lo
+#23 19.30   CC       xmlunicode.lo
+#23 19.30   CC       xmlreader.lo
+#23 19.30   CC       xmlschemastypes.lo
+#23 19.30   CC       relaxng.lo
+#23 19.30   CC       xmlregexp.lo
+#23 19.30   CC       dict.lo
+#23 19.30   CC       legacy.lo
+#23 19.31   CC       xmlwriter.lo
+#23 19.31   CC       xmlmodule.lo
+#23 19.31   CC       pattern.lo
+#23 19.31   CC       schematron.lo
+#23 19.31 sed -e 's?\@XML_LIBDIR\@?-L/usr/local/lib?g' \
+#23 19.31     -e 's?\@XML_INCLUDEDIR\@?-I/usr/local/include/libxml2?g' \
+#23 19.31     -e 's?\@VERSION\@?2.9.12?g' \
+#23 19.31     -e 's?\@XML_LIBS\@?-lxml2?g' \
+#23 19.31     -e 's?\@XML_PRIVATE_LIBS\@?-lz -llzma    -lm -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a?g' \
+#23 19.31        < ./xml2Conf.sh.in > xml2Conf.tmp \
+#23 19.31 && mv xml2Conf.tmp xml2Conf.sh
+#23 19.31   CC       xzlib.lo
+#23 19.31   CC       testdso.lo
+#23 19.31   CC       xmllint.o
+#23 19.31   CC       chvalid.lo
+#23 19.31   CC       xmlcatalog.o
+#23 19.31   CC       xmlstring.lo
+#23 19.31   CC       SAX2.lo
+#23 19.31   CC       HTMLtree.lo
+#23 19.34   CC       xmlsave.lo
+#23 19.37 
+#23 19.37 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.37 Total Basic Blocks: 457
+#23 19.37 Instrumented Times: 0
+#23 19.37 Instrumented Basic Blocks: 81
+#23 19.37 Instrumentation Ratio: 17.72%
+#23 19.37 Total Predecessors: 181
+#23 19.37 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.37   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.37   Instrumented BasicBlocks with 2 predecessor(s): 67
+#23 19.37   Instrumented BasicBlocks with 3 predecessor(s): 10
+#23 19.37   Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 19.37   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.37   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.37   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.37   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.37   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.37   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.37 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.37   Non-Instrumented BasicBlocks with 1 predecessor(s): 216
+#23 19.37   Non-Instrumented BasicBlocks with 2 predecessor(s): 50
+#23 19.37   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 19.37   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.37   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.37   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.37   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.37   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.37   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.37   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.37 =======================================
+#23 19.37 
+#23 19.43 
+#23 19.43 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.43 Total Basic Blocks: 15
+#23 19.43 Instrumented Times: 0
+#23 19.43 Instrumented Basic Blocks: 1
+#23 19.43 Instrumentation Ratio: 6.67%
+#23 19.43 Total Predecessors: 2
+#23 19.43 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.43   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 2 predecessor(s): 1
+#23 19.43   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.43   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.43 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.43   Non-Instrumented BasicBlocks with 1 predecessor(s): 8
+#23 19.43   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 19.43   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.43   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.43 =======================================
+#23 19.43 
+#23 19.44 
+#23 19.44 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.44 Total Basic Blocks: 49
+#23 19.44 Instrumented Times: 0
+#23 19.44 Instrumented Basic Blocks: 7
+#23 19.44 Instrumentation Ratio: 14.29%
+#23 19.44 Total Predecessors: 15
+#23 19.44 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.44   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 2 predecessor(s): 6
+#23 19.44   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.44   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.44 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.44   Non-Instrumented BasicBlocks with 1 predecessor(s): 18
+#23 19.44   Non-Instrumented BasicBlocks with 2 predecessor(s): 7
+#23 19.44   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.44 =======================================
+#23 19.44 
+#23 19.44 
+#23 19.44 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.44 Total Basic Blocks: 71
+#23 19.44 Instrumented Times: 0
+#23 19.44 Instrumented Basic Blocks: 0
+#23 19.44 Instrumentation Ratio: 0.00%
+#23 19.44 Total Predecessors: 0
+#23 19.44 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.44   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.44 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.44   Non-Instrumented BasicBlocks with 1 predecessor(s): 7
+#23 19.44   Non-Instrumented BasicBlocks with 2 predecessor(s): 6
+#23 19.44   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.44 =======================================
+#23 19.44 
+#23 19.44 
+#23 19.44 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.44 Total Basic Blocks: 2048
+#23 19.44 Instrumented Times: 0
+#23 19.44 Instrumented Basic Blocks: 358
+#23 19.44 Instrumentation Ratio: 17.48%
+#23 19.44 Total Predecessors: 801
+#23 19.44 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.44   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 2 predecessor(s): 294
+#23 19.44   Instrumented BasicBlocks with 3 predecessor(s): 54
+#23 19.44   Instrumented BasicBlocks with 4 predecessor(s): 7
+#23 19.44   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.44   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.44   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.44 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.44   Non-Instrumented BasicBlocks with 1 predecessor(s): 907
+#23 19.44   Non-Instrumented BasicBlocks with 2 predecessor(s): 230
+#23 19.44   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 19.44   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.44 =======================================
+#23 19.44 
+#23 19.44 
+#23 19.44 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.44 Total Basic Blocks: 572
+#23 19.44 Instrumented Times: 0
+#23 19.44 Instrumented Basic Blocks: 94
+#23 19.44 Instrumentation Ratio: 16.43%
+#23 19.44 Total Predecessors: 257
+#23 19.44 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.44   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with 2 predecessor(s): 60
+#23 19.44   Instrumented BasicBlocks with 3 predecessor(s): 17
+#23 19.44   Instrumented BasicBlocks with 4 predecessor(s): 9
+#23 19.44   Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 19.44   Instrumented BasicBlocks with 6 predecessor(s): 3
+#23 19.44   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 19.44   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.44   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.44 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.44   Non-Instrumented BasicBlocks with 1 predecessor(s): 274
+#23 19.44   Non-Instrumented BasicBlocks with 2 predecessor(s): 36
+#23 19.44   Non-Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 19.44   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.44   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.44   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.44 =======================================
+#23 19.44 
+#23 19.46 
+#23 19.46 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.46 Total Basic Blocks: 524
+#23 19.46 Instrumented Times: 0
+#23 19.46 Instrumented Basic Blocks: 85
+#23 19.46 Instrumentation Ratio: 16.22%
+#23 19.46 Total Predecessors: 227
+#23 19.46 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.46   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 2 predecessor(s): 56
+#23 19.46   Instrumented BasicBlocks with 3 predecessor(s): 19
+#23 19.46   Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 19.46   Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 19.46   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 19.46   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 19.46 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.46   Non-Instrumented BasicBlocks with 1 predecessor(s): 264
+#23 19.46   Non-Instrumented BasicBlocks with 2 predecessor(s): 39
+#23 19.46   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.46 =======================================
+#23 19.46 
+#23 19.46 
+#23 19.46 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.46 Total Basic Blocks: 42
+#23 19.46 Instrumented Times: 0
+#23 19.46 Instrumented Basic Blocks: 0
+#23 19.46 Instrumentation Ratio: 0.00%
+#23 19.46 Total Predecessors: 0
+#23 19.46 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.46   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.46 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.46   Non-Instrumented BasicBlocks with 1 predecessor(s): 12
+#23 19.46   Non-Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 19.46   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.46 =======================================
+#23 19.46 
+#23 19.46 
+#23 19.46 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.46 Total Basic Blocks: 190
+#23 19.46 Instrumented Times: 0
+#23 19.46 Instrumented Basic Blocks: 31
+#23 19.46 Instrumentation Ratio: 16.32%
+#23 19.46 Total Predecessors: 72
+#23 19.46 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.46   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 2 predecessor(s): 27
+#23 19.46   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.46   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.46   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.46   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.46   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.46   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.46 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.46   Non-Instrumented BasicBlocks with 1 predecessor(s): 89
+#23 19.46   Non-Instrumented BasicBlocks with 2 predecessor(s): 12
+#23 19.46   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 19.46   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.46   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.46 =======================================
+#23 19.46 
+#23 19.47 
+#23 19.47 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.47 Total Basic Blocks: 1231
+#23 19.47 Instrumented Times: 0
+#23 19.47 Instrumented Basic Blocks: 204
+#23 19.47 Instrumentation Ratio: 16.57%
+#23 19.47 Total Predecessors: 583
+#23 19.47 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.47   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.47   Instrumented BasicBlocks with 2 predecessor(s): 139
+#23 19.47   Instrumented BasicBlocks with 3 predecessor(s): 27
+#23 19.47   Instrumented BasicBlocks with 4 predecessor(s): 14
+#23 19.47   Instrumented BasicBlocks with 5 predecessor(s): 8
+#23 19.47   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.47   Instrumented BasicBlocks with 7 predecessor(s): 4
+#23 19.47   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.47   Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 19.47   Instrumented BasicBlocks with >=10 predecessors: 3
+#23 19.47 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.47   Non-Instrumented BasicBlocks with 1 predecessor(s): 566
+#23 19.47   Non-Instrumented BasicBlocks with 2 predecessor(s): 76
+#23 19.47   Non-Instrumented BasicBlocks with 3 predecessor(s): 8
+#23 19.47   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.47   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.47   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.47   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.47   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.47   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.47   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.47 =======================================
+#23 19.47 
+#23 19.48 
+#23 19.48 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.48 Total Basic Blocks: 2425
+#23 19.48 Instrumented Times: 0
+#23 19.48 Instrumented Basic Blocks: 341
+#23 19.48 Instrumentation Ratio: 14.06%
+#23 19.48 Total Predecessors: 1159
+#23 19.48 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.48   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 2 predecessor(s): 263
+#23 19.48   Instrumented BasicBlocks with 3 predecessor(s): 25
+#23 19.48   Instrumented BasicBlocks with 4 predecessor(s): 14
+#23 19.48   Instrumented BasicBlocks with 5 predecessor(s): 10
+#23 19.48   Instrumented BasicBlocks with 6 predecessor(s): 3
+#23 19.48   Instrumented BasicBlocks with 7 predecessor(s): 3
+#23 19.48   Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 19.48   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with >=10 predecessors: 20
+#23 19.48 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.48   Non-Instrumented BasicBlocks with 1 predecessor(s): 1060
+#23 19.48   Non-Instrumented BasicBlocks with 2 predecessor(s): 114
+#23 19.48   Non-Instrumented BasicBlocks with 3 predecessor(s): 10
+#23 19.48   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.48   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.48 =======================================
+#23 19.48 
+#23 19.48 
+#23 19.48 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.48 Total Basic Blocks: 636
+#23 19.48 Instrumented Times: 0
+#23 19.48 Instrumented Basic Blocks: 97
+#23 19.48 Instrumentation Ratio: 15.25%
+#23 19.48 Total Predecessors: 287
+#23 19.48 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.48   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 2 predecessor(s): 55
+#23 19.48   Instrumented BasicBlocks with 3 predecessor(s): 24
+#23 19.48   Instrumented BasicBlocks with 4 predecessor(s): 10
+#23 19.48   Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 19.48   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.48   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.48   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.48 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.48   Non-Instrumented BasicBlocks with 1 predecessor(s): 299
+#23 19.48   Non-Instrumented BasicBlocks with 2 predecessor(s): 51
+#23 19.48   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.48   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.48 =======================================
+#23 19.48 
+#23 19.48 
+#23 19.48 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.48 Total Basic Blocks: 1
+#23 19.48 Instrumented Times: 0
+#23 19.48 Instrumented Basic Blocks: 0
+#23 19.48 Instrumentation Ratio: 0.00%
+#23 19.48 Total Predecessors: 0
+#23 19.48 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.48   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.48   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.48 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.48   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.48   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.48 =======================================
+#23 19.48 
+#23 19.48 xmlIO.c:3809:36: warning: unused parameter 'ctxt' [-Wunused-parameter]
+#23 19.48  3809 | xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
+#23 19.48       |                                    ^
+#23 19.49 
+#23 19.49 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.49 Total Basic Blocks: 888
+#23 19.49 Instrumented Times: 0
+#23 19.49 Instrumented Basic Blocks: 132
+#23 19.49 Instrumentation Ratio: 14.86%
+#23 19.49 Total Predecessors: 327
+#23 19.49 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.49   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 2 predecessor(s): 105
+#23 19.49   Instrumented BasicBlocks with 3 predecessor(s): 13
+#23 19.49   Instrumented BasicBlocks with 4 predecessor(s): 7
+#23 19.49   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 19.49   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.49   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 9 predecessor(s): 2
+#23 19.49   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.49 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.49   Non-Instrumented BasicBlocks with 1 predecessor(s): 408
+#23 19.49   Non-Instrumented BasicBlocks with 2 predecessor(s): 96
+#23 19.49   Non-Instrumented BasicBlocks with 3 predecessor(s): 7
+#23 19.49   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.49   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.49 =======================================
+#23 19.49 
+#23 19.49 
+#23 19.49 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.49 Total Basic Blocks: 527
+#23 19.49 Instrumented Times: 0
+#23 19.49 Instrumented Basic Blocks: 94
+#23 19.49 Instrumentation Ratio: 17.84%
+#23 19.49 Total Predecessors: 227
+#23 19.49 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.49   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 2 predecessor(s): 85
+#23 19.49   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.49   Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.49   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 19.49   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.49   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.49   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 19.49 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.49   Non-Instrumented BasicBlocks with 1 predecessor(s): 259
+#23 19.49   Non-Instrumented BasicBlocks with 2 predecessor(s): 45
+#23 19.49   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.49   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.49   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.49 =======================================
+#23 19.49 
+#23 19.49 nanoftp.c:1476:66: warning: passing 'int *' to parameter of type 'socklen_t *' (aka 'unsigned int *') converts between pointers to integer types with different sign [-Wpointer-sign]
+#23 19.49  1476 |         getsockname(ctxt->dataFd, (struct sockaddr *) &dataAddr, &dataAddrLen);
+#23 19.49       |                                                                  ^~~~~~~~~~~~
+#23 19.49 /usr/include/x86_64-linux-gnu/sys/socket.h:117:26: note: passing argument to parameter '__len' here
+#23 19.49   117 |                         socklen_t *__restrict __len) __THROW;
+#23 19.49       |                                               ^
+#23 19.49 nanoftp.c:1489:66: warning: passing 'int *' to parameter of type 'socklen_t *' (aka 'unsigned int *') converts between pointers to integer types with different sign [-Wpointer-sign]
+#23 19.49  1489 |         getsockname(ctxt->dataFd, (struct sockaddr *) &dataAddr, &dataAddrLen);
+#23 19.49       |                                                                  ^~~~~~~~~~~~
+#23 19.49 /usr/include/x86_64-linux-gnu/sys/socket.h:117:26: note: passing argument to parameter '__len' here
+#23 19.49   117 |                         socklen_t *__restrict __len) __THROW;
+#23 19.49       |                                               ^
+#23 19.50 
+#23 19.50 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.50 Total Basic Blocks: 1190
+#23 19.50 Instrumented Times: 0
+#23 19.50 Instrumented Basic Blocks: 151
+#23 19.50 Instrumentation Ratio: 12.69%
+#23 19.50 Total Predecessors: 390
+#23 19.50 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.50   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 2 predecessor(s): 104
+#23 19.50   Instrumented BasicBlocks with 3 predecessor(s): 25
+#23 19.50   Instrumented BasicBlocks with 4 predecessor(s): 14
+#23 19.50   Instrumented BasicBlocks with 5 predecessor(s): 4
+#23 19.50   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.50   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.50   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.50   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.50   Non-Instrumented BasicBlocks with 1 predecessor(s): 594
+#23 19.50   Non-Instrumented BasicBlocks with 2 predecessor(s): 146
+#23 19.50   Non-Instrumented BasicBlocks with 3 predecessor(s): 5
+#23 19.50   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.50   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 =======================================
+#23 19.50 
+#23 19.50 
+#23 19.50 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.50 Total Basic Blocks: 0
+#23 19.50 Instrumented Times: 0
+#23 19.50 Instrumented Basic Blocks: 0
+#23 19.50 Instrumentation Ratio: 0.00%
+#23 19.50 Total Predecessors: 0
+#23 19.50 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.50   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.50   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 =======================================
+#23 19.50 
+#23 19.50 
+#23 19.50 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.50 Total Basic Blocks: 126
+#23 19.50 Instrumented Times: 0
+#23 19.50 Instrumented Basic Blocks: 21
+#23 19.50 Instrumentation Ratio: 16.67%
+#23 19.50 Total Predecessors: 53
+#23 19.50 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.50   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 2 predecessor(s): 15
+#23 19.50   Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 19.50   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.50   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.50   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.50   Non-Instrumented BasicBlocks with 1 predecessor(s): 53
+#23 19.50   Non-Instrumented BasicBlocks with 2 predecessor(s): 10
+#23 19.50   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 =======================================
+#23 19.50 
+#23 19.50 
+#23 19.50 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.50 Total Basic Blocks: 40
+#23 19.50 Instrumented Times: 0
+#23 19.50 Instrumented Basic Blocks: 4
+#23 19.50 Instrumentation Ratio: 10.00%
+#23 19.50 Total Predecessors: 11
+#23 19.50 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.50   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 2 predecessor(s): 1
+#23 19.50   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 19.50   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.50   Non-Instrumented BasicBlocks with 1 predecessor(s): 20
+#23 19.50   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 19.50   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.50   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.50   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.50 =======================================
+#23 19.50 
+#23 19.51 
+#23 19.51 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.51 Total Basic Blocks: 633
+#23 19.51 Instrumented Times: 0
+#23 19.51 Instrumented Basic Blocks: 101
+#23 19.51 Instrumentation Ratio: 15.96%
+#23 19.51 Total Predecessors: 287
+#23 19.51 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.51   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 2 predecessor(s): 61
+#23 19.51   Instrumented BasicBlocks with 3 predecessor(s): 21
+#23 19.51   Instrumented BasicBlocks with 4 predecessor(s): 9
+#23 19.51   Instrumented BasicBlocks with 5 predecessor(s): 5
+#23 19.51   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 19.51   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 9 predecessor(s): 2
+#23 19.51   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.51 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.51   Non-Instrumented BasicBlocks with 1 predecessor(s): 293
+#23 19.51   Non-Instrumented BasicBlocks with 2 predecessor(s): 46
+#23 19.51   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.51   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.51 =======================================
+#23 19.51 
+#23 19.51 dict.c:1006:30: warning: variable 'nbi' set but not used [-Wunused-but-set-variable]
+#23 19.51  1006 |     unsigned long key, okey, nbi = 0;
+#23 19.51       |                              ^
+#23 19.51   CCLD     testdso.la
+#23 19.51 
+#23 19.51 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.51 Total Basic Blocks: 903
+#23 19.51 Instrumented Times: 0
+#23 19.51 Instrumented Basic Blocks: 158
+#23 19.51 Instrumentation Ratio: 17.50%
+#23 19.51 Total Predecessors: 452
+#23 19.51 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.51   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 2 predecessor(s): 128
+#23 19.51   Instrumented BasicBlocks with 3 predecessor(s): 9
+#23 19.51   Instrumented BasicBlocks with 4 predecessor(s): 6
+#23 19.51   Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 19.51   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.51   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 19.51   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.51   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.51   Instrumented BasicBlocks with >=10 predecessors: 4
+#23 19.51 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.51   Non-Instrumented BasicBlocks with 1 predecessor(s): 520
+#23 19.51   Non-Instrumented BasicBlocks with 2 predecessor(s): 37
+#23 19.51   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 19.51   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.51 =======================================
+#23 19.51 
+#23 19.51 
+#23 19.51 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.51 Total Basic Blocks: 472
+#23 19.51 Instrumented Times: 0
+#23 19.51 Instrumented Basic Blocks: 9
+#23 19.51 Instrumentation Ratio: 1.91%
+#23 19.51 Total Predecessors: 21
+#23 19.51 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.51   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 2 predecessor(s): 6
+#23 19.51   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 19.51   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.51   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.51 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.51   Non-Instrumented BasicBlocks with 1 predecessor(s): 225
+#23 19.51   Non-Instrumented BasicBlocks with 2 predecessor(s): 123
+#23 19.51   Non-Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 19.51   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.51   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.51 =======================================
+#23 19.51 
+#23 19.52 
+#23 19.52 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.52 Total Basic Blocks: 715
+#23 19.52 Instrumented Times: 0
+#23 19.52 Instrumented Basic Blocks: 26
+#23 19.52 Instrumentation Ratio: 3.64%
+#23 19.52 Total Predecessors: 83
+#23 19.52 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.52   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with 2 predecessor(s): 16
+#23 19.52   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 19.52   Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 19.52   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.52   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 19.52   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.52   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.52 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.52   Non-Instrumented BasicBlocks with 1 predecessor(s): 182
+#23 19.52   Non-Instrumented BasicBlocks with 2 predecessor(s): 136
+#23 19.52   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.52 =======================================
+#23 19.52 
+#23 19.52 
+#23 19.52 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.52 Total Basic Blocks: 597
+#23 19.52 Instrumented Times: 0
+#23 19.52 Instrumented Basic Blocks: 87
+#23 19.52 Instrumentation Ratio: 14.57%
+#23 19.52 Total Predecessors: 224
+#23 19.52 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.52   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with 2 predecessor(s): 60
+#23 19.52   Instrumented BasicBlocks with 3 predecessor(s): 20
+#23 19.52   Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 19.52   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.52   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.52   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.52   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.52 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.52   Non-Instrumented BasicBlocks with 1 predecessor(s): 280
+#23 19.52   Non-Instrumented BasicBlocks with 2 predecessor(s): 76
+#23 19.52   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.52 =======================================
+#23 19.52 
+#23 19.52 
+#23 19.52 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.52 Total Basic Blocks: 1812
+#23 19.52 Instrumented Times: 0
+#23 19.52 Instrumented Basic Blocks: 297
+#23 19.52 Instrumentation Ratio: 16.39%
+#23 19.52 Total Predecessors: 856
+#23 19.52 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.52   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.52   Instrumented BasicBlocks with 2 predecessor(s): 212
+#23 19.52   Instrumented BasicBlocks with 3 predecessor(s): 50
+#23 19.52   Instrumented BasicBlocks with 4 predecessor(s): 16
+#23 19.52   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.52   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.52   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.52   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.52   Instrumented BasicBlocks with 9 predecessor(s): 2
+#23 19.52   Instrumented BasicBlocks with >=10 predecessors: 9
+#23 19.52 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.52   Non-Instrumented BasicBlocks with 1 predecessor(s): 930
+#23 19.52   Non-Instrumented BasicBlocks with 2 predecessor(s): 109
+#23 19.52   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 19.52   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.52   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.52   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.52 =======================================
+#23 19.52 
+#23 19.52 HTMLparser.c:2976:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.52  2976 |     size_t len = 0, startPosition = 0;
+#23 19.52       |            ^
+#23 19.52 HTMLparser.c:2978:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 19.52  2978 |     int err = 0;
+#23 19.52       |         ^
+#23 19.52 HTMLparser.c:3040:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.52  3040 |     size_t len = 0, startPosition = 0;
+#23 19.52       |            ^
+#23 19.52 HTMLparser.c:3042:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 19.52  3042 |     int err = 0;
+#23 19.52       |         ^
+#23 19.53 
+#23 19.53 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.53 Total Basic Blocks: 1498
+#23 19.53 Instrumented Times: 0
+#23 19.53 Instrumented Basic Blocks: 237
+#23 19.53 Instrumentation Ratio: 15.82%
+#23 19.53 Total Predecessors: 707
+#23 19.53 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.53   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.53   Instrumented BasicBlocks with 2 predecessor(s): 153
+#23 19.53   Instrumented BasicBlocks with 3 predecessor(s): 34
+#23 19.53   Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 19.53   Instrumented BasicBlocks with 5 predecessor(s): 13
+#23 19.53   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.53   Instrumented BasicBlocks with 7 predecessor(s): 3
+#23 19.53   Instrumented BasicBlocks with 8 predecessor(s): 4
+#23 19.53   Instrumented BasicBlocks with 9 predecessor(s): 5
+#23 19.53   Instrumented BasicBlocks with >=10 predecessors: 4
+#23 19.53 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.53   Non-Instrumented BasicBlocks with 1 predecessor(s): 765
+#23 19.53   Non-Instrumented BasicBlocks with 2 predecessor(s): 87
+#23 19.53   Non-Instrumented BasicBlocks with 3 predecessor(s): 7
+#23 19.53   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.53   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.53 =======================================
+#23 19.53 
+#23 19.53 catalog.c:2187:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 19.53  2187 |     int count = 0;
+#23 19.53       |         ^
+#23 19.53 
+#23 19.53 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.53 Total Basic Blocks: 478
+#23 19.53 Instrumented Times: 0
+#23 19.53 Instrumented Basic Blocks: 57
+#23 19.53 Instrumentation Ratio: 11.92%
+#23 19.53 Total Predecessors: 187
+#23 19.53 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.53   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.53   Instrumented BasicBlocks with 2 predecessor(s): 31
+#23 19.53   Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 19.53   Instrumented BasicBlocks with 4 predecessor(s): 5
+#23 19.53   Instrumented BasicBlocks with 5 predecessor(s): 8
+#23 19.53   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.53   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 19.53   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.53   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.53   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.53 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.53   Non-Instrumented BasicBlocks with 1 predecessor(s): 306
+#23 19.53   Non-Instrumented BasicBlocks with 2 predecessor(s): 36
+#23 19.53   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.53   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.53   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.53 =======================================
+#23 19.53 
+#23 19.54 
+#23 19.54 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.54 Total Basic Blocks: 2864
+#23 19.54 Instrumented Times: 0
+#23 19.54 Instrumented Basic Blocks: 470
+#23 19.54 Instrumentation Ratio: 16.41%
+#23 19.54 Total Predecessors: 1414
+#23 19.54 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.54   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.54   Instrumented BasicBlocks with 2 predecessor(s): 287
+#23 19.54   Instrumented BasicBlocks with 3 predecessor(s): 74
+#23 19.54   Instrumented BasicBlocks with 4 predecessor(s): 45
+#23 19.54   Instrumented BasicBlocks with 5 predecessor(s): 20
+#23 19.54   Instrumented BasicBlocks with 6 predecessor(s): 19
+#23 19.54   Instrumented BasicBlocks with 7 predecessor(s): 12
+#23 19.54   Instrumented BasicBlocks with 8 predecessor(s): 5
+#23 19.54   Instrumented BasicBlocks with 9 predecessor(s): 4
+#23 19.54   Instrumented BasicBlocks with >=10 predecessors: 4
+#23 19.54 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.54   Non-Instrumented BasicBlocks with 1 predecessor(s): 1415
+#23 19.54   Non-Instrumented BasicBlocks with 2 predecessor(s): 133
+#23 19.54   Non-Instrumented BasicBlocks with 3 predecessor(s): 5
+#23 19.54   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.54   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.54   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.54   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.54   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.54   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.54   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.54 =======================================
+#23 19.54 
+#23 19.55 
+#23 19.55 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.55 Total Basic Blocks: 3521
+#23 19.55 Instrumented Times: 0
+#23 19.55 Instrumented Basic Blocks: 594
+#23 19.55 Instrumentation Ratio: 16.87%
+#23 19.55 Total Predecessors: 1681
+#23 19.55 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.55   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with 2 predecessor(s): 380
+#23 19.55   Instrumented BasicBlocks with 3 predecessor(s): 133
+#23 19.55   Instrumented BasicBlocks with 4 predecessor(s): 28
+#23 19.55   Instrumented BasicBlocks with 5 predecessor(s): 15
+#23 19.55   Instrumented BasicBlocks with 6 predecessor(s): 14
+#23 19.55   Instrumented BasicBlocks with 7 predecessor(s): 8
+#23 19.55   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.55   Instrumented BasicBlocks with 9 predecessor(s): 5
+#23 19.55   Instrumented BasicBlocks with >=10 predecessors: 9
+#23 19.55 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.55   Non-Instrumented BasicBlocks with 1 predecessor(s): 1612
+#23 19.55   Non-Instrumented BasicBlocks with 2 predecessor(s): 207
+#23 19.55   Non-Instrumented BasicBlocks with 3 predecessor(s): 11
+#23 19.55   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.55   Non-Instrumented BasicBlocks with 5 predecessor(s): 4
+#23 19.55   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.55   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.55   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.55 =======================================
+#23 19.55 
+#23 19.55 1 warning generated.
+#23 19.55 1 warning generated.
+#23 19.55 
+#23 19.55 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.55 Total Basic Blocks: 223
+#23 19.55 Instrumented Times: 0
+#23 19.55 Instrumented Basic Blocks: 23
+#23 19.55 Instrumentation Ratio: 10.31%
+#23 19.55 Total Predecessors: 66
+#23 19.55 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.55   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with 2 predecessor(s): 7
+#23 19.55   Instrumented BasicBlocks with 3 predecessor(s): 12
+#23 19.55   Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 19.55   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.55   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.55 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.55   Non-Instrumented BasicBlocks with 1 predecessor(s): 129
+#23 19.55   Non-Instrumented BasicBlocks with 2 predecessor(s): 23
+#23 19.55   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.55   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.55   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.55 =======================================
+#23 19.55 
+#23 19.56 
+#23 19.56 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.56 Total Basic Blocks: 955
+#23 19.56 Instrumented Times: 0
+#23 19.56 Instrumented Basic Blocks: 176
+#23 19.56 Instrumentation Ratio: 18.43%
+#23 19.56 Total Predecessors: 508
+#23 19.56 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.56   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.56   Instrumented BasicBlocks with 2 predecessor(s): 122
+#23 19.56   Instrumented BasicBlocks with 3 predecessor(s): 26
+#23 19.56   Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 19.56   Instrumented BasicBlocks with 5 predecessor(s): 8
+#23 19.56   Instrumented BasicBlocks with 6 predecessor(s): 3
+#23 19.56   Instrumented BasicBlocks with 7 predecessor(s): 5
+#23 19.56   Instrumented BasicBlocks with 8 predecessor(s): 4
+#23 19.56   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.56   Instrumented BasicBlocks with >=10 predecessors: 3
+#23 19.56 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.56   Non-Instrumented BasicBlocks with 1 predecessor(s): 432
+#23 19.56   Non-Instrumented BasicBlocks with 2 predecessor(s): 31
+#23 19.56   Non-Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 19.56   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.56   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.56   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.56   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.56   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.56   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.56   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.56 =======================================
+#23 19.56 
+#23 19.56 2 warnings generated.
+#23 19.57 encoding.c:505:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.57   505 |     unsigned short* in = (unsigned short*) inb;
+#23 19.57       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 19.57 encoding.c:592:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.57   592 |     unsigned short* out = (unsigned short*) outb;
+#23 19.58       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 19.58 
+#23 19.58 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.58 Total Basic Blocks: 2050
+#23 19.58 Instrumented Times: 0
+#23 19.58 Instrumented Basic Blocks: 326
+#23 19.58 Instrumentation Ratio: 15.90%
+#23 19.58 Total Predecessors: 880
+#23 19.58 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.58   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.58   Instrumented BasicBlocks with 2 predecessor(s): 241
+#23 19.58   Instrumented BasicBlocks with 3 predecessor(s): 42
+#23 19.58   Instrumented BasicBlocks with 4 predecessor(s): 18
+#23 19.58   Instrumented BasicBlocks with 5 predecessor(s): 10
+#23 19.58   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 19.58   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 19.58   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.58   Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 19.58   Instrumented BasicBlocks with >=10 predecessors: 7
+#23 19.58 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.58   Non-Instrumented BasicBlocks with 1 predecessor(s): 952
+#23 19.58   Non-Instrumented BasicBlocks with 2 predecessor(s): 186
+#23 19.58   Non-Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 19.58   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.58   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 19.58   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.58 =======================================
+#23 19.58 
+#23 19.58 encoding.c:748:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.58   748 |     unsigned short* in = (unsigned short*) inb;
+#23 19.58       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 19.58 encoding.c:834:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.58   834 |     unsigned short* out = (unsigned short*) outb;
+#23 19.58       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 19.58 
+#23 19.58 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.58 Total Basic Blocks: 1403
+#23 19.58 Instrumented Times: 0
+#23 19.58 Instrumented Basic Blocks: 212
+#23 19.58 Instrumentation Ratio: 15.11%
+#23 19.58 Total Predecessors: 642
+#23 19.58 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.58   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.58   Instrumented BasicBlocks with 2 predecessor(s): 125
+#23 19.58   Instrumented BasicBlocks with 3 predecessor(s): 46
+#23 19.58   Instrumented BasicBlocks with 4 predecessor(s): 23
+#23 19.58   Instrumented BasicBlocks with 5 predecessor(s): 7
+#23 19.58   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.58   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.58   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.58   Instrumented BasicBlocks with 9 predecessor(s): 2
+#23 19.58   Instrumented BasicBlocks with >=10 predecessors: 4
+#23 19.58 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.58   Non-Instrumented BasicBlocks with 1 predecessor(s): 698
+#23 19.58   Non-Instrumented BasicBlocks with 2 predecessor(s): 91
+#23 19.58   Non-Instrumented BasicBlocks with 3 predecessor(s): 5
+#23 19.58   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.58   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.58   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.58   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.58 =======================================
+#23 19.58 
+#23 19.60 
+#23 19.60 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.60 Total Basic Blocks: 922
+#23 19.60 Instrumented Times: 0
+#23 19.60 Instrumented Basic Blocks: 151
+#23 19.60 Instrumentation Ratio: 16.38%
+#23 19.60 Total Predecessors: 415
+#23 19.60 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.60   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.60   Instrumented BasicBlocks with 2 predecessor(s): 99
+#23 19.60   Instrumented BasicBlocks with 3 predecessor(s): 22
+#23 19.60   Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 19.60   Instrumented BasicBlocks with 5 predecessor(s): 7
+#23 19.60   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.60   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.60   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.60   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.60   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.60 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.60   Non-Instrumented BasicBlocks with 1 predecessor(s): 419
+#23 19.60   Non-Instrumented BasicBlocks with 2 predecessor(s): 57
+#23 19.60   Non-Instrumented BasicBlocks with 3 predecessor(s): 5
+#23 19.60   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.60   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.60   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.60 =======================================
+#23 19.60 
+#23 19.60 
+#23 19.60 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.60 Total Basic Blocks: 1650
+#23 19.60 Instrumented Times: 0
+#23 19.60 Instrumented Basic Blocks: 243
+#23 19.60 Instrumentation Ratio: 14.73%
+#23 19.60 Total Predecessors: 752
+#23 19.60 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.60   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.60   Instrumented BasicBlocks with 2 predecessor(s): 171
+#23 19.60   Instrumented BasicBlocks with 3 predecessor(s): 27
+#23 19.60   Instrumented BasicBlocks with 4 predecessor(s): 15
+#23 19.60   Instrumented BasicBlocks with 5 predecessor(s): 6
+#23 19.60   Instrumented BasicBlocks with 6 predecessor(s): 7
+#23 19.60   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 19.60   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.60   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.60   Instrumented BasicBlocks with >=10 predecessors: 14
+#23 19.60 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.60   Non-Instrumented BasicBlocks with 1 predecessor(s): 860
+#23 19.60   Non-Instrumented BasicBlocks with 2 predecessor(s): 130
+#23 19.60   Non-Instrumented BasicBlocks with 3 predecessor(s): 15
+#23 19.60   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.60   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.60   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.60 =======================================
+#23 19.60 
+#23 19.61 
+#23 19.61 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.61 Total Basic Blocks: 1569
+#23 19.61 Instrumented Times: 0
+#23 19.61 Instrumented Basic Blocks: 240
+#23 19.61 Instrumentation Ratio: 15.30%
+#23 19.61 Total Predecessors: 688
+#23 19.61 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.61   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.61   Instrumented BasicBlocks with 2 predecessor(s): 147
+#23 19.61   Instrumented BasicBlocks with 3 predecessor(s): 49
+#23 19.61   Instrumented BasicBlocks with 4 predecessor(s): 12
+#23 19.61   Instrumented BasicBlocks with 5 predecessor(s): 14
+#23 19.61   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.61   Instrumented BasicBlocks with 7 predecessor(s): 8
+#23 19.61   Instrumented BasicBlocks with 8 predecessor(s): 5
+#23 19.61   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.61   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.61 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.61   Non-Instrumented BasicBlocks with 1 predecessor(s): 702
+#23 19.61   Non-Instrumented BasicBlocks with 2 predecessor(s): 117
+#23 19.61   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 19.61   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.61 =======================================
+#23 19.61 
+#23 19.61 
+#23 19.61 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.61 Total Basic Blocks: 1203
+#23 19.61 Instrumented Times: 0
+#23 19.61 Instrumented Basic Blocks: 179
+#23 19.61 Instrumentation Ratio: 14.88%
+#23 19.61 Total Predecessors: 563
+#23 19.61 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.61   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.61   Instrumented BasicBlocks with 2 predecessor(s): 120
+#23 19.61   Instrumented BasicBlocks with 3 predecessor(s): 18
+#23 19.61   Instrumented BasicBlocks with 4 predecessor(s): 21
+#23 19.61   Instrumented BasicBlocks with 5 predecessor(s): 9
+#23 19.61   Instrumented BasicBlocks with 6 predecessor(s): 3
+#23 19.61   Instrumented BasicBlocks with 7 predecessor(s): 4
+#23 19.61   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.61   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.61   Instrumented BasicBlocks with >=10 predecessors: 4
+#23 19.61 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.61   Non-Instrumented BasicBlocks with 1 predecessor(s): 715
+#23 19.61   Non-Instrumented BasicBlocks with 2 predecessor(s): 59
+#23 19.61   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 19.61   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.61   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.61 =======================================
+#23 19.61 
+#23 19.62 
+#23 19.62 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.62 Total Basic Blocks: 838
+#23 19.62 Instrumented Times: 0
+#23 19.62 Instrumented Basic Blocks: 128
+#23 19.62 Instrumentation Ratio: 15.27%
+#23 19.62 Total Predecessors: 348
+#23 19.62 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.62   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.62   Instrumented BasicBlocks with 2 predecessor(s): 83
+#23 19.62   Instrumented BasicBlocks with 3 predecessor(s): 17
+#23 19.62   Instrumented BasicBlocks with 4 predecessor(s): 13
+#23 19.62   Instrumented BasicBlocks with 5 predecessor(s): 11
+#23 19.62   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 19.62   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.62   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.62   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.62   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.62 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.62   Non-Instrumented BasicBlocks with 1 predecessor(s): 359
+#23 19.62   Non-Instrumented BasicBlocks with 2 predecessor(s): 71
+#23 19.62   Non-Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 19.62   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.62 =======================================
+#23 19.62 
+#23 19.62 
+#23 19.62 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.62 Total Basic Blocks: 1582
+#23 19.62 Instrumented Times: 0
+#23 19.62 Instrumented Basic Blocks: 226
+#23 19.62 Instrumentation Ratio: 14.29%
+#23 19.62 Total Predecessors: 790
+#23 19.62 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.62   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.62   Instrumented BasicBlocks with 2 predecessor(s): 119
+#23 19.62   Instrumented BasicBlocks with 3 predecessor(s): 49
+#23 19.62   Instrumented BasicBlocks with 4 predecessor(s): 20
+#23 19.62   Instrumented BasicBlocks with 5 predecessor(s): 10
+#23 19.62   Instrumented BasicBlocks with 6 predecessor(s): 5
+#23 19.62   Instrumented BasicBlocks with 7 predecessor(s): 6
+#23 19.62   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 19.62   Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 19.62   Instrumented BasicBlocks with >=10 predecessors: 12
+#23 19.62 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.62   Non-Instrumented BasicBlocks with 1 predecessor(s): 933
+#23 19.62   Non-Instrumented BasicBlocks with 2 predecessor(s): 56
+#23 19.62   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 19.62   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.62   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.62 =======================================
+#23 19.62 
+#23 19.62 
+#23 19.62 *** Warning: Linking the shared library testdso.la against the
+#23 19.62 *** static library /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 19.62 
+#23 19.62 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.62 Total Basic Blocks: 6061
+#23 19.62 Instrumented Times: 0
+#23 19.62 Instrumented Basic Blocks: 983
+#23 19.62 Instrumentation Ratio: 16.22%
+#23 19.62 Total Predecessors: 2716
+#23 19.62 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.62   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.62   Instrumented BasicBlocks with 2 predecessor(s): 726
+#23 19.62   Instrumented BasicBlocks with 3 predecessor(s): 101
+#23 19.62   Instrumented BasicBlocks with 4 predecessor(s): 52
+#23 19.62   Instrumented BasicBlocks with 5 predecessor(s): 56
+#23 19.62   Instrumented BasicBlocks with 6 predecessor(s): 15
+#23 19.62   Instrumented BasicBlocks with 7 predecessor(s): 9
+#23 19.62   Instrumented BasicBlocks with 8 predecessor(s): 6
+#23 19.62   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.62   Instrumented BasicBlocks with >=10 predecessors: 17
+#23 19.62 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.62   Non-Instrumented BasicBlocks with 1 predecessor(s): 2931
+#23 19.62   Non-Instrumented BasicBlocks with 2 predecessor(s): 502
+#23 19.62   Non-Instrumented BasicBlocks with 3 predecessor(s): 13
+#23 19.62   Non-Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 19.62   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.62   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.62   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.62 =======================================
+#23 19.62 
+#23 19.63 xmlschemas.c:21858:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 19.63  21858 |     int count = 0;
+#23 19.63        |         ^
+#23 19.63 
+#23 19.63 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.63 Total Basic Blocks: 3908
+#23 19.63 Instrumented Times: 0
+#23 19.63 Instrumented Basic Blocks: 637
+#23 19.63 Instrumentation Ratio: 16.30%
+#23 19.63 Total Predecessors: 1850
+#23 19.63 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.63   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.63   Instrumented BasicBlocks with 2 predecessor(s): 383
+#23 19.63   Instrumented BasicBlocks with 3 predecessor(s): 149
+#23 19.63   Instrumented BasicBlocks with 4 predecessor(s): 44
+#23 19.63   Instrumented BasicBlocks with 5 predecessor(s): 23
+#23 19.63   Instrumented BasicBlocks with 6 predecessor(s): 13
+#23 19.63   Instrumented BasicBlocks with 7 predecessor(s): 9
+#23 19.63   Instrumented BasicBlocks with 8 predecessor(s): 4
+#23 19.63   Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 19.63   Instrumented BasicBlocks with >=10 predecessors: 9
+#23 19.63 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.63   Non-Instrumented BasicBlocks with 1 predecessor(s): 1783
+#23 19.63   Non-Instrumented BasicBlocks with 2 predecessor(s): 207
+#23 19.63   Non-Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 19.63   Non-Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 19.63   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.63   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.63   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.63   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.63   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.63   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.63 =======================================
+#23 19.63 
+#23 19.64 
+#23 19.64 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.64 Total Basic Blocks: 3476
+#23 19.64 Instrumented Times: 0
+#23 19.64 Instrumented Basic Blocks: 503
+#23 19.64 Instrumentation Ratio: 14.47%
+#23 19.64 Total Predecessors: 1544
+#23 19.64 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.64   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.64   Instrumented BasicBlocks with 2 predecessor(s): 324
+#23 19.64   Instrumented BasicBlocks with 3 predecessor(s): 81
+#23 19.64   Instrumented BasicBlocks with 4 predecessor(s): 43
+#23 19.64   Instrumented BasicBlocks with 5 predecessor(s): 9
+#23 19.64   Instrumented BasicBlocks with 6 predecessor(s): 20
+#23 19.64   Instrumented BasicBlocks with 7 predecessor(s): 7
+#23 19.64   Instrumented BasicBlocks with 8 predecessor(s): 5
+#23 19.64   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.64   Instrumented BasicBlocks with >=10 predecessors: 13
+#23 19.64 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.64   Non-Instrumented BasicBlocks with 1 predecessor(s): 1722
+#23 19.64   Non-Instrumented BasicBlocks with 2 predecessor(s): 238
+#23 19.64   Non-Instrumented BasicBlocks with 3 predecessor(s): 7
+#23 19.64   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 19.64   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 19.64   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.64   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.64   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.64   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.64   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 19.64 =======================================
+#23 19.64 
+#23 19.65 /usr/bin/ar: `u' modifier ignored since `D' is the default (see `U')
+#23 19.65 1 warning generated.
+#23 19.66 
+#23 19.66 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.66 Total Basic Blocks: 4390
+#23 19.66 Instrumented Times: 0
+#23 19.66 Instrumented Basic Blocks: 656
+#23 19.66 Instrumentation Ratio: 14.94%
+#23 19.66 Total Predecessors: 2166
+#23 19.66 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.66   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.66   Instrumented BasicBlocks with 2 predecessor(s): 454
+#23 19.66   Instrumented BasicBlocks with 3 predecessor(s): 109
+#23 19.66   Instrumented BasicBlocks with 4 predecessor(s): 30
+#23 19.66   Instrumented BasicBlocks with 5 predecessor(s): 9
+#23 19.66   Instrumented BasicBlocks with 6 predecessor(s): 9
+#23 19.66   Instrumented BasicBlocks with 7 predecessor(s): 4
+#23 19.66   Instrumented BasicBlocks with 8 predecessor(s): 6
+#23 19.66   Instrumented BasicBlocks with 9 predecessor(s): 6
+#23 19.66   Instrumented BasicBlocks with >=10 predecessors: 29
+#23 19.66 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.66   Non-Instrumented BasicBlocks with 1 predecessor(s): 2157
+#23 19.66   Non-Instrumented BasicBlocks with 2 predecessor(s): 224
+#23 19.66   Non-Instrumented BasicBlocks with 3 predecessor(s): 8
+#23 19.66   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 19.66   Non-Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 19.66   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 19.66   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.66   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.66   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.66   Non-Instrumented BasicBlocks with >=10 predecessors: 4
+#23 19.66 =======================================
+#23 19.66 
+#23 19.66 4 warnings generated.
+#23 19.68 xpath.c:10506:9: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.68  10506 |     int len = 0, l;
+#23 19.68        |         ^
+#23 19.71 xpath.c:13650:9: warning: variable 'nb_nodes' set but not used [-Wunused-but-set-variable]
+#23 19.71  13650 |     int nb_nodes = 0;
+#23 19.71        |         ^
+#23 19.73 
+#23 19.73 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.73 Total Basic Blocks: 6774
+#23 19.73 Instrumented Times: 0
+#23 19.73 Instrumented Basic Blocks: 1111
+#23 19.73 Instrumentation Ratio: 16.40%
+#23 19.73 Total Predecessors: 3256
+#23 19.73 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.73   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.73   Instrumented BasicBlocks with 2 predecessor(s): 714
+#23 19.73   Instrumented BasicBlocks with 3 predecessor(s): 222
+#23 19.73   Instrumented BasicBlocks with 4 predecessor(s): 59
+#23 19.73   Instrumented BasicBlocks with 5 predecessor(s): 30
+#23 19.73   Instrumented BasicBlocks with 6 predecessor(s): 27
+#23 19.73   Instrumented BasicBlocks with 7 predecessor(s): 16
+#23 19.73   Instrumented BasicBlocks with 8 predecessor(s): 9
+#23 19.73   Instrumented BasicBlocks with 9 predecessor(s): 8
+#23 19.73   Instrumented BasicBlocks with >=10 predecessors: 26
+#23 19.73 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.73   Non-Instrumented BasicBlocks with 1 predecessor(s): 2951
+#23 19.73   Non-Instrumented BasicBlocks with 2 predecessor(s): 416
+#23 19.73   Non-Instrumented BasicBlocks with 3 predecessor(s): 24
+#23 19.73   Non-Instrumented BasicBlocks with 4 predecessor(s): 5
+#23 19.73   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.73   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.73   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.73   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.73   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.73   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 19.73 =======================================
+#23 19.73 
+#23 19.74 
+#23 19.74 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.74 Total Basic Blocks: 11003
+#23 19.74 Instrumented Times: 0
+#23 19.74 Instrumented Basic Blocks: 1850
+#23 19.74 Instrumentation Ratio: 16.81%
+#23 19.74 Total Predecessors: 5381
+#23 19.74 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.74   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.74   Instrumented BasicBlocks with 2 predecessor(s): 1206
+#23 19.74   Instrumented BasicBlocks with 3 predecessor(s): 335
+#23 19.74   Instrumented BasicBlocks with 4 predecessor(s): 142
+#23 19.74   Instrumented BasicBlocks with 5 predecessor(s): 39
+#23 19.74   Instrumented BasicBlocks with 6 predecessor(s): 51
+#23 19.74   Instrumented BasicBlocks with 7 predecessor(s): 20
+#23 19.74   Instrumented BasicBlocks with 8 predecessor(s): 11
+#23 19.74   Instrumented BasicBlocks with 9 predecessor(s): 14
+#23 19.74   Instrumented BasicBlocks with >=10 predecessors: 32
+#23 19.74 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.74   Non-Instrumented BasicBlocks with 1 predecessor(s): 4997
+#23 19.74   Non-Instrumented BasicBlocks with 2 predecessor(s): 505
+#23 19.74   Non-Instrumented BasicBlocks with 3 predecessor(s): 23
+#23 19.74   Non-Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 19.74   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.74   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.74   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 19.74   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.74   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 19.74   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 19.74 =======================================
+#23 19.74 
+#23 19.77 4 warnings generated.
+#23 19.82 
+#23 19.82 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.82 Total Basic Blocks: 9292
+#23 19.82 Instrumented Times: 0
+#23 19.82 Instrumented Basic Blocks: 1531
+#23 19.82 Instrumentation Ratio: 16.48%
+#23 19.82 Total Predecessors: 4452
+#23 19.82 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.82   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.82   Instrumented BasicBlocks with 2 predecessor(s): 1025
+#23 19.82   Instrumented BasicBlocks with 3 predecessor(s): 274
+#23 19.82   Instrumented BasicBlocks with 4 predecessor(s): 72
+#23 19.82   Instrumented BasicBlocks with 5 predecessor(s): 54
+#23 19.82   Instrumented BasicBlocks with 6 predecessor(s): 40
+#23 19.82   Instrumented BasicBlocks with 7 predecessor(s): 19
+#23 19.82   Instrumented BasicBlocks with 8 predecessor(s): 7
+#23 19.82   Instrumented BasicBlocks with 9 predecessor(s): 6
+#23 19.82   Instrumented BasicBlocks with >=10 predecessors: 34
+#23 19.82 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.82   Non-Instrumented BasicBlocks with 1 predecessor(s): 4502
+#23 19.82   Non-Instrumented BasicBlocks with 2 predecessor(s): 532
+#23 19.82   Non-Instrumented BasicBlocks with 3 predecessor(s): 37
+#23 19.82   Non-Instrumented BasicBlocks with 4 predecessor(s): 8
+#23 19.82   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.82   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 19.82   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.82   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 19.82   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.82   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 19.82 =======================================
+#23 19.82 
+#23 19.90 
+#23 19.90 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 19.90 Total Basic Blocks: 13268
+#23 19.90 Instrumented Times: 0
+#23 19.90 Instrumented Basic Blocks: 2116
+#23 19.90 Instrumentation Ratio: 15.95%
+#23 19.90 Total Predecessors: 5838
+#23 19.90 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 19.90   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 19.90   Instrumented BasicBlocks with 2 predecessor(s): 1409
+#23 19.90   Instrumented BasicBlocks with 3 predecessor(s): 333
+#23 19.90   Instrumented BasicBlocks with 4 predecessor(s): 194
+#23 19.90   Instrumented BasicBlocks with 5 predecessor(s): 87
+#23 19.90   Instrumented BasicBlocks with 6 predecessor(s): 35
+#23 19.90   Instrumented BasicBlocks with 7 predecessor(s): 15
+#23 19.90   Instrumented BasicBlocks with 8 predecessor(s): 8
+#23 19.90   Instrumented BasicBlocks with 9 predecessor(s): 8
+#23 19.90   Instrumented BasicBlocks with >=10 predecessors: 27
+#23 19.90 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 19.90   Non-Instrumented BasicBlocks with 1 predecessor(s): 6439
+#23 19.90   Non-Instrumented BasicBlocks with 2 predecessor(s): 979
+#23 19.90   Non-Instrumented BasicBlocks with 3 predecessor(s): 42
+#23 19.90   Non-Instrumented BasicBlocks with 4 predecessor(s): 11
+#23 19.90   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 19.90   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 19.90   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 19.90   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 19.90   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 19.90   Non-Instrumented BasicBlocks with >=10 predecessors: 5
+#23 19.90 =======================================
+#23 19.90 
+#23 20.17 2 warnings generated.
+#23 20.39 1 warning generated.
+#23 20.41   CCLD     libxml2.la
+#23 20.62 
+#23 20.62 *** Warning: Linking the shared library libxml2.la against the
+#23 20.62 *** static library /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 20.65 /usr/bin/ar: `u' modifier ignored since `D' is the default (see `U')
+#23 20.76   CCLD     xmllint
+#23 20.76   CCLD     xmlcatalog
+#23 21.09 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 21.09 Making all in doc
+#23 21.10 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 21.10 Making all in .
+#23 21.10 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 21.10 make[3]: Nothing to be done for 'all-am'.
+#23 21.10 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 21.10 Making all in devhelp
+#23 21.11 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 21.11 make[3]: Nothing to be done for 'all'.
+#23 21.11 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 21.11 Making all in examples
+#23 21.11 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 21.11 make[3]: Nothing to be done for 'all'.
+#23 21.11 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 21.11 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 21.11 Making all in example
+#23 21.11 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 21.11 make[2]: Nothing to be done for 'all'.
+#23 21.11 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 21.11 Making all in fuzz
+#23 21.12 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 21.12 make[2]: Nothing to be done for 'all'.
+#23 21.12 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 21.12 Making all in xstc
+#23 21.12 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 21.12 make[2]: Nothing to be done for 'all'.
+#23 21.12 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 21.12 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 21.99 
+#23 21.99 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 21.99 Total Basic Blocks: 408
+#23 21.99 Instrumented Times: 0
+#23 21.99 Instrumented Basic Blocks: 18
+#23 21.99 Instrumentation Ratio: 4.41%
+#23 21.99 Total Predecessors: 47
+#23 21.99 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 21.99   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 21.99   Instrumented BasicBlocks with 2 predecessor(s): 14
+#23 21.99   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 21.99   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 21.99   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 21.99   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 21.99   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 21.99   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 21.99   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 21.99   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 21.99 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 21.99   Non-Instrumented BasicBlocks with 1 predecessor(s): 147
+#23 21.99   Non-Instrumented BasicBlocks with 2 predecessor(s): 26
+#23 21.99   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 21.99   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 21.99 =======================================
+#23 21.99 
+#23 DONE 22.2s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 0.4s done
+#24 writing image sha256:b187aa833e4d195ad06befa7c6467a3df9b4442883270f545c085d78fcc4694d done
+#24 naming to docker.io/magma/aflplusplus_entropy/libxml2_reader_for_file_fuzzer done
+#24 DONE 0.4s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_entropy/libxml2_reader_for_file_fuzzer

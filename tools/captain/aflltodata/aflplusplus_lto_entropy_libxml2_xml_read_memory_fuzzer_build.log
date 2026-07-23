@@ -1,0 +1,1956 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/libxml2_xml_read_memory_fuzzer --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=libxml2_xml_read_memory_fuzzer --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 1.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 12.87MB 0.3s done
+#5 DONE 0.4s
+
+#6 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#6 CACHED
+
+#7 [ 8/19] RUN /magma/magma/preinstall.sh
+#7 CACHED
+
+#8 [ 9/19] RUN /magma/magma/prebuild.sh
+#8 CACHED
+
+#9 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#9 CACHED
+
+#10 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#10 CACHED
+
+#11 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#11 CACHED
+
+#12 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#12 CACHED
+
+#13 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#13 CACHED
+
+#14 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#14 CACHED
+
+#15 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#15 DONE 0.2s
+
+#16 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#16 0.753 Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [102 kB]
+#16 0.800 Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+#16 1.019 Get:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [102 kB]
+#16 1.788 Get:4 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [3373 kB]
+#16 1.960 Get:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [102 kB]
+#16 2.638 Get:6 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [3786 kB]
+#16 5.767 Fetched 7465 kB in 5s (1367 kB/s)
+#16 5.767 Reading package lists...
+#16 7.305 Reading package lists...
+#16 8.740 Building dependency tree...
+#16 8.947 Reading state information...
+#16 9.095 build-essential is already the newest version (12.4ubuntu1).
+#16 9.095 make is already the newest version (4.1-9.1ubuntu1).
+#16 9.095 The following additional packages will be installed:
+#16 9.095   ca-certificates git-man krb5-locales less libbsd0 libcurl3-gnutls libedit2
+#16 9.095   liberror-perl libexpat1 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+#16 9.095   libkrb5support0 libnghttp2-14 libpsl5 librtmp1 libssl1.0.0 libx11-6
+#16 9.095   libx11-data libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1 multiarch-support
+#16 9.096   openssh-client openssl publicsuffix xauth
+#16 9.096 Suggested packages:
+#16 9.096   gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-el git-email
+#16 9.096   git-gui gitk gitweb git-cvs git-mediawiki git-svn krb5-doc krb5-user
+#16 9.096   keychain libpam-ssh monkeysphere ssh-askpass
+#16 9.198 The following NEW packages will be installed:
+#16 9.198   ca-certificates git git-man krb5-locales less libbsd0 libcurl3-gnutls
+#16 9.199   libedit2 liberror-perl libexpat1 libexpat1-dev libgssapi-krb5-2 libk5crypto3
+#16 9.199   libkeyutils1 libkrb5-3 libkrb5support0 libnghttp2-14 libpsl5 librtmp1
+#16 9.199   libssl1.0.0 libx11-6 libx11-data libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1
+#16 9.199   multiarch-support openssh-client openssl publicsuffix wget xauth
+#16 9.860 0 upgraded, 33 newly installed, 0 to remove and 1 not upgraded.
+#16 9.860 Need to get 9882 kB of archives.
+#16 9.860 After this operation, 54.1 MB of additional disk space will be used.
+#16 9.860 Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 multiarch-support amd64 2.27-3ubuntu1.6 [6960 B]
+#16 10.08 Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxau6 amd64 1:1.0.8-1ubuntu1 [7556 B]
+#16 10.09 Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libbsd0 amd64 0.8.7-1ubuntu0.1 [41.6 kB]
+#16 10.41 Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp6 amd64 1:1.1.2-3 [10.7 kB]
+#16 10.47 Get:5 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb1 amd64 1.13-2~ubuntu18.04 [45.5 kB]
+#16 10.64 Get:6 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-data all 2:1.6.4-3ubuntu0.4 [114 kB]
+#16 10.86 Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-6 amd64 2:1.6.4-3ubuntu0.4 [572 kB]
+#16 11.27 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxext6 amd64 2:1.3.3-1 [29.4 kB]
+#16 11.28 Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openssl amd64 1.1.1-1ubuntu2.1~18.04.23 [614 kB]
+#16 13.78 Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 ca-certificates all 20230311ubuntu0.18.04.1 [151 kB]
+#16 13.97 Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 less amd64 487-0.1 [112 kB]
+#16 14.01 Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libexpat1 amd64 2.2.5-3ubuntu0.9 [82.8 kB]
+#16 14.04 Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 krb5-locales all 1.16-2ubuntu0.4 [13.4 kB]
+#16 14.04 Get:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 libedit2 amd64 3.1-20170329-1 [76.9 kB]
+#16 14.05 Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkrb5support0 amd64 1.16-2ubuntu0.4 [30.9 kB]
+#16 14.05 Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libk5crypto3 amd64 1.16-2ubuntu0.4 [85.3 kB]
+#16 14.16 Get:17 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkeyutils1 amd64 1.5.9-9.2ubuntu2.1 [8764 B]
+#16 14.17 Get:18 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libkrb5-3 amd64 1.16-2ubuntu0.4 [278 kB]
+#16 14.26 Get:19 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgssapi-krb5-2 amd64 1.16-2ubuntu0.4 [122 kB]
+#16 14.30 Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpsl5 amd64 0.19.1-5build1 [41.8 kB]
+#16 14.43 Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libssl1.0.0 amd64 1.0.2n-1ubuntu5.13 [1089 kB]
+#16 15.01 Get:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxmuu1 amd64 2:1.1.2-2 [9674 B]
+#16 15.01 Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openssh-client amd64 1:7.6p1-4ubuntu0.7 [610 kB]
+#16 15.33 Get:24 http://archive.ubuntu.com/ubuntu bionic/main amd64 publicsuffix all 20180223.1310-1 [97.6 kB]
+#16 15.38 Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 wget amd64 1.19.4-1ubuntu2.2 [316 kB]
+#16 15.55 Get:26 http://archive.ubuntu.com/ubuntu bionic/main amd64 xauth amd64 1:1.0.10-1 [24.6 kB]
+#16 15.56 Get:27 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnghttp2-14 amd64 1.30.0-1ubuntu1 [77.8 kB]
+#16 15.60 Get:28 http://archive.ubuntu.com/ubuntu bionic/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-1 [54.2 kB]
+#16 15.62 Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl3-gnutls amd64 7.58.0-2ubuntu3.24 [219 kB]
+#16 15.71 Get:30 http://archive.ubuntu.com/ubuntu bionic/main amd64 liberror-perl all 0.17025-1 [22.8 kB]
+#16 15.72 Get:31 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git-man all 1:2.17.1-1ubuntu0.18 [804 kB]
+#16 16.11 Get:32 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 git amd64 1:2.17.1-1ubuntu0.18 [3990 kB]
+#16 17.94 Get:33 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libexpat1-dev amd64 2.2.5-3ubuntu0.9 [124 kB]
+#16 18.52 debconf: delaying package configuration, since apt-utils is not installed
+#16 18.54 Fetched 9882 kB in 9s (1079 kB/s)
+#16 18.56 Selecting previously unselected package multiarch-support.
+#16 18.56 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12222 files and directories currently installed.)
+#16 18.57 Preparing to unpack .../0-multiarch-support_2.27-3ubuntu1.6_amd64.deb ...
+#16 18.57 Unpacking multiarch-support (2.27-3ubuntu1.6) ...
+#16 18.58 Selecting previously unselected package libxau6:amd64.
+#16 18.59 Preparing to unpack .../1-libxau6_1%3a1.0.8-1ubuntu1_amd64.deb ...
+#16 18.59 Unpacking libxau6:amd64 (1:1.0.8-1ubuntu1) ...
+#16 18.60 Selecting previously unselected package libbsd0:amd64.
+#16 18.60 Preparing to unpack .../2-libbsd0_0.8.7-1ubuntu0.1_amd64.deb ...
+#16 18.60 Unpacking libbsd0:amd64 (0.8.7-1ubuntu0.1) ...
+#16 18.62 Selecting previously unselected package libxdmcp6:amd64.
+#16 18.62 Preparing to unpack .../3-libxdmcp6_1%3a1.1.2-3_amd64.deb ...
+#16 18.62 Unpacking libxdmcp6:amd64 (1:1.1.2-3) ...
+#16 18.63 Selecting previously unselected package libxcb1:amd64.
+#16 18.63 Preparing to unpack .../4-libxcb1_1.13-2~ubuntu18.04_amd64.deb ...
+#16 18.63 Unpacking libxcb1:amd64 (1.13-2~ubuntu18.04) ...
+#16 18.65 Selecting previously unselected package libx11-data.
+#16 18.65 Preparing to unpack .../5-libx11-data_2%3a1.6.4-3ubuntu0.4_all.deb ...
+#16 18.65 Unpacking libx11-data (2:1.6.4-3ubuntu0.4) ...
+#16 18.70 Selecting previously unselected package libx11-6:amd64.
+#16 18.70 Preparing to unpack .../6-libx11-6_2%3a1.6.4-3ubuntu0.4_amd64.deb ...
+#16 18.70 Unpacking libx11-6:amd64 (2:1.6.4-3ubuntu0.4) ...
+#16 18.78 Setting up multiarch-support (2.27-3ubuntu1.6) ...
+#16 18.80 Selecting previously unselected package libxext6:amd64.
+#16 18.80 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 12512 files and directories currently installed.)
+#16 18.80 Preparing to unpack .../00-libxext6_2%3a1.3.3-1_amd64.deb ...
+#16 18.80 Unpacking libxext6:amd64 (2:1.3.3-1) ...
+#16 18.82 Selecting previously unselected package openssl.
+#16 18.82 Preparing to unpack .../01-openssl_1.1.1-1ubuntu2.1~18.04.23_amd64.deb ...
+#16 18.82 Unpacking openssl (1.1.1-1ubuntu2.1~18.04.23) ...
+#16 18.90 Selecting previously unselected package ca-certificates.
+#16 18.90 Preparing to unpack .../02-ca-certificates_20230311ubuntu0.18.04.1_all.deb ...
+#16 18.90 Unpacking ca-certificates (20230311ubuntu0.18.04.1) ...
+#16 18.93 Selecting previously unselected package less.
+#16 18.93 Preparing to unpack .../03-less_487-0.1_amd64.deb ...
+#16 18.94 Unpacking less (487-0.1) ...
+#16 18.96 Selecting previously unselected package libexpat1:amd64.
+#16 18.96 Preparing to unpack .../04-libexpat1_2.2.5-3ubuntu0.9_amd64.deb ...
+#16 18.96 Unpacking libexpat1:amd64 (2.2.5-3ubuntu0.9) ...
+#16 18.98 Selecting previously unselected package krb5-locales.
+#16 18.99 Preparing to unpack .../05-krb5-locales_1.16-2ubuntu0.4_all.deb ...
+#16 18.99 Unpacking krb5-locales (1.16-2ubuntu0.4) ...
+#16 19.00 Selecting previously unselected package libedit2:amd64.
+#16 19.00 Preparing to unpack .../06-libedit2_3.1-20170329-1_amd64.deb ...
+#16 19.00 Unpacking libedit2:amd64 (3.1-20170329-1) ...
+#16 19.02 Selecting previously unselected package libkrb5support0:amd64.
+#16 19.02 Preparing to unpack .../07-libkrb5support0_1.16-2ubuntu0.4_amd64.deb ...
+#16 19.02 Unpacking libkrb5support0:amd64 (1.16-2ubuntu0.4) ...
+#16 19.04 Selecting previously unselected package libk5crypto3:amd64.
+#16 19.04 Preparing to unpack .../08-libk5crypto3_1.16-2ubuntu0.4_amd64.deb ...
+#16 19.04 Unpacking libk5crypto3:amd64 (1.16-2ubuntu0.4) ...
+#16 19.06 Selecting previously unselected package libkeyutils1:amd64.
+#16 19.06 Preparing to unpack .../09-libkeyutils1_1.5.9-9.2ubuntu2.1_amd64.deb ...
+#16 19.06 Unpacking libkeyutils1:amd64 (1.5.9-9.2ubuntu2.1) ...
+#16 19.08 Selecting previously unselected package libkrb5-3:amd64.
+#16 19.08 Preparing to unpack .../10-libkrb5-3_1.16-2ubuntu0.4_amd64.deb ...
+#16 19.08 Unpacking libkrb5-3:amd64 (1.16-2ubuntu0.4) ...
+#16 19.12 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#16 19.12 Preparing to unpack .../11-libgssapi-krb5-2_1.16-2ubuntu0.4_amd64.deb ...
+#16 19.12 Unpacking libgssapi-krb5-2:amd64 (1.16-2ubuntu0.4) ...
+#16 19.15 Selecting previously unselected package libpsl5:amd64.
+#16 19.15 Preparing to unpack .../12-libpsl5_0.19.1-5build1_amd64.deb ...
+#16 19.15 Unpacking libpsl5:amd64 (0.19.1-5build1) ...
+#16 19.17 Selecting previously unselected package libssl1.0.0:amd64.
+#16 19.17 Preparing to unpack .../13-libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb ...
+#16 19.17 Unpacking libssl1.0.0:amd64 (1.0.2n-1ubuntu5.13) ...
+#16 19.28 Selecting previously unselected package libxmuu1:amd64.
+#16 19.28 Preparing to unpack .../14-libxmuu1_2%3a1.1.2-2_amd64.deb ...
+#16 19.28 Unpacking libxmuu1:amd64 (2:1.1.2-2) ...
+#16 19.30 Selecting previously unselected package openssh-client.
+#16 19.30 Preparing to unpack .../15-openssh-client_1%3a7.6p1-4ubuntu0.7_amd64.deb ...
+#16 19.30 Unpacking openssh-client (1:7.6p1-4ubuntu0.7) ...
+#16 19.39 Selecting previously unselected package publicsuffix.
+#16 19.39 Preparing to unpack .../16-publicsuffix_20180223.1310-1_all.deb ...
+#16 19.39 Unpacking publicsuffix (20180223.1310-1) ...
+#16 19.41 Selecting previously unselected package wget.
+#16 19.41 Preparing to unpack .../17-wget_1.19.4-1ubuntu2.2_amd64.deb ...
+#16 19.41 Unpacking wget (1.19.4-1ubuntu2.2) ...
+#16 19.46 Selecting previously unselected package xauth.
+#16 19.46 Preparing to unpack .../18-xauth_1%3a1.0.10-1_amd64.deb ...
+#16 19.46 Unpacking xauth (1:1.0.10-1) ...
+#16 19.48 Selecting previously unselected package libnghttp2-14:amd64.
+#16 19.48 Preparing to unpack .../19-libnghttp2-14_1.30.0-1ubuntu1_amd64.deb ...
+#16 19.48 Unpacking libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...
+#16 19.51 Selecting previously unselected package librtmp1:amd64.
+#16 19.51 Preparing to unpack .../20-librtmp1_2.4+20151223.gitfa8646d.1-1_amd64.deb ...
+#16 19.51 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...
+#16 19.53 Selecting previously unselected package libcurl3-gnutls:amd64.
+#16 19.53 Preparing to unpack .../21-libcurl3-gnutls_7.58.0-2ubuntu3.24_amd64.deb ...
+#16 19.53 Unpacking libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.24) ...
+#16 19.57 Selecting previously unselected package liberror-perl.
+#16 19.57 Preparing to unpack .../22-liberror-perl_0.17025-1_all.deb ...
+#16 19.57 Unpacking liberror-perl (0.17025-1) ...
+#16 19.58 Selecting previously unselected package git-man.
+#16 19.58 Preparing to unpack .../23-git-man_1%3a2.17.1-1ubuntu0.18_all.deb ...
+#16 19.58 Unpacking git-man (1:2.17.1-1ubuntu0.18) ...
+#16 19.69 Selecting previously unselected package git.
+#16 19.69 Preparing to unpack .../24-git_1%3a2.17.1-1ubuntu0.18_amd64.deb ...
+#16 19.72 Unpacking git (1:2.17.1-1ubuntu0.18) ...
+#16 20.19 Selecting previously unselected package libexpat1-dev:amd64.
+#16 20.20 Preparing to unpack .../25-libexpat1-dev_2.2.5-3ubuntu0.9_amd64.deb ...
+#16 20.20 Unpacking libexpat1-dev:amd64 (2.2.5-3ubuntu0.9) ...
+#16 20.24 Setting up libedit2:amd64 (3.1-20170329-1) ...
+#16 20.25 Setting up git-man (1:2.17.1-1ubuntu0.18) ...
+#16 20.25 Setting up libexpat1:amd64 (2.2.5-3ubuntu0.9) ...
+#16 20.25 Setting up less (487-0.1) ...
+#16 20.34 debconf: unable to initialize frontend: Dialog
+#16 20.34 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#16 20.34 debconf: falling back to frontend: Readline
+#16 20.36 Setting up libssl1.0.0:amd64 (1.0.2n-1ubuntu5.13) ...
+#16 20.44 debconf: unable to initialize frontend: Dialog
+#16 20.44 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#16 20.44 debconf: falling back to frontend: Readline
+#16 20.47 Setting up libnghttp2-14:amd64 (1.30.0-1ubuntu1) ...
+#16 20.47 Setting up liberror-perl (0.17025-1) ...
+#16 20.47 Setting up libpsl5:amd64 (0.19.1-5build1) ...
+#16 20.47 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-1) ...
+#16 20.47 Setting up libbsd0:amd64 (0.8.7-1ubuntu0.1) ...
+#16 20.47 Setting up libkrb5support0:amd64 (1.16-2ubuntu0.4) ...
+#16 20.47 Setting up krb5-locales (1.16-2ubuntu0.4) ...
+#16 20.47 Setting up publicsuffix (20180223.1310-1) ...
+#16 20.47 Setting up openssl (1.1.1-1ubuntu2.1~18.04.23) ...
+#16 20.48 Setting up wget (1.19.4-1ubuntu2.2) ...
+#16 20.48 Setting up libexpat1-dev:amd64 (2.2.5-3ubuntu0.9) ...
+#16 20.48 Setting up libxdmcp6:amd64 (1:1.1.2-3) ...
+#16 20.48 Setting up libkeyutils1:amd64 (1.5.9-9.2ubuntu2.1) ...
+#16 20.48 Setting up ca-certificates (20230311ubuntu0.18.04.1) ...
+#16 20.57 debconf: unable to initialize frontend: Dialog
+#16 20.57 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#16 20.57 debconf: falling back to frontend: Readline
+#16 21.06 Updating certificates in /etc/ssl/certs...
+#16 21.83 137 added, 0 removed; done.
+#16 21.85 Setting up libx11-data (2:1.6.4-3ubuntu0.4) ...
+#16 21.85 Setting up libxau6:amd64 (1:1.0.8-1ubuntu1) ...
+#16 21.85 Setting up libk5crypto3:amd64 (1.16-2ubuntu0.4) ...
+#16 21.85 Setting up libkrb5-3:amd64 (1.16-2ubuntu0.4) ...
+#16 21.86 Setting up libxcb1:amd64 (1.13-2~ubuntu18.04) ...
+#16 21.86 Setting up libx11-6:amd64 (2:1.6.4-3ubuntu0.4) ...
+#16 21.86 Setting up libxmuu1:amd64 (2:1.1.2-2) ...
+#16 21.86 Setting up libgssapi-krb5-2:amd64 (1.16-2ubuntu0.4) ...
+#16 21.86 Setting up openssh-client (1:7.6p1-4ubuntu0.7) ...
+#16 21.92 Setting up libxext6:amd64 (2:1.3.3-1) ...
+#16 21.93 Setting up libcurl3-gnutls:amd64 (7.58.0-2ubuntu3.24) ...
+#16 21.93 Setting up xauth (1:1.0.10-1) ...
+#16 21.93 Setting up git (1:2.17.1-1ubuntu0.18) ...
+#16 21.95 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#16 21.96 Processing triggers for ca-certificates (20230311ubuntu0.18.04.1) ...
+#16 21.96 Updating certificates in /etc/ssl/certs...
+#16 22.54 0 added, 0 removed; done.
+#16 22.54 Running hooks in /etc/ca-certificates/update.d...
+#16 22.54 done.
+#16 22.62 Reading package lists...
+#16 24.06 Building dependency tree...
+#16 24.27 Reading state information...
+#16 24.41 ca-certificates is already the newest version (20230311ubuntu0.18.04.1).
+#16 24.41 ca-certificates set to manually installed.
+#16 24.41 gnupg is already the newest version (2.2.4-1ubuntu1.6).
+#16 24.41 gnupg set to manually installed.
+#16 24.41 The following additional packages will be installed:
+#16 24.41   libapt-inst2.0
+#16 24.44 The following NEW packages will be installed:
+#16 24.44   apt-transport-https apt-utils libapt-inst2.0
+#16 25.14 0 upgraded, 3 newly installed, 0 to remove and 1 not upgraded.
+#16 25.14 Need to get 263 kB of archives.
+#16 25.14 After this operation, 1427 kB of additional disk space will be used.
+#16 25.14 Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libapt-inst2.0 amd64 1.6.17 [54.6 kB]
+#16 25.88 Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 apt-utils amd64 1.6.17 [206 kB]
+#16 26.39 Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 apt-transport-https all 1.6.17 [1692 B]
+#16 26.52 debconf: delaying package configuration, since apt-utils is not installed
+#16 26.54 Fetched 263 kB in 2s (135 kB/s)
+#16 26.56 Selecting previously unselected package libapt-inst2.0:amd64.
+#16 26.56 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 13962 files and directories currently installed.)
+#16 26.57 Preparing to unpack .../libapt-inst2.0_1.6.17_amd64.deb ...
+#16 26.57 Unpacking libapt-inst2.0:amd64 (1.6.17) ...
+#16 26.59 Selecting previously unselected package apt-utils.
+#16 26.59 Preparing to unpack .../apt-utils_1.6.17_amd64.deb ...
+#16 26.59 Unpacking apt-utils (1.6.17) ...
+#16 26.62 Selecting previously unselected package apt-transport-https.
+#16 26.63 Preparing to unpack .../apt-transport-https_1.6.17_all.deb ...
+#16 26.63 Unpacking apt-transport-https (1.6.17) ...
+#16 26.64 Setting up libapt-inst2.0:amd64 (1.6.17) ...
+#16 26.64 Setting up apt-transport-https (1.6.17) ...
+#16 26.65 Setting up apt-utils (1.6.17) ...
+#16 26.65 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#16 26.67 --2025-03-11 06:59:24--  https://apt.llvm.org/llvm-snapshot.gpg.key
+#16 26.67 Resolving apt.llvm.org (apt.llvm.org)... 151.101.198.49, 2a04:4e42:2e::561
+#16 26.68 Connecting to apt.llvm.org (apt.llvm.org)|151.101.198.49|:443... Warning: apt-key output should not be parsed (stdout is not a terminal)
+#16 26.94 connected.
+#16 27.27 HTTP request sent, awaiting response... 200 OK
+#16 27.43 Length: 3145 (3.1K) [application/octet-stream]
+#16 27.43 Saving to: 'STDOUT'
+#16 27.44 
+#16 27.44      0K ...                                                   100%  669K=0.005s
+#16 27.44 
+#16 27.44 2025-03-11 06:59:25 (669 KB/s) - written to stdout [3145/3145]
+#16 27.44 
+#16 27.54 OK
+#16 28.04 Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+#16 28.13 Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#16 28.22 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#16 28.41 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#16 28.77 Get:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease [6834 B]
+#16 29.04 Get:6 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 Packages [12.3 kB]
+#16 29.08 Fetched 19.1 kB in 1s (13.1 kB/s)
+#16 29.08 Reading package lists...
+#16 30.57 Reading package lists...
+#16 31.95 Building dependency tree...
+#16 32.15 Reading state information...
+#16 32.30 The following additional packages will be installed:
+#16 32.30   binfmt-support file gir1.2-glib-2.0 gir1.2-harfbuzz-0.0 icu-devtools
+#16 32.30   lib32gcc1 lib32stdc++6 libc6-i386 libclang-rt-18-dev libcurl4 libelf1
+#16 32.30   libffi-dev libfreetype6 libgc1c2 libgirepository-1.0-1 libglib2.0-0
+#16 32.30   libglib2.0-bin libglib2.0-data libglib2.0-dev libglib2.0-dev-bin
+#16 32.30   libgraphite2-3 libgraphite2-dev libharfbuzz-dev libharfbuzz-gobject0
+#16 32.30   libharfbuzz-icu0 libharfbuzz0b libicu-dev libicu-le-hb-dev libicu-le-hb0
+#16 32.30   libicu60 libiculx60 libmagic-mgc libmagic1 libmpdec2 libncurses5-dev
+#16 32.30   libobjc-7-dev libobjc4 libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5
+#16 32.30   libpfm4 libpipeline1 libpng16-16 libpython3-stdlib libpython3.6
+#16 32.30   libpython3.6-minimal libpython3.6-stdlib libtinfo-dev libunwind-18
+#16 32.30   libunwind-18-dev libxml2 libxml2-dev libyaml-0-2 libz3-4 libz3-dev
+#16 32.30   libzstd-dev llvm-18-linker-tools mime-support pkg-config python3
+#16 32.30   python3-distutils python3-lib2to3 python3-lldb-18 python3-minimal
+#16 32.30   python3-pkg-resources python3-pygments python3-yaml python3.6
+#16 32.30   python3.6-minimal shared-mime-info xdg-user-dirs zlib1g-dev
+#16 32.30 Suggested packages:
+#16 32.30   clang-18-doc wasi-libc clang libglib2.0-doc libgraphite2-utils icu-doc
+#16 32.30   ncurses-doc libomp-18-doc llvm-18-doc python3-doc python3-tk python3-venv
+#16 32.30   python3-setuptools ttf-bitstream-vera python3.6-venv python3.6-doc
+#16 32.56 The following NEW packages will be installed:
+#16 32.56   binfmt-support clang-18 clang-tools-18 clangd-18 file gir1.2-glib-2.0
+#16 32.56   gir1.2-harfbuzz-0.0 icu-devtools lib32gcc1 lib32stdc++6 libc++-18-dev
+#16 32.56   libc++1-18 libc++abi-18-dev libc++abi1-18 libc6-i386 libclang-18-dev
+#16 32.56   libclang-common-18-dev libclang-cpp18 libclang-cpp18-dev libclang-rt-18-dev
+#16 32.56   libclang1-18 libcurl4 libelf1 libffi-dev libfreetype6 libgc1c2
+#16 32.56   libgirepository-1.0-1 libglib2.0-0 libglib2.0-bin libglib2.0-data
+#16 32.56   libglib2.0-dev libglib2.0-dev-bin libgraphite2-3 libgraphite2-dev
+#16 32.56   libharfbuzz-dev libharfbuzz-gobject0 libharfbuzz-icu0 libharfbuzz0b
+#16 32.56   libicu-dev libicu-le-hb-dev libicu-le-hb0 libicu60 libiculx60 liblld-18
+#16 32.56   liblld-18-dev liblldb-18 liblldb-18-dev libllvm18 libmagic-mgc libmagic1
+#16 32.56   libmpdec2 libncurses5-dev libobjc-7-dev libobjc4 libomp-18-dev libomp5-18
+#16 32.56   libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libpfm4 libpipeline1
+#16 32.56   libpng16-16 libpython3-stdlib libpython3.6 libpython3.6-minimal
+#16 32.56   libpython3.6-stdlib libtinfo-dev libunwind-18 libunwind-18-dev libxml2
+#16 32.56   libxml2-dev libyaml-0-2 libz3-4 libz3-dev libzstd-dev lld-18 lldb-18 llvm-18
+#16 32.56   llvm-18-dev llvm-18-linker-tools llvm-18-runtime llvm-18-tools mime-support
+#16 32.56   pkg-config python3 python3-distutils python3-lib2to3 python3-lldb-18
+#16 32.56   python3-minimal python3-pkg-resources python3-pygments python3-yaml
+#16 32.56   python3.6 python3.6-minimal shared-mime-info xdg-user-dirs zlib1g-dev
+#16 33.04 0 upgraded, 98 newly installed, 0 to remove and 1 not upgraded.
+#16 33.04 Need to get 210 MB of archives.
+#16 33.04 After this operation, 1344 MB of additional disk space will be used.
+#16 33.04 Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpython3.6-minimal amd64 3.6.9-1~18.04ubuntu1.12 [533 kB]
+#16 33.81 Get:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libllvm18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [25.0 MB]
+#16 34.93 Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3.6-minimal amd64 3.6.9-1~18.04ubuntu1.12 [1609 kB]
+#16 37.89 Get:18 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-minimal amd64 3.6.7-1~18.04 [23.7 kB]
+#16 37.91 Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 mime-support all 3.60ubuntu1 [30.1 kB]
+#16 37.93 Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libmpdec2 amd64 2.4.2-1ubuntu1 [84.1 kB]
+#16 38.16 Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpython3.6-stdlib amd64 3.6.9-1~18.04ubuntu1.12 [1713 kB]
+#16 39.86 Get:27 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3.6 amd64 3.6.9-1~18.04ubuntu1.12 [203 kB]
+#16 39.99 Get:28 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpython3-stdlib amd64 3.6.7-1~18.04 [7240 B]
+#16 39.99 Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3 amd64 3.6.7-1~18.04 [47.2 kB]
+#16 40.02 Get:30 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmagic-mgc amd64 1:5.32-2ubuntu0.4 [184 kB]
+#16 40.14 Get:31 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmagic1 amd64 1:5.32-2ubuntu0.4 [68.6 kB]
+#16 40.19 Get:32 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 file amd64 1:5.32-2ubuntu0.4 [22.1 kB]
+#16 40.20 Get:33 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-0 amd64 2.56.4-0ubuntu0.18.04.9 [1169 kB]
+#16 41.30 Get:37 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgirepository-1.0-1 amd64 1.56.1-1 [82.0 kB]
+#16 41.37 Get:38 http://archive.ubuntu.com/ubuntu bionic/main amd64 gir1.2-glib-2.0 amd64 1.56.1-1 [131 kB]
+#16 41.44 Get:39 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libelf1 amd64 0.170-0.4ubuntu0.1 [44.8 kB]
+#16 41.46 Get:40 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-data all 2.56.4-0ubuntu0.18.04.9 [4728 B]
+#16 41.46 Get:41 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libicu60 amd64 60.2-3ubuntu3.2 [8050 kB]
+#16 55.31 Get:49 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxml2 amd64 2.9.4+dfsg1-6.1ubuntu1.9 [663 kB]
+#16 56.49 Get:50 http://archive.ubuntu.com/ubuntu bionic/main amd64 libyaml-0-2 amd64 0.1.7-2ubuntu3 [47.2 kB]
+#16 56.57 Get:51 http://archive.ubuntu.com/ubuntu bionic/main amd64 python3-yaml amd64 3.12-1build2 [109 kB]
+#16 56.74 Get:52 http://archive.ubuntu.com/ubuntu bionic/main amd64 shared-mime-info amd64 1.9-2 [426 kB]
+#16 57.39 Get:53 http://archive.ubuntu.com/ubuntu bionic/main amd64 xdg-user-dirs amd64 0.17-1ubuntu1 [48.0 kB]
+#16 57.46 Get:54 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpipeline1 amd64 1.5.0-1 [25.3 kB]
+#16 57.50 Get:55 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpng16-16 amd64 1.6.34-1ubuntu0.18.04.2 [176 kB]
+#16 57.77 Get:56 http://archive.ubuntu.com/ubuntu bionic/main amd64 binfmt-support amd64 2.1.8-2 [51.6 kB]
+#16 57.85 Get:57 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgc1c2 amd64 1:7.4.2-8ubuntu1 [81.8 kB]
+#16 57.98 Get:58 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libobjc4 amd64 8.4.0-1ubuntu1~18.04 [52.6 kB]
+#16 58.06 Get:59 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libobjc-7-dev amd64 7.5.0-3ubuntu1~18.04 [206 kB]
+#16 58.38 Get:60 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libfreetype6 amd64 2.8.1-2ubuntu2.2 [335 kB]
+#16 58.89 Get:61 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgraphite2-3 amd64 1.3.11-2 [78.7 kB]
+#16 59.01 Get:62 http://archive.ubuntu.com/ubuntu bionic/main amd64 libharfbuzz0b amd64 1.7.2-1ubuntu1 [232 kB]
+#16 59.36 Get:63 http://archive.ubuntu.com/ubuntu bionic/main amd64 gir1.2-harfbuzz-0.0 amd64 1.7.2-1ubuntu1 [18.6 kB]
+#16 59.40 Get:64 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 icu-devtools amd64 60.2-3ubuntu3.2 [179 kB]
+#16 59.77 Get:65 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libc6-i386 amd64 2.27-3ubuntu1.6 [2651 kB]
+#16 63.73 Get:66 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 lib32gcc1 amd64 1:8.4.0-1ubuntu1~18.04 [48.1 kB]
+#16 63.80 Get:67 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 lib32stdc++6 amd64 8.4.0-1ubuntu1~18.04 [415 kB]
+#16 64.44 Get:68 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcurl4 amd64 7.58.0-2ubuntu3.24 [221 kB]
+#16 64.78 Get:69 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-bin amd64 2.56.4-0ubuntu0.18.04.9 [68.9 kB]
+#16 64.89 Get:70 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-lib2to3 all 3.6.9-1~18.04 [77.4 kB]
+#16 65.00 Get:71 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-distutils all 3.6.9-1~18.04 [144 kB]
+#16 65.23 Get:72 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-dev-bin amd64 2.56.4-0ubuntu0.18.04.9 [102 kB]
+#16 65.38 Get:73 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpcre16-3 amd64 2:8.39-9ubuntu0.1 [147 kB]
+#16 65.61 Get:74 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpcre32-3 amd64 2:8.39-9ubuntu0.1 [138 kB]
+#16 65.82 Get:75 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpcrecpp0v5 amd64 2:8.39-9ubuntu0.1 [15.3 kB]
+#16 65.84 Get:76 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpcre3-dev amd64 2:8.39-9ubuntu0.1 [536 kB]
+#16 66.53 Get:77 http://archive.ubuntu.com/ubuntu bionic/main amd64 pkg-config amd64 0.29.1-0ubuntu2 [45.0 kB]
+#16 66.57 Get:78 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-0ubuntu2.2 [176 kB]
+#16 66.74 Get:79 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-dev amd64 2.56.4-0ubuntu0.18.04.9 [1385 kB]
+#16 67.65 Get:80 http://archive.ubuntu.com/ubuntu bionic/main amd64 libgraphite2-dev amd64 1.3.11-2 [14.5 kB]
+#16 67.66 Get:81 http://archive.ubuntu.com/ubuntu bionic/main amd64 libharfbuzz-icu0 amd64 1.7.2-1ubuntu1 [5604 B]
+#16 67.66 Get:82 http://archive.ubuntu.com/ubuntu bionic/main amd64 libharfbuzz-gobject0 amd64 1.7.2-1ubuntu1 [13.4 kB]
+#16 67.67 Get:83 http://archive.ubuntu.com/ubuntu bionic/main amd64 libicu-le-hb0 amd64 1.0.3+git161113-4 [14.3 kB]
+#16 67.68 Get:84 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libiculx60 amd64 60.2-3ubuntu3.2 [19.0 kB]
+#16 67.69 Get:85 http://archive.ubuntu.com/ubuntu bionic/main amd64 libicu-le-hb-dev amd64 1.0.3+git161113-4 [29.5 kB]
+#16 67.70 Get:86 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libicu-dev amd64 60.2-3ubuntu3.2 [8894 kB]
+#16 75.26 Get:87 http://archive.ubuntu.com/ubuntu bionic/main amd64 libharfbuzz-dev amd64 1.7.2-1ubuntu1 [302 kB]
+#16 75.54 Get:88 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libzstd-dev amd64 1.3.3+dfsg-2ubuntu1.2 [230 kB]
+#16 75.69 Get:89 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtinfo-dev amd64 6.1-1ubuntu1.18.04.1 [81.4 kB]
+#16 75.73 Get:90 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libncurses5-dev amd64 6.1-1ubuntu1.18.04.1 [174 kB]
+#16 75.80 Get:91 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpython3.6 amd64 3.6.9-1~18.04ubuntu1.12 [1414 kB]
+#16 79.21 Get:92 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxml2-dev amd64 2.9.4+dfsg1-6.1ubuntu1.9 [757 kB]
+#16 79.84 Get:93 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpfm4 amd64 4.9.0-2 [225 kB]
+#16 80.02 Get:94 http://archive.ubuntu.com/ubuntu bionic/main amd64 libffi-dev amd64 3.2.1-8 [156 kB]
+#16 80.14 Get:95 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-pygments all 2.2.0+dfsg-1ubuntu0.2 [574 kB]
+#16 80.79 Get:96 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libz3-4 amd64 4.4.1-0.3build4 [5183 kB]
+#16 89.96 Get:97 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libz3-dev amd64 4.4.1-0.3build4 [64.2 kB]
+#16 90.01 Get:98 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 python3-pkg-resources all 39.0.1-2ubuntu0.1 [99.0 kB]
+#16 90.21 Get:3 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libclang-cpp18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [12.5 MB]
+#16 115.6 Get:4 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libclang-common-18-dev all 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [756 kB]
+#16 116.3 Get:5 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 llvm-18-linker-tools amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [1273 kB]
+#16 117.5 Get:6 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libclang1-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [7198 kB]
+#16 123.4 Get:7 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 clang-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [135 kB]
+#16 123.5 Get:8 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 clang-tools-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [8367 kB]
+#16 130.3 Get:10 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 clangd-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [5841 kB]
+#16 135.6 Get:11 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libunwind-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [86.8 kB]
+#16 135.7 Get:12 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libc++abi1-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [127 kB]
+#16 135.8 Get:13 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libc++1-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [320 kB]
+#16 136.0 Get:14 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libc++abi-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [150 kB]
+#16 136.1 Get:15 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libunwind-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [105 kB]
+#16 136.2 Get:16 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libc++-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [1207 kB]
+#16 137.0 Get:17 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libclang-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [26.4 MB]
+#16 155.8 Get:22 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libclang-cpp18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [68.5 kB]
+#16 155.9 Get:23 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libclang-rt-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [3577 kB]
+#16 158.7 Get:24 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 liblld-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [1676 kB]
+#16 159.9 Get:25 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 lld-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [1311 kB]
+#16 160.8 Get:26 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 liblld-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [79.0 kB]
+#16 160.9 Get:34 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 liblldb-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [3553 kB]
+#16 163.6 Get:35 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 python3-lldb-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [68.4 kB]
+#16 163.6 Get:36 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 lldb-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [1202 kB]
+#16 164.4 Get:42 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 liblldb-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [589 kB]
+#16 164.9 Get:43 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libomp5-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [629 kB]
+#16 165.5 Get:44 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 libomp-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [1038 kB]
+#16 166.3 Get:45 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 llvm-18-runtime amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [556 kB]
+#16 166.7 Get:46 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 llvm-18 amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [22.8 MB]
+#16 187.9 Get:47 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 llvm-18-tools amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [540 kB]
+#16 188.3 Get:48 https://apt.llvm.org/bionic llvm-toolchain-bionic-18/main amd64 llvm-18-dev amd64 1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50 [41.8 MB]
+#16 229.8 debconf: unable to initialize frontend: Dialog
+#16 229.8 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#16 229.8 debconf: falling back to frontend: Readline
+#16 229.8 debconf: unable to initialize frontend: Readline
+#16 229.8 debconf: (This frontend requires a controlling tty.)
+#16 229.8 debconf: falling back to frontend: Teletype
+#16 229.8 dpkg-preconfigure: unable to re-open stdin: 
+#16 229.8 Fetched 210 MB in 3min 17s (1066 kB/s)
+#16 229.9 Selecting previously unselected package libpython3.6-minimal:amd64.
+#16 229.9 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 14053 files and directories currently installed.)
+#16 229.9 Preparing to unpack .../libpython3.6-minimal_3.6.9-1~18.04ubuntu1.12_amd64.deb ...
+#16 229.9 Unpacking libpython3.6-minimal:amd64 (3.6.9-1~18.04ubuntu1.12) ...
+#16 229.9 Selecting previously unselected package python3.6-minimal.
+#16 230.0 Preparing to unpack .../python3.6-minimal_3.6.9-1~18.04ubuntu1.12_amd64.deb ...
+#16 230.0 Unpacking python3.6-minimal (3.6.9-1~18.04ubuntu1.12) ...
+#16 230.1 Setting up libpython3.6-minimal:amd64 (3.6.9-1~18.04ubuntu1.12) ...
+#16 230.1 Setting up python3.6-minimal (3.6.9-1~18.04ubuntu1.12) ...
+#16 230.7 Selecting previously unselected package python3-minimal.
+#16 230.7 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 14292 files and directories currently installed.)
+#16 230.7 Preparing to unpack .../0-python3-minimal_3.6.7-1~18.04_amd64.deb ...
+#16 230.7 Unpacking python3-minimal (3.6.7-1~18.04) ...
+#16 230.7 Selecting previously unselected package mime-support.
+#16 230.7 Preparing to unpack .../1-mime-support_3.60ubuntu1_all.deb ...
+#16 230.7 Unpacking mime-support (3.60ubuntu1) ...
+#16 230.7 Selecting previously unselected package libmpdec2:amd64.
+#16 230.7 Preparing to unpack .../2-libmpdec2_2.4.2-1ubuntu1_amd64.deb ...
+#16 230.7 Unpacking libmpdec2:amd64 (2.4.2-1ubuntu1) ...
+#16 230.7 Selecting previously unselected package libpython3.6-stdlib:amd64.
+#16 230.7 Preparing to unpack .../3-libpython3.6-stdlib_3.6.9-1~18.04ubuntu1.12_amd64.deb ...
+#16 230.7 Unpacking libpython3.6-stdlib:amd64 (3.6.9-1~18.04ubuntu1.12) ...
+#16 230.9 Selecting previously unselected package python3.6.
+#16 230.9 Preparing to unpack .../4-python3.6_3.6.9-1~18.04ubuntu1.12_amd64.deb ...
+#16 230.9 Unpacking python3.6 (3.6.9-1~18.04ubuntu1.12) ...
+#16 230.9 Selecting previously unselected package libpython3-stdlib:amd64.
+#16 230.9 Preparing to unpack .../5-libpython3-stdlib_3.6.7-1~18.04_amd64.deb ...
+#16 230.9 Unpacking libpython3-stdlib:amd64 (3.6.7-1~18.04) ...
+#16 231.0 Setting up python3-minimal (3.6.7-1~18.04) ...
+#16 231.2 Selecting previously unselected package python3.
+#16 231.2 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 14722 files and directories currently installed.)
+#16 231.2 Preparing to unpack .../00-python3_3.6.7-1~18.04_amd64.deb ...
+#16 231.2 Unpacking python3 (3.6.7-1~18.04) ...
+#16 231.2 Selecting previously unselected package libmagic-mgc.
+#16 231.2 Preparing to unpack .../01-libmagic-mgc_1%3a5.32-2ubuntu0.4_amd64.deb ...
+#16 231.2 Unpacking libmagic-mgc (1:5.32-2ubuntu0.4) ...
+#16 231.2 Selecting previously unselected package libmagic1:amd64.
+#16 231.2 Preparing to unpack .../02-libmagic1_1%3a5.32-2ubuntu0.4_amd64.deb ...
+#16 231.2 Unpacking libmagic1:amd64 (1:5.32-2ubuntu0.4) ...
+#16 231.3 Selecting previously unselected package file.
+#16 231.3 Preparing to unpack .../03-file_1%3a5.32-2ubuntu0.4_amd64.deb ...
+#16 231.3 Unpacking file (1:5.32-2ubuntu0.4) ...
+#16 231.3 Selecting previously unselected package libglib2.0-0:amd64.
+#16 231.3 Preparing to unpack .../04-libglib2.0-0_2.56.4-0ubuntu0.18.04.9_amd64.deb ...
+#16 231.3 Unpacking libglib2.0-0:amd64 (2.56.4-0ubuntu0.18.04.9) ...
+#16 231.4 Selecting previously unselected package libgirepository-1.0-1:amd64.
+#16 231.4 Preparing to unpack .../05-libgirepository-1.0-1_1.56.1-1_amd64.deb ...
+#16 231.4 Unpacking libgirepository-1.0-1:amd64 (1.56.1-1) ...
+#16 231.5 Selecting previously unselected package gir1.2-glib-2.0:amd64.
+#16 231.5 Preparing to unpack .../06-gir1.2-glib-2.0_1.56.1-1_amd64.deb ...
+#16 231.5 Unpacking gir1.2-glib-2.0:amd64 (1.56.1-1) ...
+#16 231.5 Selecting previously unselected package libelf1:amd64.
+#16 231.5 Preparing to unpack .../07-libelf1_0.170-0.4ubuntu0.1_amd64.deb ...
+#16 231.5 Unpacking libelf1:amd64 (0.170-0.4ubuntu0.1) ...
+#16 231.5 Selecting previously unselected package libglib2.0-data.
+#16 231.5 Preparing to unpack .../08-libglib2.0-data_2.56.4-0ubuntu0.18.04.9_all.deb ...
+#16 231.5 Unpacking libglib2.0-data (2.56.4-0ubuntu0.18.04.9) ...
+#16 231.5 Selecting previously unselected package libicu60:amd64.
+#16 231.5 Preparing to unpack .../09-libicu60_60.2-3ubuntu3.2_amd64.deb ...
+#16 231.5 Unpacking libicu60:amd64 (60.2-3ubuntu3.2) ...
+#16 232.4 Selecting previously unselected package libxml2:amd64.
+#16 232.4 Preparing to unpack .../10-libxml2_2.9.4+dfsg1-6.1ubuntu1.9_amd64.deb ...
+#16 232.4 Unpacking libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.9) ...
+#16 232.5 Selecting previously unselected package libyaml-0-2:amd64.
+#16 232.5 Preparing to unpack .../11-libyaml-0-2_0.1.7-2ubuntu3_amd64.deb ...
+#16 232.5 Unpacking libyaml-0-2:amd64 (0.1.7-2ubuntu3) ...
+#16 232.5 Selecting previously unselected package python3-yaml.
+#16 232.5 Preparing to unpack .../12-python3-yaml_3.12-1build2_amd64.deb ...
+#16 232.5 Unpacking python3-yaml (3.12-1build2) ...
+#16 232.6 Selecting previously unselected package shared-mime-info.
+#16 232.6 Preparing to unpack .../13-shared-mime-info_1.9-2_amd64.deb ...
+#16 232.6 Unpacking shared-mime-info (1.9-2) ...
+#16 232.6 Selecting previously unselected package xdg-user-dirs.
+#16 232.6 Preparing to unpack .../14-xdg-user-dirs_0.17-1ubuntu1_amd64.deb ...
+#16 232.6 Unpacking xdg-user-dirs (0.17-1ubuntu1) ...
+#16 232.7 Selecting previously unselected package libpipeline1:amd64.
+#16 232.7 Preparing to unpack .../15-libpipeline1_1.5.0-1_amd64.deb ...
+#16 232.7 Unpacking libpipeline1:amd64 (1.5.0-1) ...
+#16 232.7 Selecting previously unselected package libpng16-16:amd64.
+#16 232.7 Preparing to unpack .../16-libpng16-16_1.6.34-1ubuntu0.18.04.2_amd64.deb ...
+#16 232.7 Unpacking libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.2) ...
+#16 232.7 Selecting previously unselected package binfmt-support.
+#16 232.7 Preparing to unpack .../17-binfmt-support_2.1.8-2_amd64.deb ...
+#16 232.7 Unpacking binfmt-support (2.1.8-2) ...
+#16 232.7 Selecting previously unselected package libllvm18:amd64.
+#16 232.7 Preparing to unpack .../18-libllvm18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 232.7 Unpacking libllvm18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 235.5 Selecting previously unselected package libclang-cpp18.
+#16 235.5 Preparing to unpack .../19-libclang-cpp18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 235.5 Unpacking libclang-cpp18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 236.8 Selecting previously unselected package libgc1c2:amd64.
+#16 236.8 Preparing to unpack .../20-libgc1c2_1%3a7.4.2-8ubuntu1_amd64.deb ...
+#16 236.8 Unpacking libgc1c2:amd64 (1:7.4.2-8ubuntu1) ...
+#16 236.9 Selecting previously unselected package libobjc4:amd64.
+#16 236.9 Preparing to unpack .../21-libobjc4_8.4.0-1ubuntu1~18.04_amd64.deb ...
+#16 236.9 Unpacking libobjc4:amd64 (8.4.0-1ubuntu1~18.04) ...
+#16 236.9 Selecting previously unselected package libobjc-7-dev:amd64.
+#16 236.9 Preparing to unpack .../22-libobjc-7-dev_7.5.0-3ubuntu1~18.04_amd64.deb ...
+#16 236.9 Unpacking libobjc-7-dev:amd64 (7.5.0-3ubuntu1~18.04) ...
+#16 236.9 Selecting previously unselected package libclang-common-18-dev.
+#16 236.9 Preparing to unpack .../23-libclang-common-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_all.deb ...
+#16 236.9 Unpacking libclang-common-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 237.0 Selecting previously unselected package llvm-18-linker-tools.
+#16 237.0 Preparing to unpack .../24-llvm-18-linker-tools_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 237.0 Unpacking llvm-18-linker-tools (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 237.2 Selecting previously unselected package libclang1-18.
+#16 237.2 Preparing to unpack .../25-libclang1-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 237.2 Unpacking libclang1-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 238.0 Selecting previously unselected package clang-18.
+#16 238.0 Preparing to unpack .../26-clang-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 238.0 Unpacking clang-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 238.0 Selecting previously unselected package clang-tools-18.
+#16 238.0 Preparing to unpack .../27-clang-tools-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 238.0 Unpacking clang-tools-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 238.9 Selecting previously unselected package clangd-18.
+#16 238.9 Preparing to unpack .../28-clangd-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 238.9 Unpacking clangd-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 239.6 Selecting previously unselected package libfreetype6:amd64.
+#16 239.6 Preparing to unpack .../29-libfreetype6_2.8.1-2ubuntu2.2_amd64.deb ...
+#16 239.6 Unpacking libfreetype6:amd64 (2.8.1-2ubuntu2.2) ...
+#16 239.7 Selecting previously unselected package libgraphite2-3:amd64.
+#16 239.7 Preparing to unpack .../30-libgraphite2-3_1.3.11-2_amd64.deb ...
+#16 239.7 Unpacking libgraphite2-3:amd64 (1.3.11-2) ...
+#16 239.7 Selecting previously unselected package libharfbuzz0b:amd64.
+#16 239.7 Preparing to unpack .../31-libharfbuzz0b_1.7.2-1ubuntu1_amd64.deb ...
+#16 239.7 Unpacking libharfbuzz0b:amd64 (1.7.2-1ubuntu1) ...
+#16 239.7 Selecting previously unselected package gir1.2-harfbuzz-0.0:amd64.
+#16 239.7 Preparing to unpack .../32-gir1.2-harfbuzz-0.0_1.7.2-1ubuntu1_amd64.deb ...
+#16 239.7 Unpacking gir1.2-harfbuzz-0.0:amd64 (1.7.2-1ubuntu1) ...
+#16 239.7 Selecting previously unselected package icu-devtools.
+#16 239.7 Preparing to unpack .../33-icu-devtools_60.2-3ubuntu3.2_amd64.deb ...
+#16 239.7 Unpacking icu-devtools (60.2-3ubuntu3.2) ...
+#16 239.8 Selecting previously unselected package libunwind-18:amd64.
+#16 239.8 Preparing to unpack .../34-libunwind-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 239.8 Unpacking libunwind-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 239.8 Selecting previously unselected package libc++abi1-18:amd64.
+#16 239.8 Preparing to unpack .../35-libc++abi1-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 239.8 Unpacking libc++abi1-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 239.8 Selecting previously unselected package libc++1-18:amd64.
+#16 239.8 Preparing to unpack .../36-libc++1-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 239.8 Unpacking libc++1-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 239.9 Selecting previously unselected package libc++abi-18-dev:amd64.
+#16 239.9 Preparing to unpack .../37-libc++abi-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 239.9 Unpacking libc++abi-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 239.9 Selecting previously unselected package libunwind-18-dev:amd64.
+#16 239.9 Preparing to unpack .../38-libunwind-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 239.9 Unpacking libunwind-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 239.9 Selecting previously unselected package libc++-18-dev:amd64.
+#16 239.9 Preparing to unpack .../39-libc++-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 239.9 Unpacking libc++-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 240.2 Selecting previously unselected package libc6-i386.
+#16 240.2 Preparing to unpack .../40-libc6-i386_2.27-3ubuntu1.6_amd64.deb ...
+#16 240.2 Unpacking libc6-i386 (2.27-3ubuntu1.6) ...
+#16 240.5 Selecting previously unselected package libclang-18-dev.
+#16 240.5 Preparing to unpack .../41-libclang-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 240.5 Unpacking libclang-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 243.7 Selecting previously unselected package libclang-cpp18-dev.
+#16 243.7 Preparing to unpack .../42-libclang-cpp18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 243.7 Unpacking libclang-cpp18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 243.7 Selecting previously unselected package lib32gcc1.
+#16 243.7 Preparing to unpack .../43-lib32gcc1_1%3a8.4.0-1ubuntu1~18.04_amd64.deb ...
+#16 243.7 Unpacking lib32gcc1 (1:8.4.0-1ubuntu1~18.04) ...
+#16 243.8 Selecting previously unselected package lib32stdc++6.
+#16 243.8 Preparing to unpack .../44-lib32stdc++6_8.4.0-1ubuntu1~18.04_amd64.deb ...
+#16 243.8 Unpacking lib32stdc++6 (8.4.0-1ubuntu1~18.04) ...
+#16 243.8 Selecting previously unselected package libclang-rt-18-dev:amd64.
+#16 243.8 Preparing to unpack .../45-libclang-rt-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 243.8 Unpacking libclang-rt-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 244.3 Selecting previously unselected package libcurl4:amd64.
+#16 244.3 Preparing to unpack .../46-libcurl4_7.58.0-2ubuntu3.24_amd64.deb ...
+#16 244.3 Unpacking libcurl4:amd64 (7.58.0-2ubuntu3.24) ...
+#16 244.4 Selecting previously unselected package libglib2.0-bin.
+#16 244.4 Preparing to unpack .../47-libglib2.0-bin_2.56.4-0ubuntu0.18.04.9_amd64.deb ...
+#16 244.4 Unpacking libglib2.0-bin (2.56.4-0ubuntu0.18.04.9) ...
+#16 244.4 Selecting previously unselected package python3-lib2to3.
+#16 244.4 Preparing to unpack .../48-python3-lib2to3_3.6.9-1~18.04_all.deb ...
+#16 244.4 Unpacking python3-lib2to3 (3.6.9-1~18.04) ...
+#16 244.4 Selecting previously unselected package python3-distutils.
+#16 244.4 Preparing to unpack .../49-python3-distutils_3.6.9-1~18.04_all.deb ...
+#16 244.4 Unpacking python3-distutils (3.6.9-1~18.04) ...
+#16 244.5 Selecting previously unselected package libglib2.0-dev-bin.
+#16 244.5 Preparing to unpack .../50-libglib2.0-dev-bin_2.56.4-0ubuntu0.18.04.9_amd64.deb ...
+#16 244.5 Unpacking libglib2.0-dev-bin (2.56.4-0ubuntu0.18.04.9) ...
+#16 244.5 Selecting previously unselected package libpcre16-3:amd64.
+#16 244.5 Preparing to unpack .../51-libpcre16-3_2%3a8.39-9ubuntu0.1_amd64.deb ...
+#16 244.5 Unpacking libpcre16-3:amd64 (2:8.39-9ubuntu0.1) ...
+#16 244.5 Selecting previously unselected package libpcre32-3:amd64.
+#16 244.5 Preparing to unpack .../52-libpcre32-3_2%3a8.39-9ubuntu0.1_amd64.deb ...
+#16 244.5 Unpacking libpcre32-3:amd64 (2:8.39-9ubuntu0.1) ...
+#16 244.5 Selecting previously unselected package libpcrecpp0v5:amd64.
+#16 244.5 Preparing to unpack .../53-libpcrecpp0v5_2%3a8.39-9ubuntu0.1_amd64.deb ...
+#16 244.6 Unpacking libpcrecpp0v5:amd64 (2:8.39-9ubuntu0.1) ...
+#16 244.6 Selecting previously unselected package libpcre3-dev:amd64.
+#16 244.6 Preparing to unpack .../54-libpcre3-dev_2%3a8.39-9ubuntu0.1_amd64.deb ...
+#16 244.6 Unpacking libpcre3-dev:amd64 (2:8.39-9ubuntu0.1) ...
+#16 244.6 Selecting previously unselected package pkg-config.
+#16 244.6 Preparing to unpack .../55-pkg-config_0.29.1-0ubuntu2_amd64.deb ...
+#16 244.6 Unpacking pkg-config (0.29.1-0ubuntu2) ...
+#16 244.7 Selecting previously unselected package zlib1g-dev:amd64.
+#16 244.7 Preparing to unpack .../56-zlib1g-dev_1%3a1.2.11.dfsg-0ubuntu2.2_amd64.deb ...
+#16 244.7 Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2.2) ...
+#16 244.7 Selecting previously unselected package libglib2.0-dev:amd64.
+#16 244.7 Preparing to unpack .../57-libglib2.0-dev_2.56.4-0ubuntu0.18.04.9_amd64.deb ...
+#16 244.7 Unpacking libglib2.0-dev:amd64 (2.56.4-0ubuntu0.18.04.9) ...
+#16 244.9 Selecting previously unselected package libgraphite2-dev:amd64.
+#16 244.9 Preparing to unpack .../58-libgraphite2-dev_1.3.11-2_amd64.deb ...
+#16 244.9 Unpacking libgraphite2-dev:amd64 (1.3.11-2) ...
+#16 244.9 Selecting previously unselected package libharfbuzz-icu0:amd64.
+#16 244.9 Preparing to unpack .../59-libharfbuzz-icu0_1.7.2-1ubuntu1_amd64.deb ...
+#16 244.9 Unpacking libharfbuzz-icu0:amd64 (1.7.2-1ubuntu1) ...
+#16 244.9 Selecting previously unselected package libharfbuzz-gobject0:amd64.
+#16 244.9 Preparing to unpack .../60-libharfbuzz-gobject0_1.7.2-1ubuntu1_amd64.deb ...
+#16 244.9 Unpacking libharfbuzz-gobject0:amd64 (1.7.2-1ubuntu1) ...
+#16 244.9 Selecting previously unselected package libicu-le-hb0:amd64.
+#16 244.9 Preparing to unpack .../61-libicu-le-hb0_1.0.3+git161113-4_amd64.deb ...
+#16 244.9 Unpacking libicu-le-hb0:amd64 (1.0.3+git161113-4) ...
+#16 245.0 Selecting previously unselected package libiculx60:amd64.
+#16 245.0 Preparing to unpack .../62-libiculx60_60.2-3ubuntu3.2_amd64.deb ...
+#16 245.0 Unpacking libiculx60:amd64 (60.2-3ubuntu3.2) ...
+#16 245.0 Selecting previously unselected package libicu-le-hb-dev:amd64.
+#16 245.0 Preparing to unpack .../63-libicu-le-hb-dev_1.0.3+git161113-4_amd64.deb ...
+#16 245.0 Unpacking libicu-le-hb-dev:amd64 (1.0.3+git161113-4) ...
+#16 245.0 Selecting previously unselected package libicu-dev.
+#16 245.0 Preparing to unpack .../64-libicu-dev_60.2-3ubuntu3.2_amd64.deb ...
+#16 245.0 Unpacking libicu-dev (60.2-3ubuntu3.2) ...
+#16 246.0 Selecting previously unselected package libharfbuzz-dev:amd64.
+#16 246.0 Preparing to unpack .../65-libharfbuzz-dev_1.7.2-1ubuntu1_amd64.deb ...
+#16 246.0 Unpacking libharfbuzz-dev:amd64 (1.7.2-1ubuntu1) ...
+#16 246.0 Selecting previously unselected package liblld-18.
+#16 246.0 Preparing to unpack .../66-liblld-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 246.0 Unpacking liblld-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 246.3 Selecting previously unselected package lld-18.
+#16 246.3 Preparing to unpack .../67-lld-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 246.3 Unpacking lld-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 246.4 Selecting previously unselected package libzstd-dev:amd64.
+#16 246.4 Preparing to unpack .../68-libzstd-dev_1.3.3+dfsg-2ubuntu1.2_amd64.deb ...
+#16 246.4 Unpacking libzstd-dev:amd64 (1.3.3+dfsg-2ubuntu1.2) ...
+#16 246.5 Selecting previously unselected package liblld-18-dev.
+#16 246.5 Preparing to unpack .../69-liblld-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 246.5 Unpacking liblld-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 246.5 Selecting previously unselected package liblldb-18.
+#16 246.5 Preparing to unpack .../70-liblldb-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 246.5 Unpacking liblldb-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 246.9 Selecting previously unselected package python3-lldb-18.
+#16 246.9 Preparing to unpack .../71-python3-lldb-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 246.9 Unpacking python3-lldb-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 246.9 Selecting previously unselected package lldb-18.
+#16 246.9 Preparing to unpack .../72-lldb-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 246.9 Unpacking lldb-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 247.1 Selecting previously unselected package liblldb-18-dev.
+#16 247.1 Preparing to unpack .../73-liblldb-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 247.1 Unpacking liblldb-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 247.2 Selecting previously unselected package libtinfo-dev:amd64.
+#16 247.2 Preparing to unpack .../74-libtinfo-dev_6.1-1ubuntu1.18.04.1_amd64.deb ...
+#16 247.2 Unpacking libtinfo-dev:amd64 (6.1-1ubuntu1.18.04.1) ...
+#16 247.2 Selecting previously unselected package libncurses5-dev:amd64.
+#16 247.2 Preparing to unpack .../75-libncurses5-dev_6.1-1ubuntu1.18.04.1_amd64.deb ...
+#16 247.2 Unpacking libncurses5-dev:amd64 (6.1-1ubuntu1.18.04.1) ...
+#16 247.2 Selecting previously unselected package libomp5-18:amd64.
+#16 247.2 Preparing to unpack .../76-libomp5-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 247.2 Unpacking libomp5-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 247.3 Selecting previously unselected package libpython3.6:amd64.
+#16 247.3 Preparing to unpack .../77-libpython3.6_3.6.9-1~18.04ubuntu1.12_amd64.deb ...
+#16 247.3 Unpacking libpython3.6:amd64 (3.6.9-1~18.04ubuntu1.12) ...
+#16 247.5 Selecting previously unselected package libomp-18-dev.
+#16 247.5 Preparing to unpack .../78-libomp-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 247.5 Unpacking libomp-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 247.7 Selecting previously unselected package libxml2-dev:amd64.
+#16 247.7 Preparing to unpack .../79-libxml2-dev_2.9.4+dfsg1-6.1ubuntu1.9_amd64.deb ...
+#16 247.7 Unpacking libxml2-dev:amd64 (2.9.4+dfsg1-6.1ubuntu1.9) ...
+#16 247.8 Selecting previously unselected package llvm-18-runtime.
+#16 247.8 Preparing to unpack .../80-llvm-18-runtime_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 247.8 Unpacking llvm-18-runtime (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 247.9 Selecting previously unselected package libpfm4:amd64.
+#16 247.9 Preparing to unpack .../81-libpfm4_4.9.0-2_amd64.deb ...
+#16 247.9 Unpacking libpfm4:amd64 (4.9.0-2) ...
+#16 247.9 Selecting previously unselected package llvm-18.
+#16 247.9 Preparing to unpack .../82-llvm-18_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 247.9 Unpacking llvm-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 250.5 Selecting previously unselected package libffi-dev:amd64.
+#16 250.5 Preparing to unpack .../83-libffi-dev_3.2.1-8_amd64.deb ...
+#16 250.5 Unpacking libffi-dev:amd64 (3.2.1-8) ...
+#16 250.5 Selecting previously unselected package python3-pygments.
+#16 250.5 Preparing to unpack .../84-python3-pygments_2.2.0+dfsg-1ubuntu0.2_all.deb ...
+#16 250.5 Unpacking python3-pygments (2.2.0+dfsg-1ubuntu0.2) ...
+#16 250.6 Selecting previously unselected package llvm-18-tools.
+#16 250.6 Preparing to unpack .../85-llvm-18-tools_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 250.6 Unpacking llvm-18-tools (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 250.7 Selecting previously unselected package libz3-4:amd64.
+#16 250.7 Preparing to unpack .../86-libz3-4_4.4.1-0.3build4_amd64.deb ...
+#16 250.7 Unpacking libz3-4:amd64 (4.4.1-0.3build4) ...
+#16 251.2 Selecting previously unselected package libz3-dev:amd64.
+#16 251.2 Preparing to unpack .../87-libz3-dev_4.4.1-0.3build4_amd64.deb ...
+#16 251.2 Unpacking libz3-dev:amd64 (4.4.1-0.3build4) ...
+#16 251.3 Selecting previously unselected package llvm-18-dev.
+#16 251.3 Preparing to unpack .../88-llvm-18-dev_1%3a18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50_amd64.deb ...
+#16 251.3 Unpacking llvm-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.2 Selecting previously unselected package python3-pkg-resources.
+#16 256.2 Preparing to unpack .../89-python3-pkg-resources_39.0.1-2ubuntu0.1_all.deb ...
+#16 256.2 Unpacking python3-pkg-resources (39.0.1-2ubuntu0.1) ...
+#16 256.2 Setting up libicu60:amd64 (60.2-3ubuntu3.2) ...
+#16 256.2 Setting up libclang-common-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.2 Setting up mime-support (3.60ubuntu1) ...
+#16 256.3 Setting up libpng16-16:amd64 (1.6.34-1ubuntu0.18.04.2) ...
+#16 256.3 Setting up libelf1:amd64 (0.170-0.4ubuntu0.1) ...
+#16 256.3 Setting up libglib2.0-0:amd64 (2.56.4-0ubuntu0.18.04.9) ...
+#16 256.3 No schema files found: doing nothing.
+#16 256.3 Setting up libcurl4:amd64 (7.58.0-2ubuntu3.24) ...
+#16 256.3 Setting up libtinfo-dev:amd64 (6.1-1ubuntu1.18.04.1) ...
+#16 256.3 Setting up libgc1c2:amd64 (1:7.4.2-8ubuntu1) ...
+#16 256.3 Setting up libffi-dev:amd64 (3.2.1-8) ...
+#16 256.3 Setting up libpipeline1:amd64 (1.5.0-1) ...
+#16 256.3 Setting up libc6-i386 (2.27-3ubuntu1.6) ...
+#16 256.3 Setting up libunwind-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.3 Setting up libgirepository-1.0-1:amd64 (1.56.1-1) ...
+#16 256.3 Setting up libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.9) ...
+#16 256.3 Setting up libfreetype6:amd64 (2.8.1-2ubuntu2.2) ...
+#16 256.3 Setting up libmagic-mgc (1:5.32-2ubuntu0.4) ...
+#16 256.3 Setting up libllvm18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.3 Setting up libmagic1:amd64 (1:5.32-2ubuntu0.4) ...
+#16 256.3 Setting up libgraphite2-3:amd64 (1.3.11-2) ...
+#16 256.3 Setting up libncurses5-dev:amd64 (6.1-1ubuntu1.18.04.1) ...
+#16 256.3 Setting up pkg-config (0.29.1-0ubuntu2) ...
+#16 256.3 Setting up libyaml-0-2:amd64 (0.1.7-2ubuntu3) ...
+#16 256.3 Setting up gir1.2-glib-2.0:amd64 (1.56.1-1) ...
+#16 256.3 Setting up libglib2.0-data (2.56.4-0ubuntu0.18.04.9) ...
+#16 256.3 Setting up libpfm4:amd64 (4.9.0-2) ...
+#16 256.3 Setting up libzstd-dev:amd64 (1.3.3+dfsg-2ubuntu1.2) ...
+#16 256.3 Setting up llvm-18-runtime (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.3 mount: /proc/sys/fs/binfmt_misc: permission denied.
+#16 256.3 update-binfmts: warning: Couldn't mount the binfmt_misc filesystem on /proc/sys/fs/binfmt_misc.
+#16 256.3 Setting up shared-mime-info (1.9-2) ...
+#16 256.7 Setting up libpcrecpp0v5:amd64 (2:8.39-9ubuntu0.1) ...
+#16 256.7 Setting up libpcre32-3:amd64 (2:8.39-9ubuntu0.1) ...
+#16 256.7 Setting up icu-devtools (60.2-3ubuntu3.2) ...
+#16 256.7 Setting up libpcre16-3:amd64 (2:8.39-9ubuntu0.1) ...
+#16 256.7 Setting up libglib2.0-bin (2.56.4-0ubuntu0.18.04.9) ...
+#16 256.7 Setting up libgraphite2-dev:amd64 (1.3.11-2) ...
+#16 256.7 Setting up xdg-user-dirs (0.17-1ubuntu1) ...
+#16 256.7 Setting up libz3-4:amd64 (4.4.1-0.3build4) ...
+#16 256.7 Setting up libmpdec2:amd64 (2.4.2-1ubuntu1) ...
+#16 256.7 Setting up libunwind-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.7 Setting up lib32gcc1 (1:8.4.0-1ubuntu1~18.04) ...
+#16 256.7 Setting up llvm-18-linker-tools (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.7 Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-0ubuntu2.2) ...
+#16 256.7 Setting up libpython3.6-stdlib:amd64 (3.6.9-1~18.04ubuntu1.12) ...
+#16 256.7 Setting up binfmt-support (2.1.8-2) ...
+#16 256.7 mount: /proc/sys/fs/binfmt_misc: permission denied.
+#16 256.7 update-binfmts: warning: Couldn't mount the binfmt_misc filesystem on /proc/sys/fs/binfmt_misc.
+#16 256.7 mount: /proc/sys/fs/binfmt_misc: permission denied.
+#16 256.7 update-binfmts: warning: Couldn't mount the binfmt_misc filesystem on /proc/sys/fs/binfmt_misc.
+#16 256.9 invoke-rc.d: could not determine current runlevel
+#16 256.9 invoke-rc.d: policy-rc.d denied execution of start.
+#16 256.9 Setting up libobjc4:amd64 (8.4.0-1ubuntu1~18.04) ...
+#16 256.9 Setting up libclang-cpp18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 256.9 Setting up libpcre3-dev:amd64 (2:8.39-9ubuntu0.1) ...
+#16 256.9 Setting up python3.6 (3.6.9-1~18.04ubuntu1.12) ...
+#16 257.6 Setting up clangd-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up lld-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up liblld-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libclang1-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libomp5-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libc++abi1-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up liblldb-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libc++abi-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libharfbuzz0b:amd64 (1.7.2-1ubuntu1) ...
+#16 257.6 Setting up python3-lldb-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up file (1:5.32-2ubuntu0.4) ...
+#16 257.6 Setting up libobjc-7-dev:amd64 (7.5.0-3ubuntu1~18.04) ...
+#16 257.6 Setting up libclang-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up gir1.2-harfbuzz-0.0:amd64 (1.7.2-1ubuntu1) ...
+#16 257.6 Setting up liblld-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libz3-dev:amd64 (4.4.1-0.3build4) ...
+#16 257.6 Setting up lib32stdc++6 (8.4.0-1ubuntu1~18.04) ...
+#16 257.6 Setting up llvm-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libclang-cpp18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libharfbuzz-gobject0:amd64 (1.7.2-1ubuntu1) ...
+#16 257.6 Setting up clang-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libpython3.6:amd64 (3.6.9-1~18.04ubuntu1.12) ...
+#16 257.6 Setting up libc++1-18:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libpython3-stdlib:amd64 (3.6.7-1~18.04) ...
+#16 257.6 Setting up lldb-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 257.6 Setting up libharfbuzz-icu0:amd64 (1.7.2-1ubuntu1) ...
+#16 257.6 Setting up python3 (3.6.7-1~18.04) ...
+#16 257.6 running python rtupdate hooks for python3.6...
+#16 257.9 running python post-rtupdate hooks for python3.6...
+#16 258.0 Setting up libomp-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 258.0 Setting up libicu-le-hb0:amd64 (1.0.3+git161113-4) ...
+#16 258.0 Setting up clang-tools-18 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 258.0 Setting up python3-pkg-resources (39.0.1-2ubuntu0.1) ...
+#16 258.2 Setting up libiculx60:amd64 (60.2-3ubuntu3.2) ...
+#16 258.2 Setting up libclang-rt-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 258.2 Setting up python3-lib2to3 (3.6.9-1~18.04) ...
+#16 258.3 Setting up liblldb-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 258.3 Setting up python3-distutils (3.6.9-1~18.04) ...
+#16 258.5 Setting up libc++-18-dev:amd64 (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 258.5 Setting up python3-pygments (2.2.0+dfsg-1ubuntu0.2) ...
+#16 259.0 Setting up python3-yaml (3.12-1build2) ...
+#16 259.2 Setting up libglib2.0-dev-bin (2.56.4-0ubuntu0.18.04.9) ...
+#16 259.3 Setting up libglib2.0-dev:amd64 (2.56.4-0ubuntu0.18.04.9) ...
+#16 259.3 Setting up llvm-18-tools (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 259.3 Setting up libicu-le-hb-dev:amd64 (1.0.3+git161113-4) ...
+#16 259.3 Setting up libicu-dev (60.2-3ubuntu3.2) ...
+#16 259.3 Setting up libxml2-dev:amd64 (2.9.4+dfsg1-6.1ubuntu1.9) ...
+#16 259.3 Setting up libharfbuzz-dev:amd64 (1.7.2-1ubuntu1) ...
+#16 259.3 Setting up llvm-18-dev (1:18.1.0~++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50) ...
+#16 259.3 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#16 259.4 update-alternatives: using /usr/lib/llvm-18 to provide /usr/lib/llvm (llvm) in auto mode
+#16 259.4 update-alternatives: using /usr/bin/clang-18 to provide /usr/bin/clang (clang) in auto mode
+#16 DONE 260.3s
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#17 0.252 [*] Compiling AFL++ for OS Linux on ARCH x86_64
+#17 0.792 [+] ZLIB detected
+#17 0.808 [!] Note: skipping x86 compilation checks (AFL_NO_X86 set).
+#17 0.809 [+] shmat seems to be working.
+#17 0.810 [-] You seem to need to install the package python3-dev or python-dev (and perhaps python[3]-apt), but it is optional so we continue
+#17 0.837 [+] Everything seems to be working, ready to compile. (Ubuntu clang version 18.1.0 (++20240220094926+390dcd4cbbf5-1~exp1~20240220214944.50))
+#17 0.838 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\" -flto=full  -DHAVE_ZLIB -c src/afl-common.c -o src/afl-common.o
+#17 1.069 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\" -flto=full  -DHAVE_ZLIB -c src/afl-sharedmem.c -o src/afl-sharedmem.o
+#17 1.157 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\" -flto=full  -DHAVE_ZLIB -c src/afl-forkserver.c -o src/afl-forkserver.o
+#17 1.361 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\"   -DHAVE_ZLIB -Iinclude -c src/afl-performance.c -o src/afl-performance.o
+#17 1.693 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\"  -flto=full  -DHAVE_ZLIB src/afl-fuzz-redqueen.c src/afl-fuzz-statsd.c src/afl-fuzz-extras.c src/afl-fuzz-queue.c src/afl-fuzz-cmplog.c src/afl-fuzz-state.c src/afl-fuzz-one.c src/afl-fuzz-python.c src/afl-fuzz-mutators.c src/afl-fuzz-stats.c src/afl-fuzz.c src/afl-fuzz-skipdet.c src/afl-fuzz-init.c src/afl-fuzz-sanfuzz.c src/afl-fuzz-bitmap.c src/afl-fuzz-run.c src/afl-common.o src/afl-sharedmem.o src/afl-forkserver.o src/afl-performance.o -o afl-fuzz  -ldl -lrt -lm -lz -lm
+#17 11.10 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\"  -flto=full  -DHAVE_ZLIB src/afl-showmap.c src/afl-fuzz-mutators.c src/afl-fuzz-python.c src/afl-common.o src/afl-sharedmem.o src/afl-forkserver.o src/afl-performance.o -o afl-showmap  -ldl -lrt -lm -lz
+#17 12.42 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\"  -flto=full  -DHAVE_ZLIB src/afl-tmin.c src/afl-common.o src/afl-sharedmem.o src/afl-forkserver.o src/afl-performance.o -o afl-tmin -ldl -lrt -lm -lz
+#17 13.38 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\"  -flto=full  -DHAVE_ZLIB src/afl-gotcpu.c src/afl-common.o -o afl-gotcpu -ldl -lrt -lm -lz
+#17 13.55 clang -O2   -g -Wno-pointer-sign -Wno-variadic-macros -Wall -Wextra -Wno-pointer-arith -fPIC -I include/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DDOC_PATH=\"/usr/local/share/doc/afl\"  -flto=full  -DHAVE_ZLIB src/afl-analyze.c src/afl-common.o src/afl-sharedmem.o src/afl-performance.o src/afl-forkserver.o -o afl-analyze -ldl -lrt -lm -lz
+#17 14.37 make -j -f GNUmakefile.llvm
+#17 14.37 make[1]: Entering directory '/magma/fuzzers/aflplusplus_lto_entropy/repo'
+#17 14.39 [+] llvm_mode detected llvm 10+, enabling neverZero implementation and c++14
+#17 14.39 [+] llvm_mode detected llvm 16+, enabling c++17
+#17 14.39 [+] llvm_mode detected llvm 12+, enabling afl-lto LTO implementation
+#17 14.90 [+] shmat seems to be working.
+#17 14.93 [*] Checking for working 'llvm-config'...
+#17 14.93 [*] Checking for working '/usr/lib/llvm-18/bin/clang'...
+#17 14.93 [*] Checking for matching versions of '/usr/lib/llvm-18/bin/clang' and 'llvm-config'
+#17 14.93 [*] We have llvm-config version 18.1.0 with a clang version 18.1.0, good.
+#17 14.93 [*] Checking for './afl-showmap'...
+#17 14.93 [+] All set and ready to build.
+#17 14.93 /usr/lib/llvm-18/bin/clang -O3 -funroll-loops -fPIC -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  -c src/afl-common.c -o instrumentation/afl-common.o 
+#17 15.37 /usr/lib/llvm-18/bin/clang -I/usr/lib/llvm-18/include -I./../include -O3 -funroll-loops -fPIC -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  src/afl-cc.c instrumentation/afl-common.o -o afl-cc -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -DCFLAGS_OPT=\"\" -lm
+#17 16.10 /usr/lib/llvm-18/bin/clang -I/usr/lib/llvm-18/include -I./../include -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  -O3 -Wno-unused-result -fPIC -c instrumentation/afl-compiler-rt.o.c -o afl-compiler-rt.o
+#17 16.62 [*] Building 32-bit variant of the runtime (-m32)... failed (that's fine)
+#17 16.69 [*] Building 64-bit variant of the runtime (-m64)... success!
+#17 17.20 /usr/lib/llvm-18/bin/clang++ -O3 -funroll-loops -fPIC -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  $(llvm-config --cxxflags) -fno-rtti -fPIC -std=c++17 -c instrumentation/afl-llvm-common.cc -o instrumentation/afl-llvm-common.o 
+#17 21.59 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -Wdeprecated -fno-rtti -fPIC -std=c++17 -shared instrumentation/afl-llvm-pass.so.cc -o afl-llvm-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 23.02 In file included from instrumentation/afl-llvm-pass.so.cc:43:
+#17 23.02 In file included from /usr/lib/llvm-18/include/llvm/Passes/PassBuilder.h:18:
+#17 23.02 In file included from /usr/lib/llvm-18/include/llvm/Analysis/CGSCCPassManager.h:92:
+#17 23.02 In file included from /usr/lib/llvm-18/include/llvm/Analysis/LazyCallGraph.h:45:
+#17 23.02 In file included from /usr/lib/llvm-18/include/llvm/Analysis/TargetLibraryInfo.h:14:
+#17 23.02 In file included from /usr/lib/llvm-18/include/llvm/IR/InstrTypes.h:24:
+#17 23.02 /usr/lib/llvm-18/include/llvm/IR/Attributes.h:315:3: warning: definition of implicit copy assignment operator for 'AttributeSet' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 23.02   315 |   ~AttributeSet() = default;
+#17 23.02       |   ^
+#17 23.02 /usr/lib/llvm-18/include/llvm/IR/GlobalVariable.h:194:11: note: in implicit copy assignment operator for 'llvm::AttributeSet' first required here
+#17 23.02   194 |     Attrs = Attrs.addAttribute(getContext(), Kind);
+#17 23.02       |           ^
+#17 24.03 In file included from instrumentation/afl-llvm-pass.so.cc:43:
+#17 24.03 In file included from /usr/lib/llvm-18/include/llvm/Passes/PassBuilder.h:27:
+#17 24.03 In file included from /usr/lib/llvm-18/include/llvm/Transforms/Instrumentation.h:18:
+#17 24.03 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:600:5: warning: definition of implicit copy constructor for 'ChecksumInfo<llvm::MDString *>' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 24.03   600 |     ~ChecksumInfo() = default;
+#17 24.03       |     ^
+#17 24.03 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:129:4: note: in implicit copy constructor for 'llvm::DIFile::ChecksumInfo<llvm::MDString *>' first required here
+#17 24.03   129 |         : _M_payload(__other),
+#17 24.03       |           ^
+#17 24.03 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:145:8: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::MDString *>>::_Optional_payload' requested here
+#17 24.03   145 |                             _Optional_payload(__ctor_tag<bool>{},
+#17 24.03       |                             ^
+#17 24.03 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:339:4: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::MDString *>>::_Optional_payload' requested here
+#17 24.03   339 |         : _M_payload(__other._M_payload._M_engaged,
+#17 24.03       |           ^
+#17 24.03 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:453:11: note: in instantiation of member function 'std::_Optional_base<llvm::DIFile::ChecksumInfo<llvm::MDString *>>::_Optional_base' requested here
+#17 24.03   453 |     class optional
+#17 24.03       |           ^
+#17 24.03 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:627:62: note: in implicit copy constructor for 'std::optional<llvm::DIFile::ChecksumInfo<llvm::MDString *>>' first required here
+#17 24.03   627 |                    getCanonicalMDString(Context, Directory), MDChecksum,
+#17 24.03       |                                                              ^
+#17 24.05 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:600:5: warning: definition of implicit copy constructor for 'ChecksumInfo<llvm::StringRef>' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 24.05   600 |     ~ChecksumInfo() = default;
+#17 24.05       |     ^
+#17 24.05 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:129:4: note: in implicit copy constructor for 'llvm::DIFile::ChecksumInfo<llvm::StringRef>' first required here
+#17 24.05   129 |         : _M_payload(__other),
+#17 24.05       |           ^
+#17 24.05 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:145:8: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::StringRef>>::_Optional_payload' requested here
+#17 24.05   145 |                             _Optional_payload(__ctor_tag<bool>{},
+#17 24.05       |                             ^
+#17 24.05 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:339:4: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::StringRef>>::_Optional_payload' requested here
+#17 24.05   339 |         : _M_payload(__other._M_payload._M_engaged,
+#17 24.05       |           ^
+#17 24.05 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:453:11: note: in instantiation of member function 'std::_Optional_base<llvm::DIFile::ChecksumInfo<llvm::StringRef>>::_Optional_base' requested here
+#17 24.05   453 |     class optional
+#17 24.05       |           ^
+#17 24.05 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:647:43: note: in implicit copy constructor for 'std::optional<llvm::DIFile::ChecksumInfo<llvm::StringRef>>' first required here
+#17 24.05   647 |                     (Filename, Directory, CS, Source))
+#17 24.05       |                                           ^
+#17 25.94 In file included from instrumentation/afl-llvm-pass.so.cc:43:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Passes/PassBuilder.h:25:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Transforms/IPO/Inliner.h:13:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Analysis/InlineAdvisor.h:13:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Analysis/InlineCost.h:18:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Analysis/InlineModelFeatureMaps.h:13:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Analysis/TensorSpec.h:16:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Support/JSON.h:55:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Support/FormatVariadic.h:33:
+#17 25.94 In file included from /usr/lib/llvm-18/include/llvm/Support/FormatCommon.h:13:
+#17 25.94 /usr/lib/llvm-18/include/llvm/Support/FormatVariadicDetails.h:27:11: warning: definition of implicit copy constructor for 'format_adapter' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 25.94    27 |   virtual ~format_adapter() = default;
+#17 25.94       |           ^
+#17 25.94 /usr/lib/llvm-18/include/llvm/Support/FormatVariadicDetails.h:33:29: note: in implicit copy constructor for 'llvm::detail::format_adapter' first required here
+#17 25.94    33 | template <typename T> class provider_format_adapter : public format_adapter {
+#17 25.94       |                             ^
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:133:4: note: in implicit move constructor for 'llvm::detail::provider_format_adapter<const char *const &>' first required here
+#17 25.94   133 |         : _M_head_impl(std::forward<_UHead>(__h)) { }
+#17 25.94       |           ^
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:366:4: note: in instantiation of function template specialization 'std::_Head_base<3, llvm::detail::provider_format_adapter<const char *const &>>::_Head_base<llvm::detail::provider_format_adapter<const char *const &>>' requested here
+#17 25.94   366 |         : _Base(std::forward<_UHead>(__head)) { }
+#17 25.94       |           ^
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:217:4: note: in instantiation of function template specialization 'std::_Tuple_impl<3, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const char *const &>>' requested here
+#17 25.94   217 |         : _Inherited(std::forward<_UTail>(__tail)...),
+#17 25.94       |           ^
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:217:4: note: in instantiation of function template specialization 'std::_Tuple_impl<2, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, void>' requested here
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:217:4: note: in instantiation of function template specialization 'std::_Tuple_impl<1, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, void>' requested here
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:647:11: note: in instantiation of function template specialization 'std::_Tuple_impl<0, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, void>' requested here
+#17 25.94   647 |         : _Inherited(std::forward<_UElements>(__elements)...) { }
+#17 25.94       |           ^
+#17 25.94 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:1452:14: note: in instantiation of function template specialization 'std::tuple<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::tuple<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, true>' requested here
+#17 25.94  1452 |       return __result_type(std::forward<_Elements>(__args)...);
+#17 25.94       |              ^
+#17 25.94 /usr/lib/llvm-18/include/llvm/Support/FormatVariadic.h:257:12: note: in instantiation of function template specialization 'std::make_tuple<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>' requested here
+#17 25.94   257 |       std::make_tuple(detail::build_format_adapter(std::forward<Ts>(Vals))...));
+#17 25.94       |            ^
+#17 25.94 /usr/lib/llvm-18/include/llvm/Support/JSON.h:902:17: note: in instantiation of function template specialization 'llvm::formatv<const unsigned int &, const unsigned int &, const unsigned int &, const char *const &>' requested here
+#17 25.94   902 |     OS << llvm::formatv("[{0}:{1}, byte={2}]: {3}", Line, Column, Offset, Msg);
+#17 25.94       |                 ^
+#17 27.89 4 warnings generated.
+#17 27.98 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -fno-rtti -fPIC -std=c++17 -shared instrumentation/SanitizerCoveragePCGUARD.so.cc -o SanitizerCoveragePCGUARD.so $(llvm-config --ldflags)  -Wno-deprecated-copy-dtor -Wdeprecated instrumentation/afl-llvm-common.o
+#17 29.08 In file included from instrumentation/SanitizerCoveragePCGUARD.so.cc:13:
+#17 29.08 In file included from /usr/lib/llvm-18/include/llvm/Transforms/Instrumentation/SanitizerCoverage.h:18:
+#17 29.08 In file included from /usr/lib/llvm-18/include/llvm/IR/PassManager.h:45:
+#17 29.08 In file included from /usr/lib/llvm-18/include/llvm/IR/Function.h:25:
+#17 29.08 In file included from /usr/lib/llvm-18/include/llvm/IR/Argument.h:17:
+#17 29.08 /usr/lib/llvm-18/include/llvm/IR/Attributes.h:315:3: warning: definition of implicit copy assignment operator for 'AttributeSet' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 29.08   315 |   ~AttributeSet() = default;
+#17 29.08       |   ^
+#17 29.08 /usr/lib/llvm-18/include/llvm/IR/GlobalVariable.h:194:11: note: in implicit copy assignment operator for 'llvm::AttributeSet' first required here
+#17 29.08   194 |     Attrs = Attrs.addAttribute(getContext(), Kind);
+#17 29.08       |           ^
+#17 29.97 In file included from instrumentation/SanitizerCoveragePCGUARD.so.cc:13:
+#17 29.97 In file included from /usr/lib/llvm-18/include/llvm/Transforms/Instrumentation/SanitizerCoverage.h:21:
+#17 29.97 In file included from /usr/lib/llvm-18/include/llvm/Transforms/Instrumentation.h:18:
+#17 29.97 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:600:5: warning: definition of implicit copy constructor for 'ChecksumInfo<llvm::MDString *>' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 29.97   600 |     ~ChecksumInfo() = default;
+#17 29.97       |     ^
+#17 29.97 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:129:4: note: in implicit copy constructor for 'llvm::DIFile::ChecksumInfo<llvm::MDString *>' first required here
+#17 29.97   129 |         : _M_payload(__other),
+#17 29.97       |           ^
+#17 29.97 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:145:8: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::MDString *>>::_Optional_payload' requested here
+#17 29.97   145 |                             _Optional_payload(__ctor_tag<bool>{},
+#17 29.97       |                             ^
+#17 29.97 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:339:4: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::MDString *>>::_Optional_payload' requested here
+#17 29.97   339 |         : _M_payload(__other._M_payload._M_engaged,
+#17 29.97       |           ^
+#17 29.97 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:453:11: note: in instantiation of member function 'std::_Optional_base<llvm::DIFile::ChecksumInfo<llvm::MDString *>>::_Optional_base' requested here
+#17 29.97   453 |     class optional
+#17 29.97       |           ^
+#17 29.97 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:627:62: note: in implicit copy constructor for 'std::optional<llvm::DIFile::ChecksumInfo<llvm::MDString *>>' first required here
+#17 29.97   627 |                    getCanonicalMDString(Context, Directory), MDChecksum,
+#17 29.97       |                                                              ^
+#17 29.98 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:600:5: warning: definition of implicit copy constructor for 'ChecksumInfo<llvm::StringRef>' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 29.98   600 |     ~ChecksumInfo() = default;
+#17 29.98       |     ^
+#17 29.98 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:129:4: note: in implicit copy constructor for 'llvm::DIFile::ChecksumInfo<llvm::StringRef>' first required here
+#17 29.98   129 |         : _M_payload(__other),
+#17 29.98       |           ^
+#17 29.98 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:145:8: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::StringRef>>::_Optional_payload' requested here
+#17 29.98   145 |                             _Optional_payload(__ctor_tag<bool>{},
+#17 29.98       |                             ^
+#17 29.98 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:339:4: note: in instantiation of member function 'std::_Optional_payload<llvm::DIFile::ChecksumInfo<llvm::StringRef>>::_Optional_payload' requested here
+#17 29.98   339 |         : _M_payload(__other._M_payload._M_engaged,
+#17 29.98       |           ^
+#17 29.98 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/optional:453:11: note: in instantiation of member function 'std::_Optional_base<llvm::DIFile::ChecksumInfo<llvm::StringRef>>::_Optional_base' requested here
+#17 29.98   453 |     class optional
+#17 29.98       |           ^
+#17 29.98 /usr/lib/llvm-18/include/llvm/IR/DebugInfoMetadata.h:647:43: note: in implicit copy constructor for 'std::optional<llvm::DIFile::ChecksumInfo<llvm::StringRef>>' first required here
+#17 29.98   647 |                     (Filename, Directory, CS, Source))
+#17 29.98       |                                           ^
+#17 33.26 In file included from instrumentation/SanitizerCoveragePCGUARD.so.cc:13:
+#17 33.26 In file included from /usr/lib/llvm-18/include/llvm/Transforms/Instrumentation/SanitizerCoverage.h:20:
+#17 33.26 In file included from /usr/lib/llvm-18/include/llvm/Support/VirtualFileSystem.h:21:
+#17 33.26 In file included from /usr/lib/llvm-18/include/llvm/Support/Chrono.h:13:
+#17 33.26 In file included from /usr/lib/llvm-18/include/llvm/Support/FormatProviders.h:20:
+#17 33.26 /usr/lib/llvm-18/include/llvm/Support/FormatVariadicDetails.h:27:11: warning: definition of implicit copy constructor for 'format_adapter' is deprecated because it has a user-declared destructor [-Wdeprecated-copy-with-dtor]
+#17 33.26    27 |   virtual ~format_adapter() = default;
+#17 33.26       |           ^
+#17 33.26 /usr/lib/llvm-18/include/llvm/Support/FormatVariadicDetails.h:33:29: note: in implicit copy constructor for 'llvm::detail::format_adapter' first required here
+#17 33.26    33 | template <typename T> class provider_format_adapter : public format_adapter {
+#17 33.26       |                             ^
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:133:4: note: in implicit move constructor for 'llvm::detail::provider_format_adapter<const char *const &>' first required here
+#17 33.26   133 |         : _M_head_impl(std::forward<_UHead>(__h)) { }
+#17 33.26       |           ^
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:366:4: note: in instantiation of function template specialization 'std::_Head_base<3, llvm::detail::provider_format_adapter<const char *const &>>::_Head_base<llvm::detail::provider_format_adapter<const char *const &>>' requested here
+#17 33.26   366 |         : _Base(std::forward<_UHead>(__head)) { }
+#17 33.26       |           ^
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:217:4: note: in instantiation of function template specialization 'std::_Tuple_impl<3, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const char *const &>>' requested here
+#17 33.26   217 |         : _Inherited(std::forward<_UTail>(__tail)...),
+#17 33.26       |           ^
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:217:4: note: in instantiation of function template specialization 'std::_Tuple_impl<2, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, void>' requested here
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:217:4: note: in instantiation of function template specialization 'std::_Tuple_impl<1, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, void>' requested here
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:647:11: note: in instantiation of function template specialization 'std::_Tuple_impl<0, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::_Tuple_impl<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, void>' requested here
+#17 33.26   647 |         : _Inherited(std::forward<_UElements>(__elements)...) { }
+#17 33.26       |           ^
+#17 33.26 /usr/lib/gcc/x86_64-linux-gnu/7/../../../../include/c++/7/tuple:1452:14: note: in instantiation of function template specialization 'std::tuple<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>::tuple<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>, true>' requested here
+#17 33.26  1452 |       return __result_type(std::forward<_Elements>(__args)...);
+#17 33.26       |              ^
+#17 33.26 /usr/lib/llvm-18/include/llvm/Support/FormatVariadic.h:257:12: note: in instantiation of function template specialization 'std::make_tuple<llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const unsigned int &>, llvm::detail::provider_format_adapter<const char *const &>>' requested here
+#17 33.26   257 |       std::make_tuple(detail::build_format_adapter(std::forward<Ts>(Vals))...));
+#17 33.26       |            ^
+#17 33.26 /usr/lib/llvm-18/include/llvm/Support/JSON.h:902:17: note: in instantiation of function template specialization 'llvm::formatv<const unsigned int &, const unsigned int &, const unsigned int &, const char *const &>' requested here
+#17 33.26   902 |     OS << llvm::formatv("[{0}:{1}, byte={2}]: {3}", Line, Column, Offset, Msg);
+#17 33.26       |                 ^
+#17 36.21 4 warnings generated.
+#17 36.31 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/split-compares-pass.so.cc -o split-compares-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 43.07 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/split-switches-pass.so.cc -o split-switches-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 49.66 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/cmplog-routines-pass.cc -o cmplog-routines-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 57.37 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/cmplog-instructions-pass.cc -o cmplog-instructions-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 63.80 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/cmplog-switches-pass.cc -o cmplog-switches-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 70.10 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/afl-llvm-dict2file.so.cc -o afl-llvm-dict2file.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 76.90 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/compare-transform-pass.so.cc -o compare-transform-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 84.06 /usr/lib/llvm-18/bin/clang -O3 -funroll-loops -fPIC -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  src/afl-ld-lto.c -o afl-ld-lto
+#17 84.27 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -fno-rtti -fPIC -std=c++17 -shared instrumentation/afl-llvm-lto-instrumentlist.so.cc -o afl-llvm-lto-instrumentlist.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 89.89 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -Wno-writable-strings -fno-rtti -fPIC -std=c++17 -shared instrumentation/SanitizerCoverageLTO.so.cc -o SanitizerCoverageLTO.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 100.8 /usr/lib/llvm-18/bin/clang -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  -Wno-unused-result -O0 -flto=full -fPIC -c instrumentation/afl-llvm-rt-lto.o.c -o ./afl-llvm-rt-lto.o
+#17 101.0 /usr/lib/llvm-18/bin/clang++ $(llvm-config --cxxflags) -fno-rtti -fno-exceptions -fPIC -O3 -funroll-loops -fPIC -Wall -g -I ./include/ -DVERSION=\"++4.31c\" -Wno-variadic-macros -Wno-deprecated-copy-with-dtor -DLLVM_MINOR=1 -DLLVM_MAJOR=18  -Wno-deprecated-declarations -Wl,-znodelete -shared instrumentation/injection-pass.cc -o injection-pass.so $(llvm-config --ldflags)  instrumentation/afl-llvm-common.o
+#17 107.4 [*] Testing the CC wrapper and instrumentation output...
+#17 107.4 unset AFL_USE_ASAN AFL_USE_MSAN AFL_INST_RATIO AFL_LLVM_ALLOWLIST AFL_LLVM_DENYLIST; ASAN_OPTIONS=detect_leaks=0 AFL_QUIET=1 AFL_PATH=. AFL_LLVM_LAF_ALL=1 ./afl-cc -O3 -funroll-loops -fPIC -Wall -g -Wno-cast-qual -Wno-variadic-macros -Wno-pointer-sign -I ./include/ -I ./instrumentation/ -DAFL_PATH=\"/usr/local/lib/afl\" -DBIN_PATH=\"/usr/local/bin\" -DLLVM_BINDIR=\"/usr/lib/llvm-18/bin\" -DVERSION=\"++4.31c\" -DLLVM_LIBDIR=\"/usr/lib/llvm-18/lib\" -DLLVM_VERSION=\"18.1.0\" -DAFL_CLANG_FLTO=\"-flto=full\" -DAFL_REAL_LD=\"/usr/lib/llvm-18/bin/ld.lld\" -DAFL_CLANG_LDPATH=\"1\" -DAFL_CLANG_FUSELD=\"1\" -DCLANG_BIN=\"/usr/lib/llvm-18/bin/clang\" -DCLANGPP_BIN=\"/usr/lib/llvm-18/bin/clang++\" -DUSE_BINDIR=1 -Wno-unused-function -fdebug-prefix-map="/magma/fuzzers/aflplusplus_lto_entropy/repo=llvm_mode" -Wno-deprecated  ./test-instr.c -o test-instr 
+#17 107.6 ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr0 ./test-instr < /dev/null
+#17 107.6 echo 1 | ASAN_OPTIONS=detect_leaks=0 ./afl-showmap -m none -q -o .test-instr1 ./test-instr
+#17 107.6 [+] All right, the instrumentation seems to be working!
+#17 107.6 [+] All done! You can now use './afl-cc' to compile programs.
+#17 107.6 make[1]: Leaving directory '/magma/fuzzers/aflplusplus_lto_entropy/repo'
+#17 107.6 make -f GNUmakefile.gcc_plugin
+#17 107.6 make[1]: Entering directory '/magma/fuzzers/aflplusplus_lto_entropy/repo'
+#17 107.6 [+] shmat seems to be working.
+#17 107.6 [*] Checking for working 'gcc'...
+#17 107.6 [*] Checking for gcc plugin development header files...
+#17 107.6 [-] Oops, can't find gcc header files. Be sure to install 'gcc-X-plugin-dev'.
+#17 107.6 GNUmakefile.gcc_plugin:124: recipe for target 'test_deps' failed
+#17 107.6 make[1]: *** [test_deps] Error 1
+#17 107.6 make[1]: Leaving directory '/magma/fuzzers/aflplusplus_lto_entropy/repo'
+#17 107.6 GNUmakefile:353: recipe for target 'gcc_plugin' failed
+#17 107.6 make: [gcc_plugin] Error 2 (ignored)
+#17 107.6 [!] Note: skipping build tests (you may need to use LLVM or QEMU mode).
+#17 107.6 [+] Main compiler 'afl-cc' successfully built!
+#17 107.6 [+] LLVM mode for 'afl-cc' successfully built!
+#17 107.6 [+] LLVM LTO mode for 'afl-cc' successfully built!
+#17 107.6 [-] gcc_plugin for 'afl-cc'  failed to build, unless you really need it that is fine - or read instrumentation/README.gcc_plugin.md how to build it
+#17 107.6 [+] All done! Be sure to review the README.md - it's pretty short and useful.
+#17 107.6 make -C utils/aflpp_driver
+#17 107.6 make[1]: Entering directory '/magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver'
+#17 107.6 /usr/lib/llvm-18/bin/clang -I. -I../../include -O3 -funroll-loops -g -fPIC -c aflpp_driver.c
+#17 107.6 /usr/lib/llvm-18/bin/clang -O3 -funroll-loops -g -fPIC -O0 -funroll-loops -c aflpp_qemu_driver.c
+#17 107.6 Note: Optional aflpp_qemu_driver_hook.o not built.
+#17 107.7 Note: Optional aflpp_qemu_driver_hook.so not built.
+#17 107.7 'libAFLQemuDriver.a' -> '../../libAFLQemuDriver.a'
+#17 107.8 'libAFLDriver.a' -> '../../libAFLDriver.a'
+#17 107.8 make[1]: Leaving directory '/magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver'
+#17 107.8 
+#17 107.8 
+#17 107.8 
+#17 107.8 
+#17 107.8 Build Summary:
+#17 107.8 [+] afl-fuzz and supporting tools successfully built
+#17 107.8 [+] LLVM basic mode successfully built
+#17 107.8 [+] LLVM mode successfully built
+#17 107.8 [+] LLVM LTO mode successfully built
+#17 107.8 [-] gcc_mode could not be built, it is optional, install gcc-VERSION-plugin-dev to enable this
+#17 107.8 
+#17 107.8 make: Entering directory '/magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver'
+#17 107.8 Note: Optional aflpp_qemu_driver_hook.o not built.
+#17 107.8 Note: Optional aflpp_qemu_driver_hook.so not built.
+#17 107.8 make: Leaving directory '/magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver'
+#17 DONE 107.8s
+
+#18 [14/19] RUN mkdir -p /magma/targets/libxml2_xml_read_memory_fuzzer && chown magma:magma /magma/targets/libxml2_xml_read_memory_fuzzer
+#18 DONE 0.5s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/libxml2_xml_read_memory_fuzzer /magma/targets/libxml2_xml_read_memory_fuzzer/
+#19 DONE 0.4s
+
+#20 [16/19] RUN /magma/targets/libxml2_xml_read_memory_fuzzer/preinstall.sh
+#20 0.925 Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.079 Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.294 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.456 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.512 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.653 Reading package lists...
+#20 3.143 Reading package lists...
+#20 4.530 Building dependency tree...
+#20 4.736 Reading state information...
+#20 4.876 make is already the newest version (4.1-9.1ubuntu1).
+#20 4.876 pkg-config is already the newest version (0.29.1-0ubuntu2).
+#20 4.876 pkg-config set to manually installed.
+#20 4.876 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 4.876 zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2.2).
+#20 4.876 zlib1g-dev set to manually installed.
+#20 4.876 The following additional packages will be installed:
+#20 4.876   autotools-dev libltdl-dev libltdl7 libsigsegv2 m4
+#20 4.877 Suggested packages:
+#20 4.877   autoconf-archive gnu-standards autoconf-doc gettext libtool-doc liblzma-doc
+#20 4.877   gfortran | fortran95-compiler gcj-jdk m4-doc
+#20 4.908 The following NEW packages will be installed:
+#20 4.908   autoconf automake autotools-dev libltdl-dev libltdl7 liblzma-dev libsigsegv2
+#20 4.909   libtool m4
+#20 5.615 0 upgraded, 9 newly installed, 0 to remove and 1 not upgraded.
+#20 5.615 Need to get 1622 kB of archives.
+#20 5.615 After this operation, 7291 kB of additional disk space will be used.
+#20 5.615 Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]
+#20 6.023 Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]
+#20 6.666 Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]
+#20 6.980 Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+#20 6.989 Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]
+#20 7.270 Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl7 amd64 2.4.6-2 [38.8 kB]
+#20 7.271 Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl-dev amd64 2.4.6-2 [162 kB]
+#20 7.349 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]
+#20 7.425 Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblzma-dev amd64 5.2.2-1.3ubuntu0.1 [145 kB]
+#20 7.654 debconf: unable to initialize frontend: Dialog
+#20 7.654 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 7.654 debconf: falling back to frontend: Readline
+#20 7.661 debconf: unable to initialize frontend: Readline
+#20 7.661 debconf: (This frontend requires a controlling tty.)
+#20 7.661 debconf: falling back to frontend: Teletype
+#20 7.666 dpkg-preconfigure: unable to re-open stdin: 
+#20 7.692 Fetched 1622 kB in 3s (632 kB/s)
+#20 7.708 Selecting previously unselected package libsigsegv2:amd64.
+#20 7.708 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24447 files and directories currently installed.)
+#20 7.723 Preparing to unpack .../0-libsigsegv2_2.12-1_amd64.deb ...
+#20 7.724 Unpacking libsigsegv2:amd64 (2.12-1) ...
+#20 7.739 Selecting previously unselected package m4.
+#20 7.741 Preparing to unpack .../1-m4_1.4.18-1_amd64.deb ...
+#20 7.742 Unpacking m4 (1.4.18-1) ...
+#20 7.774 Selecting previously unselected package autoconf.
+#20 7.776 Preparing to unpack .../2-autoconf_2.69-11_all.deb ...
+#20 7.776 Unpacking autoconf (2.69-11) ...
+#20 7.821 Selecting previously unselected package autotools-dev.
+#20 7.823 Preparing to unpack .../3-autotools-dev_20180224.1_all.deb ...
+#20 7.823 Unpacking autotools-dev (20180224.1) ...
+#20 7.841 Selecting previously unselected package automake.
+#20 7.843 Preparing to unpack .../4-automake_1%3a1.15.1-3ubuntu2_all.deb ...
+#20 7.845 Unpacking automake (1:1.15.1-3ubuntu2) ...
+#20 7.903 Selecting previously unselected package libltdl7:amd64.
+#20 7.905 Preparing to unpack .../5-libltdl7_2.4.6-2_amd64.deb ...
+#20 7.906 Unpacking libltdl7:amd64 (2.4.6-2) ...
+#20 7.921 Selecting previously unselected package libltdl-dev:amd64.
+#20 7.923 Preparing to unpack .../6-libltdl-dev_2.4.6-2_amd64.deb ...
+#20 7.923 Unpacking libltdl-dev:amd64 (2.4.6-2) ...
+#20 7.963 Selecting previously unselected package libtool.
+#20 7.965 Preparing to unpack .../7-libtool_2.4.6-2_all.deb ...
+#20 7.966 Unpacking libtool (2.4.6-2) ...
+#20 8.002 Selecting previously unselected package liblzma-dev:amd64.
+#20 8.004 Preparing to unpack .../8-liblzma-dev_5.2.2-1.3ubuntu0.1_amd64.deb ...
+#20 8.004 Unpacking liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 8.046 Setting up libsigsegv2:amd64 (2.12-1) ...
+#20 8.047 Setting up m4 (1.4.18-1) ...
+#20 8.048 Setting up autotools-dev (20180224.1) ...
+#20 8.049 Setting up libltdl7:amd64 (2.4.6-2) ...
+#20 8.050 Setting up liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 8.052 Setting up libtool (2.4.6-2) ...
+#20 8.053 Setting up libltdl-dev:amd64 (2.4.6-2) ...
+#20 8.054 Setting up autoconf (2.69-11) ...
+#20 8.055 Setting up automake (1:1.15.1-3ubuntu2) ...
+#20 8.060 update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode
+#20 8.061 update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist
+#20 8.061 update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist
+#20 8.062 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#20 DONE 8.1s
+
+#21 [17/19] RUN /magma/targets/libxml2_xml_read_memory_fuzzer/fetch.sh
+#21 0.549 Cloning into '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'...
+#21 18.14 Note: checking out 'ec6e3efb06d7b15cf5a2328fabd3845acea4c815'.
+#21 18.14 
+#21 18.14 You are in 'detached HEAD' state. You can look around, make experimental
+#21 18.14 changes and commit them, and you can discard any commits you make in this
+#21 18.14 state without impacting any branches by performing another checkout.
+#21 18.14 
+#21 18.14 If you want to create a new branch to retain commits you create, you may
+#21 18.14 do so (now or later) by using -b with the checkout command again. Example:
+#21 18.14 
+#21 18.14   git checkout -b <new-branch-name>
+#21 18.14 
+#21 18.14 HEAD is now at ec6e3efb Patch to forbid epsilon-reduction of final states
+#21 DONE 18.4s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.324 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/setup/libxml2.patch
+#22 0.326 patching file Makefile.am
+#22 0.326 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML004.patch
+#22 0.327 patching file xzlib.c
+#22 0.327 Hunk #1 succeeded at 591 (offset 4 lines).
+#22 0.328 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML016.patch
+#22 0.330 patching file xmlregexp.c
+#22 0.333 Hunk #1 succeeded at 5137 (offset 72 lines).
+#22 0.334 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML009.patch
+#22 0.336 patching file parser.c
+#22 0.338 Hunk #1 succeeded at 10432 (offset 102 lines).
+#22 0.339 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML011.patch
+#22 0.341 patching file xmlstring.c
+#22 0.341 Hunk #1 succeeded at 460 (offset 3 lines).
+#22 0.341 Hunk #2 succeeded at 499 (offset 3 lines).
+#22 0.341 Hunk #3 succeeded at 510 (offset 3 lines).
+#22 0.342 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML013.patch
+#22 0.343 patching file HTMLparser.c
+#22 0.345 Hunk #1 succeeded at 2964 (offset 164 lines).
+#22 0.345 Hunk #2 succeeded at 2977 (offset 164 lines).
+#22 0.345 Hunk #3 succeeded at 2998 (offset 164 lines).
+#22 0.345 Hunk #4 succeeded at 3028 (offset 164 lines).
+#22 0.345 Hunk #5 succeeded at 3044 (offset 164 lines).
+#22 0.345 Hunk #6 succeeded at 3065 (offset 164 lines).
+#22 0.346 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML010.patch
+#22 0.348 patching file parser.c
+#22 0.348 Hunk #1 succeeded at 2758 (offset 53 lines).
+#22 0.348 Hunk #2 succeeded at 2771 (offset 53 lines).
+#22 0.351 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML014.patch
+#22 0.354 patching file HTMLparser.c
+#22 0.354 Hunk #1 succeeded at 2651 (offset 178 lines).
+#22 0.356 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML003.patch
+#22 0.360 patching file parser.c
+#22 0.362 Hunk #1 succeeded at 8001 with fuzz 2 (offset 87 lines).
+#22 0.362 Hunk #2 succeeded at 8010 (offset 87 lines).
+#22 0.363 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML006.patch
+#22 0.365 patching file valid.c
+#22 0.366 Hunk #1 succeeded at 1367 (offset 43 lines).
+#22 0.367 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML002.patch
+#22 0.370 patching file valid.c
+#22 0.370 Hunk #1 succeeded at 4705 (offset 48 lines).
+#22 0.371 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML017.patch
+#22 0.372 patching file parser.c
+#22 0.374 Hunk #1 succeeded at 8414 (offset 103 lines).
+#22 0.375 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML007.patch
+#22 0.377 patching file HTMLparser.c
+#22 0.378 Hunk #1 succeeded at 5523 with fuzz 2 (offset 131 lines).
+#22 0.379 patching file parser.c
+#22 0.380 Hunk #1 succeeded at 12601 (offset 110 lines).
+#22 0.381 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML008.patch
+#22 0.383 patching file parser.c
+#22 0.384 Hunk #1 succeeded at 5033 (offset 55 lines).
+#22 0.385 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML012.patch
+#22 0.388 patching file parser.c
+#22 0.388 Hunk #1 succeeded at 3402 (offset 53 lines).
+#22 0.388 Hunk #2 succeeded at 3413 (offset 53 lines).
+#22 0.388 Hunk #3 succeeded at 3435 (offset 53 lines).
+#22 0.388 Hunk #4 succeeded at 3449 (offset 53 lines).
+#22 0.388 Hunk #5 succeeded at 3458 (offset 53 lines).
+#22 0.391 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML015.patch
+#22 0.393 patching file HTMLparser.c
+#22 0.393 Hunk #1 succeeded at 2701 (offset 182 lines).
+#22 0.393 Hunk #2 succeeded at 2709 (offset 182 lines).
+#22 0.394 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML001.patch
+#22 0.397 patching file valid.c
+#22 0.397 Hunk #1 succeeded at 1310 (offset 43 lines).
+#22 0.397 Hunk #2 succeeded at 1319 (offset 43 lines).
+#22 0.398 Applying /magma/targets/libxml2_xml_read_memory_fuzzer/patches/bugs/XML005.patch
+#22 0.399 patching file xmlmemory.c
+#22 DONE 0.4s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/Calculate.sh
+#23 4.176 libtoolize: putting auxiliary files in '.'.
+#23 4.176 libtoolize: copying file './ltmain.sh'
+#23 4.211 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+#23 4.211 libtoolize: copying file 'm4/libtool.m4'
+#23 4.237 libtoolize: copying file 'm4/ltoptions.m4'
+#23 4.259 libtoolize: copying file 'm4/ltsugar.m4'
+#23 4.286 libtoolize: copying file 'm4/ltversion.m4'
+#23 4.312 libtoolize: copying file 'm4/lt~obsolete.m4'
+#23 7.524 configure.ac:66: installing './compile'
+#23 7.526 configure.ac:13: installing './config.guess'
+#23 7.528 configure.ac:13: installing './config.sub'
+#23 7.529 configure.ac:58: installing './install-sh'
+#23 7.531 configure.ac:58: installing './missing'
+#23 7.606 Makefile.am: installing './depcomp'
+#23 8.171 checking whether to enable maintainer-specific portions of Makefiles... yes
+#23 8.187 checking build system type... x86_64-pc-linux-gnu
+#23 8.267 checking host system type... x86_64-pc-linux-gnu
+#23 8.276 extra=v2.9.12-13-gec6e3efb
+#23 8.276 checking for a BSD-compatible install... /usr/bin/install -c
+#23 8.285 checking whether build environment is sane... yes
+#23 8.295 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 8.298 checking for gawk... no
+#23 8.298 checking for mawk... mawk
+#23 8.298 checking whether make sets $(MAKE)... yes
+#23 8.310 checking whether make supports nested variables... yes
+#23 8.320 checking whether make supports nested variables... (cached) yes
+#23 8.320 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 8.464 checking whether the C compiler works... yes
+#23 8.557 checking for C compiler default output file name... a.out
+#23 8.559 checking for suffix of executables... 
+#23 8.649 checking whether we are cross compiling... no
+#23 8.745 checking for suffix of object files... o
+#23 8.803 checking whether we are using the GNU C compiler... yes
+#23 8.838 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 8.873 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 8.926 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 8.994 checking for style of include used by make... GNU
+#23 9.000 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 9.052 checking whether ln -s works... yes
+#23 9.052 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 9.188 checking for mv... /bin/mv
+#23 9.189 checking for tar... /bin/tar
+#23 9.189 checking for perl... /usr/bin/perl
+#23 9.189 checking for wget... /usr/bin/wget
+#23 9.189 checking for xmllint... /usr/bin/xmllint
+#23 9.190 checking for xsltproc... /usr/bin/xsltproc
+#23 9.190 checking for pkg-config... /usr/bin/pkg-config
+#23 9.191 checking pkg-config is at least version 0.9.0... yes
+#23 9.193 checking how to print strings... printf
+#23 9.221 checking for a sed that does not truncate output... /bin/sed
+#23 9.227 checking for grep that handles long lines and -e... /bin/grep
+#23 9.229 checking for egrep... /bin/grep -E
+#23 9.231 checking for fgrep... /bin/grep -F
+#23 9.233 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 9.269 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 9.285 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 9.286 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 9.349 checking the maximum length of command line arguments... 1572864
+#23 9.357 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 9.357 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 9.357 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 9.357 checking for objdump... objdump
+#23 9.358 checking how to recognize dependent libraries... pass_all
+#23 9.359 checking for dlltool... no
+#23 9.359 checking how to associate runtime and link libraries... printf %s\n
+#23 9.360 checking for archiver @FILE support... @
+#23 9.443 checking for strip... strip
+#23 9.443 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 9.443 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 9.633 checking for sysroot... no
+#23 9.633 checking for a working dd... /bin/dd
+#23 9.638 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 9.676 checking for mt... no
+#23 9.676 checking if : is a manifest tool... no
+#23 9.682 checking for ANSI C header files... yes
+#23 9.910 checking for sys/types.h... yes
+#23 9.961 checking for sys/stat.h... yes
+#23 10.01 checking for stdlib.h... yes
+#23 10.07 checking for string.h... yes
+#23 10.12 checking for memory.h... yes
+#23 10.18 checking for strings.h... yes
+#23 10.23 checking for inttypes.h... yes
+#23 10.28 checking for stdint.h... yes
+#23 10.34 checking for unistd.h... yes
+#23 10.40 checking for dlfcn.h... yes
+#23 10.45 checking for objdir... .libs
+#23 10.59 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 10.63 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 10.63 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 10.67 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 10.77 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 10.82 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 10.82 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 10.89 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 11.04 checking how to hardcode library paths into programs... immediate
+#23 11.04 checking whether stripping libraries is possible... yes
+#23 11.04 checking if libtool supports shared libraries... yes
+#23 11.04 checking whether to build shared libraries... no
+#23 11.04 checking whether to build static libraries... yes
+#23 11.05 Checking zlib
+#23 11.05 checking for Z... yes
+#23 11.06 Checking lzma
+#23 11.06 checking for LZMA... yes
+#23 11.07 Checking headers
+#23 11.07 checking for dirent.h that defines DIR... yes
+#23 11.11 checking for library containing opendir... none required
+#23 11.22 checking for ANSI C header files... (cached) yes
+#23 11.22 checking fcntl.h usability... yes
+#23 11.27 checking fcntl.h presence... yes
+#23 11.31 checking for fcntl.h... yes
+#23 11.31 checking for unistd.h... (cached) yes
+#23 11.31 checking ctype.h usability... yes
+#23 11.36 checking ctype.h presence... yes
+#23 11.40 checking for ctype.h... yes
+#23 11.40 checking dirent.h usability... yes
+#23 11.45 checking dirent.h presence... yes
+#23 11.49 checking for dirent.h... yes
+#23 11.49 checking errno.h usability... yes
+#23 11.54 checking errno.h presence... yes
+#23 11.57 checking for errno.h... yes
+#23 11.57 checking malloc.h usability... yes
+#23 11.62 checking malloc.h presence... yes
+#23 11.66 checking for malloc.h... yes
+#23 11.66 checking stdarg.h usability... yes
+#23 11.71 checking stdarg.h presence... yes
+#23 11.74 checking for stdarg.h... yes
+#23 11.74 checking for sys/stat.h... (cached) yes
+#23 11.74 checking for sys/types.h... (cached) yes
+#23 11.75 checking for stdint.h... (cached) yes
+#23 11.75 checking for inttypes.h... (cached) yes
+#23 11.75 checking time.h usability... yes
+#23 11.80 checking time.h presence... yes
+#23 11.84 checking for time.h... yes
+#23 11.84 checking math.h usability... yes
+#23 11.91 checking math.h presence... yes
+#23 11.96 checking for math.h... yes
+#23 11.96 checking limits.h usability... yes
+#23 12.01 checking limits.h presence... yes
+#23 12.05 checking for limits.h... yes
+#23 12.05 checking float.h usability... yes
+#23 12.10 checking float.h presence... yes
+#23 12.13 checking for float.h... yes
+#23 12.13 checking for stdlib.h... (cached) yes
+#23 12.13 checking for sys/socket.h... yes
+#23 12.17 checking for netinet/in.h... yes
+#23 12.21 checking for arpa/inet.h... yes
+#23 12.25 checking netdb.h usability... yes
+#23 12.31 checking netdb.h presence... yes
+#23 12.35 checking for netdb.h... yes
+#23 12.35 checking sys/time.h usability... yes
+#23 12.40 checking sys/time.h presence... yes
+#23 12.44 checking for sys/time.h... yes
+#23 12.44 checking sys/select.h usability... yes
+#23 12.49 checking sys/select.h presence... yes
+#23 12.52 checking for sys/select.h... yes
+#23 12.52 checking poll.h usability... yes
+#23 12.57 checking poll.h presence... yes
+#23 12.60 checking for poll.h... yes
+#23 12.61 checking sys/mman.h usability... yes
+#23 12.65 checking sys/mman.h presence... yes
+#23 12.69 checking for sys/mman.h... yes
+#23 12.69 checking sys/timeb.h usability... yes
+#23 12.74 checking sys/timeb.h presence... yes
+#23 12.77 checking for sys/timeb.h... yes
+#23 12.77 checking signal.h usability... yes
+#23 12.82 checking signal.h presence... yes
+#23 12.85 checking for signal.h... yes
+#23 12.86 checking for arpa/nameser.h... yes
+#23 12.90 checking for resolv.h... yes
+#23 12.95 checking dl.h usability... no
+#23 13.00 checking dl.h presence... no
+#23 13.04 checking for dl.h... no
+#23 13.04 checking for dlfcn.h... (cached) yes
+#23 13.04 Checking types
+#23 13.04 checking for uint32_t... yes
+#23 13.11 Checking libraries
+#23 13.11 checking for strftime... yes
+#23 13.21 checking for strftime... (cached) yes
+#23 13.22 checking for localtime... yes
+#23 13.33 checking for gettimeofday... yes
+#23 13.45 checking for ftime... yes
+#23 13.56 checking for stat... yes
+#23 13.67 checking for signal... yes
+#23 13.78 checking for rand... yes
+#23 13.89 checking for rand_r... yes
+#23 13.99 checking for srand... yes
+#23 14.11 checking for time... yes
+#23 14.21 checking for isascii... yes
+#23 14.34 checking for mmap... yes
+#23 14.45 checking for munmap... yes
+#23 14.55 checking for putenv... yes
+#23 14.65 checking for va_copy... yes
+#23 14.75 checking whether va_list is an array type... yes
+#23 14.82 checking for library containing gethostent... none required
+#23 14.91 checking for library containing setsockopt... none required
+#23 15.01 checking for library containing connect... none required
+#23 15.12 checking for type of socket length (socklen_t)... socklen_t *
+#23 15.20 checking for const gethostbyname() argument... yes
+#23 15.31 checking for const send() second argument... yes
+#23 15.41 checking whether __attribute__((destructor)) is accepted... yes
+#23 15.47 checking whether to enable IPv6... yes
+#23 15.51 checking struct sockaddr::ss_family... yes
+#23 15.55 checking for getaddrinfo... yes
+#23 15.65 checking for isnan... yes
+#23 15.74 checking for isinf... yes
+#23 15.84 checking for shl_load... no
+#23 15.95 checking for shl_load in -ldld... no
+#23 16.04 checking for dlopen... no
+#23 16.15 checking for dlopen in -ldl... yes
+#23 16.25 Checking configuration requirements
+#23 16.25 Disabling multithreaded support
+#23 16.25 Disabling HTTP support
+#23 16.25 Enabled Schematron support
+#23 16.25 checking iconv.h usability... yes
+#23 16.30 checking iconv.h presence... yes
+#23 16.33 checking for iconv.h... yes
+#23 16.33 checking for iconv... yes
+#23 16.44 checking for iconv declaration... 
+#23 16.48 	extern size_t iconv (iconv_t cd,  char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#23 16.48 Disabling ICU support
+#23 16.48 Enabled Schemas/Relax-NG support
+#23 16.48 checking for printf... yes
+#23 16.60 checking for sprintf... yes
+#23 16.71 checking for fprintf... yes
+#23 16.81 checking for snprintf... yes
+#23 16.91 checking for vfprintf... yes
+#23 17.01 checking for vsprintf... yes
+#23 17.13 checking for vsnprintf... yes
+#23 17.24 checking for sscanf... yes
+#23 17.35 Disabling code coverage for GCC
+#23 17.38 checking that generated files are newer than configure... done
+#23 17.38 configure: creating ./config.status
+#23 17.93 config.status: creating libxml2.spec
+#23 17.94 config.status: creating Makefile
+#23 17.96 config.status: creating include/Makefile
+#23 17.98 config.status: creating include/libxml/Makefile
+#23 18.00 config.status: creating doc/Makefile
+#23 18.02 config.status: creating doc/examples/Makefile
+#23 18.05 config.status: creating doc/devhelp/Makefile
+#23 18.06 config.status: creating example/Makefile
+#23 18.08 config.status: creating fuzz/Makefile
+#23 18.10 config.status: creating python/Makefile
+#23 18.12 config.status: creating python/tests/Makefile
+#23 18.14 config.status: creating xstc/Makefile
+#23 18.16 config.status: creating include/libxml/xmlversion.h
+#23 18.18 config.status: creating libxml-2.0.pc
+#23 18.19 config.status: creating libxml-2.0-uninstalled.pc
+#23 18.21 config.status: creating libxml2-config.cmake
+#23 18.22 config.status: creating python/setup.py
+#23 18.23 config.status: creating xml2-config
+#23 18.25 config.status: creating config.h
+#23 18.26 config.status: executing depfiles commands
+#23 18.66 config.status: executing libtool commands
+#23 18.67 Done configuring
+#23 18.71 
+#23 18.71 Now type 'make' to compile libxml2.
+#23 18.72 Making clean in include
+#23 18.73 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.73 Making clean in libxml
+#23 18.73 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include/libxml'
+#23 18.73 rm -rf .libs _libs
+#23 18.73 rm -f *.lo
+#23 18.74 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include/libxml'
+#23 18.74 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.74 rm -rf .libs _libs
+#23 18.74 rm -f *.lo
+#23 18.74 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.75 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.75 Making clean in .
+#23 18.75 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'
+#23 18.75 test -z "runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res" || rm -f runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res
+#23 18.75 test -z "libxml2.la" || rm -f libxml2.la
+#23 18.75 rm -rf .libs _libs
+#23 18.75 test -z "testdso.la" || rm -f testdso.la
+#23 18.75 rm -f *.o
+#23 18.75 rm -f *.lo
+#23 18.75  rm -f xmllint xmlcatalog
+#23 18.75  rm -f testSchemas testRelax testSAX testHTML testXPath testURI testThreads testC14N testAutomata testRegexp testReader testapi testModule runtest runsuite testchar testdict runxmlconf testrecurse testlimits
+#23 18.76 rm -f ./so_locations
+#23 18.76 rm -f ./so_locations
+#23 18.76 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'
+#23 18.76 Making clean in doc
+#23 18.77 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 18.77 Making clean in .
+#23 18.77 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 18.77 rm -rf .libs _libs
+#23 18.77 rm -f *~ *.bak *.hierarchy *.signals *-unused.txt
+#23 18.77 rm -f *.lo
+#23 18.78 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 18.78 Making clean in devhelp
+#23 18.78 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/devhelp'
+#23 18.78 rm -rf .libs _libs
+#23 18.78 rm -f *.lo
+#23 18.78 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/devhelp'
+#23 18.79 Making clean in examples
+#23 18.79 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/examples'
+#23 18.79 test -z "*.tmp" || rm -f *.tmp
+#23 18.79 rm -rf .libs _libs
+#23 18.79 test -f Makefile.am || rm -f test?.xml
+#23 18.79 rm -f *.o
+#23 18.79 rm -f *.lo
+#23 18.79  rm -f io1 io2 parse1 parse2 parse3 parse4 reader1 reader2 reader3 reader4 testWriter tree1 tree2 xpath1 xpath2
+#23 18.80 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/examples'
+#23 18.80 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 18.80 Making clean in example
+#23 18.80 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/example'
+#23 18.81 rm -rf .libs _libs
+#23 18.81 rm -f *.o
+#23 18.81 rm -f *.lo
+#23 18.81  rm -f gjobread
+#23 18.82 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/example'
+#23 18.82 Making clean in fuzz
+#23 18.82 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/fuzz'
+#23 18.82 test -z "genSeed html regexp schema uri xml xpath" || rm -f genSeed html regexp schema uri xml xpath
+#23 18.83 rm -rf .libs _libs
+#23 18.83 rm -f *.o
+#23 18.83 rm -f *.lo
+#23 18.83  rm -f testFuzzer
+#23 18.83 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/fuzz'
+#23 18.83 Making clean in xstc
+#23 18.83 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/xstc'
+#23 18.83 test -z "nist-test.py ms-test.py sun-test.py test.log" || rm -f nist-test.py ms-test.py sun-test.py test.log
+#23 18.83 rm -rf .libs _libs
+#23 18.83 rm -f *.lo
+#23 18.84 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/xstc'
+#23 18.86 make  all-recursive
+#23 18.87 make[1]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'
+#23 18.87 Making all in include
+#23 18.88 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.88 Making all in libxml
+#23 18.88 make[3]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include/libxml'
+#23 18.88 make[3]: Nothing to be done for 'all'.
+#23 18.88 make[3]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include/libxml'
+#23 18.89 make[3]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.89 make[3]: Nothing to be done for 'all-am'.
+#23 18.89 make[3]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.89 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/include'
+#23 18.89 Making all in .
+#23 18.89 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'
+#23 18.89   CC       SAX.lo
+#23 18.89   CC       entities.lo
+#23 18.90   CC       parserInternals.lo
+#23 18.90   CC       encoding.lo
+#23 18.90   CC       tree.lo
+#23 18.90   CC       list.lo
+#23 18.90   CC       parser.lo
+#23 18.90   CC       valid.lo
+#23 18.90   CC       debugXML.lo
+#23 18.90   CC       xpointer.lo
+#23 18.90   CC       xinclude.lo
+#23 18.90   CC       HTMLtree.lo
+#23 18.90   CC       nanohttp.lo
+#23 18.90   CC       c14n.lo
+#23 18.90   CC       hash.lo
+#23 18.90   CC       xmlIO.lo
+#23 18.90   CC       catalog.lo
+#23 18.90   CC       uri.lo
+#23 18.90   CC       error.lo
+#23 18.90   CC       xmlmemory.lo
+#23 18.90   CC       buf.lo
+#23 18.90   CC       xmlstring.lo
+#23 18.90   CC       xmlregexp.lo
+#23 18.90   CC       xlink.lo
+#23 18.90   CC       xmlschemas.lo
+#23 18.90   CC       xmlunicode.lo
+#23 18.90   CC       xmlschemastypes.lo
+#23 18.91   CC       relaxng.lo
+#23 18.91   CC       nanoftp.lo
+#23 18.91   CC       xmlreader.lo
+#23 18.91   CC       dict.lo
+#23 18.91   CC       SAX2.lo
+#23 18.91   CC       globals.lo
+#23 18.91   CC       legacy.lo
+#23 18.91   CC       chvalid.lo
+#23 18.91 sed -e 's?\@XML_LIBDIR\@?-L/usr/local/lib?g' \
+#23 18.91     -e 's?\@XML_INCLUDEDIR\@?-I/usr/local/include/libxml2?g' \
+#23 18.91     -e 's?\@VERSION\@?2.9.12?g' \
+#23 18.91     -e 's?\@XML_LIBS\@?-lxml2?g' \
+#23 18.91     -e 's?\@XML_PRIVATE_LIBS\@?-lz -llzma    -lm -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a?g' \
+#23 18.91        < ./xml2Conf.sh.in > xml2Conf.tmp \
+#23 18.91 && mv xml2Conf.tmp xml2Conf.sh
+#23 18.91   CC       xzlib.lo
+#23 18.91   CC       pattern.lo
+#23 18.91   CC       xmllint.o
+#23 18.91   CC       schematron.lo
+#23 18.91   CC       xmlcatalog.o
+#23 18.91   CC       xmlmodule.lo
+#23 18.91   CC       testdso.lo
+#23 18.91   CC       xmlwriter.lo
+#23 18.91   CC       xmlsave.lo
+#23 18.91   CC       xpath.lo
+#23 18.92   CC       HTMLparser.lo
+#23 18.93   CC       threads.lo
+#23 19.08 xmlIO.c:3809:36: warning: unused parameter 'ctxt' [-Wunused-parameter]
+#23 19.08  3809 | xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
+#23 19.08       |                                    ^
+#23 19.14 1 warning generated.
+#23 19.14   CCLD     testdso.la
+#23 19.18 catalog.c:2187:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 19.18  2187 |     int count = 0;
+#23 19.18       |         ^
+#23 19.19 dict.c:1006:30: warning: variable 'nbi' set but not used [-Wunused-but-set-variable]
+#23 19.19  1006 |     unsigned long key, okey, nbi = 0;
+#23 19.19       |                              ^
+#23 19.20 1 warning generated.
+#23 19.23 1 warning generated.
+#23 19.24 encoding.c:505:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.24   505 |     unsigned short* in = (unsigned short*) inb;
+#23 19.24       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 19.24 encoding.c:592:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.24   592 |     unsigned short* out = (unsigned short*) outb;
+#23 19.24       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 19.24 encoding.c:748:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.24   748 |     unsigned short* in = (unsigned short*) inb;
+#23 19.24       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 19.24 encoding.c:834:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 19.24   834 |     unsigned short* out = (unsigned short*) outb;
+#23 19.24       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 19.29 4 warnings generated.
+#23 19.31 
+#23 19.31 *** Warning: Linking the shared library testdso.la against the
+#23 19.31 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 19.34 xmlschemas.c:21858:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 19.34  21858 |     int count = 0;
+#23 19.34        |         ^
+#23 19.35 HTMLparser.c:2976:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.35  2976 |     size_t len = 0, startPosition = 0;
+#23 19.35       |            ^
+#23 19.35 HTMLparser.c:2978:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 19.35  2978 |     int err = 0;
+#23 19.35       |         ^
+#23 19.35 HTMLparser.c:3040:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.35  3040 |     size_t len = 0, startPosition = 0;
+#23 19.35       |            ^
+#23 19.35 HTMLparser.c:3042:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 19.35  3042 |     int err = 0;
+#23 19.35       |         ^
+#23 19.41 xpath.c:10506:9: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.41  10506 |     int len = 0, l;
+#23 19.41        |         ^
+#23 19.43 xpath.c:13650:9: warning: variable 'nb_nodes' set but not used [-Wunused-but-set-variable]
+#23 19.43  13650 |     int nb_nodes = 0;
+#23 19.43        |         ^
+#23 19.48 4 warnings generated.
+#23 19.57 2 warnings generated.
+#23 19.66 1 warning generated.
+#23 19.68   CCLD     libxml2.la
+#23 19.88 
+#23 19.88 *** Warning: Linking the shared library libxml2.la against the
+#23 19.88 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 20.00   CCLD     xmllint
+#23 20.00   CCLD     xmlcatalog
+#23 20.17 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 20.18 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 20.74 
+#23 20.74 === AFL++ LTO Instrumentation Statistics ===
+#23 20.74 Total Basic Blocks: 32931
+#23 20.74 Instrumented Times: 0
+#23 20.74 Instrumented Basic Blocks: 5182
+#23 20.74 Instrumentation Ratio: 15.74%
+#23 20.74 Total Predecessors: 14976
+#23 20.74 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 20.74   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 20.74   Instrumented BasicBlocks with 2 predecessor(s): 3475
+#23 20.74   Instrumented BasicBlocks with 3 predecessor(s): 889
+#23 20.74   Instrumented BasicBlocks with 4 predecessor(s): 335
+#23 20.74   Instrumented BasicBlocks with 5 predecessor(s): 142
+#23 20.74   Instrumented BasicBlocks with 6 predecessor(s): 106
+#23 20.74   Instrumented BasicBlocks with 7 predecessor(s): 65
+#23 20.74   Instrumented BasicBlocks with 8 predecessor(s): 38
+#23 20.74   Instrumented BasicBlocks with 9 predecessor(s): 35
+#23 20.74   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 20.74 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 20.74   Non-Instrumented BasicBlocks with 1 predecessor(s): 15146
+#23 20.74   Non-Instrumented BasicBlocks with 2 predecessor(s): 2184
+#23 20.74   Non-Instrumented BasicBlocks with 3 predecessor(s): 87
+#23 20.74   Non-Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 20.74   Non-Instrumented BasicBlocks with 5 predecessor(s): 12
+#23 20.74   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 20.74   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 20.74   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 20.74   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 20.74   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 20.74 Average Global Entropy: 2.05
+#23 20.74 =======================================
+#23 20.74 
+#23 21.49 
+#23 21.49 === AFL++ LTO Instrumentation Statistics ===
+#23 21.49 Total Basic Blocks: 84079
+#23 21.49 Instrumented Times: 0
+#23 21.49 Instrumented Basic Blocks: 13428
+#23 21.49 Instrumentation Ratio: 15.97%
+#23 21.49 Total Predecessors: 38605
+#23 21.49 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 21.49   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 21.49   Instrumented BasicBlocks with 2 predecessor(s): 9074
+#23 21.49   Instrumented BasicBlocks with 3 predecessor(s): 2212
+#23 21.49   Instrumented BasicBlocks with 4 predecessor(s): 874
+#23 21.49   Instrumented BasicBlocks with 5 predecessor(s): 431
+#23 21.49   Instrumented BasicBlocks with 6 predecessor(s): 280
+#23 21.49   Instrumented BasicBlocks with 7 predecessor(s): 142
+#23 21.49   Instrumented BasicBlocks with 8 predecessor(s): 83
+#23 21.49   Instrumented BasicBlocks with 9 predecessor(s): 72
+#23 21.49   Instrumented BasicBlocks with >=10 predecessors: 16
+#23 21.49 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 21.49   Non-Instrumented BasicBlocks with 1 predecessor(s): 39673
+#23 21.49   Non-Instrumented BasicBlocks with 2 predecessor(s): 5560
+#23 21.49   Non-Instrumented BasicBlocks with 3 predecessor(s): 241
+#23 21.49   Non-Instrumented BasicBlocks with 4 predecessor(s): 43
+#23 21.49   Non-Instrumented BasicBlocks with 5 predecessor(s): 18
+#23 21.49   Non-Instrumented BasicBlocks with 6 predecessor(s): 7
+#23 21.49   Non-Instrumented BasicBlocks with 7 predecessor(s): 4
+#23 21.49   Non-Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 21.49   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 21.49   Non-Instrumented BasicBlocks with >=10 predecessors: 16
+#23 21.49 Average Global Entropy: 2.17
+#23 21.49 =======================================
+#23 21.49 
+#23 27.98 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'
+#23 27.98 Making all in doc
+#23 27.99 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 27.99 Making all in .
+#23 27.99 make[3]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 27.99 make[3]: Nothing to be done for 'all-am'.
+#23 27.99 make[3]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 28.00 Making all in devhelp
+#23 28.00 make[3]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/devhelp'
+#23 28.00 make[3]: Nothing to be done for 'all'.
+#23 28.00 make[3]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/devhelp'
+#23 28.00 Making all in examples
+#23 28.00 make[3]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/examples'
+#23 28.00 make[3]: Nothing to be done for 'all'.
+#23 28.00 make[3]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc/examples'
+#23 28.00 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/doc'
+#23 28.00 Making all in example
+#23 28.01 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/example'
+#23 28.01 make[2]: Nothing to be done for 'all'.
+#23 28.01 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/example'
+#23 28.01 Making all in fuzz
+#23 28.01 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/fuzz'
+#23 28.01 make[2]: Nothing to be done for 'all'.
+#23 28.01 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/fuzz'
+#23 28.01 Making all in xstc
+#23 28.01 make[2]: Entering directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/xstc'
+#23 28.01 make[2]: Nothing to be done for 'all'.
+#23 28.01 make[2]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo/xstc'
+#23 28.01 make[1]: Leaving directory '/magma/targets/libxml2_xml_read_memory_fuzzer/repo'
+#23 28.28 ld.lld: warning: .libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 28.82 
+#23 28.82 === AFL++ LTO Instrumentation Statistics ===
+#23 28.82 Total Basic Blocks: 31465
+#23 28.82 Instrumented Times: 0
+#23 28.82 Instrumented Basic Blocks: 4969
+#23 28.82 Instrumentation Ratio: 15.79%
+#23 28.82 Total Predecessors: 14376
+#23 28.82 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 28.82   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 28.82   Instrumented BasicBlocks with 2 predecessor(s): 3319
+#23 28.82   Instrumented BasicBlocks with 3 predecessor(s): 859
+#23 28.82   Instrumented BasicBlocks with 4 predecessor(s): 326
+#23 28.82   Instrumented BasicBlocks with 5 predecessor(s): 136
+#23 28.82   Instrumented BasicBlocks with 6 predecessor(s): 105
+#23 28.82   Instrumented BasicBlocks with 7 predecessor(s): 64
+#23 28.82   Instrumented BasicBlocks with 8 predecessor(s): 37
+#23 28.82   Instrumented BasicBlocks with 9 predecessor(s): 33
+#23 28.82   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 28.82 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 28.82   Non-Instrumented BasicBlocks with 1 predecessor(s): 14494
+#23 28.82   Non-Instrumented BasicBlocks with 2 predecessor(s): 2031
+#23 28.82   Non-Instrumented BasicBlocks with 3 predecessor(s): 82
+#23 28.82   Non-Instrumented BasicBlocks with 4 predecessor(s): 15
+#23 28.82   Non-Instrumented BasicBlocks with 5 predecessor(s): 11
+#23 28.82   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 28.82   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 28.82   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 28.82   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 28.82   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 28.82 Average Global Entropy: 2.04
+#23 28.82 =======================================
+#23 28.82 
+#23 DONE 31.2s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 3.7s done
+#24 writing image sha256:10daa6d92e33ef6566c3a8205abe6dde4e508bd55180ae0796b4103f0d4d8a2f done
+#24 naming to docker.io/magma/aflplusplus_lto_entropy/libxml2_xml_read_memory_fuzzer done
+#24 DONE 3.7s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_lto_entropy/libxml2_xml_read_memory_fuzzer

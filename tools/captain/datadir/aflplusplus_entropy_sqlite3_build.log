@@ -1,0 +1,1290 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_entropy/sqlite3 --build-arg fuzzer_name=aflplusplus_entropy --build-arg target_name=sqlite3 --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.63kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 12.06MB 0.2s done
+#5 DONE 0.2s
+
+#6 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#6 CACHED
+
+#7 [12/19] RUN /magma/fuzzers/aflplusplus_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_entropy
+#7 CACHED
+
+#8 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#8 CACHED
+
+#9 [ 8/19] RUN /magma/magma/preinstall.sh
+#9 CACHED
+
+#10 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#10 CACHED
+
+#11 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#11 CACHED
+
+#12 [ 9/19] RUN /magma/magma/prebuild.sh
+#12 CACHED
+
+#13 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_entropy /magma/fuzzers/aflplusplus_entropy/
+#13 CACHED
+
+#14 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#14 CACHED
+
+#15 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#15 CACHED
+
+#16 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_entropy && chown magma:magma /magma/fuzzers/aflplusplus_entropy
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/sqlite3 && chown magma:magma /magma/targets/sqlite3
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/sqlite3 /magma/targets/sqlite3/
+#19 DONE 0.1s
+
+#20 [16/19] RUN /magma/targets/sqlite3/preinstall.sh
+#20 1.215 Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.216 Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.423 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.642 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.645 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.849 Reading package lists...
+#20 3.121 Reading package lists...
+#20 4.144 Building dependency tree...
+#20 4.292 Reading state information...
+#20 4.412 make is already the newest version (4.1-9.1ubuntu1).
+#20 4.412 zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2.2).
+#20 4.412 zlib1g-dev set to manually installed.
+#20 4.412 The following additional packages will be installed:
+#20 4.413   autotools-dev libltdl-dev libltdl7 libsigsegv2 libtcl8.6 m4 tcl8.6 tzdata
+#20 4.413 Suggested packages:
+#20 4.413   autoconf-archive gnu-standards autoconf-doc gettext libtool-doc gfortran
+#20 4.413   | fortran95-compiler gcj-jdk m4-doc tcl-tclreadline
+#20 4.477 The following NEW packages will be installed:
+#20 4.477   autoconf automake autotools-dev curl libltdl-dev libltdl7 libsigsegv2
+#20 4.478   libtcl8.6 libtool m4 tcl tcl8.6 tzdata
+#20 5.107 0 upgraded, 13 newly installed, 0 to remove and 1 not upgraded.
+#20 5.107 Need to get 2722 kB of archives.
+#20 5.107 After this operation, 14.2 MB of additional disk space will be used.
+#20 5.107 Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 tzdata all 2023c-0ubuntu0.18.04 [186 kB]
+#20 6.104 Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]
+#20 6.109 Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]
+#20 6.307 Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]
+#20 6.537 Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+#20 6.581 Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]
+#20 6.743 Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 curl amd64 7.58.0-2ubuntu3.24 [159 kB]
+#20 6.786 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl7 amd64 2.4.6-2 [38.8 kB]
+#20 6.791 Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl-dev amd64 2.4.6-2 [162 kB]
+#20 6.820 Get:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtcl8.6 amd64 8.6.8+dfsg-3 [881 kB]
+#20 6.965 Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]
+#20 6.993 Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 tcl8.6 amd64 8.6.8+dfsg-3 [14.4 kB]
+#20 6.998 Get:13 http://archive.ubuntu.com/ubuntu bionic/universe amd64 tcl amd64 8.6.0+9 [5146 B]
+#20 8.397 Preconfiguring packages ...
+#20 8.465 Fetched 2722 kB in 3s (1085 kB/s)
+#20 8.497 Selecting previously unselected package tzdata.
+#20 8.497 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22653 files and directories currently installed.)
+#20 8.510 Preparing to unpack .../00-tzdata_2023c-0ubuntu0.18.04_all.deb ...
+#20 8.510 Unpacking tzdata (2023c-0ubuntu0.18.04) ...
+#20 8.670 Selecting previously unselected package libsigsegv2:amd64.
+#20 8.672 Preparing to unpack .../01-libsigsegv2_2.12-1_amd64.deb ...
+#20 8.672 Unpacking libsigsegv2:amd64 (2.12-1) ...
+#20 8.686 Selecting previously unselected package m4.
+#20 8.687 Preparing to unpack .../02-m4_1.4.18-1_amd64.deb ...
+#20 8.687 Unpacking m4 (1.4.18-1) ...
+#20 8.720 Selecting previously unselected package autoconf.
+#20 8.722 Preparing to unpack .../03-autoconf_2.69-11_all.deb ...
+#20 8.722 Unpacking autoconf (2.69-11) ...
+#20 8.765 Selecting previously unselected package autotools-dev.
+#20 8.766 Preparing to unpack .../04-autotools-dev_20180224.1_all.deb ...
+#20 8.767 Unpacking autotools-dev (20180224.1) ...
+#20 8.782 Selecting previously unselected package automake.
+#20 8.784 Preparing to unpack .../05-automake_1%3a1.15.1-3ubuntu2_all.deb ...
+#20 8.785 Unpacking automake (1:1.15.1-3ubuntu2) ...
+#20 8.844 Selecting previously unselected package curl.
+#20 8.846 Preparing to unpack .../06-curl_7.58.0-2ubuntu3.24_amd64.deb ...
+#20 8.846 Unpacking curl (7.58.0-2ubuntu3.24) ...
+#20 8.881 Selecting previously unselected package libltdl7:amd64.
+#20 8.883 Preparing to unpack .../07-libltdl7_2.4.6-2_amd64.deb ...
+#20 8.883 Unpacking libltdl7:amd64 (2.4.6-2) ...
+#20 8.898 Selecting previously unselected package libltdl-dev:amd64.
+#20 8.900 Preparing to unpack .../08-libltdl-dev_2.4.6-2_amd64.deb ...
+#20 8.900 Unpacking libltdl-dev:amd64 (2.4.6-2) ...
+#20 8.932 Selecting previously unselected package libtcl8.6:amd64.
+#20 8.934 Preparing to unpack .../09-libtcl8.6_8.6.8+dfsg-3_amd64.deb ...
+#20 8.935 Unpacking libtcl8.6:amd64 (8.6.8+dfsg-3) ...
+#20 9.053 Selecting previously unselected package libtool.
+#20 9.056 Preparing to unpack .../10-libtool_2.4.6-2_all.deb ...
+#20 9.056 Unpacking libtool (2.4.6-2) ...
+#20 9.085 Selecting previously unselected package tcl8.6.
+#20 9.086 Preparing to unpack .../11-tcl8.6_8.6.8+dfsg-3_amd64.deb ...
+#20 9.087 Unpacking tcl8.6 (8.6.8+dfsg-3) ...
+#20 9.100 Selecting previously unselected package tcl.
+#20 9.101 Preparing to unpack .../12-tcl_8.6.0+9_amd64.deb ...
+#20 9.105 Unpacking tcl (8.6.0+9) ...
+#20 9.128 Setting up curl (7.58.0-2ubuntu3.24) ...
+#20 9.129 Setting up libsigsegv2:amd64 (2.12-1) ...
+#20 9.130 Setting up tzdata (2023c-0ubuntu0.18.04) ...
+#20 9.236 
+#20 9.236 Current default time zone: 'Etc/UTC'
+#20 9.238 Local time is now:      Tue Mar  4 07:14:43 UTC 2025.
+#20 9.238 Universal Time is now:  Tue Mar  4 07:14:43 UTC 2025.
+#20 9.238 Run 'dpkg-reconfigure tzdata' if you wish to change it.
+#20 9.238 
+#20 9.251 Setting up m4 (1.4.18-1) ...
+#20 9.252 Setting up autotools-dev (20180224.1) ...
+#20 9.253 Setting up libltdl7:amd64 (2.4.6-2) ...
+#20 9.254 Setting up libtcl8.6:amd64 (8.6.8+dfsg-3) ...
+#20 9.255 Setting up libtool (2.4.6-2) ...
+#20 9.256 Setting up libltdl-dev:amd64 (2.4.6-2) ...
+#20 9.257 Setting up autoconf (2.69-11) ...
+#20 9.258 Setting up tcl8.6 (8.6.8+dfsg-3) ...
+#20 9.262 Setting up automake (1:1.15.1-3ubuntu2) ...
+#20 9.265 update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode
+#20 9.266 update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist
+#20 9.266 update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist
+#20 9.267 Setting up tcl (8.6.0+9) ...
+#20 9.268 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#20 DONE 9.3s
+
+#21 [17/19] RUN /magma/targets/sqlite3/fetch.sh
+#21 0.526   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+#21 0.526                                  Dload  Upload   Total   Spent    Left  Speed
+#21 0.526   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0 10.9M    0 16384    0     0  12982      0  0:14:42  0:00:01  0:14:41 12972 12 10.9M   12 1344k    0     0   558k      0  0:00:20  0:00:02  0:00:18  558k 57 10.9M   57 6384k    0     0  1965k      0  0:00:05  0:00:03  0:00:02 1965k100 10.9M  100 10.9M    0     0  2808k      0  0:00:03  0:00:03 --:--:-- 2807k
+#21 DONE 5.5s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 1.289 Applying /magma/targets/sqlite3/patches/setup/tclexec-ignore-stderr.patch
+#22 1.291 patching file tool/mksqlite3h.tcl
+#22 1.291 Applying /magma/targets/sqlite3/patches/bugs/SQL004.patch
+#22 1.293 patching file ext/misc/zipfile.c
+#22 1.293 Hunk #1 succeeded at 1647 (offset 7 lines).
+#22 1.293 Hunk #2 succeeded at 2060 (offset 7 lines).
+#22 1.296 Applying /magma/targets/sqlite3/patches/bugs/SQL003.patch
+#22 1.298 patching file src/select.c
+#22 1.299 Hunk #1 succeeded at 4081 (offset 254 lines).
+#22 1.308 Applying /magma/targets/sqlite3/patches/bugs/SQL019.patch
+#22 1.308 patching file src/printf.c
+#22 1.308 Hunk #1 succeeded at 541 (offset 19 lines).
+#22 1.308 Hunk #2 succeeded at 608 (offset 19 lines).
+#22 1.308 Applying /magma/targets/sqlite3/patches/bugs/SQL008.patch
+#22 1.310 patching file src/shell.c.in
+#22 1.310 Hunk #1 succeeded at 3624 (offset 337 lines).
+#22 1.328 Applying /magma/targets/sqlite3/patches/bugs/SQL002.patch
+#22 1.332 patching file src/select.c
+#22 1.336 Hunk #1 succeeded at 5511 (offset 503 lines).
+#22 1.340 Applying /magma/targets/sqlite3/patches/bugs/SQL015.patch
+#22 1.340 patching file src/resolve.c
+#22 1.340 Hunk #1 succeeded at 188 (offset 6 lines).
+#22 1.340 Applying /magma/targets/sqlite3/patches/bugs/SQL018.patch
+#22 1.350 patching file src/expr.c
+#22 1.350 Hunk #1 succeeded at 98 (offset 7 lines).
+#22 1.355 Applying /magma/targets/sqlite3/patches/bugs/SQL020.patch
+#22 1.364 patching file src/window.c
+#22 1.364 Hunk #1 succeeded at 912 (offset 6 lines).
+#22 1.364 Applying /magma/targets/sqlite3/patches/bugs/SQL007.patch
+#22 1.372 patching file src/build.c
+#22 1.372 Hunk #1 succeeded at 2445 (offset 209 lines).
+#22 1.372 Applying /magma/targets/sqlite3/patches/bugs/SQL014.patch
+#22 1.380 patching file src/select.c
+#22 1.380 Hunk #1 succeeded at 2959 (offset 126 lines).
+#22 1.380 Applying /magma/targets/sqlite3/patches/bugs/SQL017.patch
+#22 1.381 patching file src/expr.c
+#22 1.381 Hunk #1 succeeded at 5688 with fuzz 1 (offset 174 lines).
+#22 1.381 patching file src/sqliteInt.h
+#22 1.381 Hunk #1 succeeded at 2246 (offset 93 lines).
+#22 1.382 Applying /magma/targets/sqlite3/patches/bugs/SQL012.patch
+#22 1.384 patching file src/pragma.c
+#22 1.386 Hunk #1 succeeded at 1677 (offset 32 lines).
+#22 1.386 Applying /magma/targets/sqlite3/patches/bugs/SQL013.patch
+#22 1.391 patching file src/where.c
+#22 1.391 Hunk #1 succeeded at 2838 (offset 77 lines).
+#22 1.391 Applying /magma/targets/sqlite3/patches/bugs/SQL001.patch
+#22 1.394 patching file ext/fts5/fts5_hash.c
+#22 1.395 Applying /magma/targets/sqlite3/patches/bugs/SQL011.patch
+#22 1.400 patching file ext/rtree/rtree.c
+#22 1.400 Hunk #1 succeeded at 3669 (offset 18 lines).
+#22 1.404 Applying /magma/targets/sqlite3/patches/bugs/SQL016.patch
+#22 1.404 patching file src/vdbe.c
+#22 1.404 Hunk #1 succeeded at 2154 with fuzz 1 (offset 22 lines).
+#22 1.408 Applying /magma/targets/sqlite3/patches/bugs/SQL006.patch
+#22 1.412 patching file src/select.c
+#22 1.412 Hunk #1 succeeded at 6688 (offset 565 lines).
+#22 1.416 Applying /magma/targets/sqlite3/patches/bugs/SQL009.patch
+#22 1.416 patching file src/vdbemem.c
+#22 1.416 Hunk #1 succeeded at 1239 (offset 13 lines).
+#22 1.416 Applying /magma/targets/sqlite3/patches/bugs/SQL010.patch
+#22 1.420 patching file src/whereexpr.c
+#22 1.420 Hunk #1 succeeded at 1431 (offset 10 lines).
+#22 1.440 Applying /magma/targets/sqlite3/patches/bugs/SQL005.patch
+#22 1.440 patching file ext/misc/zipfile.c
+#22 1.440 Hunk #1 succeeded at 1630 (offset 7 lines).
+#22 DONE 1.5s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_entropy/instrument.sh
+#23 0.661 
+#23 0.661 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.661 Total Basic Blocks: 19
+#23 0.661 Instrumented Times: 0
+#23 0.661 Instrumented Basic Blocks: 3
+#23 0.661 Instrumentation Ratio: 15.79%
+#23 0.661 Total Predecessors: 7
+#23 0.661 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.661   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.661   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.661   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.661 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.661   Non-Instrumented BasicBlocks with 1 predecessor(s): 8
+#23 0.661   Non-Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.661   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.661 =======================================
+#23 0.661 
+#23 0.722 
+#23 0.722 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.722 Total Basic Blocks: 40
+#23 0.722 Instrumented Times: 0
+#23 0.722 Instrumented Basic Blocks: 8
+#23 0.722 Instrumentation Ratio: 20.00%
+#23 0.722 Total Predecessors: 16
+#23 0.722 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.722   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 0.722   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.722 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.722   Non-Instrumented BasicBlocks with 1 predecessor(s): 21
+#23 0.722   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.722   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.722 =======================================
+#23 0.722 
+#23 0.964 checking build system type... x86_64-pc-linux-gnu
+#23 1.021 checking host system type... x86_64-pc-linux-gnu
+#23 1.021 checking for gcc... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast
+#23 1.205 checking whether the C compiler works... yes
+#23 1.335 checking for C compiler default output file name... a.out
+#23 1.338 checking for suffix of executables... 
+#23 1.446 checking whether we are cross compiling... no
+#23 1.565 checking for suffix of object files... o
+#23 1.617 checking whether we are using the GNU C compiler... yes
+#23 1.664 checking whether /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast accepts -g... yes
+#23 1.854 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to accept ISO C89... none needed
+#23 1.914 checking for a sed that does not truncate output... /bin/sed
+#23 1.919 checking for grep that handles long lines and -e... /bin/grep
+#23 1.923 checking for egrep... /bin/grep -E
+#23 1.925 checking for fgrep... /bin/grep -F
+#23 1.927 checking for ld used by /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... /usr/bin/ld
+#23 1.962 checking if the linker (/usr/bin/ld) is GNU ld... yes
+#23 1.965 checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm
+#23 1.965 checking the name lister (/usr/bin/nm) interface... BSD nm
+#23 2.062 checking whether ln -s works... yes
+#23 2.062 checking the maximum length of command line arguments... 1572864
+#23 2.070 checking whether the shell understands some XSI constructs... yes
+#23 2.070 checking whether the shell understands "+="... yes
+#23 2.080 checking for /usr/bin/ld option to reload object files... -r
+#23 2.080 checking for objdump... objdump
+#23 2.080 checking how to recognize dependent libraries... pass_all
+#23 2.086 checking for ar... /usr/bin/ar
+#23 2.086 checking for strip... strip
+#23 2.086 checking for ranlib... /usr/bin/ranlib
+#23 2.086 checking command to parse /usr/bin/nm output from /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast object... ok
+#23 2.319 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E
+#23 2.558 checking for ANSI C header files... yes
+#23 2.842 checking for sys/types.h... yes
+#23 2.954 checking for sys/stat.h... yes
+#23 3.034 checking for stdlib.h... yes
+#23 3.090 checking for string.h... yes
+#23 3.155 checking for memory.h... yes
+#23 3.234 checking for strings.h... yes
+#23 3.302 checking for inttypes.h... yes
+#23 3.386 checking for stdint.h... yes
+#23 3.471 checking for unistd.h... yes
+#23 3.557 checking for dlfcn.h... yes
+#23 3.626 checking for objdir... .libs
+#23 3.879 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -fno-rtti -fno-exceptions... yes
+#23 4.009 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to produce PIC... -fPIC -DPIC
+#23 4.009 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast PIC flag -fPIC -DPIC works... yes
+#23 4.056 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast static flag -static works... yes
+#23 4.276 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... yes
+#23 4.357 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... (cached) yes
+#23 4.357 checking whether the /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#23 4.442 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 4.672 checking how to hardcode library paths into programs... immediate
+#23 4.672 checking whether stripping libraries is possible... yes
+#23 4.674 checking if libtool supports shared libraries... yes
+#23 4.674 checking whether to build shared libraries... no
+#23 4.674 checking whether to build static libraries... yes
+#23 4.675 checking for a BSD-compatible install... /usr/bin/install -c
+#23 4.691 checking for special C compiler options needed for large files... no
+#23 4.691 checking for _FILE_OFFSET_BITS value needed for large files... no
+#23 4.746 checking for int8_t... yes
+#23 4.862 checking for int16_t... yes
+#23 5.032 checking for int32_t... yes
+#23 5.158 checking for int64_t... yes
+#23 5.301 checking for intptr_t... yes
+#23 5.497 checking for uint8_t... yes
+#23 5.694 checking for uint16_t... yes
+#23 5.842 checking for uint32_t... yes
+#23 6.054 checking for uint64_t... yes
+#23 6.190 checking for uintptr_t... yes
+#23 6.298 checking for sys/types.h... (cached) yes
+#23 6.314 checking for stdlib.h... (cached) yes
+#23 6.318 checking for stdint.h... (cached) yes
+#23 6.325 checking for inttypes.h... (cached) yes
+#23 6.332 checking malloc.h usability... yes
+#23 6.422 checking malloc.h presence... yes
+#23 6.470 checking for malloc.h... yes
+#23 6.478 checking for fdatasync... yes
+#23 6.590 checking for gmtime_r... yes
+#23 6.700 checking for isnan... yes
+#23 6.829 checking for localtime_r... yes
+#23 6.954 checking for localtime_s... no
+#23 7.178 checking for malloc_usable_size... yes
+#23 7.314 checking for strchrnul... yes
+#23 7.426 checking for usleep... yes
+#23 7.570 checking for utime... yes
+#23 7.694 checking for pread... yes
+#23 7.796 checking for pread64... yes
+#23 7.927 checking for pwrite... yes
+#23 8.115 checking for pwrite64... yes
+#23 8.225 checking for tclsh8.7... no
+#23 8.225 checking for tclsh8.6... tclsh8.6
+#23 8.235 configure: Version set to 3.37
+#23 8.236 configure: Release set to 3.37.0
+#23 8.237 checking whether to support threadsafe operation... yes
+#23 8.237 checking for library containing pthread_create... -lpthread
+#23 8.442 checking for library containing pthread_mutexattr_init... none required
+#23 8.539 checking whether to support shared library linked as release mode or not... no
+#23 8.539 checking whether to use an in-ram database for temporary tables... no
+#23 8.539 checking if executables have the .exe suffix... unknown
+#23 8.540 checking for Tcl configuration... configure: WARNING: Can't find Tcl configuration definitions
+#23 8.586 configure: WARNING: *** Without Tcl the regression tests cannot be executed ***
+#23 8.586 configure: WARNING: *** Consider using --with-tcl=... to define location of Tcl ***
+#23 8.586 checking for library containing readline... no
+#23 8.745 checking for library containing tgetent... -lncurses
+#23 8.978 checking for readline in -lreadline... no
+#23 9.043 checking readline.h usability... no
+#23 9.104 checking readline.h presence... no
+#23 9.147 checking for readline.h... no
+#23 9.150 checking for /usr/include/readline.h... no
+#23 9.154 checking for /usr/include/readline/readline.h... no
+#23 9.157 checking for /usr/local/include/readline.h... no
+#23 9.161 checking for /usr/local/include/readline/readline.h... no
+#23 9.165 checking for /usr/local/readline/include/readline.h... no
+#23 9.168 checking for /usr/local/readline/include/readline/readline.h... no
+#23 9.172 checking for /usr/contrib/include/readline.h... no
+#23 9.175 checking for /usr/contrib/include/readline/readline.h... no
+#23 9.178 checking for /mingw/include/readline.h... no
+#23 9.181 checking for /mingw/include/readline/readline.h... no
+#23 9.182 checking for library containing fdatasync... none required
+#23 9.288 checking build type... release
+#23 9.289 checking zlib.h usability... yes
+#23 9.348 checking zlib.h presence... yes
+#23 9.385 checking for zlib.h... yes
+#23 9.387 checking for library containing deflate... -lz
+#23 9.579 checking for library containing dlopen... -ldl
+#23 9.779 checking whether to support math functions... yes
+#23 9.779 checking for library containing ceil... -lm
+#23 9.993 checking whether to support MEMSYS5... no
+#23 9.993 checking whether to support MEMSYS3... no
+#23 9.993 checking whether to support FTS3... no
+#23 9.993 checking whether to support FTS4... no
+#23 9.994 checking whether to support FTS5... no
+#23 9.994 checking whether to support JSON... no
+#23 9.994 checking whether to support LIMIT on UPDATE and DELETE statements... no
+#23 9.994 checking whether to support GEOPOLY... no
+#23 9.994 checking whether to support RTREE... yes
+#23 9.994 checking whether to support SESSION... no
+#23 10.02 configure: creating ./config.status
+#23 10.55 config.status: creating Makefile
+#23 10.57 config.status: creating sqlite3.pc
+#23 10.58 config.status: creating config.h
+#23 10.59 config.status: executing libtool commands
+#23 10.64 rm -f *.lo *.la *.o sqlite3 libsqlite3.la
+#23 10.64 rm -f sqlite3.h opcodes.*
+#23 10.65 rm -rf .libs .deps
+#23 10.65 rm -f lemon lempar.c parse.* sqlite*.tar.gz
+#23 10.65 rm -f mkkeywordhash keywordhash.h
+#23 10.65 rm -f *.da *.bb *.bbg gmon.out
+#23 10.65 rm -rf tsrc .target_source
+#23 10.65 rm -f tclsqlite3
+#23 10.65 rm -f testfixture test.db
+#23 10.65 rm -f LogEst fts3view rollback-test showdb
+#23 10.65 rm -f showjournal showstat4 showwal speedtest1
+#23 10.66 rm -f wordcount changeset
+#23 10.66 rm -f sqlite3.dll sqlite3.lib sqlite3.exp sqlite3.def
+#23 10.66 rm -f sqlite3.c
+#23 10.66 rm -f sqlite3rc.h
+#23 10.66 rm -f shell.c sqlite3ext.h
+#23 10.66 rm -f sqlite3_analyzer sqlite3_analyzer.c
+#23 10.66 rm -f sqlite-*-output.vsix
+#23 10.66 rm -f mptester mptester.exe
+#23 10.66 rm -f rbu rbu.exe
+#23 10.66 rm -f srcck1 srcck1.exe
+#23 10.67 rm -f fuzzershell fuzzershell.exe
+#23 10.67 rm -f fuzzcheck fuzzcheck.exe
+#23 10.67 rm -f sqldiff sqldiff.exe
+#23 10.67 rm -f dbhash dbhash.exe
+#23 10.67 rm -f fts5.* fts5parse.*
+#23 10.67 rm -f threadtest5
+#23 10.68 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -o mksourceid /magma/targets/sqlite3/repo/tool/mksourceid.c
+#23 10.69 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -o mkkeywordhash -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  /magma/targets/sqlite3/repo/tool/mkkeywordhash.c
+#23 10.69 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -o lemon /magma/targets/sqlite3/repo/tool/lemon.c
+#23 10.69 tclsh8.6 /magma/targets/sqlite3/repo/tool/mkshellc.tcl >shell.c
+#23 10.76 
+#23 10.76 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 10.76 Total Basic Blocks: 253
+#23 10.76 Instrumented Times: 0
+#23 10.76 Instrumented Basic Blocks: 44
+#23 10.76 Instrumentation Ratio: 17.39%
+#23 10.76 Total Predecessors: 92
+#23 10.76 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 10.76   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 10.76   Instrumented BasicBlocks with 2 predecessor(s): 41
+#23 10.76   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 10.76   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 10.76   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 10.76   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 10.76   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.76   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 10.76   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.76   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 10.76 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 10.76   Non-Instrumented BasicBlocks with 1 predecessor(s): 147
+#23 10.76   Non-Instrumented BasicBlocks with 2 predecessor(s): 23
+#23 10.76   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 10.76   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 10.76   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 10.76   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 10.76   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.76   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 10.76   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.76   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 10.76 =======================================
+#23 10.76 
+#23 10.79 
+#23 10.79 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 10.79 Total Basic Blocks: 153
+#23 10.79 Instrumented Times: 0
+#23 10.79 Instrumented Basic Blocks: 19
+#23 10.79 Instrumentation Ratio: 12.42%
+#23 10.79 Total Predecessors: 40
+#23 10.79 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 10.79   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with 2 predecessor(s): 17
+#23 10.79   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 10.79   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.79   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 10.79 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 10.79   Non-Instrumented BasicBlocks with 1 predecessor(s): 84
+#23 10.79   Non-Instrumented BasicBlocks with 2 predecessor(s): 21
+#23 10.79   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.79   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 10.79 =======================================
+#23 10.79 
+#23 10.81 ./mkkeywordhash >keywordhash.h
+#23 10.86 tclsh8.6 /magma/targets/sqlite3/repo/tool/mksqlite3h.tcl /magma/targets/sqlite3/repo >sqlite3.h
+#23 10.86 
+#23 10.86 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 10.86 Total Basic Blocks: 3553
+#23 10.86 Instrumented Times: 0
+#23 10.86 Instrumented Basic Blocks: 570
+#23 10.86 Instrumentation Ratio: 16.04%
+#23 10.86 Total Predecessors: 1279
+#23 10.86 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 10.86   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 10.86   Instrumented BasicBlocks with 2 predecessor(s): 489
+#23 10.86   Instrumented BasicBlocks with 3 predecessor(s): 49
+#23 10.86   Instrumented BasicBlocks with 4 predecessor(s): 20
+#23 10.86   Instrumented BasicBlocks with 5 predecessor(s): 6
+#23 10.86   Instrumented BasicBlocks with 6 predecessor(s): 3
+#23 10.86   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.86   Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 10.86   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.86   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 10.86 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 10.86   Non-Instrumented BasicBlocks with 1 predecessor(s): 1885
+#23 10.86   Non-Instrumented BasicBlocks with 2 predecessor(s): 365
+#23 10.86   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 10.86   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 10.86   Non-Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 10.86   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 10.86   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.86   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 10.86   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.86   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 10.86 =======================================
+#23 10.86 
+#23 11.03 cp /magma/targets/sqlite3/repo/tool/lempar.c .
+#23 11.04 cp /magma/targets/sqlite3/repo/src/parse.y .
+#23 11.04 cp /magma/targets/sqlite3/repo/ext/fts5/fts5parse.y .
+#23 11.04 ./lemon -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -S parse.y
+#23 11.04 rm -f fts5parse.h
+#23 11.04 ./lemon  -S fts5parse.y
+#23 11.04 tclsh8.6 /magma/targets/sqlite3/repo/ext/fts5/tool/mkfts5c.tcl
+#23 11.13 cp /magma/targets/sqlite3/repo/ext/fts5/fts5.h .
+#23 11.14 cat parse.h /magma/targets/sqlite3/repo/src/vdbe.c | tclsh8.6 /magma/targets/sqlite3/repo/tool/mkopcodeh.tcl >opcodes.h
+#23 11.18 tclsh8.6 /magma/targets/sqlite3/repo/tool/mkopcodec.tcl opcodes.h >opcodes.c
+#23 12.98 rm -rf tsrc
+#23 12.98 mkdir tsrc
+#23 12.98 cp -f /magma/targets/sqlite3/repo/src/alter.c /magma/targets/sqlite3/repo/src/analyze.c /magma/targets/sqlite3/repo/src/attach.c /magma/targets/sqlite3/repo/src/auth.c /magma/targets/sqlite3/repo/src/backup.c /magma/targets/sqlite3/repo/src/bitvec.c /magma/targets/sqlite3/repo/src/btmutex.c /magma/targets/sqlite3/repo/src/btree.c /magma/targets/sqlite3/repo/src/btree.h /magma/targets/sqlite3/repo/src/btreeInt.h /magma/targets/sqlite3/repo/src/build.c /magma/targets/sqlite3/repo/src/callback.c /magma/targets/sqlite3/repo/src/complete.c /magma/targets/sqlite3/repo/src/ctime.c /magma/targets/sqlite3/repo/src/date.c /magma/targets/sqlite3/repo/src/dbpage.c /magma/targets/sqlite3/repo/src/dbstat.c /magma/targets/sqlite3/repo/src/delete.c /magma/targets/sqlite3/repo/src/expr.c /magma/targets/sqlite3/repo/src/fault.c /magma/targets/sqlite3/repo/src/fkey.c /magma/targets/sqlite3/repo/src/func.c /magma/targets/sqlite3/repo/src/global.c /magma/targets/sqlite3/repo/src/hash.c /magma/targets/sqlite3/repo/src/hash.h /magma/targets/sqlite3/repo/src/hwtime.h /magma/targets/sqlite3/repo/src/insert.c /magma/targets/sqlite3/repo/src/legacy.c /magma/targets/sqlite3/repo/src/loadext.c /magma/targets/sqlite3/repo/src/main.c /magma/targets/sqlite3/repo/src/malloc.c /magma/targets/sqlite3/repo/src/mem0.c /magma/targets/sqlite3/repo/src/mem1.c /magma/targets/sqlite3/repo/src/mem2.c /magma/targets/sqlite3/repo/src/mem3.c /magma/targets/sqlite3/repo/src/mem5.c /magma/targets/sqlite3/repo/src/memdb.c /magma/targets/sqlite3/repo/src/memjournal.c /magma/targets/sqlite3/repo/src/msvc.h /magma/targets/sqlite3/repo/src/mutex.c /magma/targets/sqlite3/repo/src/mutex.h /magma/targets/sqlite3/repo/src/mutex_noop.c /magma/targets/sqlite3/repo/src/mutex_unix.c /magma/targets/sqlite3/repo/src/mutex_w32.c /magma/targets/sqlite3/repo/src/notify.c /magma/targets/sqlite3/repo/src/os.c /magma/targets/sqlite3/repo/src/os.h /magma/targets/sqlite3/repo/src/os_common.h /magma/targets/sqlite3/repo/src/os_setup.h /magma/targets/sqlite3/repo/src/os_unix.c /magma/targets/sqlite3/repo/src/os_win.c /magma/targets/sqlite3/repo/src/os_win.h /magma/targets/sqlite3/repo/src/pager.c /magma/targets/sqlite3/repo/src/pager.h /magma/targets/sqlite3/repo/src/parse.y /magma/targets/sqlite3/repo/src/pcache.c /magma/targets/sqlite3/repo/src/pcache.h /magma/targets/sqlite3/repo/src/pcache1.c /magma/targets/sqlite3/repo/src/pragma.c /magma/targets/sqlite3/repo/src/pragma.h /magma/targets/sqlite3/repo/src/prepare.c /magma/targets/sqlite3/repo/src/printf.c /magma/targets/sqlite3/repo/src/random.c /magma/targets/sqlite3/repo/src/resolve.c /magma/targets/sqlite3/repo/src/rowset.c /magma/targets/sqlite3/repo/src/select.c /magma/targets/sqlite3/repo/src/status.c /magma/targets/sqlite3/repo/src/shell.c.in /magma/targets/sqlite3/repo/src/sqlite.h.in /magma/targets/sqlite3/repo/src/sqlite3ext.h /magma/targets/sqlite3/repo/src/sqliteInt.h /magma/targets/sqlite3/repo/src/sqliteLimit.h /magma/targets/sqlite3/repo/src/table.c /magma/targets/sqlite3/repo/src/tclsqlite.c /magma/targets/sqlite3/repo/src/threads.c /magma/targets/sqlite3/repo/src/tokenize.c /magma/targets/sqlite3/repo/src/treeview.c /magma/targets/sqlite3/repo/src/trigger.c /magma/targets/sqlite3/repo/src/utf.c /magma/targets/sqlite3/repo/src/update.c /magma/targets/sqlite3/repo/src/upsert.c /magma/targets/sqlite3/repo/src/util.c /magma/targets/sqlite3/repo/src/vacuum.c /magma/targets/sqlite3/repo/src/vdbe.c /magma/targets/sqlite3/repo/src/vdbe.h /magma/targets/sqlite3/repo/src/vdbeapi.c /magma/targets/sqlite3/repo/src/vdbeaux.c /magma/targets/sqlite3/repo/src/vdbeblob.c /magma/targets/sqlite3/repo/src/vdbemem.c /magma/targets/sqlite3/repo/src/vdbesort.c /magma/targets/sqlite3/repo/src/vdbetrace.c /magma/targets/sqlite3/repo/src/vdbevtab.c /magma/targets/sqlite3/repo/src/vdbeInt.h /magma/targets/sqlite3/repo/src/vtab.c /magma/targets/sqlite3/repo/src/vxworks.h /magma/targets/sqlite3/repo/src/wal.c /magma/targets/sqlite3/repo/src/wal.h /magma/targets/sqlite3/repo/src/walker.c /magma/targets/sqlite3/repo/src/where.c /magma/targets/sqlite3/repo/src/wherecode.c /magma/targets/sqlite3/repo/src/whereexpr.c /magma/targets/sqlite3/repo/src/whereInt.h /magma/targets/sqlite3/repo/src/window.c /magma/targets/sqlite3/repo/ext/fts1/fts1.c /magma/targets/sqlite3/repo/ext/fts1/fts1.h /magma/targets/sqlite3/repo/ext/fts1/fts1_hash.c /magma/targets/sqlite3/repo/ext/fts1/fts1_hash.h /magma/targets/sqlite3/repo/ext/fts1/fts1_porter.c /magma/targets/sqlite3/repo/ext/fts1/fts1_tokenizer.h /magma/targets/sqlite3/repo/ext/fts1/fts1_tokenizer1.c /magma/targets/sqlite3/repo/ext/fts2/fts2.c /magma/targets/sqlite3/repo/ext/fts2/fts2.h /magma/targets/sqlite3/repo/ext/fts2/fts2_hash.c /magma/targets/sqlite3/repo/ext/fts2/fts2_hash.h /magma/targets/sqlite3/repo/ext/fts2/fts2_icu.c /magma/targets/sqlite3/repo/ext/fts2/fts2_porter.c /magma/targets/sqlite3/repo/ext/fts2/fts2_tokenizer.h /magma/targets/sqlite3/repo/ext/fts2/fts2_tokenizer.c /magma/targets/sqlite3/repo/ext/fts2/fts2_tokenizer1.c /magma/targets/sqlite3/repo/ext/fts3/fts3.c /magma/targets/sqlite3/repo/ext/fts3/fts3.h /magma/targets/sqlite3/repo/ext/fts3/fts3Int.h /magma/targets/sqlite3/repo/ext/fts3/fts3_aux.c /magma/targets/sqlite3/repo/ext/fts3/fts3_expr.c /magma/targets/sqlite3/repo/ext/fts3/fts3_hash.c /magma/targets/sqlite3/repo/ext/fts3/fts3_hash.h /magma/targets/sqlite3/repo/ext/fts3/fts3_icu.c /magma/targets/sqlite3/repo/ext/fts3/fts3_porter.c /magma/targets/sqlite3/repo/ext/fts3/fts3_snippet.c /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenizer.h /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenizer.c /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenizer1.c /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenize_vtab.c /magma/targets/sqlite3/repo/ext/fts3/fts3_unicode.c /magma/targets/sqlite3/repo/ext/fts3/fts3_unicode2.c /magma/targets/sqlite3/repo/ext/fts3/fts3_write.c /magma/targets/sqlite3/repo/ext/icu/sqliteicu.h /magma/targets/sqlite3/repo/ext/icu/icu.c /magma/targets/sqlite3/repo/ext/rtree/rtree.h /magma/targets/sqlite3/repo/ext/rtree/rtree.c /magma/targets/sqlite3/repo/ext/rtree/geopoly.c /magma/targets/sqlite3/repo/ext/session/sqlite3session.c /magma/targets/sqlite3/repo/ext/session/sqlite3session.h /magma/targets/sqlite3/repo/ext/userauth/userauth.c /magma/targets/sqlite3/repo/ext/userauth/sqlite3userauth.h /magma/targets/sqlite3/repo/ext/rbu/sqlite3rbu.h /magma/targets/sqlite3/repo/ext/rbu/sqlite3rbu.c /magma/targets/sqlite3/repo/ext/misc/json1.c /magma/targets/sqlite3/repo/ext/misc/stmt.c keywordhash.h opcodes.c opcodes.h parse.c parse.h config.h shell.c sqlite3.h tsrc
+#23 13.00 rm tsrc/sqlite.h.in tsrc/parse.y
+#23 13.00 tclsh8.6 /magma/targets/sqlite3/repo/tool/vdbe-compress.tcl  <tsrc/vdbe.c >vdbe.new
+#23 13.02 mv vdbe.new tsrc/vdbe.c
+#23 13.02 cp fts5.c fts5.h tsrc
+#23 13.03 touch .target_source
+#23 13.03 tclsh8.6 /magma/targets/sqlite3/repo/tool/mksqlite3c.tcl
+#23 14.44 cp tsrc/sqlite3ext.h .
+#23 14.44 cp /magma/targets/sqlite3/repo/ext/session/sqlite3session.h .
+#23 14.44 ./libtool --mode=compile --tag=CC /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG  -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -DSQLITE_HAVE_ZLIB=1  -DSQLITE_TEMP_STORE=1 -c sqlite3.c
+#23 14.44 ./libtool --mode=link /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG  -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -DSQLITE_HAVE_ZLIB=1  -L/magma_out -g -L/magma_out/afl  -DHAVE_READLINE=0  -DHAVE_EDITLINE=0 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_OFFSET_SQL_FUNC -o sqlite3 \
+#23 14.44 	shell.c sqlite3.c \
+#23 14.44 	 -lm -ldl -lz -lpthread -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -rpath "/usr/local/lib"
+#23 14.45 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_TEMP_STORE=1 -c sqlite3.c -o sqlite3.o
+#23 14.51 libtool: link: /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE -DSQLITE_HAVE_ZLIB=1 -g -DHAVE_READLINE=0 -DHAVE_EDITLINE=0 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_OFFSET_SQL_FUNC -o sqlite3 shell.c sqlite3.c  -L/magma_out -L/magma_out/afl -lm -ldl -lz -lpthread -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -Wl,-rpath -Wl,/usr/local/lib
+#23 14.88 
+#23 14.88 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 14.88 Total Basic Blocks: 9922
+#23 14.88 Instrumented Times: 0
+#23 14.88 Instrumented Basic Blocks: 1568
+#23 14.88 Instrumentation Ratio: 15.80%
+#23 14.88 Total Predecessors: 3795
+#23 14.88 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 14.88   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 14.88   Instrumented BasicBlocks with 2 predecessor(s): 1237
+#23 14.88   Instrumented BasicBlocks with 3 predecessor(s): 211
+#23 14.88   Instrumented BasicBlocks with 4 predecessor(s): 69
+#23 14.88   Instrumented BasicBlocks with 5 predecessor(s): 21
+#23 14.88   Instrumented BasicBlocks with 6 predecessor(s): 13
+#23 14.88   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 14.88   Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 14.88   Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 14.88   Instrumented BasicBlocks with >=10 predecessors: 10
+#23 14.88 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 14.88   Non-Instrumented BasicBlocks with 1 predecessor(s): 4804
+#23 14.88   Non-Instrumented BasicBlocks with 2 predecessor(s): 1025
+#23 14.88   Non-Instrumented BasicBlocks with 3 predecessor(s): 25
+#23 14.88   Non-Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 14.88   Non-Instrumented BasicBlocks with 5 predecessor(s): 4
+#23 14.88   Non-Instrumented BasicBlocks with 6 predecessor(s): 3
+#23 14.88   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 14.88   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 14.88   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 14.88   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 14.88 =======================================
+#23 14.88 
+#23 16.50 
+#23 16.50 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 16.50 Total Basic Blocks: 62539
+#23 16.50 Instrumented Times: 0
+#23 16.50 Instrumented Basic Blocks: 8141
+#23 16.50 Instrumentation Ratio: 13.02%
+#23 16.50 Total Predecessors: 20449
+#23 16.50 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 16.50   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 16.50   Instrumented BasicBlocks with 2 predecessor(s): 6371
+#23 16.50   Instrumented BasicBlocks with 3 predecessor(s): 1102
+#23 16.50   Instrumented BasicBlocks with 4 predecessor(s): 320
+#23 16.50   Instrumented BasicBlocks with 5 predecessor(s): 130
+#23 16.50   Instrumented BasicBlocks with 6 predecessor(s): 71
+#23 16.50   Instrumented BasicBlocks with 7 predecessor(s): 45
+#23 16.50   Instrumented BasicBlocks with 8 predecessor(s): 32
+#23 16.50   Instrumented BasicBlocks with 9 predecessor(s): 18
+#23 16.50   Instrumented BasicBlocks with >=10 predecessors: 52
+#23 16.50 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 16.50   Non-Instrumented BasicBlocks with 1 predecessor(s): 34621
+#23 16.50   Non-Instrumented BasicBlocks with 2 predecessor(s): 4341
+#23 16.50   Non-Instrumented BasicBlocks with 3 predecessor(s): 169
+#23 16.50   Non-Instrumented BasicBlocks with 4 predecessor(s): 20
+#23 16.50   Non-Instrumented BasicBlocks with 5 predecessor(s): 6
+#23 16.50   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 16.50   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 16.50   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 16.50   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 16.50   Non-Instrumented BasicBlocks with >=10 predecessors: 6
+#23 16.50 =======================================
+#23 16.50 
+#23 17.73 
+#23 17.73 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 17.73 Total Basic Blocks: 73122
+#23 17.73 Instrumented Times: 0
+#23 17.73 Instrumented Basic Blocks: 9706
+#23 17.73 Instrumentation Ratio: 13.27%
+#23 17.73 Total Predecessors: 24209
+#23 17.73 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 17.73   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 17.73   Instrumented BasicBlocks with 2 predecessor(s): 7610
+#23 17.73   Instrumented BasicBlocks with 3 predecessor(s): 1310
+#23 17.73   Instrumented BasicBlocks with 4 predecessor(s): 383
+#23 17.73   Instrumented BasicBlocks with 5 predecessor(s): 150
+#23 17.73   Instrumented BasicBlocks with 6 predecessor(s): 87
+#23 17.73   Instrumented BasicBlocks with 7 predecessor(s): 48
+#23 17.73   Instrumented BasicBlocks with 8 predecessor(s): 36
+#23 17.73   Instrumented BasicBlocks with 9 predecessor(s): 22
+#23 17.73   Instrumented BasicBlocks with >=10 predecessors: 60
+#23 17.73 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 17.73   Non-Instrumented BasicBlocks with 1 predecessor(s): 40042
+#23 17.73   Non-Instrumented BasicBlocks with 2 predecessor(s): 5209
+#23 17.73   Non-Instrumented BasicBlocks with 3 predecessor(s): 201
+#23 17.73   Non-Instrumented BasicBlocks with 4 predecessor(s): 24
+#23 17.73   Non-Instrumented BasicBlocks with 5 predecessor(s): 9
+#23 17.73   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 17.73   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 17.73   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 17.73   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 17.73   Non-Instrumented BasicBlocks with >=10 predecessors: 8
+#23 17.73 =======================================
+#23 17.73 
+#23 18.82 ./libtool --mode=link /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG  -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -DSQLITE_HAVE_ZLIB=1  -L/magma_out -g -L/magma_out/afl  -no-undefined -o libsqlite3.la sqlite3.lo -lm -ldl -lz -lpthread -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a \
+#23 18.82 	 -rpath "/usr/local/lib" -version-info "8:6:8"
+#23 18.87 
+#23 18.87 *** Warning: Linking the shared library libsqlite3.la against the
+#23 18.87 *** static library /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 18.89 copying selected object files to avoid basename conflicts...
+#23 18.90 libtool: link: ln /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a .libs/libsqlite3.lax/lt1-libAFLDriver.a || cp /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a .libs/libsqlite3.lax/lt1-libAFLDriver.a
+#23 18.90 libtool: link: /usr/bin/ar cru .libs/libsqlite3.a /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a .libs/libsqlite3.lax/lt1-libAFLDriver.a sqlite3.o
+#23 18.90 /usr/bin/ar: `u' modifier ignored since `D' is the default (see `U')
+#23 18.94 libtool: link: /usr/bin/ranlib .libs/libsqlite3.a
+#23 18.97 libtool: link: rm -fr .libs/libsqlite3.lax
+#23 19.06 libtool: link: ( cd ".libs" && rm -f "libsqlite3.la" && ln -s "../libsqlite3.la" "libsqlite3.la" )
+#23 20.82 make: 'sqlite3.c' is up to date.
+#23 20.89 
+#23 20.89 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 20.89 Total Basic Blocks: 58
+#23 20.89 Instrumented Times: 0
+#23 20.89 Instrumented Basic Blocks: 7
+#23 20.89 Instrumentation Ratio: 12.07%
+#23 20.89 Total Predecessors: 17
+#23 20.89 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 20.89   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 20.89   Instrumented BasicBlocks with 2 predecessor(s): 5
+#23 20.89   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 20.89   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 20.89   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 20.89   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 20.89   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 20.89   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 20.89   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 20.89   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 20.89 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 20.89   Non-Instrumented BasicBlocks with 1 predecessor(s): 24
+#23 20.89   Non-Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 20.89   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 20.89   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 20.89 =======================================
+#23 20.89 
+#23 21.05 
+#23 21.05 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 21.05 Total Basic Blocks: 19
+#23 21.05 Instrumented Times: 0
+#23 21.05 Instrumented Basic Blocks: 3
+#23 21.05 Instrumentation Ratio: 15.79%
+#23 21.05 Total Predecessors: 7
+#23 21.05 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 21.05   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 21.05   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 21.05   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 21.05   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 21.05 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 21.05   Non-Instrumented BasicBlocks with 1 predecessor(s): 8
+#23 21.05   Non-Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 21.05   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 21.05   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 21.05 =======================================
+#23 21.05 
+#23 21.05 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 21.05 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 21.05 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 21.09 
+#23 21.09 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 21.09 Total Basic Blocks: 40
+#23 21.09 Instrumented Times: 0
+#23 21.09 Instrumented Basic Blocks: 8
+#23 21.09 Instrumentation Ratio: 20.00%
+#23 21.09 Total Predecessors: 16
+#23 21.09 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 21.09   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 21.09   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 21.09   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 21.09 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 21.09   Non-Instrumented BasicBlocks with 1 predecessor(s): 21
+#23 21.09   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 21.09   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 21.09   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 21.09 =======================================
+#23 21.09 
+#23 21.09 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 21.09 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 21.09 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 21.29 checking build system type... x86_64-pc-linux-gnu
+#23 21.35 checking host system type... x86_64-pc-linux-gnu
+#23 21.35 checking for gcc... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast
+#23 21.45 checking whether the C compiler works... yes
+#23 21.55 checking for C compiler default output file name... a.out
+#23 21.55 checking for suffix of executables... 
+#23 21.65 checking whether we are cross compiling... no
+#23 21.75 checking for suffix of object files... o
+#23 21.79 checking whether we are using the GNU C compiler... yes
+#23 21.83 checking whether /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast accepts -g... yes
+#23 21.96 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to accept ISO C89... none needed
+#23 22.01 checking for a sed that does not truncate output... /bin/sed
+#23 22.01 checking for grep that handles long lines and -e... /bin/grep
+#23 22.02 checking for egrep... /bin/grep -E
+#23 22.02 checking for fgrep... /bin/grep -F
+#23 22.02 checking for ld used by /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... /usr/bin/ld
+#23 22.05 checking if the linker (/usr/bin/ld) is GNU ld... yes
+#23 22.05 checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm
+#23 22.05 checking the name lister (/usr/bin/nm) interface... BSD nm
+#23 22.12 checking whether ln -s works... yes
+#23 22.12 checking the maximum length of command line arguments... 1572864
+#23 22.12 checking whether the shell understands some XSI constructs... yes
+#23 22.12 checking whether the shell understands "+="... yes
+#23 22.12 checking for /usr/bin/ld option to reload object files... -r
+#23 22.12 checking for objdump... objdump
+#23 22.12 checking how to recognize dependent libraries... pass_all
+#23 22.13 checking for ar... /usr/bin/ar
+#23 22.13 checking for strip... strip
+#23 22.13 checking for ranlib... /usr/bin/ranlib
+#23 22.13 checking command to parse /usr/bin/nm output from /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast object... ok
+#23 22.32 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E
+#23 22.46 checking for ANSI C header files... yes
+#23 22.69 checking for sys/types.h... yes
+#23 22.76 checking for sys/stat.h... yes
+#23 22.82 checking for stdlib.h... yes
+#23 22.87 checking for string.h... yes
+#23 22.93 checking for memory.h... yes
+#23 22.99 checking for strings.h... yes
+#23 23.04 checking for inttypes.h... yes
+#23 23.09 checking for stdint.h... yes
+#23 23.15 checking for unistd.h... yes
+#23 23.21 checking for dlfcn.h... yes
+#23 23.26 checking for objdir... .libs
+#23 23.41 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -fno-rtti -fno-exceptions... yes
+#23 23.45 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to produce PIC... -fPIC -DPIC
+#23 23.45 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast PIC flag -fPIC -DPIC works... yes
+#23 23.49 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast static flag -static works... yes
+#23 23.60 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... yes
+#23 23.65 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... (cached) yes
+#23 23.65 checking whether the /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#23 23.69 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 23.86 checking how to hardcode library paths into programs... immediate
+#23 23.86 checking whether stripping libraries is possible... yes
+#23 23.87 checking if libtool supports shared libraries... yes
+#23 23.87 checking whether to build shared libraries... no
+#23 23.87 checking whether to build static libraries... yes
+#23 23.87 checking for a BSD-compatible install... /usr/bin/install -c
+#23 23.88 checking for special C compiler options needed for large files... no
+#23 23.88 checking for _FILE_OFFSET_BITS value needed for large files... no
+#23 23.92 checking for int8_t... yes
+#23 24.03 checking for int16_t... yes
+#23 24.14 checking for int32_t... yes
+#23 24.26 checking for int64_t... yes
+#23 24.38 checking for intptr_t... yes
+#23 24.49 checking for uint8_t... yes
+#23 24.61 checking for uint16_t... yes
+#23 24.71 checking for uint32_t... yes
+#23 24.84 checking for uint64_t... yes
+#23 24.95 checking for uintptr_t... yes
+#23 25.07 checking for sys/types.h... (cached) yes
+#23 25.08 checking for stdlib.h... (cached) yes
+#23 25.09 checking for stdint.h... (cached) yes
+#23 25.10 checking for inttypes.h... (cached) yes
+#23 25.11 checking malloc.h usability... yes
+#23 25.16 checking malloc.h presence... yes
+#23 25.20 checking for malloc.h... yes
+#23 25.21 checking for fdatasync... yes
+#23 25.31 checking for gmtime_r... yes
+#23 25.47 checking for isnan... yes
+#23 25.58 checking for localtime_r... yes
+#23 25.67 checking for localtime_s... no
+#23 25.76 checking for malloc_usable_size... yes
+#23 25.86 checking for strchrnul... yes
+#23 25.96 checking for usleep... yes
+#23 26.06 checking for utime... yes
+#23 26.15 checking for pread... yes
+#23 26.26 checking for pread64... yes
+#23 26.36 checking for pwrite... yes
+#23 26.46 checking for pwrite64... yes
+#23 26.55 checking for tclsh8.7... no
+#23 26.55 checking for tclsh8.6... tclsh8.6
+#23 26.56 configure: Version set to 3.37
+#23 26.56 configure: Release set to 3.37.0
+#23 26.56 checking whether to support threadsafe operation... yes
+#23 26.56 checking for library containing pthread_create... -lpthread
+#23 26.73 checking for library containing pthread_mutexattr_init... none required
+#23 26.82 checking whether to support shared library linked as release mode or not... no
+#23 26.82 checking whether to use an in-ram database for temporary tables... no
+#23 26.82 checking if executables have the .exe suffix... unknown
+#23 26.82 checking for Tcl configuration... configure: WARNING: Can't find Tcl configuration definitions
+#23 26.87 configure: WARNING: *** Without Tcl the regression tests cannot be executed ***
+#23 26.87 configure: WARNING: *** Consider using --with-tcl=... to define location of Tcl ***
+#23 26.87 checking for library containing readline... no
+#23 27.02 checking for library containing tgetent... -lncurses
+#23 27.25 checking for readline in -lreadline... no
+#23 27.32 checking readline.h usability... no
+#23 27.37 checking readline.h presence... no
+#23 27.41 checking for readline.h... no
+#23 27.41 checking for /usr/include/readline.h... no
+#23 27.41 checking for /usr/include/readline/readline.h... no
+#23 27.42 checking for /usr/local/include/readline.h... no
+#23 27.42 checking for /usr/local/include/readline/readline.h... no
+#23 27.42 checking for /usr/local/readline/include/readline.h... no
+#23 27.43 checking for /usr/local/readline/include/readline/readline.h... no
+#23 27.43 checking for /usr/contrib/include/readline.h... no
+#23 27.43 checking for /usr/contrib/include/readline/readline.h... no
+#23 27.44 checking for /mingw/include/readline.h... no
+#23 27.44 checking for /mingw/include/readline/readline.h... no
+#23 27.44 checking for library containing fdatasync... none required
+#23 27.53 checking build type... release
+#23 27.53 checking zlib.h usability... yes
+#23 27.58 checking zlib.h presence... yes
+#23 27.61 checking for zlib.h... yes
+#23 27.61 checking for library containing deflate... -lz
+#23 27.79 checking for library containing dlopen... -ldl
+#23 27.94 checking whether to support math functions... yes
+#23 27.94 checking for library containing ceil... -lm
+#23 28.10 checking whether to support MEMSYS5... no
+#23 28.10 checking whether to support MEMSYS3... no
+#23 28.10 checking whether to support FTS3... no
+#23 28.10 checking whether to support FTS4... no
+#23 28.10 checking whether to support FTS5... no
+#23 28.10 checking whether to support JSON... no
+#23 28.10 checking whether to support LIMIT on UPDATE and DELETE statements... no
+#23 28.10 checking whether to support GEOPOLY... no
+#23 28.10 checking whether to support RTREE... yes
+#23 28.10 checking whether to support SESSION... no
+#23 28.13 configure: creating ./config.status
+#23 28.57 config.status: creating Makefile
+#23 28.58 config.status: creating sqlite3.pc
+#23 28.60 config.status: creating config.h
+#23 28.60 config.status: executing libtool commands
+#23 28.64 rm -f *.lo *.la *.o sqlite3 libsqlite3.la
+#23 28.65 rm -f sqlite3.h opcodes.*
+#23 28.65 rm -rf .libs .deps
+#23 28.65 rm -f lemon lempar.c parse.* sqlite*.tar.gz
+#23 28.65 rm -f mkkeywordhash keywordhash.h
+#23 28.65 rm -f *.da *.bb *.bbg gmon.out
+#23 28.65 rm -rf tsrc .target_source
+#23 28.65 rm -f tclsqlite3
+#23 28.65 rm -f testfixture test.db
+#23 28.65 rm -f LogEst fts3view rollback-test showdb
+#23 28.65 rm -f showjournal showstat4 showwal speedtest1
+#23 28.66 rm -f wordcount changeset
+#23 28.66 rm -f sqlite3.dll sqlite3.lib sqlite3.exp sqlite3.def
+#23 28.66 rm -f sqlite3.c
+#23 28.66 rm -f sqlite3rc.h
+#23 28.66 rm -f shell.c sqlite3ext.h
+#23 28.66 rm -f sqlite3_analyzer sqlite3_analyzer.c
+#23 28.66 rm -f sqlite-*-output.vsix
+#23 28.66 rm -f mptester mptester.exe
+#23 28.66 rm -f rbu rbu.exe
+#23 28.66 rm -f srcck1 srcck1.exe
+#23 28.66 rm -f fuzzershell fuzzershell.exe
+#23 28.66 rm -f fuzzcheck fuzzcheck.exe
+#23 28.67 rm -f sqldiff sqldiff.exe
+#23 28.67 rm -f dbhash dbhash.exe
+#23 28.67 rm -f fts5.* fts5parse.*
+#23 28.67 rm -f threadtest5
+#23 28.67 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -o mksourceid /magma/targets/sqlite3/repo/tool/mksourceid.c
+#23 28.68 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -o mkkeywordhash -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  /magma/targets/sqlite3/repo/tool/mkkeywordhash.c
+#23 28.68 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -o lemon /magma/targets/sqlite3/repo/tool/lemon.c
+#23 28.68 tclsh8.6 /magma/targets/sqlite3/repo/tool/mkshellc.tcl >shell.c
+#23 28.73 
+#23 28.73 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 28.73 Total Basic Blocks: 253
+#23 28.73 Instrumented Times: 0
+#23 28.73 Instrumented Basic Blocks: 44
+#23 28.73 Instrumentation Ratio: 17.39%
+#23 28.73 Total Predecessors: 92
+#23 28.73 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 28.73   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 28.73   Instrumented BasicBlocks with 2 predecessor(s): 41
+#23 28.73   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 28.73   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 28.73   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 28.73   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 28.73   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 28.73   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 28.73   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 28.73   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 28.73 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 28.73   Non-Instrumented BasicBlocks with 1 predecessor(s): 147
+#23 28.73   Non-Instrumented BasicBlocks with 2 predecessor(s): 23
+#23 28.73   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 28.73   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 28.73   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 28.73   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 28.73   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 28.73   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 28.73   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 28.73   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 28.73 =======================================
+#23 28.73 
+#23 28.73 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 28.73 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 28.73 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 28.75 
+#23 28.75 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 28.75 Total Basic Blocks: 153
+#23 28.75 Instrumented Times: 0
+#23 28.75 Instrumented Basic Blocks: 19
+#23 28.75 Instrumentation Ratio: 12.42%
+#23 28.75 Total Predecessors: 40
+#23 28.75 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 28.75   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with 2 predecessor(s): 17
+#23 28.75   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 28.75   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 28.75   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 28.75 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 28.75   Non-Instrumented BasicBlocks with 1 predecessor(s): 84
+#23 28.75   Non-Instrumented BasicBlocks with 2 predecessor(s): 21
+#23 28.75   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 28.75   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 28.75 =======================================
+#23 28.75 
+#23 28.75 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 28.75 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 28.75 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 28.78 ./mkkeywordhash >keywordhash.h
+#23 28.81 tclsh8.6 /magma/targets/sqlite3/repo/tool/mksqlite3h.tcl /magma/targets/sqlite3/repo >sqlite3.h
+#23 28.82 
+#23 28.82 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 28.82 Total Basic Blocks: 3802
+#23 28.82 Instrumented Times: 0
+#23 28.82 Instrumented Basic Blocks: 582
+#23 28.82 Instrumentation Ratio: 15.31%
+#23 28.82 Total Predecessors: 1394
+#23 28.82 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 28.82   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 28.82   Instrumented BasicBlocks with 2 predecessor(s): 492
+#23 28.82   Instrumented BasicBlocks with 3 predecessor(s): 49
+#23 28.82   Instrumented BasicBlocks with 4 predecessor(s): 20
+#23 28.82   Instrumented BasicBlocks with 5 predecessor(s): 6
+#23 28.82   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 28.82   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 28.82   Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 28.82   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 28.82   Instrumented BasicBlocks with >=10 predecessors: 8
+#23 28.82 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 28.82   Non-Instrumented BasicBlocks with 1 predecessor(s): 2041
+#23 28.82   Non-Instrumented BasicBlocks with 2 predecessor(s): 362
+#23 28.82   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 28.82   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 28.82   Non-Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 28.82   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 28.82   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 28.82   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 28.82   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 28.82   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 28.82 =======================================
+#23 28.82 
+#23 28.82 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 28.83 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 28.85 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 29.06 cp /magma/targets/sqlite3/repo/tool/lempar.c .
+#23 29.06 cp /magma/targets/sqlite3/repo/src/parse.y .
+#23 29.06 cp /magma/targets/sqlite3/repo/ext/fts5/fts5parse.y .
+#23 29.07 ./lemon -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -S parse.y
+#23 29.07 rm -f fts5parse.h
+#23 29.07 ./lemon  -S fts5parse.y
+#23 29.07 tclsh8.6 /magma/targets/sqlite3/repo/ext/fts5/tool/mkfts5c.tcl
+#23 29.17 cp /magma/targets/sqlite3/repo/ext/fts5/fts5.h .
+#23 29.19 cat parse.h /magma/targets/sqlite3/repo/src/vdbe.c | tclsh8.6 /magma/targets/sqlite3/repo/tool/mkopcodeh.tcl >opcodes.h
+#23 29.22 tclsh8.6 /magma/targets/sqlite3/repo/tool/mkopcodec.tcl opcodes.h >opcodes.c
+#23 30.82 rm -rf tsrc
+#23 30.82 mkdir tsrc
+#23 30.82 cp -f /magma/targets/sqlite3/repo/src/alter.c /magma/targets/sqlite3/repo/src/analyze.c /magma/targets/sqlite3/repo/src/attach.c /magma/targets/sqlite3/repo/src/auth.c /magma/targets/sqlite3/repo/src/backup.c /magma/targets/sqlite3/repo/src/bitvec.c /magma/targets/sqlite3/repo/src/btmutex.c /magma/targets/sqlite3/repo/src/btree.c /magma/targets/sqlite3/repo/src/btree.h /magma/targets/sqlite3/repo/src/btreeInt.h /magma/targets/sqlite3/repo/src/build.c /magma/targets/sqlite3/repo/src/callback.c /magma/targets/sqlite3/repo/src/complete.c /magma/targets/sqlite3/repo/src/ctime.c /magma/targets/sqlite3/repo/src/date.c /magma/targets/sqlite3/repo/src/dbpage.c /magma/targets/sqlite3/repo/src/dbstat.c /magma/targets/sqlite3/repo/src/delete.c /magma/targets/sqlite3/repo/src/expr.c /magma/targets/sqlite3/repo/src/fault.c /magma/targets/sqlite3/repo/src/fkey.c /magma/targets/sqlite3/repo/src/func.c /magma/targets/sqlite3/repo/src/global.c /magma/targets/sqlite3/repo/src/hash.c /magma/targets/sqlite3/repo/src/hash.h /magma/targets/sqlite3/repo/src/hwtime.h /magma/targets/sqlite3/repo/src/insert.c /magma/targets/sqlite3/repo/src/legacy.c /magma/targets/sqlite3/repo/src/loadext.c /magma/targets/sqlite3/repo/src/main.c /magma/targets/sqlite3/repo/src/malloc.c /magma/targets/sqlite3/repo/src/mem0.c /magma/targets/sqlite3/repo/src/mem1.c /magma/targets/sqlite3/repo/src/mem2.c /magma/targets/sqlite3/repo/src/mem3.c /magma/targets/sqlite3/repo/src/mem5.c /magma/targets/sqlite3/repo/src/memdb.c /magma/targets/sqlite3/repo/src/memjournal.c /magma/targets/sqlite3/repo/src/msvc.h /magma/targets/sqlite3/repo/src/mutex.c /magma/targets/sqlite3/repo/src/mutex.h /magma/targets/sqlite3/repo/src/mutex_noop.c /magma/targets/sqlite3/repo/src/mutex_unix.c /magma/targets/sqlite3/repo/src/mutex_w32.c /magma/targets/sqlite3/repo/src/notify.c /magma/targets/sqlite3/repo/src/os.c /magma/targets/sqlite3/repo/src/os.h /magma/targets/sqlite3/repo/src/os_common.h /magma/targets/sqlite3/repo/src/os_setup.h /magma/targets/sqlite3/repo/src/os_unix.c /magma/targets/sqlite3/repo/src/os_win.c /magma/targets/sqlite3/repo/src/os_win.h /magma/targets/sqlite3/repo/src/pager.c /magma/targets/sqlite3/repo/src/pager.h /magma/targets/sqlite3/repo/src/parse.y /magma/targets/sqlite3/repo/src/pcache.c /magma/targets/sqlite3/repo/src/pcache.h /magma/targets/sqlite3/repo/src/pcache1.c /magma/targets/sqlite3/repo/src/pragma.c /magma/targets/sqlite3/repo/src/pragma.h /magma/targets/sqlite3/repo/src/prepare.c /magma/targets/sqlite3/repo/src/printf.c /magma/targets/sqlite3/repo/src/random.c /magma/targets/sqlite3/repo/src/resolve.c /magma/targets/sqlite3/repo/src/rowset.c /magma/targets/sqlite3/repo/src/select.c /magma/targets/sqlite3/repo/src/status.c /magma/targets/sqlite3/repo/src/shell.c.in /magma/targets/sqlite3/repo/src/sqlite.h.in /magma/targets/sqlite3/repo/src/sqlite3ext.h /magma/targets/sqlite3/repo/src/sqliteInt.h /magma/targets/sqlite3/repo/src/sqliteLimit.h /magma/targets/sqlite3/repo/src/table.c /magma/targets/sqlite3/repo/src/tclsqlite.c /magma/targets/sqlite3/repo/src/threads.c /magma/targets/sqlite3/repo/src/tokenize.c /magma/targets/sqlite3/repo/src/treeview.c /magma/targets/sqlite3/repo/src/trigger.c /magma/targets/sqlite3/repo/src/utf.c /magma/targets/sqlite3/repo/src/update.c /magma/targets/sqlite3/repo/src/upsert.c /magma/targets/sqlite3/repo/src/util.c /magma/targets/sqlite3/repo/src/vacuum.c /magma/targets/sqlite3/repo/src/vdbe.c /magma/targets/sqlite3/repo/src/vdbe.h /magma/targets/sqlite3/repo/src/vdbeapi.c /magma/targets/sqlite3/repo/src/vdbeaux.c /magma/targets/sqlite3/repo/src/vdbeblob.c /magma/targets/sqlite3/repo/src/vdbemem.c /magma/targets/sqlite3/repo/src/vdbesort.c /magma/targets/sqlite3/repo/src/vdbetrace.c /magma/targets/sqlite3/repo/src/vdbevtab.c /magma/targets/sqlite3/repo/src/vdbeInt.h /magma/targets/sqlite3/repo/src/vtab.c /magma/targets/sqlite3/repo/src/vxworks.h /magma/targets/sqlite3/repo/src/wal.c /magma/targets/sqlite3/repo/src/wal.h /magma/targets/sqlite3/repo/src/walker.c /magma/targets/sqlite3/repo/src/where.c /magma/targets/sqlite3/repo/src/wherecode.c /magma/targets/sqlite3/repo/src/whereexpr.c /magma/targets/sqlite3/repo/src/whereInt.h /magma/targets/sqlite3/repo/src/window.c /magma/targets/sqlite3/repo/ext/fts1/fts1.c /magma/targets/sqlite3/repo/ext/fts1/fts1.h /magma/targets/sqlite3/repo/ext/fts1/fts1_hash.c /magma/targets/sqlite3/repo/ext/fts1/fts1_hash.h /magma/targets/sqlite3/repo/ext/fts1/fts1_porter.c /magma/targets/sqlite3/repo/ext/fts1/fts1_tokenizer.h /magma/targets/sqlite3/repo/ext/fts1/fts1_tokenizer1.c /magma/targets/sqlite3/repo/ext/fts2/fts2.c /magma/targets/sqlite3/repo/ext/fts2/fts2.h /magma/targets/sqlite3/repo/ext/fts2/fts2_hash.c /magma/targets/sqlite3/repo/ext/fts2/fts2_hash.h /magma/targets/sqlite3/repo/ext/fts2/fts2_icu.c /magma/targets/sqlite3/repo/ext/fts2/fts2_porter.c /magma/targets/sqlite3/repo/ext/fts2/fts2_tokenizer.h /magma/targets/sqlite3/repo/ext/fts2/fts2_tokenizer.c /magma/targets/sqlite3/repo/ext/fts2/fts2_tokenizer1.c /magma/targets/sqlite3/repo/ext/fts3/fts3.c /magma/targets/sqlite3/repo/ext/fts3/fts3.h /magma/targets/sqlite3/repo/ext/fts3/fts3Int.h /magma/targets/sqlite3/repo/ext/fts3/fts3_aux.c /magma/targets/sqlite3/repo/ext/fts3/fts3_expr.c /magma/targets/sqlite3/repo/ext/fts3/fts3_hash.c /magma/targets/sqlite3/repo/ext/fts3/fts3_hash.h /magma/targets/sqlite3/repo/ext/fts3/fts3_icu.c /magma/targets/sqlite3/repo/ext/fts3/fts3_porter.c /magma/targets/sqlite3/repo/ext/fts3/fts3_snippet.c /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenizer.h /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenizer.c /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenizer1.c /magma/targets/sqlite3/repo/ext/fts3/fts3_tokenize_vtab.c /magma/targets/sqlite3/repo/ext/fts3/fts3_unicode.c /magma/targets/sqlite3/repo/ext/fts3/fts3_unicode2.c /magma/targets/sqlite3/repo/ext/fts3/fts3_write.c /magma/targets/sqlite3/repo/ext/icu/sqliteicu.h /magma/targets/sqlite3/repo/ext/icu/icu.c /magma/targets/sqlite3/repo/ext/rtree/rtree.h /magma/targets/sqlite3/repo/ext/rtree/rtree.c /magma/targets/sqlite3/repo/ext/rtree/geopoly.c /magma/targets/sqlite3/repo/ext/session/sqlite3session.c /magma/targets/sqlite3/repo/ext/session/sqlite3session.h /magma/targets/sqlite3/repo/ext/userauth/userauth.c /magma/targets/sqlite3/repo/ext/userauth/sqlite3userauth.h /magma/targets/sqlite3/repo/ext/rbu/sqlite3rbu.h /magma/targets/sqlite3/repo/ext/rbu/sqlite3rbu.c /magma/targets/sqlite3/repo/ext/misc/json1.c /magma/targets/sqlite3/repo/ext/misc/stmt.c keywordhash.h opcodes.c opcodes.h parse.c parse.h config.h shell.c sqlite3.h tsrc
+#23 30.84 rm tsrc/sqlite.h.in tsrc/parse.y
+#23 30.84 tclsh8.6 /magma/targets/sqlite3/repo/tool/vdbe-compress.tcl  <tsrc/vdbe.c >vdbe.new
+#23 30.87 mv vdbe.new tsrc/vdbe.c
+#23 30.87 cp fts5.c fts5.h tsrc
+#23 30.87 touch .target_source
+#23 30.87 tclsh8.6 /magma/targets/sqlite3/repo/tool/mksqlite3c.tcl
+#23 32.39 cp tsrc/sqlite3ext.h .
+#23 32.39 cp /magma/targets/sqlite3/repo/ext/session/sqlite3session.h .
+#23 32.39 ./libtool --mode=compile --tag=CC /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG  -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -DSQLITE_HAVE_ZLIB=1  -DSQLITE_TEMP_STORE=1 -c sqlite3.c
+#23 32.39 ./libtool --mode=link /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG  -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -DSQLITE_HAVE_ZLIB=1  -L/magma_out -g -L/magma_out/cmplog  -DHAVE_READLINE=0  -DHAVE_EDITLINE=0 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_OFFSET_SQL_FUNC -o sqlite3 \
+#23 32.39 	shell.c sqlite3.c \
+#23 32.39 	 -lm -ldl -lz -lpthread -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -rpath "/usr/local/lib"
+#23 32.41 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_TEMP_STORE=1 -c sqlite3.c -o sqlite3.o
+#23 32.47 libtool: link: /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE -DSQLITE_HAVE_ZLIB=1 -g -DHAVE_READLINE=0 -DHAVE_EDITLINE=0 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_OFFSET_SQL_FUNC -o sqlite3 shell.c sqlite3.c  -L/magma_out -L/magma_out/cmplog -lm -ldl -lz -lpthread -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -Wl,-rpath -Wl,/usr/local/lib
+#23 32.86 
+#23 32.86 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 32.86 Total Basic Blocks: 10709
+#23 32.86 Instrumented Times: 0
+#23 32.86 Instrumented Basic Blocks: 1609
+#23 32.86 Instrumentation Ratio: 15.02%
+#23 32.86 Total Predecessors: 4136
+#23 32.86 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 32.86   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 32.86   Instrumented BasicBlocks with 2 predecessor(s): 1239
+#23 32.86   Instrumented BasicBlocks with 3 predecessor(s): 209
+#23 32.86   Instrumented BasicBlocks with 4 predecessor(s): 71
+#23 32.86   Instrumented BasicBlocks with 5 predecessor(s): 27
+#23 32.86   Instrumented BasicBlocks with 6 predecessor(s): 22
+#23 32.86   Instrumented BasicBlocks with 7 predecessor(s): 6
+#23 32.86   Instrumented BasicBlocks with 8 predecessor(s): 10
+#23 32.86   Instrumented BasicBlocks with 9 predecessor(s): 4
+#23 32.86   Instrumented BasicBlocks with >=10 predecessors: 21
+#23 32.86 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 32.86   Non-Instrumented BasicBlocks with 1 predecessor(s): 5276
+#23 32.86   Non-Instrumented BasicBlocks with 2 predecessor(s): 1023
+#23 32.86   Non-Instrumented BasicBlocks with 3 predecessor(s): 27
+#23 32.86   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 32.86   Non-Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 32.86   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 32.86   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 32.86   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 32.86   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 32.86   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 32.86 =======================================
+#23 32.86 
+#23 32.86 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 32.90 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 32.95 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 34.45 
+#23 34.45 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 34.45 Total Basic Blocks: 66745
+#23 34.45 Instrumented Times: 0
+#23 34.45 Instrumented Basic Blocks: 8289
+#23 34.45 Instrumentation Ratio: 12.42%
+#23 34.45 Total Predecessors: 22174
+#23 34.45 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 34.45   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 34.45   Instrumented BasicBlocks with 2 predecessor(s): 6418
+#23 34.45   Instrumented BasicBlocks with 3 predecessor(s): 1102
+#23 34.45   Instrumented BasicBlocks with 4 predecessor(s): 323
+#23 34.45   Instrumented BasicBlocks with 5 predecessor(s): 153
+#23 34.45   Instrumented BasicBlocks with 6 predecessor(s): 80
+#23 34.45   Instrumented BasicBlocks with 7 predecessor(s): 61
+#23 34.45   Instrumented BasicBlocks with 8 predecessor(s): 38
+#23 34.45   Instrumented BasicBlocks with 9 predecessor(s): 25
+#23 34.45   Instrumented BasicBlocks with >=10 predecessors: 89
+#23 34.45 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 34.45   Non-Instrumented BasicBlocks with 1 predecessor(s): 37263
+#23 34.45   Non-Instrumented BasicBlocks with 2 predecessor(s): 4294
+#23 34.45   Non-Instrumented BasicBlocks with 3 predecessor(s): 169
+#23 34.45   Non-Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 34.45   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 34.45   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 34.45   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 34.45   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 34.45   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 34.45   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 34.45 =======================================
+#23 34.45 
+#23 34.47 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 34.69 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 35.04 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 36.05 
+#23 36.05 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 36.05 Total Basic Blocks: 77981
+#23 36.05 Instrumented Times: 0
+#23 36.05 Instrumented Basic Blocks: 9893
+#23 36.05 Instrumentation Ratio: 12.69%
+#23 36.05 Total Predecessors: 26230
+#23 36.05 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 36.05   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 36.05   Instrumented BasicBlocks with 2 predecessor(s): 7660
+#23 36.05   Instrumented BasicBlocks with 3 predecessor(s): 1312
+#23 36.05   Instrumented BasicBlocks with 4 predecessor(s): 386
+#23 36.05   Instrumented BasicBlocks with 5 predecessor(s): 181
+#23 36.05   Instrumented BasicBlocks with 6 predecessor(s): 99
+#23 36.05   Instrumented BasicBlocks with 7 predecessor(s): 73
+#23 36.05   Instrumented BasicBlocks with 8 predecessor(s): 44
+#23 36.05   Instrumented BasicBlocks with 9 predecessor(s): 29
+#23 36.05   Instrumented BasicBlocks with >=10 predecessors: 109
+#23 36.05 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 36.05   Non-Instrumented BasicBlocks with 1 predecessor(s): 43068
+#23 36.05   Non-Instrumented BasicBlocks with 2 predecessor(s): 5159
+#23 36.05   Non-Instrumented BasicBlocks with 3 predecessor(s): 199
+#23 36.05   Non-Instrumented BasicBlocks with 4 predecessor(s): 21
+#23 36.05   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 36.05   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 36.05   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 36.05   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 36.05   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 36.05   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 36.05 =======================================
+#23 36.05 
+#23 36.07 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 36.34 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 36.75 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 38.18 ./libtool --mode=link /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -DSQLITE_MAX_LENGTH=128000000 -DSQLITE_MAX_SQL_LENGTH=128000000 -DSQLITE_MAX_MEMORY=25000000 -DSQLITE_PRINTF_PRECISION_LIMIT=1048576 -DSQLITE_DEBUG=1 -DSQLITE_MAX_PAGE_COUNT=16384 -DSQLITE_OS_UNIX=1 -I. -I/magma/targets/sqlite3/repo/src -I/magma/targets/sqlite3/repo/ext/rtree -I/magma/targets/sqlite3/repo/ext/icu -I/magma/targets/sqlite3/repo/ext/fts3 -I/magma/targets/sqlite3/repo/ext/async -I/magma/targets/sqlite3/repo/ext/session -I/magma/targets/sqlite3/repo/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG  -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_RTREE  -DSQLITE_HAVE_ZLIB=1  -L/magma_out -g -L/magma_out/cmplog  -no-undefined -o libsqlite3.la sqlite3.lo -lm -ldl -lz -lpthread -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a \
+#23 38.18 	 -rpath "/usr/local/lib" -version-info "8:6:8"
+#23 38.22 
+#23 38.22 *** Warning: Linking the shared library libsqlite3.la against the
+#23 38.22 *** static library /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 38.24 copying selected object files to avoid basename conflicts...
+#23 38.25 libtool: link: ln /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a .libs/libsqlite3.lax/lt1-libAFLDriver.a || cp /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a .libs/libsqlite3.lax/lt1-libAFLDriver.a
+#23 38.25 libtool: link: /usr/bin/ar cru .libs/libsqlite3.a /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a .libs/libsqlite3.lax/lt1-libAFLDriver.a sqlite3.o
+#23 38.25 /usr/bin/ar: `u' modifier ignored since `D' is the default (see `U')
+#23 38.31 libtool: link: /usr/bin/ranlib .libs/libsqlite3.a
+#23 38.35 libtool: link: rm -fr .libs/libsqlite3.lax
+#23 38.44 libtool: link: ( cd ".libs" && rm -f "libsqlite3.la" && ln -s "../libsqlite3.la" "libsqlite3.la" )
+#23 40.72 make: 'sqlite3.c' is up to date.
+#23 40.77 
+#23 40.77 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 40.77 Total Basic Blocks: 58
+#23 40.77 Instrumented Times: 0
+#23 40.77 Instrumented Basic Blocks: 7
+#23 40.77 Instrumentation Ratio: 12.07%
+#23 40.77 Total Predecessors: 17
+#23 40.77 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 40.77   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 40.77   Instrumented BasicBlocks with 2 predecessor(s): 5
+#23 40.77   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 40.77   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 40.77   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 40.77   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 40.77   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 40.77   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 40.77   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 40.77   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 40.77 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 40.77   Non-Instrumented BasicBlocks with 1 predecessor(s): 24
+#23 40.77   Non-Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 40.77   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 40.77   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 40.77 =======================================
+#23 40.77 
+#23 40.77 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 40.77 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 40.77 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 DONE 40.9s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 0.3s done
+#24 writing image sha256:3af72c16628782fd04a09427a0b23b2f61d4b507d1dc3d7bd3efb159270fa094 done
+#24 naming to docker.io/magma/aflplusplus_entropy/sqlite3 done
+#24 DONE 0.3s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 95)
++ set +x
+magma/aflplusplus_entropy/sqlite3

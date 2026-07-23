@@ -1,0 +1,2 @@
+fuzzer_name,target,program,Total_Basic_Blocks,Instrumented_Basic_Blocks,Instrumentation_Ratio,Total_Predecessors,Instr_Pred_1,NonInstr_Pred_1,Instr_Pred_2,NonInstr_Pred_2,Instr_Pred_3,NonInstr_Pred_3,Instr_Pred_4,NonInstr_Pred_4,Instr_Pred_5,NonInstr_Pred_5,Instr_Pred_6,NonInstr_Pred_6,Instr_Pred_7,NonInstr_Pred_7,Instr_Pred_8,NonInstr_Pred_8,Instr_Pred_9,NonInstr_Pred_9,Instr_Pred_10plus,NonInstr_Pred_10plus
+aflplusplus_lto_entropy,libpng,libpng,12921,2977,23.04,6618,0,2762,5255,3006,1307,138,468,23,213,10,175,2,93,2,51,2,45,1,5,5

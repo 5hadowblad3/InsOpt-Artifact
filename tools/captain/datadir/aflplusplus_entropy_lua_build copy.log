@@ -1,0 +1,1427 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_entropy/lua --build-arg fuzzer_name=aflplusplus_entropy --build-arg target_name=lua --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 537.10kB 0.1s done
+#5 DONE 0.1s
+
+#6 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_entropy /magma/fuzzers/aflplusplus_entropy/
+#6 CACHED
+
+#7 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#7 CACHED
+
+#8 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#8 CACHED
+
+#9 [12/19] RUN /magma/fuzzers/aflplusplus_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_entropy
+#9 CACHED
+
+#10 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#10 CACHED
+
+#11 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#11 CACHED
+
+#12 [ 8/19] RUN /magma/magma/preinstall.sh
+#12 CACHED
+
+#13 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#13 CACHED
+
+#14 [ 9/19] RUN /magma/magma/prebuild.sh
+#14 CACHED
+
+#15 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#15 CACHED
+
+#16 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_entropy && chown magma:magma /magma/fuzzers/aflplusplus_entropy
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/lua && chown magma:magma /magma/targets/lua
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/lua /magma/targets/lua/
+#19 DONE 0.0s
+
+#20 [16/19] RUN /magma/targets/lua/preinstall.sh
+#20 1.350 Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.350 Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.558 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.641 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.779 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.877 Reading package lists...
+#20 3.417 Reading package lists...
+#20 4.810 Building dependency tree...
+#20 5.014 Reading state information...
+#20 5.159 make is already the newest version (4.1-9.1ubuntu1).
+#20 5.159 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 5.159 Suggested packages:
+#20 5.159   readline-doc
+#20 5.180 The following NEW packages will be installed:
+#20 5.180   libreadline-dev
+#20 5.817 0 upgraded, 1 newly installed, 0 to remove and 1 not upgraded.
+#20 5.817 Need to get 133 kB of archives.
+#20 5.817 After this operation, 728 kB of additional disk space will be used.
+#20 5.817 Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libreadline-dev amd64 7.0-3 [133 kB]
+#20 6.737 debconf: unable to initialize frontend: Dialog
+#20 6.737 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 6.737 debconf: falling back to frontend: Readline
+#20 6.748 debconf: unable to initialize frontend: Readline
+#20 6.748 debconf: (This frontend requires a controlling tty.)
+#20 6.748 debconf: falling back to frontend: Teletype
+#20 6.757 dpkg-preconfigure: unable to re-open stdin: 
+#20 6.783 Fetched 133 kB in 1s (96.1 kB/s)
+#20 6.800 Selecting previously unselected package libreadline-dev:amd64.
+#20 6.800 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22653 files and directories currently installed.)
+#20 6.813 Preparing to unpack .../libreadline-dev_7.0-3_amd64.deb ...
+#20 6.814 Unpacking libreadline-dev:amd64 (7.0-3) ...
+#20 6.850 Setting up libreadline-dev:amd64 (7.0-3) ...
+#20 DONE 6.9s
+
+#21 [17/19] RUN /magma/targets/lua/fetch.sh
+#21 0.590 Cloning into '/magma/targets/lua/repo'...
+#21 11.09 Note: checking out 'dbdc74dc5502c2e05e1c1e2ac894943f418c8431'.
+#21 11.09 
+#21 11.09 You are in 'detached HEAD' state. You can look around, make experimental
+#21 11.09 changes and commit them, and you can discard any commits you make in this
+#21 11.09 state without impacting any branches by performing another checkout.
+#21 11.09 
+#21 11.09 If you want to create a new branch to retain commits you create, you may
+#21 11.09 do so (now or later) by using -b with the checkout command again. Example:
+#21 11.09 
+#21 11.09   git checkout -b <new-branch-name>
+#21 11.09 
+#21 11.09 HEAD is now at dbdc74dc Simplification in the parameters of 'luaD_precall'
+#21 DONE 11.1s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.558 Applying /magma/targets/lua/patches/setup/lua.patch
+#22 0.563 patching file makefile
+#22 0.563 Applying /magma/targets/lua/patches/bugs/LUA004.patch
+#22 0.567 patching file ldebug.c
+#22 0.567 Hunk #1 succeeded at 133 (offset 3 lines).
+#22 0.567 Hunk #2 succeeded at 863 (offset 29 lines).
+#22 0.567 Hunk #3 succeeded at 887 (offset 29 lines).
+#22 0.567 patching file ldo.c
+#22 0.567 patching file lstate.c
+#22 0.567 patching file lstate.h
+#22 0.568 patching file lvm.c
+#22 0.570 Hunk #1 succeeded at 1819 (offset -1 lines).
+#22 0.572 Applying /magma/targets/lua/patches/bugs/LUA003.patch
+#22 0.573 patching file liolib.c
+#22 0.573 Applying /magma/targets/lua/patches/bugs/LUA002.patch
+#22 0.575 patching file ldebug.c
+#22 0.576 Hunk #1 succeeded at 828 (offset 33 lines).
+#22 0.576 Applying /magma/targets/lua/patches/bugs/LUA001.patch
+#22 0.578 patching file ldebug.c
+#22 0.578 Hunk #1 succeeded at 188 (offset 7 lines).
+#22 0.578 Hunk #2 succeeded at 210 (offset 7 lines).
+#22 DONE 0.6s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_entropy/Calculate.sh
+#23 0.548 
+#23 0.548 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.548 Total Basic Blocks: 19
+#23 0.548 Instrumented Times: 0
+#23 0.548 Instrumented Basic Blocks: 3
+#23 0.548 Instrumentation Ratio: 15.79%
+#23 0.548 Total Predecessors: 7
+#23 0.548 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.548   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.548   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.548   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.548   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.548 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.548   Non-Instrumented BasicBlocks with 1 predecessor(s): 8
+#23 0.548   Non-Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.548   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.548   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.548 =======================================
+#23 0.548 
+#23 0.601 
+#23 0.601 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.601 Total Basic Blocks: 40
+#23 0.601 Instrumented Times: 0
+#23 0.601 Instrumented Basic Blocks: 8
+#23 0.601 Instrumentation Ratio: 20.00%
+#23 0.601 Total Predecessors: 16
+#23 0.601 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.601   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 0.601   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.601   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.601 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.601   Non-Instrumented BasicBlocks with 1 predecessor(s): 21
+#23 0.601   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.601   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.601   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.601 =======================================
+#23 0.601 
+#23 0.619 rm -f liblua.a lua lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o ltests.o lua.o lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o lstrlib.o lutf8lib.o loadlib.o lcorolib.o linit.o
+#23 0.624 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lapi.o lapi.c
+#23 0.625 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lcode.o lcode.c
+#23 0.625 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lctype.o lctype.c
+#23 0.625 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldebug.o ldebug.c
+#23 0.626 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldo.o ldo.c
+#23 0.626 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldump.o ldump.c
+#23 0.626 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lfunc.o lfunc.c
+#23 0.627 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lgc.o lgc.c
+#23 0.627 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o llex.o llex.c
+#23 0.627 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lmem.o lmem.c
+#23 0.628 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lobject.o lobject.c
+#23 0.628 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lopcodes.o lopcodes.c
+#23 0.628 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lparser.o lparser.c
+#23 0.628 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lstate.o lstate.c
+#23 0.629 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lstring.o lstring.c
+#23 0.629 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltable.o ltable.c
+#23 0.629 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltm.o ltm.c
+#23 0.630 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lundump.o lundump.c
+#23 0.630 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lvm.o lvm.c
+#23 0.630 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lzio.o lzio.c
+#23 0.631 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltests.o ltests.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lauxlib.o lauxlib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lbaselib.o lbaselib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ldblib.o ldblib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o liolib.o liolib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lmathlib.o lmathlib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o loslib.o loslib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o ltablib.o ltablib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lstrlib.o lstrlib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lutf8lib.o lutf8lib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o loadlib.o loadlib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lcorolib.o lcorolib.c
+#23 0.635 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o linit.o linit.c
+#23 0.648 warning: warning: warning: warning: warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.648 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.648 
+#23 0.648 
+#23 0.648 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]warning: 
+#23 0.648 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.649 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.649 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.649 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.649 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.649 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.649 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.650 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.650 
+#23 0.651 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]warning: warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 
+#23 0.651 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 warning: warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 
+#23 0.651 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.651 
+#23 0.651 warning: warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.651 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.652 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.652 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.652 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.652 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.654 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.654 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.655 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.656 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.656 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.658 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.658 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.659 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.660 warning: warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.660 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.661 
+#23 0.661 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.661 Total Basic Blocks: 0
+#23 0.661 Instrumented Times: 0
+#23 0.661 Instrumented Basic Blocks: 0
+#23 0.661 Instrumentation Ratio: 0.00%
+#23 0.661 Total Predecessors: 0
+#23 0.661 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.661   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.661   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.661 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.661   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.661   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.661 =======================================
+#23 0.661 
+#23 0.661 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.662 2 warnings generated.
+#23 0.662 
+#23 0.662 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.662 Total Basic Blocks: 0
+#23 0.662 Instrumented Times: 0
+#23 0.662 Instrumented Basic Blocks: 0
+#23 0.662 Instrumentation Ratio: 0.00%
+#23 0.662 Total Predecessors: 0
+#23 0.662 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.662   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.662   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.662 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.662   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.662   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.662 =======================================
+#23 0.662 
+#23 0.663 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.663 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.663 2warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.665 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.668 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.668 
+#23 0.668 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.668 Total Basic Blocks: 22
+#23 0.668 Instrumented Times: 0
+#23 0.668 Instrumented Basic Blocks: 3
+#23 0.668 Instrumentation Ratio: 13.64%
+#23 0.668 Total Predecessors: 6
+#23 0.668 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.668   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.668   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.668   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.668 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.668   Non-Instrumented BasicBlocks with 1 predecessor(s): 10
+#23 0.668   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.668   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.668   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.668 =======================================
+#23 0.668 
+#23 0.670 
+#23 0.670 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.670 Total Basic Blocks: 5
+#23 0.670 Instrumented Times: 0
+#23 0.670 Instrumented Basic Blocks: 0
+#23 0.670 Instrumentation Ratio: 0.00%
+#23 0.670 Total Predecessors: 0
+#23 0.670 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.670   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.670   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.670 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.670   Non-Instrumented BasicBlocks with 1 predecessor(s): 3
+#23 0.670   Non-Instrumented BasicBlocks with 2 predecessor(s): 1
+#23 0.670   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.670   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.670 =======================================
+#23 0.670 
+#23 0.670 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.671 
+#23 0.671 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.671 Total Basic Blocks: 79
+#23 0.671 Instrumented Times: 0
+#23 0.671 Instrumented Basic Blocks: 7
+#23 0.671 Instrumentation Ratio: 8.86%
+#23 0.671 Total Predecessors: 17
+#23 0.671 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.671   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.671   Instrumented BasicBlocks with 2 predecessor(s): 5
+#23 0.671   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.671   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.671   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.671   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.671   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.671   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.671   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.671   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.671 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.671   Non-Instrumented BasicBlocks with 1 predecessor(s): 39
+#23 0.671   Non-Instrumented BasicBlocks with 2 predecessor(s): 11
+#23 0.671   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.671   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.671 =======================================
+#23 0.671 
+#23 0.673 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.673 2 warnings generated.
+#23 0.674 2 warnings generated.
+#23 0.674 warning: 
+#23 0.674 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.674 Total Basic Blocks: 106
+#23 0.674 Instrumented Times: 0
+#23 0.674 Instrumented Basic Blocks: 12
+#23 0.674 Instrumentation Ratio: 11.32%
+#23 0.674 Total Predecessors: 25
+#23 0.674 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.674   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with 2 predecessor(s): 11
+#23 0.674   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.674   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.674   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.674 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.674   Non-Instrumented BasicBlocks with 1 predecessor(s): 45
+#23 0.674   Non-Instrumented BasicBlocks with 2 predecessor(s): 16
+#23 0.674   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.674   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.674 =======================================
+#23 0.674 
+#23 0.677 
+#23 0.677 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.677 Total Basic Blocks: 125
+#23 0.677 Instrumented Times: 0
+#23 0.677 Instrumented Basic Blocks: 14
+#23 0.677 Instrumentation Ratio: 11.20%
+#23 0.677 Total Predecessors: 28
+#23 0.677 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.677   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 2 predecessor(s): 14
+#23 0.677   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.677   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.677 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.677   Non-Instrumented BasicBlocks with 1 predecessor(s): 66
+#23 0.677   Non-Instrumented BasicBlocks with 2 predecessor(s): 17
+#23 0.677   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.677   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.677 =======================================
+#23 0.677 
+#23 0.677 unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.678 
+#23 0.678 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.678 Total Basic Blocks: 133
+#23 0.678 Instrumented Times: 0
+#23 0.678 Instrumented Basic Blocks: 11
+#23 0.678 Instrumentation Ratio: 8.27%
+#23 0.678 Total Predecessors: 27
+#23 0.678 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.678   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 2 predecessor(s): 10
+#23 0.678   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 0.678   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.678 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.678   Non-Instrumented BasicBlocks with 1 predecessor(s): 76
+#23 0.678   Non-Instrumented BasicBlocks with 2 predecessor(s): 15
+#23 0.678   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.678 =======================================
+#23 0.678 
+#23 0.678 
+#23 0.678 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.678 Total Basic Blocks: 0
+#23 0.678 Instrumented Times: 0
+#23 0.678 Instrumented Basic Blocks: 0
+#23 0.678 Instrumentation Ratio: 0.00%
+#23 0.678 Total Predecessors: 0
+#23 0.678 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.678   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.678   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.678 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.678   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.678   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.678 =======================================
+#23 0.678 
+#23 0.679 2 warnings generated.
+#23 0.679 warning: warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.680 unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.682 
+#23 0.683 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.683 2 warnings generated.
+#23 0.683  warnings generated.
+#23 0.684 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.685 2 warnings generated.
+#23 0.686 
+#23 0.686 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.686 Total Basic Blocks: 186
+#23 0.686 Instrumented Times: 0
+#23 0.686 Instrumented Basic Blocks: 27
+#23 0.686 Instrumentation Ratio: 14.52%
+#23 0.686 Total Predecessors: 57
+#23 0.686 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.686   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.686   Instrumented BasicBlocks with 2 predecessor(s): 25
+#23 0.686   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.686   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.686   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.686   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.686   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.686   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.686   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.686   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.686 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.686   Non-Instrumented BasicBlocks with 1 predecessor(s): 71
+#23 0.686   Non-Instrumented BasicBlocks with 2 predecessor(s): 23
+#23 0.686   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.686   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.686 =======================================
+#23 0.686 
+#23 0.686 
+#23 0.687 
+#23 0.687 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.687 Total Basic Blocks: 399
+#23 0.687 Instrumented Times: 0
+#23 0.687 Instrumented Basic Blocks: 61
+#23 0.687 Instrumentation Ratio: 15.29%
+#23 0.687 Total Predecessors: 174
+#23 0.687 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.687   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.687   Instrumented BasicBlocks with 2 predecessor(s): 50
+#23 0.687   Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 0.687   Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 0.687   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.687   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.687   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.687   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.687   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 0.687   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 0.687 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.687   Non-Instrumented BasicBlocks with 1 predecessor(s): 219
+#23 0.687   Non-Instrumented BasicBlocks with 2 predecessor(s): 33
+#23 0.687   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 0.687   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.687   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.687   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.687   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.687   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.687   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.687   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.687 =======================================
+#23 0.687 
+#23 0.688 
+#23 0.688 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.688 Total Basic Blocks: 161
+#23 0.688 Instrumented Times: 0
+#23 0.688 Instrumented Basic Blocks: 14
+#23 0.688 Instrumentation Ratio: 8.70%
+#23 0.688 Total Predecessors: 34
+#23 0.688 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.688   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.688   Instrumented BasicBlocks with 2 predecessor(s): 11
+#23 0.688   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.688   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.688   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.688   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.688   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.688   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.688   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.688   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.688 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.688   Non-Instrumented BasicBlocks with 1 predecessor(s): 75
+#23 0.688   Non-Instrumented BasicBlocks with 2 predecessor(s): 25
+#23 0.688   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.688   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.688 =======================================
+#23 0.688 
+#23 0.690 
+#23 0.690 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.690 Total Basic Blocks: 105
+#23 0.690 Instrumented Times: 0
+#23 0.690 Instrumented Basic Blocks: 12
+#23 0.690 Instrumentation Ratio: 11.43%
+#23 0.690 Total Predecessors: 26
+#23 0.690 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.690   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with 2 predecessor(s): 11
+#23 0.690   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.690   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.690   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.690 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.690   Non-Instrumented BasicBlocks with 1 predecessor(s): 49
+#23 0.690   Non-Instrumented BasicBlocks with 2 predecessor(s): 14
+#23 0.690   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.690   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.690 =======================================
+#23 0.690 
+#23 0.690 2 warnings generated.
+#23 0.690 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.693 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.693 2 warnings generated.
+#23 0.693 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.694 
+#23 0.694 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.694 Total Basic Blocks: 264
+#23 0.694 Instrumented Times: 0
+#23 0.694 Instrumented Basic Blocks: 34
+#23 0.694 Instrumentation Ratio: 12.88%
+#23 0.694 Total Predecessors: 80
+#23 0.694 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.694   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 2 predecessor(s): 25
+#23 0.694   Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 0.694   Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 0.694   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.694 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.694   Non-Instrumented BasicBlocks with 1 predecessor(s): 109
+#23 0.694   Non-Instrumented BasicBlocks with 2 predecessor(s): 29
+#23 0.694   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.694 =======================================
+#23 0.694 
+#23 0.694 
+#23 0.694 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.694 Total Basic Blocks: 299
+#23 0.694 Instrumented Times: 0
+#23 0.694 Instrumented Basic Blocks: 37
+#23 0.694 Instrumentation Ratio: 12.37%
+#23 0.694 Total Predecessors: 88
+#23 0.694 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.694   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 2 predecessor(s): 30
+#23 0.694   Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 0.694   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.694   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 0.694   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.694   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.694 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.694   Non-Instrumented BasicBlocks with 1 predecessor(s): 143
+#23 0.694   Non-Instrumented BasicBlocks with 2 predecessor(s): 24
+#23 0.694   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 0.694   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.694   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.694   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 0.694   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 0.694   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 0.694   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.694 =======================================
+#23 0.694 
+#23 0.695 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.696 
+#23 0.696 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.696 Total Basic Blocks: 132
+#23 0.696 Instrumented Times: 0
+#23 0.696 Instrumented Basic Blocks: 9
+#23 0.696 Instrumentation Ratio: 6.82%
+#23 0.696 Total Predecessors: 19
+#23 0.696 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.696   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 0.696   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.696   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.696 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.696   Non-Instrumented BasicBlocks with 1 predecessor(s): 57
+#23 0.696   Non-Instrumented BasicBlocks with 2 predecessor(s): 21
+#23 0.696   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.696   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.696 =======================================
+#23 0.696 
+#23 0.696 
+#23 0.696 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.696 Total Basic Blocks: 377
+#23 0.696 Instrumented Times: 0
+#23 0.696 Instrumented Basic Blocks: 46
+#23 0.696 Instrumentation Ratio: 12.20%
+#23 0.696 Total Predecessors: 115
+#23 0.696 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.696   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 2 predecessor(s): 32
+#23 0.696   Instrumented BasicBlocks with 3 predecessor(s): 11
+#23 0.696   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.696   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.696   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 0.696   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.696   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.696 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.696   Non-Instrumented BasicBlocks with 1 predecessor(s): 189
+#23 0.696   Non-Instrumented BasicBlocks with 2 predecessor(s): 40
+#23 0.696   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.696   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.696   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 0.696   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.696 =======================================
+#23 0.696 
+#23 0.697 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.697 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.700 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.703 2 warnings generated.
+#23 0.703 2 warnings generated.
+#23 0.704 2 warnings generated.
+#23 0.705 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.705 
+#23 0.705 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.705 Total Basic Blocks: 113
+#23 0.705 Instrumented Times: 0
+#23 0.705 Instrumented Basic Blocks: 11
+#23 0.705 Instrumentation Ratio: 9.73%
+#23 0.705 Total Predecessors: 27
+#23 0.705 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.705   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.705   Instrumented BasicBlocks with 2 predecessor(s): 9
+#23 0.705   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.705   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.705   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.705   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.705   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.705   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.705   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.705   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.705 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.705   Non-Instrumented BasicBlocks with 1 predecessor(s): 53
+#23 0.705   Non-Instrumented BasicBlocks with 2 predecessor(s): 14
+#23 0.705   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.705   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.705   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.705   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.705   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.705   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.705   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.705   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.705 =======================================
+#23 0.705 
+#23 0.706 
+#23 0.706 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.706 Total Basic Blocks: 181
+#23 0.706 Instrumented Times: 0
+#23 0.706 Instrumented Basic Blocks: 26
+#23 0.706 Instrumentation Ratio: 14.36%
+#23 0.706 Total Predecessors: 57
+#23 0.706 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.706   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.706   Instrumented BasicBlocks with 2 predecessor(s): 22
+#23 0.706   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 0.706   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.706   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.706   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.706   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.706   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.706   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.706   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.706 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.706   Non-Instrumented BasicBlocks with 1 predecessor(s): 80
+#23 0.706   Non-Instrumented BasicBlocks with 2 predecessor(s): 23
+#23 0.706   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.706   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.706 =======================================
+#23 0.706 
+#23 0.707 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.708 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 0.710 
+#23 0.710 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.710 Total Basic Blocks: 676
+#23 0.710 Instrumented Times: 0
+#23 0.710 Instrumented Basic Blocks: 57
+#23 0.710 Instrumentation Ratio: 8.43%
+#23 0.710 Total Predecessors: 130
+#23 0.710 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.710   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.710   Instrumented BasicBlocks with 2 predecessor(s): 45
+#23 0.710   Instrumented BasicBlocks with 3 predecessor(s): 8
+#23 0.710   Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 0.710   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.710   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.710   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.710   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.710   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.710   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.710 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.710   Non-Instrumented BasicBlocks with 1 predecessor(s): 319
+#23 0.710   Non-Instrumented BasicBlocks with 2 predecessor(s): 87
+#23 0.710   Non-Instrumented BasicBlocks with 3 predecessor(s): 5
+#23 0.710   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 0.710   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.710   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.710   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 0.710   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.710   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.710   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 0.710 =======================================
+#23 0.710 
+#23 0.711 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 0.711 
+#23 0.711 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.711 Total Basic Blocks: 62
+#23 0.711 Instrumented Times: 0
+#23 0.711 Instrumented Basic Blocks: 6
+#23 0.711 Instrumentation Ratio: 9.68%
+#23 0.711 Total Predecessors: 21
+#23 0.711 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.711   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.711   Instrumented BasicBlocks with 2 predecessor(s): 1
+#23 0.711   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 0.711   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.711   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.711   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.711   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.711   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.711   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.711   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.711 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.711   Non-Instrumented BasicBlocks with 1 predecessor(s): 30
+#23 0.711   Non-Instrumented BasicBlocks with 2 predecessor(s): 5
+#23 0.711   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.711   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.711 =======================================
+#23 0.711 
+#23 0.712 2 warnings generated.
+#23 0.712 2 warnings generated.
+#23 0.713 2 warnings
+#23 0.714 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.714 Total Basic Blocks: 80
+#23 0.714 Instrumented Times: 0
+#23 0.714 Instrumented Basic Blocks: 3
+#23 0.714 Instrumentation Ratio: 3.75%
+#23 0.714 Total Predecessors: 7
+#23 0.714 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.714   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.714   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.714   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.714   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.714 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.714   Non-Instrumented BasicBlocks with 1 predecessor(s): 35
+#23 0.714   Non-Instrumented BasicBlocks with 2 predecessor(s): 13
+#23 0.714   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.714   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.714 =======================================
+#23 0.714 
+#23 0.714  generated.
+#23 0.715 
+#23 0.715 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.715 Total Basic Blocks: 46
+#23 0.715 Instrumented Times: 0
+#23 0.715 Instrumented Basic Blocks: 3
+#23 0.715 Instrumentation Ratio: 6.52%
+#23 0.715 Total Predecessors: 6
+#23 0.715 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.715   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.715   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.715   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.715 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.715   Non-Instrumented BasicBlocks with 1 predecessor(s): 21
+#23 0.715   Non-Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 0.715   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.715   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.715 =======================================
+#23 0.715 
+#23 0.716 
+#23 0.716 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.716 Total Basic Blocks: 424
+#23 0.716 Instrumented Times: 0
+#23 0.716 Instrumented Basic Blocks: 41
+#23 0.716 Instrumentation Ratio: 9.67%
+#23 0.716 Total Predecessors: 90
+#23 0.716 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.716   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.716   Instrumented BasicBlocks with 2 predecessor(s): 37
+#23 0.716   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.716   Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 0.716   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.716   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.716   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.716   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.716   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.716   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.716 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.716   Non-Instrumented BasicBlocks with 1 predecessor(s): 192
+#23 0.716   Non-Instrumented BasicBlocks with 2 predecessor(s): 70
+#23 0.716   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.716   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.716   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.716   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.716   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.716   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.716   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.716   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.716 =======================================
+#23 0.716 
+#23 0.718 2 warnings generated.
+#23 0.718 2 warnings generated.
+#23 0.720 
+#23 0.720 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.720 Total Basic Blocks: 176
+#23 0.720 Instrumented Times: 0
+#23 0.720 Instrumented Basic Blocks: 20
+#23 0.720 Instrumentation Ratio: 11.36%
+#23 0.720 Total Predecessors: 44
+#23 0.720 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.720   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 2 predecessor(s): 17
+#23 0.720   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 0.720   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.720   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.720 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.720   Non-Instrumented BasicBlocks with 1 predecessor(s): 78
+#23 0.720   Non-Instrumented BasicBlocks with 2 predecessor(s): 21
+#23 0.720   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 0.720   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.720 =======================================
+#23 0.720 
+#23 0.720 2 warnings generated.
+#23 0.720 
+#23 0.720 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.720 Total Basic Blocks: 460
+#23 0.720 Instrumented Times: 0
+#23 0.720 Instrumented Basic Blocks: 62
+#23 0.720 Instrumentation Ratio: 13.48%
+#23 0.720 Total Predecessors: 166
+#23 0.720 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.720   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 2 predecessor(s): 47
+#23 0.720   Instrumented BasicBlocks with 3 predecessor(s): 7
+#23 0.720   Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 0.720   Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 0.720   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 0.720   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.720   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 0.720 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.720   Non-Instrumented BasicBlocks with 1 predecessor(s): 201
+#23 0.720   Non-Instrumented BasicBlocks with 2 predecessor(s): 53
+#23 0.720   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.720   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.720   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.720   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.720 =======================================
+#23 0.720 
+#23 0.721 
+#23 0.721 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.721 Total Basic Blocks: 774
+#23 0.721 Instrumented Times: 0
+#23 0.721 Instrumented Basic Blocks: 87
+#23 0.721 Instrumentation Ratio: 11.24%
+#23 0.721 Total Predecessors: 193
+#23 0.721 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.721   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with 2 predecessor(s): 68
+#23 0.721   Instrumented BasicBlocks with 3 predecessor(s): 19
+#23 0.721   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.721   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.721 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.721   Non-Instrumented BasicBlocks with 1 predecessor(s): 368
+#23 0.721   Non-Instrumented BasicBlocks with 2 predecessor(s): 105
+#23 0.721   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 0.721   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.721   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.721   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.721   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 0.721   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 0.721   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.721   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.721 =======================================
+#23 0.721 
+#23 0.721 2 warnings generated.
+#23 0.722 2 warnings generated.
+#23 0.722 
+#23 0.722 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.722 Total Basic Blocks: 669
+#23 0.722 Instrumented Times: 0
+#23 0.722 Instrumented Basic Blocks: 76
+#23 0.722 Instrumentation Ratio: 11.36%
+#23 0.722 Total Predecessors: 179
+#23 0.722 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.722   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 2 predecessor(s): 56
+#23 0.722   Instrumented BasicBlocks with 3 predecessor(s): 16
+#23 0.722   Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 0.722   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.722   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.722   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.722   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.722 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.722   Non-Instrumented BasicBlocks with 1 predecessor(s): 263
+#23 0.722   Non-Instrumented BasicBlocks with 2 predecessor(s): 86
+#23 0.722   Non-Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 0.722   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.722   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.722   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.722   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.722 =======================================
+#23 0.722 
+#23 0.723 2 warnings generated.
+#23 0.726 2 warnings generated.
+#23 0.731 
+#23 0.731 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.731 Total Basic Blocks: 153
+#23 0.731 Instrumented Times: 0
+#23 0.731 Instrumented Basic Blocks: 27
+#23 0.731 Instrumentation Ratio: 17.65%
+#23 0.731 Total Predecessors: 59
+#23 0.731 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.731   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.731   Instrumented BasicBlocks with 2 predecessor(s): 23
+#23 0.731   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 0.731   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.731   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.731   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.731   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.731   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.731   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.731   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.731 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.731   Non-Instrumented BasicBlocks with 1 predecessor(s): 76
+#23 0.731   Non-Instrumented BasicBlocks with 2 predecessor(s): 13
+#23 0.731   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.731   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.731   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.731   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.731   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.731   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.731   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.731   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.731 =======================================
+#23 0.731 
+#23 0.737 2 warnings generated.
+#23 0.743 2 warnings generated.
+#23 0.748 2 warnings generated.
+#23 0.750 2 warnings generated.
+#23 0.751 
+#23 0.751 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.751 Total Basic Blocks: 326
+#23 0.751 Instrumented Times: 0
+#23 0.751 Instrumented Basic Blocks: 43
+#23 0.751 Instrumentation Ratio: 13.19%
+#23 0.751 Total Predecessors: 90
+#23 0.751 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.751   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.751   Instrumented BasicBlocks with 2 predecessor(s): 40
+#23 0.751   Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 0.751   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.751   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.751   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.751   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.751   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.751   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.751   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.751 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.751   Non-Instrumented BasicBlocks with 1 predecessor(s): 165
+#23 0.751   Non-Instrumented BasicBlocks with 2 predecessor(s): 36
+#23 0.751   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 0.751   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.751   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.751   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.751   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.751   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.751   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.751   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.751 =======================================
+#23 0.751 
+#23 0.763 2 warnings generated.
+#23 0.765 2 warnings generated.
+#23 0.769 2 warnings generated.
+#23 0.772 
+#23 0.772 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.772 Total Basic Blocks: 891
+#23 0.772 Instrumented Times: 0
+#23 0.772 Instrumented Basic Blocks: 127
+#23 0.772 Instrumentation Ratio: 14.25%
+#23 0.772 Total Predecessors: 328
+#23 0.772 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.772   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.772   Instrumented BasicBlocks with 2 predecessor(s): 97
+#23 0.772   Instrumented BasicBlocks with 3 predecessor(s): 14
+#23 0.772   Instrumented BasicBlocks with 4 predecessor(s): 7
+#23 0.772   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 0.772   Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.772   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 0.772   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.772   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 0.772   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 0.772 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.772   Non-Instrumented BasicBlocks with 1 predecessor(s): 436
+#23 0.772   Non-Instrumented BasicBlocks with 2 predecessor(s): 89
+#23 0.772   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.772   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 0.772   Non-Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.772   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 0.772   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.772   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.772   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.772   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 0.772 =======================================
+#23 0.772 
+#23 0.777 2 warnings generated.
+#23 0.784 
+#23 0.784 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.784 Total Basic Blocks: 685
+#23 0.784 Instrumented Times: 0
+#23 0.784 Instrumented Basic Blocks: 62
+#23 0.784 Instrumentation Ratio: 9.05%
+#23 0.784 Total Predecessors: 161
+#23 0.784 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.784   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.784   Instrumented BasicBlocks with 2 predecessor(s): 48
+#23 0.784   Instrumented BasicBlocks with 3 predecessor(s): 8
+#23 0.784   Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 0.784   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 0.784   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.784   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 0.784   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.784   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.784   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.784 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.784   Non-Instrumented BasicBlocks with 1 predecessor(s): 266
+#23 0.784   Non-Instrumented BasicBlocks with 2 predecessor(s): 79
+#23 0.784   Non-Instrumented BasicBlocks with 3 predecessor(s): 8
+#23 0.784   Non-Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 0.784   Non-Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 0.784   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 0.784   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 0.784   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 0.784   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 0.784   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.784 =======================================
+#23 0.784 
+#23 0.827 2 warnings generated.
+#23 0.834 
+#23 0.834 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.834 Total Basic Blocks: 1776
+#23 0.834 Instrumented Times: 0
+#23 0.834 Instrumented Basic Blocks: 317
+#23 0.834 Instrumentation Ratio: 17.85%
+#23 0.834 Total Predecessors: 803
+#23 0.834 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.834   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.834   Instrumented BasicBlocks with 2 predecessor(s): 231
+#23 0.834   Instrumented BasicBlocks with 3 predecessor(s): 62
+#23 0.834   Instrumented BasicBlocks with 4 predecessor(s): 4
+#23 0.834   Instrumented BasicBlocks with 5 predecessor(s): 5
+#23 0.834   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.834   Instrumented BasicBlocks with 7 predecessor(s): 14
+#23 0.834   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.834   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.834   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.834 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.834   Non-Instrumented BasicBlocks with 1 predecessor(s): 783
+#23 0.834   Non-Instrumented BasicBlocks with 2 predecessor(s): 97
+#23 0.834   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 0.834   Non-Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 0.834   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.834   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.834   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 0.834   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 0.834   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.834   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 0.834 =======================================
+#23 0.834 
+#23 0.837 2 warnings generated.
+#23 0.920 2 warnings generated.
+#23 0.927 ar rc liblua.a lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o ltests.o lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o lstrlib.o lutf8lib.o loadlib.o lcorolib.o linit.o
+#23 0.950 ranlib liblua.a
+#23 0.986 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -std=c99 -DLUA_USE_LINUX -DLUA_USE_READLINE -fno-stack-protector -fno-common -march=native   -c -o lua.o lua.c
+#23 1.005 warning: unknown warning option '-Wlogical-op'; did you mean '-Wlong-long'? [-Wunknown-warning-option]
+#23 1.007 warning: unknown warning option '-Wno-aggressive-loop-optimizations' [-Wunknown-warning-option]
+#23 1.041 
+#23 1.041 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 1.041 Total Basic Blocks: 243
+#23 1.041 Instrumented Times: 0
+#23 1.041 Instrumented Basic Blocks: 33
+#23 1.041 Instrumentation Ratio: 13.58%
+#23 1.041 Total Predecessors: 85
+#23 1.041 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 1.041   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 1.041   Instrumented BasicBlocks with 2 predecessor(s): 24
+#23 1.041   Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 1.041   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 1.041   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 1.041   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 1.041   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 1.041   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 1.041   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 1.041   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 1.041 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 1.041   Non-Instrumented BasicBlocks with 1 predecessor(s): 106
+#23 1.041   Non-Instrumented BasicBlocks with 2 predecessor(s): 27
+#23 1.041   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 1.041   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 1.041 =======================================
+#23 1.041 
+#23 1.061 2 warnings generated.
+#23 1.067 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -o lua -L/magma_out -g -L/magma_out/afl  -Wfatal-errors -Wextra -Wshadow -Wsign-compare -Wundef -Wwrite-strings -Wredundant-decls -Wdisabled-optimization -Wdouble-promotion  -Wdeclaration-after-statement -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wc++-compat -Wold-style-definition  -Wlogical-op -Wno-aggressive-loop-optimizations  -Wl,-E lua.o liblua.a -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a -lm -ldl -lreadline 
+#23 DONE 1.2s
+
+#24 exporting to image
+#24 exporting layers 0.0s done
+#24 writing image sha256:10077307578c82a9ef68a1b628b5fb3ec07fffdd71f848c509db4fad4d6b6a9c done
+#24 naming to docker.io/magma/aflplusplus_entropy/lua done
+#24 DONE 0.0s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_entropy/lua

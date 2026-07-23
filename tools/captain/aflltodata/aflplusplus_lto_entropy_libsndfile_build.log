@@ -1,0 +1,697 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/libsndfile --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=libsndfile --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 1.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 52.27MB 0.3s done
+#5 DONE 0.3s
+
+#6 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#6 CACHED
+
+#7 [14/19] RUN mkdir -p /magma/targets/libsndfile && chown magma:magma /magma/targets/libsndfile
+#7 CACHED
+
+#8 [15/19] COPY --chown=magma:magma .//targets/libsndfile /magma/targets/libsndfile/
+#8 CACHED
+
+#9 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#9 CACHED
+
+#10 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#10 CACHED
+
+#11 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#11 CACHED
+
+#12 [ 8/19] RUN /magma/magma/preinstall.sh
+#12 CACHED
+
+#13 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#13 CACHED
+
+#14 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#14 CACHED
+
+#15 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#15 CACHED
+
+#16 [ 9/19] RUN /magma/magma/prebuild.sh
+#16 CACHED
+
+#17 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#17 CACHED
+
+#18 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#18 CACHED
+
+#19 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#19 CACHED
+
+#20 [16/19] RUN /magma/targets/libsndfile/preinstall.sh
+#20 CACHED
+
+#21 [17/19] RUN /magma/targets/libsndfile/fetch.sh
+#21 0.323 Cloning into '/magma/targets/libsndfile/repo'...
+#21 19.08 Note: checking out '86c9f9eb7022d186ad4d0689487e7d4f04ce2b29'.
+#21 19.08 
+#21 19.08 You are in 'detached HEAD' state. You can look around, make experimental
+#21 19.08 changes and commit them, and you can discard any commits you make in this
+#21 19.08 state without impacting any branches by performing another checkout.
+#21 19.08 
+#21 19.08 If you want to create a new branch to retain commits you create, you may
+#21 19.08 do so (now or later) by using -b with the checkout command again. Example:
+#21 19.08 
+#21 19.08   git checkout -b <new-branch-name>
+#21 19.08 
+#21 19.08 HEAD is now at 86c9f9eb mpeg: decode cleanups of copyright, comments, copyright, unused
+#21 DONE 19.1s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.528 Applying /magma/targets/libsndfile/patches/setup/libsndfile.patch
+#22 0.529 patching file Makefile.am
+#22 0.529 Hunk #1 succeeded at 455 (offset 5 lines).
+#22 0.530 patching file src/ALAC/alac_encoder.c
+#22 0.530 Hunk #1 succeeded at 44 with fuzz 2.
+#22 0.533 patching file src/ALAC/alac_decoder.c
+#22 0.533 Hunk #1 succeeded at 38 with fuzz 1.
+#22 0.534 Applying /magma/targets/libsndfile/patches/bugs/SND002.patch
+#22 0.536 patching file src/sd2.c
+#22 0.536 Applying /magma/targets/libsndfile/patches/bugs/SND023.patch
+#22 0.538 patching file src/ulaw.c
+#22 0.539 Applying /magma/targets/libsndfile/patches/bugs/SND024.patch
+#22 0.541 patching file src/flac.c
+#22 0.541 Applying /magma/targets/libsndfile/patches/bugs/SND017.patch
+#22 0.542 patching file src/wavlike.c
+#22 0.543 Applying /magma/targets/libsndfile/patches/bugs/SND012.patch
+#22 0.544 patching file src/common.c
+#22 0.544 Hunk #1 succeeded at 716 (offset 9 lines).
+#22 0.545 Applying /magma/targets/libsndfile/patches/bugs/SND025.patch
+#22 0.547 patching file src/wav.c
+#22 0.549 Applying /magma/targets/libsndfile/patches/bugs/SND016.patch
+#22 0.550 patching file src/double64.c
+#22 0.551 Applying /magma/targets/libsndfile/patches/bugs/SND020.patch
+#22 0.552 patching file src/wavlike.c
+#22 0.552 Hunk #1 succeeded at 357 (offset 7 lines).
+#22 0.552 Applying /magma/targets/libsndfile/patches/bugs/SND005.patch
+#22 0.554 patching file src/aiff.c
+#22 0.554 Applying /magma/targets/libsndfile/patches/bugs/SND010.patch
+#22 0.555 patching file src/common.c
+#22 0.555 Hunk #1 succeeded at 695 with fuzz 2 (offset 9 lines).
+#22 0.556 Hunk #2 succeeded at 705 (offset 9 lines).
+#22 0.556 Applying /magma/targets/libsndfile/patches/bugs/SND013.patch
+#22 0.557 patching file src/common.c
+#22 0.557 Hunk #1 succeeded at 770 (offset 43 lines).
+#22 0.558 Applying /magma/targets/libsndfile/patches/bugs/SND014.patch
+#22 0.559 patching file src/alaw.c
+#22 0.559 Applying /magma/targets/libsndfile/patches/bugs/SND007.patch
+#22 0.561 patching file src/flac.c
+#22 0.561 Hunk #1 succeeded at 454 with fuzz 2 (offset 5 lines).
+#22 0.562 Applying /magma/targets/libsndfile/patches/bugs/SND015.patch
+#22 0.563 patching file src/alaw.c
+#22 0.563 Applying /magma/targets/libsndfile/patches/bugs/SND004.patch
+#22 0.565 patching file src/file_io.c
+#22 0.565 Hunk #1 succeeded at 386 (offset 28 lines).
+#22 0.566 Applying /magma/targets/libsndfile/patches/bugs/SND006.patch
+#22 0.567 patching file src/flac.c
+#22 0.568 Applying /magma/targets/libsndfile/patches/bugs/SND022.patch
+#22 0.569 patching file src/ulaw.c
+#22 0.569 Hunk #1 succeeded at 858 (offset 8 lines).
+#22 0.571 Applying /magma/targets/libsndfile/patches/bugs/SND001.patch
+#22 0.573 patching file src/paf.c
+#22 DONE 0.6s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/Calculate.sh
+#23 0.642 checking for autogen ... yes
+#23 0.690 checking for autoconf ... yes
+#23 0.744 checking for automake ... yes
+#23 0.862 checking for libtool ... libtoolize
+#23 1.136 checking for pkg-config ... yes
+#23 1.137 checking for python ... yes
+#23 1.138 Generating configuration files for libsndfile, please wait ... 
+#23 1.138   aclocal 
+#23 2.740   libtoolize --automake --force
+#23 3.347   autoheader
+#23 3.967   automake --add-missing 
+#23 4.781 configure.ac:58: installing 'build-aux/ar-lib'
+#23 4.781 configure.ac:38: installing 'build-aux/compile'
+#23 4.781 configure.ac:28: installing 'build-aux/config.guess'
+#23 4.782 configure.ac:28: installing 'build-aux/config.sub'
+#23 4.782 configure.ac:33: installing 'build-aux/install-sh'
+#23 4.782 configure.ac:33: installing 'build-aux/missing'
+#23 4.875 Makefile.am: installing 'build-aux/depcomp'
+#23 5.072   autoconf
+#23 5.435 
+#23 5.435 Installing git pre-commit hook for this project.
+#23 5.438 
+#23 5.591 checking whether configure should try to set CFLAGS/CXXFLAGS/CPPFLAGS/LDFLAGS... no
+#23 5.601 checking build system type... x86_64-pc-linux-gnu
+#23 5.677 checking host system type... x86_64-pc-linux-gnu
+#23 5.677 checking for a BSD-compatible install... /usr/bin/install -c
+#23 5.686 checking whether build environment is sane... yes
+#23 5.703 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 5.705 checking for gawk... no
+#23 5.706 checking for mawk... mawk
+#23 5.706 checking whether make sets $(MAKE)... yes
+#23 5.721 checking whether make supports nested variables... yes
+#23 5.732 checking whether make supports nested variables... (cached) yes
+#23 5.732 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 5.880 checking whether the C compiler works... yes
+#23 5.978 checking for C compiler default output file name... a.out
+#23 5.979 checking for suffix of executables... 
+#23 6.069 checking whether we are cross compiling... no
+#23 6.167 checking for suffix of object files... o
+#23 6.203 checking whether we are using the GNU C compiler... yes
+#23 6.236 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 6.272 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 6.321 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 6.390 checking for style of include used by make... GNU
+#23 6.394 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 6.449 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C99... none needed
+#23 6.508 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 6.658 checking for grep that handles long lines and -e... /bin/grep
+#23 6.661 checking for egrep... /bin/grep -E
+#23 6.663 checking for ANSI C header files... yes
+#23 6.888 checking for sys/types.h... yes
+#23 6.939 checking for sys/stat.h... yes
+#23 6.990 checking for stdlib.h... yes
+#23 7.043 checking for string.h... yes
+#23 7.094 checking for memory.h... yes
+#23 7.147 checking for strings.h... yes
+#23 7.199 checking for inttypes.h... yes
+#23 7.252 checking for stdint.h... yes
+#23 7.309 checking for unistd.h... yes
+#23 7.368 checking minix/config.h usability... no
+#23 7.421 checking minix/config.h presence... no
+#23 7.456 checking for minix/config.h... no
+#23 7.456 checking whether it is safe to define __EXTENSIONS__... yes
+#23 7.660 checking whether we are using the GNU C++ compiler... yes
+#23 7.696 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ accepts -g... yes
+#23 7.733 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++... gcc3
+#23 7.787 checking for C compiler vendor... clang
+#23 7.952 checking for a sed that does not truncate output... /bin/sed
+#23 7.958 checking for C compiler version... 18.1.0
+#23 8.296 checking for C++ compiler vendor... clang
+#23 8.476 checking for C++ compiler version... 18.1.0
+#23 8.836 checking for a sed that does not truncate output... (cached) /bin/sed
+#23 8.838 checking the archiver (/usr/lib/llvm-18/bin/llvm-ar) interface... ar
+#23 8.891 checking how to print strings... printf
+#23 8.920 checking for a sed that does not truncate output... (cached) /bin/sed
+#23 8.921 checking for fgrep... /bin/grep -F
+#23 8.923 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 8.953 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 8.969 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 8.969 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 9.026 checking whether ln -s works... yes
+#23 9.026 checking the maximum length of command line arguments... 1572864
+#23 9.034 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 9.034 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 9.034 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 9.034 checking for objdump... objdump
+#23 9.035 checking how to recognize dependent libraries... pass_all
+#23 9.036 checking for dlltool... no
+#23 9.036 checking how to associate runtime and link libraries... printf %s\n
+#23 9.036 checking for archiver @FILE support... @
+#23 9.107 checking for strip... strip
+#23 9.108 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 9.108 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 9.289 checking for sysroot... no
+#23 9.289 checking for a working dd... /bin/dd
+#23 9.294 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 9.346 checking for mt... no
+#23 9.346 checking if : is a manifest tool... no
+#23 9.352 checking for dlfcn.h... yes
+#23 9.406 checking for objdir... .libs
+#23 9.551 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 9.593 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 9.593 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 9.633 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 9.757 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 9.804 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 9.804 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 9.894 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 10.06 checking how to hardcode library paths into programs... immediate
+#23 10.06 checking whether stripping libraries is possible... yes
+#23 10.06 checking if libtool supports shared libraries... yes
+#23 10.06 checking whether to build shared libraries... no
+#23 10.06 checking whether to build static libraries... yes
+#23 10.06 checking how to run the C++ preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ -E
+#23 10.34 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++... /usr/lib/llvm-18/bin/ld.lld
+#23 10.37 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 10.42 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 10.57 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ option to produce PIC... -fPIC -DPIC
+#23 10.57 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ PIC flag -fPIC -DPIC works... yes
+#23 10.61 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ static flag -static works... yes
+#23 10.73 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ supports -c -o file.o... yes
+#23 10.78 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ supports -c -o file.o... (cached) yes
+#23 10.78 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 10.78 checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+#23 10.80 checking how to hardcode library paths into programs... immediate
+#23 10.81 checking for windres... no
+#23 10.89 checking whether ln -s works... yes
+#23 10.89 checking for python... /usr/bin/python
+#23 10.89 checking for python version... 2.7
+#23 10.91 checking for python platform... linux2
+#23 10.92 checking for python script directory... ${prefix}/lib/python2.7/dist-packages
+#23 10.95 checking for python extension module directory... ${exec_prefix}/lib/python2.7/dist-packages
+#23 10.98 checking for autogen... yes
+#23 10.98 checking for wine... no
+#23 10.98 checking for xcode-select... no
+#23 10.98 checking for ANSI C header files... (cached) yes
+#23 10.98 checking endian.h usability... yes
+#23 11.04 checking endian.h presence... yes
+#23 11.07 checking for endian.h... yes
+#23 11.08 checking byteswap.h usability... yes
+#23 11.13 checking byteswap.h presence... yes
+#23 11.16 checking for byteswap.h... yes
+#23 11.16 checking locale.h usability... yes
+#23 11.21 checking locale.h presence... yes
+#23 11.24 checking for locale.h... yes
+#23 11.24 checking sys/time.h usability... yes
+#23 11.30 checking sys/time.h presence... yes
+#23 11.34 checking for sys/time.h... yes
+#23 11.34 checking immintrin.h usability... yes
+#23 11.61 checking immintrin.h presence... yes
+#23 11.69 checking for immintrin.h... yes
+#23 11.70 checking stdbool.h usability... yes
+#23 11.75 checking stdbool.h presence... yes
+#23 11.79 checking for stdbool.h... yes
+#23 11.80 checking for sys/wait.h that is POSIX.1 compatible... yes
+#23 11.85 checking whether S_IRGRP is declared... yes
+#23 11.91 checking size of wchar_t... 4
+#23 12.03 checking size of short... 2
+#23 12.14 checking size of int... 4
+#23 12.26 checking size of long... 8
+#23 12.38 checking size of float... 4
+#23 12.50 checking size of double... 8
+#23 12.61 checking size of void*... 8
+#23 12.73 checking size of size_t... 8
+#23 12.84 checking size of int64_t... 8
+#23 12.97 checking size of long long... 8
+#23 13.08 checking size of off_t... 8
+#23 13.21 checking for ssize_t... yes
+#23 13.32 checking whether byte ordering is bigendian... no
+#23 13.45 checking for malloc... yes
+#23 13.57 checking for calloc... yes
+#23 13.68 checking for realloc... yes
+#23 13.79 checking for free... yes
+#23 13.89 checking for open... yes
+#23 13.99 checking for read... yes
+#23 14.10 checking for write... yes
+#23 14.20 checking for lseek... yes
+#23 14.32 checking for lseek64... yes
+#23 14.42 checking for fstat... yes
+#23 14.54 checking for fstat64... yes
+#23 14.65 checking for ftruncate... yes
+#23 14.77 checking for fsync... yes
+#23 14.88 checking for snprintf... yes
+#23 15.00 checking for vsnprintf... yes
+#23 15.11 checking for gmtime... yes
+#23 15.23 checking for gmtime_r... yes
+#23 15.34 checking for localtime... yes
+#23 15.44 checking for localtime_r... yes
+#23 15.55 checking for gettimeofday... yes
+#23 15.66 checking for mmap... yes
+#23 15.76 checking for getpagesize... yes
+#23 15.87 checking for setlocale... yes
+#23 15.97 checking for pipe... yes
+#23 16.09 checking for waitpid... yes
+#23 16.20 checking for library containing floor... -lm
+#23 16.41 checking for floor... yes
+#23 16.52 checking for ceil... yes
+#23 16.64 checking for fmod... yes
+#23 16.75 checking for lrint... yes
+#23 16.87 checking for lrintf... yes
+#23 16.98 checking for octave... no
+#23 16.98 checking for mkoctfile... no
+#23 16.98 checking for octave-config... no
+#23 16.98 checking for pkg-config... /usr/bin/pkg-config
+#23 16.98 checking pkg-config is at least version 0.9.0... yes
+#23 16.98 checking for flac >= 1.3.1 ... yes
+#23 17.10 checking for ogg >= 1.3.0 ... yes
+#23 17.21 checking for vorbis >= 1.2.3 ... yes
+#23 17.32 checking for vorbisenc >= 1.2.3 ... yes
+#23 17.43 checking for opus >= 1.1 ... yes
+#23 17.55 checking lame/lame.h usability... yes
+#23 17.60 checking lame/lame.h presence... yes
+#23 17.63 checking for lame/lame.h... yes
+#23 17.63 checking for library containing lame_set_VBR_q... -lmp3lame
+#23 17.95 checking for libmpg123 >= 1.25.10 ... yes
+#23 18.07 checking for sqlite3 >= 3.2 ... no
+#23 18.18 checking processor clipping capabilities... none
+#23 18.43 checking for ALSA... yes
+#23 18.44 checking alsa/asoundlib.h usability... yes
+#23 18.50 checking alsa/asoundlib.h presence... yes
+#23 18.55 checking for alsa/asoundlib.h... yes
+#23 18.56 checking whether C compiler accepts -Wall... yes
+#23 18.59 checking whether C compiler accepts -Wextra... yes
+#23 18.64 checking whether C compiler accepts -Wpointer-arith... yes
+#23 18.68 checking whether C compiler accepts -Wcast-align... yes
+#23 18.72 checking whether C compiler accepts -Wcast-qual... yes
+#23 18.76 checking whether C compiler accepts -Wshadow... yes
+#23 18.80 checking whether C compiler accepts -Wwrite-strings... yes
+#23 18.84 checking whether C compiler accepts -Wundef... yes
+#23 18.88 checking whether C compiler accepts -Wuninitialized... yes
+#23 18.93 checking whether C compiler accepts -Winit-self... yes
+#23 18.97 checking whether C compiler accepts -Wno-format-truncation... yes
+#23 19.01 checking whether C compiler accepts -Wvla... yes
+#23 19.05 checking whether C compiler accepts -Wbad-function-cast... yes
+#23 19.09 checking whether C compiler accepts -Wnested-externs... yes
+#23 19.13 checking whether C compiler accepts -Wstrict-prototypes... yes
+#23 19.18 checking whether C compiler accepts -Wmissing-prototypes... yes
+#23 19.22 checking whether C compiler accepts -Wmissing-declarations... yes
+#23 19.27 checking whether C compiler accepts -Waggregate-return... yes
+#23 19.32 checking whether C++ compiler accepts -Wall... yes
+#23 19.36 checking whether C++ compiler accepts -Wextra... yes
+#23 19.40 checking whether C++ compiler accepts -Wpointer-arith... yes
+#23 19.48 checking whether C++ compiler accepts -Wcast-align... yes
+#23 19.52 checking whether C++ compiler accepts -Wcast-qual... yes
+#23 19.56 checking whether C++ compiler accepts -Wshadow... yes
+#23 19.60 checking whether C++ compiler accepts -Wwrite-strings... yes
+#23 19.64 checking whether C++ compiler accepts -Wundef... yes
+#23 19.68 checking whether C++ compiler accepts -Wuninitialized... yes
+#23 19.72 checking whether C++ compiler accepts -Winit-self... yes
+#23 19.77 checking whether C++ compiler accepts -Wno-format-truncation... yes
+#23 19.81 checking whether C++ compiler accepts -Wctor-dtor-privacy... yes
+#23 19.85 checking whether C++ compiler accepts -Wnon-virtual-dtor... yes
+#23 19.90 checking whether C++ compiler accepts -Woverloaded-virtual... yes
+#23 19.94 checking whether C++ compiler accepts -Wreorder... yes
+#23 19.99 checking whether C++ compiler accepts -Wsign-promo... yes
+#23 20.03 checking whether C compiler accepts -Werror... no
+#23 20.07 checking whether to add -D_FORTIFY_SOURCE=2 to CPPFLAGS... yes
+#23 20.32 checking that generated files are newer than configure... done
+#23 20.32 configure: creating ./config.status
+#23 21.30 config.status: creating Makefile
+#23 21.32 config.status: creating Octave/Makefile
+#23 21.33 config.status: creating src/version-metadata.rc
+#23 21.35 config.status: creating include/sndfile.h
+#23 21.37 config.status: creating tests/test_wrapper.sh
+#23 21.39 config.status: creating tests/pedantic-header-test.sh
+#23 21.41 config.status: creating libsndfile.spec
+#23 21.43 config.status: creating sndfile.pc
+#23 21.44 config.status: creating Scripts/build-test-tarball.mk
+#23 21.46 config.status: creating src/config.h
+#23 21.48 config.status: executing depfiles commands
+#23 21.85 config.status: executing libtool commands
+#23 21.88 
+#23 21.88 -=-=-=-=-=-=-=-=-=-= Configuration Complete =-=-=-=-=-=-=-=-=-=-=-
+#23 21.88 
+#23 21.88   Configuration summary :
+#23 21.88 
+#23 21.88     libsndfile version : .................. 1.1.0beta1
+#23 21.88 
+#23 21.88     Host CPU : ............................ x86_64
+#23 21.88     Host Vendor : ......................... pc
+#23 21.88     Host OS : ............................. linux-gnu
+#23 21.88 
+#23 21.88     CFLAGS : .............................. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall -Wextra -Wpointer-arith -Wcast-align -Wcast-qual -Wshadow -Wwrite-strings -Wundef -Wuninitialized -Winit-self -Wno-format-truncation -Wvla -Wbad-function-cast -Wnested-externs -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Waggregate-return 
+#23 21.88     CXXFLAGS : ............................ -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -Wall -Wextra -Wpointer-arith -Wcast-align -Wcast-qual -Wshadow -Wwrite-strings -Wundef -Wuninitialized -Winit-self -Wno-format-truncation -Wctor-dtor-privacy -Wnon-virtual-dtor -Woverloaded-virtual -Wreorder -Wsign-promo
+#23 21.88     CPPFLAGS : ............................  -D_FORTIFY_SOURCE=2
+#23 21.88     LDFLAGS : ............................. -L/magma_out -g -L/magma_out/afl
+#23 21.88 
+#23 21.88     Experimental code : ................... no
+#23 21.88     Using ALSA in example programs : ...... auto
+#23 21.88     External FLAC/Ogg/Vorbis/Opus : ....... yes
+#23 21.88     External MPEG Lame/MPG123 : ........... yes
+#23 21.88     Building Octave interface : ........... no
+#23 21.88 
+#23 21.88   Tools :
+#23 21.88 
+#23 21.88     C Compiler Vendor is : ................ clang (18.1.0)
+#23 21.88     CXX Compiler Vendor is : .............. clang (18.1.0)
+#23 21.88 
+#23 21.88     Sanitizer enabled : ................... no
+#23 21.88     Stack smash protection : .............. no
+#23 21.88 
+#23 21.88   Installation directories :
+#23 21.88 
+#23 21.88     Library directory : ................... /usr/local/lib
+#23 21.88     Program directory : ................... /usr/local/bin
+#23 21.88     Pkgconfig directory : ................. /usr/local/lib/pkgconfig
+#23 21.88     HTML docs directory : ................. /usr/local/share/doc/libsndfile
+#23 21.88 
+#23 21.88 Compiling some other packages against libsndfile may require
+#23 21.88 the addition of '/usr/local/lib/pkgconfig' to the
+#23 21.88 PKG_CONFIG_PATH environment variable.
+#23 21.88 
+#23 21.96 make[1]: Entering directory '/magma/targets/libsndfile/repo'
+#23 21.96 test -z "programs/*.wav octave-workspace" || rm -f programs/*.wav octave-workspace
+#23 21.96 test -z "src/libsndfile.la" || rm -f src/libsndfile.la
+#23 21.96 rm -rf .libs _libs
+#23 21.96 test -z "src/libcommon.la src/GSM610/libgsm.la src/G72x/libg72x.la src/ALAC/libalac.la ossfuzz/libstandaloneengine.la" || rm -f src/libcommon.la src/GSM610/libgsm.la src/G72x/libg72x.la src/ALAC/libalac.la ossfuzz/libstandaloneengine.la
+#23 21.96  rm -f programs/sndfile-info programs/sndfile-play programs/sndfile-convert programs/sndfile-cmp programs/sndfile-metadata-set programs/sndfile-metadata-get programs/sndfile-interleave programs/sndfile-deinterleave programs/sndfile-concat programs/sndfile-salvage
+#23 21.96 rm -f *.o
+#23 21.96  rm -f src/test_main src/G72x/g72x_test examples/make_sine examples/sfprocess examples/list_formats examples/generate examples/sndfilehandle examples/sndfile-to-text examples/sndfile-loopify tests/sfversion tests/floating_point_test tests/write_read_test tests/lossy_comp_test tests/error_test tests/ulaw_test tests/alaw_test tests/dwvw_test tests/peak_chunk_test tests/command_test tests/stdio_test tests/pcm_test tests/headerless_test tests/pipe_test tests/header_test tests/misc_test tests/raw_test tests/string_test tests/multi_file_test tests/chunk_test tests/scale_clip_test tests/win32_test tests/aiff_rw_test tests/virtual_io_test tests/locale_test tests/win32_ordinal_test tests/ogg_test tests/compression_size_test tests/checksum_test tests/external_libs_test tests/rdwr_test tests/format_check_test tests/cpp_test tests/channel_test tests/long_read_write_test tests/stdin_test tests/stdout_test tests/dither_test tests/fix_this tests/largefile_test tests/benchmark tests/ogg_opus_test tests/mpeg_test programs/sndfile-metadata-set programs/sndfile-metadata-get
+#23 21.96 rm -f *.lo
+#23 21.96  rm -f ossfuzz/sndfile_fuzzer
+#23 21.96 rm -rf examples/.libs examples/_libs
+#23 21.96 rm -f examples/*.o
+#23 21.96 rm -f ossfuzz/*.o
+#23 21.96 rm -rf ossfuzz/.libs ossfuzz/_libs
+#23 21.96 rm -f src/so_locations
+#23 21.96 rm -f ossfuzz/so_locations src/ALAC/so_locations src/G72x/so_locations src/GSM610/so_locations src/so_locations
+#23 21.96 rm -f ossfuzz/*.lo
+#23 21.96 rm -rf programs/.libs programs/_libs
+#23 21.97 rm -f programs/*.o
+#23 21.97 rm -rf regtest/.libs regtest/_libs
+#23 21.97 rm -f regtest/*.o
+#23 21.97 rm -rf src/.libs src/_libs
+#23 21.97 rm -f src/*.o
+#23 21.97 rm -rf src/ALAC/.libs src/ALAC/_libs
+#23 21.97 rm -f src/*.lo
+#23 21.97 rm -rf src/G72x/.libs src/G72x/_libs
+#23 21.98 rm -f src/ALAC/*.o
+#23 21.98 rm -rf src/GSM610/.libs src/GSM610/_libs
+#23 21.98 rm -f src/ALAC/*.lo
+#23 21.98 rm -rf tests/.libs tests/_libs
+#23 21.98 rm -f src/G72x/*.o
+#23 21.98 rm -f src/G72x/*.lo
+#23 21.99 rm -f src/GSM610/*.o
+#23 21.99 rm -f src/GSM610/*.lo
+#23 22.00 rm -f tests/*.o
+#23 22.00 make[1]: Leaving directory '/magma/targets/libsndfile/repo'
+#23 22.03   CC       src/src_libcommon_la-file_io.lo
+#23 22.04   CC       src/src_libcommon_la-pcm.lo
+#23 22.04   CC       src/src_libcommon_la-ulaw.lo
+#23 22.04   CC       src/src_libcommon_la-alaw.lo
+#23 22.04   CC       src/src_libcommon_la-float32.lo
+#23 22.04   CC       src/src_libcommon_la-gsm610.lo
+#23 22.04   CC       src/src_libcommon_la-vox_adpcm.lo
+#23 22.04   CC       src/src_libcommon_la-ima_adpcm.lo
+#23 22.04   CC       src/src_libcommon_la-interleave.lo
+#23 22.04   CC       src/src_libcommon_la-command.lo
+#23 22.04   CC       src/src_libcommon_la-strings.lo
+#23 22.04   CC       src/src_libcommon_la-dwvw.lo
+#23 22.04   CC       src/src_libcommon_la-broadcast.lo
+#23 22.04   CC       src/src_libcommon_la-ms_adpcm.lo
+#23 22.04   CC       src/src_libcommon_la-ima_oki_adpcm.lo
+#23 22.04   CC       src/src_libcommon_la-alac.lo
+#23 22.04   CC       src/src_libcommon_la-common.lo
+#23 22.04   CC       src/src_libcommon_la-dither.lo
+#23 22.04   CC       src/src_libcommon_la-chunk.lo
+#23 22.04   CC       src/src_libcommon_la-cart.lo
+#23 22.04   CC       src/src_libcommon_la-audio_detect.lo
+#23 22.04   CC       src/src_libcommon_la-id3.lo
+#23 22.04 /usr/bin/python ./src/create_symbols_file.py linux 1.0.32 > ./src/Symbols.gnu-binutils
+#23 22.04 /usr/bin/python ./src/create_symbols_file.py darwin 1.0.32 > ./src/Symbols.darwin
+#23 22.05 /usr/bin/python ./src/create_symbols_file.py win32 1.0.32 > ./src/libsndfile-1.def
+#23 22.05 /usr/bin/python ./src/create_symbols_file.py os2 1.0.32 > ./src/Symbols.os2
+#23 22.05 /usr/bin/python ./src/create_symbols_file.py static 1.0.32 > ./src/Symbols.static
+#23 22.05   CC       src/src_libcommon_la-mpeg_decode.lo
+#23 22.05   CC       src/src_libcommon_la-mpeg_l3_encode.lo
+#23 22.05   CC       src/src_libcommon_la-double64.lo
+#23 22.05   CXX      ossfuzz/ossfuzz_libstandaloneengine_la-standaloneengine.lo
+#23 22.05   CC       src/src_libcommon_la-chanmap.lo
+#23 22.05   CC       src/src_libcommon_la-windows.lo
+#23 22.06   CC       src/src_libcommon_la-nms_adpcm.lo
+#23 22.06   CXX      ossfuzz/ossfuzz_sndfile_fuzzer-sndfile_fuzzer.o
+#23 22.06   CC       src/src_libsndfile_la-sndfile.lo
+#23 22.06   CC       src/src_libsndfile_la-au.lo
+#23 22.06   CC       src/src_libsndfile_la-avr.lo
+#23 22.06   CC       src/src_libsndfile_la-flac.lo
+#23 22.06   CC       src/src_libsndfile_la-aiff.lo
+#23 22.07   CC       src/src_libsndfile_la-ircam.lo
+#23 22.07   CC       src/src_libsndfile_la-mat5.lo
+#23 22.07   CC       src/src_libsndfile_la-mat4.lo
+#23 22.07   CC       src/src_libsndfile_la-paf.lo
+#23 22.07   CC       src/src_libsndfile_la-pvf.lo
+#23 22.07   CC       src/src_libsndfile_la-g72x.lo
+#23 22.07   CC       src/src_libsndfile_la-nist.lo
+#23 22.07   CC       src/src_libsndfile_la-sd2.lo
+#23 22.07   CC       src/src_libsndfile_la-raw.lo
+#23 22.07   CC       src/src_libsndfile_la-sds.lo
+#23 22.07   CC       src/src_libsndfile_la-w64.lo
+#23 22.07   CC       src/src_libsndfile_la-wav.lo
+#23 22.07   CC       src/src_libsndfile_la-caf.lo
+#23 22.07   CC       src/src_libsndfile_la-xi.lo
+#23 22.07   CC       src/src_libsndfile_la-rf64.lo
+#23 22.07   CC       src/src_libsndfile_la-ogg_vorbis.lo
+#23 22.07   CC       src/src_libsndfile_la-ogg_speex.lo
+#23 22.07   CC       src/src_libsndfile_la-voc.lo
+#23 22.07   CC       src/src_libsndfile_la-ogg_pcm.lo
+#23 22.07   CC       src/src_libsndfile_la-mpeg.lo
+#23 22.07   CC       src/GSM610/code.lo
+#23 22.07   CC       src/GSM610/gsm_create.lo
+#23 22.07   CC       src/src_libsndfile_la-ogg_vcomment.lo
+#23 22.07   CC       src/GSM610/add.lo
+#23 22.07   CC       src/src_libsndfile_la-dwd.lo
+#23 22.07   CC       src/src_libsndfile_la-rx2.lo
+#23 22.08   CC       src/GSM610/lpc.lo
+#23 22.08   CC       src/GSM610/gsm_decode.lo
+#23 22.08   CC       src/GSM610/table.lo
+#23 22.08   CC       src/G72x/g721.lo
+#23 22.08   CC       src/GSM610/rpe.lo
+#23 22.08   CC       src/G72x/g723_24.lo
+#23 22.08   CC       src/ALAC/ag_dec.lo
+#23 22.08   CC       src/ALAC/ALACBitUtilities.lo
+#23 22.08   CC       src/ALAC/ag_enc.lo
+#23 22.08   CC       src/src_libsndfile_la-svx.lo
+#23 22.08   CC       src/ALAC/dp_dec.lo
+#23 22.08   CC       src/ALAC/matrix_dec.lo
+#23 22.08   CC       src/GSM610/gsm_encode.lo
+#23 22.08   CC       src/G72x/g72x.lo
+#23 22.08   CC       src/ALAC/dp_enc.lo
+#23 22.08   CC       src/GSM610/gsm_option.lo
+#23 22.08   CC       src/G72x/g723_16.lo
+#23 22.09   CC       src/ALAC/matrix_enc.lo
+#23 22.09   CC       src/ALAC/alac_decoder.lo
+#23 22.09   CC       src/GSM610/short_term.lo
+#23 22.10   CC       src/G72x/g723_40.lo
+#23 22.10   CC       src/GSM610/preprocess.lo
+#23 22.12   CC       src/GSM610/gsm_destroy.lo
+#23 22.12 ossfuzz/sndfile_fuzzer.cc:40:5: warning: variable 'new_offset' is used uninitialized whenever switch default is taken [-Wsometimes-uninitialized]
+#23 22.12    40 |     default:
+#23 22.12       |     ^~~~~~~
+#23 22.12 ossfuzz/sndfile_fuzzer.cc:45:7: note: uninitialized use occurs here
+#23 22.12    45 |   if (new_offset > vf->length)
+#23 22.12       |       ^~~~~~~~~~
+#23 22.12 ossfuzz/sndfile_fuzzer.cc:24:24: note: initialize the variable 'new_offset' to silence this warning
+#23 22.12    24 |   sf_count_t new_offset;
+#23 22.12       |                        ^
+#23 22.12       |                         = 0
+#23 22.12   CC       src/src_libsndfile_la-txw.lo
+#23 22.12   CC       src/src_libsndfile_la-wavlike.lo
+#23 22.13   CC       src/src_libsndfile_la-htk.lo
+#23 22.13   CC       src/ALAC/alac_encoder.lo
+#23 22.13 1 warning generated.
+#23 22.16   CC       src/GSM610/decode.lo
+#23 22.17   CC       src/src_libsndfile_la-wve.lo
+#23 22.18   CC       src/src_libsndfile_la-ogg_opus.lo
+#23 22.18   CC       src/src_libsndfile_la-macos.lo
+#23 22.18   CC       src/src_libsndfile_la-mpc2k.lo
+#23 22.18   CC       src/GSM610/long_term.lo
+#23 22.18   CC       src/src_libsndfile_la-ogg.lo
+#23 22.67   CCLD     src/ALAC/libalac.la
+#23 22.99 
+#23 22.99 *** Warning: Linking the shared library src/ALAC/libalac.la against the
+#23 22.99 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 23.09   CXXLD    ossfuzz/libstandaloneengine.la
+#23 23.15 src/ima_adpcm.c:265:12: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 23.15   265 | static int count = 0 ;
+#23 23.15       |            ^
+#23 23.17   CCLD     src/G72x/libg72x.la
+#23 23.18 1 warning generated.
+#23 23.24 src/wavlike.c:834:11: warning: variable 'bytes' set but not used [-Wunused-but-set-variable]
+#23 23.24   834 |         uint32_t bytes = 0 ;
+#23 23.24       |                  ^
+#23 23.26 1 warning generated.
+#23 23.35   CCLD     src/GSM610/libgsm.la
+#23 23.35 
+#23 23.35 *** Warning: Linking the shared library src/G72x/libg72x.la against the
+#23 23.35 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 23.36 
+#23 23.36 *** Warning: Linking the shared library ossfuzz/libstandaloneengine.la against the
+#23 23.36 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 23.49   CCLD     src/libcommon.la
+#23 23.52 
+#23 23.52 *** Warning: Linking the shared library src/GSM610/libgsm.la against the
+#23 23.52 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 23.66 
+#23 23.66 *** Warning: Linking the shared library src/libcommon.la against the
+#23 23.66 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 23.74   CCLD     src/libsndfile.la
+#23 24.02 
+#23 24.02 *** Warning: Linking the shared library src/libsndfile.la against the
+#23 24.02 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 24.35   CXXLD    ossfuzz/sndfile_fuzzer
+#23 24.68 ld.lld: warning: src/.libs/libsndfile.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 24.68 ld.lld: warning: ossfuzz/.libs/libstandaloneengine.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 25.20 
+#23 25.20 === AFL++ LTO Instrumentation Statistics ===
+#23 25.20 Total Basic Blocks: 17968
+#23 25.20 Instrumented Times: 0
+#23 25.20 Instrumented Basic Blocks: 2781
+#23 25.20 Instrumentation Ratio: 15.48%
+#23 25.20 Total Predecessors: 7368
+#23 25.20 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 25.20   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 25.20   Instrumented BasicBlocks with 2 predecessor(s): 2211
+#23 25.20   Instrumented BasicBlocks with 3 predecessor(s): 272
+#23 25.20   Instrumented BasicBlocks with 4 predecessor(s): 108
+#23 25.20   Instrumented BasicBlocks with 5 predecessor(s): 61
+#23 25.20   Instrumented BasicBlocks with 6 predecessor(s): 33
+#23 25.20   Instrumented BasicBlocks with 7 predecessor(s): 22
+#23 25.20   Instrumented BasicBlocks with 8 predecessor(s): 14
+#23 25.20   Instrumented BasicBlocks with 9 predecessor(s): 12
+#23 25.20   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 25.20 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 25.20   Non-Instrumented BasicBlocks with 1 predecessor(s): 9639
+#23 25.20   Non-Instrumented BasicBlocks with 2 predecessor(s): 1526
+#23 25.20   Non-Instrumented BasicBlocks with 3 predecessor(s): 40
+#23 25.20   Non-Instrumented BasicBlocks with 4 predecessor(s): 11
+#23 25.20   Non-Instrumented BasicBlocks with 5 predecessor(s): 6
+#23 25.20   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 25.20   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 25.20   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 25.20   Non-Instrumented BasicBlocks with 9 predecessor(s): 4
+#23 25.20   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 25.20 Average Global Entropy: 1.44
+#23 25.20 =======================================
+#23 25.20 
+#23 27.34 'ossfuzz/sndfile_fuzzer' -> '/magma_out/afl/sndfile_fuzzer'
+#23 DONE 27.4s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 0.3s done
+#24 writing image sha256:46e5e622d2d700d2bf6dbebff799a0586e760ad297709fe145dee0cda6a22200 done
+#24 naming to docker.io/magma/aflplusplus_lto_entropy/libsndfile done
+#24 DONE 0.3s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_lto_entropy/libsndfile

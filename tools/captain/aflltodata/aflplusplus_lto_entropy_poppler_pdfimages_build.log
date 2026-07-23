@@ -1,0 +1,1507 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/poppler_pdfimages --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=poppler_pdfimages --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 58.10MB 0.3s done
+#5 DONE 0.3s
+
+#6 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#6 CACHED
+
+#7 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#7 CACHED
+
+#8 [ 8/19] RUN /magma/magma/preinstall.sh
+#8 CACHED
+
+#9 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#9 CACHED
+
+#10 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#10 CACHED
+
+#11 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#11 CACHED
+
+#12 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#12 CACHED
+
+#13 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#13 CACHED
+
+#14 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#14 CACHED
+
+#15 [ 9/19] RUN /magma/magma/prebuild.sh
+#15 CACHED
+
+#16 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/poppler_pdfimages && chown magma:magma /magma/targets/poppler_pdfimages
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/poppler_pdfimages /magma/targets/poppler_pdfimages/
+#19 DONE 0.4s
+
+#20 [16/19] RUN /magma/targets/poppler_pdfimages/preinstall.sh
+#20 0.753 Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 0.925 Hit:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 0.989 Hit:4 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.104 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.343 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.431 Reading package lists...
+#20 2.998 Reading package lists...
+#20 4.399 Building dependency tree...
+#20 4.605 Reading state information...
+#20 4.756 make is already the newest version (4.1-9.1ubuntu1).
+#20 4.756 pkg-config is already the newest version (0.29.1-0ubuntu2).
+#20 4.756 pkg-config set to manually installed.
+#20 4.756 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 4.756 zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2.2).
+#20 4.756 zlib1g-dev set to manually installed.
+#20 4.756 The following additional packages will be installed:
+#20 4.756   autotools-dev cmake-data fontconfig-config fonts-dejavu-core libarchive13
+#20 4.756   libboost1.65-dev libcairo-gobject2 libcairo-script-interpreter2 libcairo2
+#20 4.756   libfontconfig1 libfontconfig1-dev libfreetype6-dev libice-dev libice6
+#20 4.756   libjbig-dev libjbig0 libjpeg-turbo8 libjpeg-turbo8-dev libjpeg8 libjpeg8-dev
+#20 4.756   libjsoncpp1 liblcms2-2 libltdl-dev libltdl7 liblzma-dev liblzo2-2
+#20 4.756   libopenjp2-7 libpixman-1-0 libpixman-1-dev libpng-tools
+#20 4.756   libpthread-stubs0-dev librhash0 libsigsegv2 libsm-dev libsm6 libtiff5
+#20 4.756   libtiff5-dev libtiffxx5 libuv1 libx11-dev libx11-doc libxau-dev
+#20 4.756   libxcb-render0 libxcb-render0-dev libxcb-shm0 libxcb-shm0-dev libxcb1-dev
+#20 4.757   libxdmcp-dev libxext-dev libxrender-dev libxrender1 m4 ucf x11-common
+#20 4.757   x11proto-core-dev x11proto-dev x11proto-xext-dev xorg-sgml-doctools
+#20 4.757   xtrans-dev
+#20 4.758 Suggested packages:
+#20 4.758   autoconf-archive gnu-standards autoconf-doc gettext cmake-doc ninja-build
+#20 4.758   lrzip libboost-doc libboost1.65-doc libboost-atomic1.65-dev
+#20 4.758   libboost-chrono1.65-dev libboost-container1.65-dev libboost-context1.65-dev
+#20 4.758   libboost-coroutine1.65-dev libboost-date-time1.65-dev
+#20 4.758   libboost-exception1.65-dev libboost-fiber1.65-dev
+#20 4.758   libboost-filesystem1.65-dev libboost-graph1.65-dev
+#20 4.758   libboost-graph-parallel1.65-dev libboost-iostreams1.65-dev
+#20 4.758   libboost-locale1.65-dev libboost-log1.65-dev libboost-math1.65-dev
+#20 4.758   libboost-mpi1.65-dev libboost-mpi-python1.65-dev libboost-numpy1.65-dev
+#20 4.758   libboost-program-options1.65-dev libboost-python1.65-dev
+#20 4.758   libboost-random1.65-dev libboost-regex1.65-dev
+#20 4.758   libboost-serialization1.65-dev libboost-signals1.65-dev
+#20 4.758   libboost-stacktrace1.65-dev libboost-system1.65-dev libboost-test1.65-dev
+#20 4.758   libboost-thread1.65-dev libboost-timer1.65-dev libboost-type-erasure1.65-dev
+#20 4.758   libboost-wave1.65-dev libboost1.65-tools-dev libmpfrc++-dev libntl-dev
+#20 4.758   libcairo2-doc libice-doc liblcms2-utils libtool-doc liblzma-doc libsm-doc
+#20 4.758   gfortran | fortran95-compiler gcj-jdk libxcb-doc libxext-doc m4-doc
+#20 4.900 The following NEW packages will be installed:
+#20 4.900   autoconf automake autotools-dev cmake cmake-data fontconfig-config
+#20 4.901   fonts-dejavu-core libarchive13 libboost-dev libboost1.65-dev
+#20 4.901   libcairo-gobject2 libcairo-script-interpreter2 libcairo2 libcairo2-dev
+#20 4.901   libfontconfig1 libfontconfig1-dev libfreetype6-dev libice-dev libice6
+#20 4.901   libjbig-dev libjbig0 libjpeg-dev libjpeg-turbo8 libjpeg-turbo8-dev libjpeg8
+#20 4.901   libjpeg8-dev libjsoncpp1 liblcms2-2 liblcms2-dev libltdl-dev libltdl7
+#20 4.901   liblzma-dev liblzo2-2 libopenjp2-7 libopenjp2-7-dev libpixman-1-0
+#20 4.901   libpixman-1-dev libpng-dev libpng-tools libpthread-stubs0-dev librhash0
+#20 4.901   libsigsegv2 libsm-dev libsm6 libtiff-dev libtiff5 libtiff5-dev libtiffxx5
+#20 4.901   libtool libuv1 libx11-dev libx11-doc libxau-dev libxcb-render0
+#20 4.901   libxcb-render0-dev libxcb-shm0 libxcb-shm0-dev libxcb1-dev libxdmcp-dev
+#20 4.901   libxext-dev libxrender-dev libxrender1 m4 ucf x11-common x11proto-core-dev
+#20 4.901   x11proto-dev x11proto-xext-dev xorg-sgml-doctools xtrans-dev
+#20 5.384 0 upgraded, 70 newly installed, 0 to remove and 1 not upgraded.
+#20 5.384 Need to get 34.1 MB of archives.
+#20 5.384 After this operation, 202 MB of additional disk space will be used.
+#20 5.384 Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjpeg-turbo8 amd64 1.5.2-0ubuntu5.18.04.6 [111 kB]
+#20 6.431 Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 liblzo2-2 amd64 2.08-1.2 [48.7 kB]
+#20 6.525 Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 x11-common all 1:7.7+19ubuntu7.1 [22.5 kB]
+#20 6.642 Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libice6 amd64 2:1.0.9-2ubuntu0.18.04.1 [40.7 kB]
+#20 6.829 Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsm6 amd64 2:1.2.2-1 [15.8 kB]
+#20 6.829 Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 ucf all 3.0038 [50.5 kB]
+#20 6.837 Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]
+#20 6.924 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]
+#20 7.223 Get:9 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]
+#20 7.528 Get:10 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+#20 7.540 Get:11 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]
+#20 7.861 Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 cmake-data all 3.10.2-1ubuntu2.18.04.2 [1332 kB]
+#20 8.264 Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libarchive13 amd64 3.2.2-3.1ubuntu0.7 [288 kB]
+#20 8.315 Get:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjsoncpp1 amd64 1.7.4-3 [73.6 kB]
+#20 8.316 Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 librhash0 amd64 1.3.6-2 [78.1 kB]
+#20 8.344 Get:16 http://archive.ubuntu.com/ubuntu bionic/main amd64 libuv1 amd64 1.18.0-3 [64.4 kB]
+#20 8.355 Get:17 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 cmake amd64 3.10.2-1ubuntu2.18.04.2 [3152 kB]
+#20 15.06 Get:18 http://archive.ubuntu.com/ubuntu bionic/main amd64 fonts-dejavu-core all 2.37-1 [1041 kB]
+#20 30.78 Get:19 http://archive.ubuntu.com/ubuntu bionic/main amd64 fontconfig-config all 2.12.6-0ubuntu2 [55.8 kB]
+#20 30.91 Get:20 http://archive.ubuntu.com/ubuntu bionic/main amd64 libboost1.65-dev amd64 1.65.1+dfsg-0ubuntu5 [7218 kB]
+#20 83.44 Get:21 http://archive.ubuntu.com/ubuntu bionic/main amd64 libboost-dev amd64 1.65.1.0ubuntu1 [3128 B]
+#20 83.62 Get:22 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfontconfig1 amd64 2.12.6-0ubuntu2 [137 kB]
+#20 84.37 Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpixman-1-0 amd64 0.34.0-2ubuntu0.1 [229 kB]
+#20 84.80 Get:24 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-render0 amd64 1.13-2~ubuntu18.04 [14.7 kB]
+#20 84.99 Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-shm0 amd64 1.13-2~ubuntu18.04 [5600 B]
+#20 85.17 Get:26 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxrender1 amd64 1:0.9.10-1 [18.7 kB]
+#20 85.36 Get:27 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo2 amd64 1.15.10-2ubuntu0.1 [580 kB]
+#20 86.01 Get:28 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo-gobject2 amd64 1.15.10-2ubuntu0.1 [17.1 kB]
+#20 86.19 Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo-script-interpreter2 amd64 1.15.10-2ubuntu0.1 [53.5 kB]
+#20 86.38 Get:30 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpng-dev amd64 1.6.34-1ubuntu0.18.04.2 [177 kB]
+#20 86.59 Get:31 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libfreetype6-dev amd64 2.8.1-2ubuntu2.2 [2539 kB]
+#20 88.83 Get:32 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfontconfig1-dev amd64 2.12.6-0ubuntu2 [689 kB]
+#20 89.89 Get:33 http://archive.ubuntu.com/ubuntu bionic/main amd64 xorg-sgml-doctools all 1:1.11-1 [12.9 kB]
+#20 90.07 Get:34 http://archive.ubuntu.com/ubuntu bionic/main amd64 x11proto-dev all 2018.4-4 [251 kB]
+#20 90.35 Get:35 http://archive.ubuntu.com/ubuntu bionic/main amd64 x11proto-core-dev all 2018.4-4 [2620 B]
+#20 90.53 Get:36 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxau-dev amd64 1:1.0.8-1ubuntu1 [9476 B]
+#20 90.71 Get:37 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxdmcp-dev amd64 1:1.1.2-3 [25.1 kB]
+#20 90.90 Get:38 http://archive.ubuntu.com/ubuntu bionic/main amd64 xtrans-dev all 1.3.5-1 [70.5 kB]
+#20 91.33 Get:39 http://archive.ubuntu.com/ubuntu bionic/main amd64 libpthread-stubs0-dev amd64 0.3-4 [4068 B]
+#20 91.51 Get:40 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb1-dev amd64 1.13-2~ubuntu18.04 [80.0 kB]
+#20 91.76 Get:41 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-dev amd64 2:1.6.4-3ubuntu0.4 [641 kB]
+#20 92.77 Get:42 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxrender-dev amd64 1:0.9.10-1 [24.9 kB]
+#20 92.97 Get:43 http://archive.ubuntu.com/ubuntu bionic/main amd64 x11proto-xext-dev all 2018.4-4 [2620 B]
+#20 93.15 Get:44 http://archive.ubuntu.com/ubuntu bionic/main amd64 libxext-dev amd64 2:1.3.3-1 [82.1 kB]
+#20 93.59 Get:45 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libice-dev amd64 2:1.0.9-2ubuntu0.18.04.1 [47.2 kB]
+#20 93.81 Get:46 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsm-dev amd64 2:1.2.2-1 [16.2 kB]
+#20 94.22 Get:47 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpixman-1-dev amd64 0.34.0-2ubuntu0.1 [244 kB]
+#20 94.60 Get:48 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-render0-dev amd64 1.13-2~ubuntu18.04 [18.4 kB]
+#20 94.79 Get:49 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxcb-shm0-dev amd64 1.13-2~ubuntu18.04 [6684 B]
+#20 94.98 Get:50 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcairo2-dev amd64 1.15.10-2ubuntu0.1 [626 kB]
+#20 95.61 Get:51 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjpeg-turbo8-dev amd64 1.5.2-0ubuntu5.18.04.6 [225 kB]
+#20 96.58 Get:52 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2194 B]
+#20 96.76 Get:53 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjpeg8-dev amd64 8c-2ubuntu8 [1552 B]
+#20 96.94 Get:54 http://archive.ubuntu.com/ubuntu bionic/main amd64 libjpeg-dev amd64 8c-2ubuntu8 [1546 B]
+#20 97.12 Get:55 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblcms2-2 amd64 2.9-1ubuntu0.1 [139 kB]
+#20 97.39 Get:56 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblcms2-dev amd64 2.9-1ubuntu0.1 [9096 kB]
+#20 111.2 Get:57 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl7 amd64 2.4.6-2 [38.8 kB]
+#20 111.4 Get:58 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl-dev amd64 2.4.6-2 [162 kB]
+#20 111.9 Get:59 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libpng-tools amd64 1.6.34-1ubuntu0.18.04.2 [25.6 kB]
+#20 112.1 Get:60 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjbig0 amd64 2.1-3.1ubuntu0.18.04.1 [27.0 kB]
+#20 112.3 Get:61 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libjbig-dev amd64 2.1-3.1ubuntu0.18.04.1 [25.3 kB]
+#20 112.5 Get:62 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblzma-dev amd64 5.2.2-1.3ubuntu0.1 [145 kB]
+#20 112.8 Get:63 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtiff5 amd64 4.0.9-5ubuntu0.10 [154 kB]
+#20 113.1 Get:64 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtiffxx5 amd64 4.0.9-5ubuntu0.10 [5804 B]
+#20 113.3 Get:65 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtiff5-dev amd64 4.0.9-5ubuntu0.10 [275 kB]
+#20 114.5 Get:66 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtiff-dev amd64 4.0.9-5ubuntu0.10 [2260 B]
+#20 114.6 Get:67 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]
+#20 115.9 Get:68 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libx11-doc all 2:1.6.4-3ubuntu0.4 [2065 kB]
+#20 120.4 Get:69 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 libopenjp2-7 amd64 2.3.0-2+deb10u2build0.18.04.1 [145 kB]
+#20 120.8 Get:70 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 libopenjp2-7-dev amd64 2.3.0-2+deb10u2build0.18.04.1 [26.6 kB]
+#20 121.0 debconf: unable to initialize frontend: Dialog
+#20 121.0 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 121.0 debconf: falling back to frontend: Readline
+#20 121.0 debconf: unable to initialize frontend: Readline
+#20 121.0 debconf: (This frontend requires a controlling tty.)
+#20 121.0 debconf: falling back to frontend: Teletype
+#20 121.0 dpkg-preconfigure: unable to re-open stdin: 
+#20 121.0 Fetched 34.1 MB in 1min 56s (294 kB/s)
+#20 121.0 Selecting previously unselected package libjpeg-turbo8:amd64.
+#20 121.0 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24447 files and directories currently installed.)
+#20 121.0 Preparing to unpack .../00-libjpeg-turbo8_1.5.2-0ubuntu5.18.04.6_amd64.deb ...
+#20 121.0 Unpacking libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.6) ...
+#20 121.1 Selecting previously unselected package liblzo2-2:amd64.
+#20 121.1 Preparing to unpack .../01-liblzo2-2_2.08-1.2_amd64.deb ...
+#20 121.1 Unpacking liblzo2-2:amd64 (2.08-1.2) ...
+#20 121.1 Selecting previously unselected package x11-common.
+#20 121.1 Preparing to unpack .../02-x11-common_1%3a7.7+19ubuntu7.1_all.deb ...
+#20 121.1 dpkg-query: no packages found matching nux-tools
+#20 121.1 Unpacking x11-common (1:7.7+19ubuntu7.1) ...
+#20 121.1 Selecting previously unselected package libice6:amd64.
+#20 121.1 Preparing to unpack .../03-libice6_2%3a1.0.9-2ubuntu0.18.04.1_amd64.deb ...
+#20 121.1 Unpacking libice6:amd64 (2:1.0.9-2ubuntu0.18.04.1) ...
+#20 121.1 Selecting previously unselected package libsm6:amd64.
+#20 121.1 Preparing to unpack .../04-libsm6_2%3a1.2.2-1_amd64.deb ...
+#20 121.1 Unpacking libsm6:amd64 (2:1.2.2-1) ...
+#20 121.2 Selecting previously unselected package ucf.
+#20 121.2 Preparing to unpack .../05-ucf_3.0038_all.deb ...
+#20 121.2 Moving old data out of the way
+#20 121.2 Unpacking ucf (3.0038) ...
+#20 121.2 Selecting previously unselected package libsigsegv2:amd64.
+#20 121.2 Preparing to unpack .../06-libsigsegv2_2.12-1_amd64.deb ...
+#20 121.2 Unpacking libsigsegv2:amd64 (2.12-1) ...
+#20 121.2 Selecting previously unselected package m4.
+#20 121.2 Preparing to unpack .../07-m4_1.4.18-1_amd64.deb ...
+#20 121.2 Unpacking m4 (1.4.18-1) ...
+#20 121.2 Selecting previously unselected package autoconf.
+#20 121.2 Preparing to unpack .../08-autoconf_2.69-11_all.deb ...
+#20 121.2 Unpacking autoconf (2.69-11) ...
+#20 121.3 Selecting previously unselected package autotools-dev.
+#20 121.3 Preparing to unpack .../09-autotools-dev_20180224.1_all.deb ...
+#20 121.3 Unpacking autotools-dev (20180224.1) ...
+#20 121.3 Selecting previously unselected package automake.
+#20 121.3 Preparing to unpack .../10-automake_1%3a1.15.1-3ubuntu2_all.deb ...
+#20 121.3 Unpacking automake (1:1.15.1-3ubuntu2) ...
+#20 121.4 Selecting previously unselected package cmake-data.
+#20 121.4 Preparing to unpack .../11-cmake-data_3.10.2-1ubuntu2.18.04.2_all.deb ...
+#20 121.4 Unpacking cmake-data (3.10.2-1ubuntu2.18.04.2) ...
+#20 121.7 Selecting previously unselected package libarchive13:amd64.
+#20 121.7 Preparing to unpack .../12-libarchive13_3.2.2-3.1ubuntu0.7_amd64.deb ...
+#20 121.7 Unpacking libarchive13:amd64 (3.2.2-3.1ubuntu0.7) ...
+#20 121.7 Selecting previously unselected package libjsoncpp1:amd64.
+#20 121.7 Preparing to unpack .../13-libjsoncpp1_1.7.4-3_amd64.deb ...
+#20 121.7 Unpacking libjsoncpp1:amd64 (1.7.4-3) ...
+#20 121.8 Selecting previously unselected package librhash0:amd64.
+#20 121.8 Preparing to unpack .../14-librhash0_1.3.6-2_amd64.deb ...
+#20 121.8 Unpacking librhash0:amd64 (1.3.6-2) ...
+#20 121.8 Selecting previously unselected package libuv1:amd64.
+#20 121.8 Preparing to unpack .../15-libuv1_1.18.0-3_amd64.deb ...
+#20 121.8 Unpacking libuv1:amd64 (1.18.0-3) ...
+#20 121.8 Selecting previously unselected package cmake.
+#20 121.8 Preparing to unpack .../16-cmake_3.10.2-1ubuntu2.18.04.2_amd64.deb ...
+#20 121.8 Unpacking cmake (3.10.2-1ubuntu2.18.04.2) ...
+#20 122.2 Selecting previously unselected package fonts-dejavu-core.
+#20 122.2 Preparing to unpack .../17-fonts-dejavu-core_2.37-1_all.deb ...
+#20 122.2 Unpacking fonts-dejavu-core (2.37-1) ...
+#20 122.3 Selecting previously unselected package fontconfig-config.
+#20 122.3 Preparing to unpack .../18-fontconfig-config_2.12.6-0ubuntu2_all.deb ...
+#20 122.3 Unpacking fontconfig-config (2.12.6-0ubuntu2) ...
+#20 122.4 Selecting previously unselected package libboost1.65-dev:amd64.
+#20 122.4 Preparing to unpack .../19-libboost1.65-dev_1.65.1+dfsg-0ubuntu5_amd64.deb ...
+#20 122.4 Unpacking libboost1.65-dev:amd64 (1.65.1+dfsg-0ubuntu5) ...
+#20 124.1 Selecting previously unselected package libboost-dev:amd64.
+#20 124.1 Preparing to unpack .../20-libboost-dev_1.65.1.0ubuntu1_amd64.deb ...
+#20 124.1 Unpacking libboost-dev:amd64 (1.65.1.0ubuntu1) ...
+#20 124.1 Selecting previously unselected package libfontconfig1:amd64.
+#20 124.1 Preparing to unpack .../21-libfontconfig1_2.12.6-0ubuntu2_amd64.deb ...
+#20 124.1 Unpacking libfontconfig1:amd64 (2.12.6-0ubuntu2) ...
+#20 124.1 Selecting previously unselected package libpixman-1-0:amd64.
+#20 124.2 Preparing to unpack .../22-libpixman-1-0_0.34.0-2ubuntu0.1_amd64.deb ...
+#20 124.2 Unpacking libpixman-1-0:amd64 (0.34.0-2ubuntu0.1) ...
+#20 124.2 Selecting previously unselected package libxcb-render0:amd64.
+#20 124.2 Preparing to unpack .../23-libxcb-render0_1.13-2~ubuntu18.04_amd64.deb ...
+#20 124.2 Unpacking libxcb-render0:amd64 (1.13-2~ubuntu18.04) ...
+#20 124.2 Selecting previously unselected package libxcb-shm0:amd64.
+#20 124.2 Preparing to unpack .../24-libxcb-shm0_1.13-2~ubuntu18.04_amd64.deb ...
+#20 124.2 Unpacking libxcb-shm0:amd64 (1.13-2~ubuntu18.04) ...
+#20 124.3 Selecting previously unselected package libxrender1:amd64.
+#20 124.3 Preparing to unpack .../25-libxrender1_1%3a0.9.10-1_amd64.deb ...
+#20 124.3 Unpacking libxrender1:amd64 (1:0.9.10-1) ...
+#20 124.3 Selecting previously unselected package libcairo2:amd64.
+#20 124.3 Preparing to unpack .../26-libcairo2_1.15.10-2ubuntu0.1_amd64.deb ...
+#20 124.3 Unpacking libcairo2:amd64 (1.15.10-2ubuntu0.1) ...
+#20 124.3 Selecting previously unselected package libcairo-gobject2:amd64.
+#20 124.3 Preparing to unpack .../27-libcairo-gobject2_1.15.10-2ubuntu0.1_amd64.deb ...
+#20 124.3 Unpacking libcairo-gobject2:amd64 (1.15.10-2ubuntu0.1) ...
+#20 124.4 Selecting previously unselected package libcairo-script-interpreter2:amd64.
+#20 124.4 Preparing to unpack .../28-libcairo-script-interpreter2_1.15.10-2ubuntu0.1_amd64.deb ...
+#20 124.4 Unpacking libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...
+#20 124.4 Selecting previously unselected package libpng-dev:amd64.
+#20 124.4 Preparing to unpack .../29-libpng-dev_1.6.34-1ubuntu0.18.04.2_amd64.deb ...
+#20 124.4 Unpacking libpng-dev:amd64 (1.6.34-1ubuntu0.18.04.2) ...
+#20 124.4 Selecting previously unselected package libfreetype6-dev:amd64.
+#20 124.4 Preparing to unpack .../30-libfreetype6-dev_2.8.1-2ubuntu2.2_amd64.deb ...
+#20 124.4 Unpacking libfreetype6-dev:amd64 (2.8.1-2ubuntu2.2) ...
+#20 124.7 Selecting previously unselected package libfontconfig1-dev:amd64.
+#20 124.7 Preparing to unpack .../31-libfontconfig1-dev_2.12.6-0ubuntu2_amd64.deb ...
+#20 124.7 Unpacking libfontconfig1-dev:amd64 (2.12.6-0ubuntu2) ...
+#20 124.7 Selecting previously unselected package xorg-sgml-doctools.
+#20 124.7 Preparing to unpack .../32-xorg-sgml-doctools_1%3a1.11-1_all.deb ...
+#20 124.7 Unpacking xorg-sgml-doctools (1:1.11-1) ...
+#20 124.8 Selecting previously unselected package x11proto-dev.
+#20 124.8 Preparing to unpack .../33-x11proto-dev_2018.4-4_all.deb ...
+#20 124.8 Unpacking x11proto-dev (2018.4-4) ...
+#20 124.8 Selecting previously unselected package x11proto-core-dev.
+#20 124.8 Preparing to unpack .../34-x11proto-core-dev_2018.4-4_all.deb ...
+#20 124.8 Unpacking x11proto-core-dev (2018.4-4) ...
+#20 124.8 Selecting previously unselected package libxau-dev:amd64.
+#20 124.8 Preparing to unpack .../35-libxau-dev_1%3a1.0.8-1ubuntu1_amd64.deb ...
+#20 124.8 Unpacking libxau-dev:amd64 (1:1.0.8-1ubuntu1) ...
+#20 124.8 Selecting previously unselected package libxdmcp-dev:amd64.
+#20 124.8 Preparing to unpack .../36-libxdmcp-dev_1%3a1.1.2-3_amd64.deb ...
+#20 124.8 Unpacking libxdmcp-dev:amd64 (1:1.1.2-3) ...
+#20 124.9 Selecting previously unselected package xtrans-dev.
+#20 124.9 Preparing to unpack .../37-xtrans-dev_1.3.5-1_all.deb ...
+#20 124.9 Unpacking xtrans-dev (1.3.5-1) ...
+#20 124.9 Selecting previously unselected package libpthread-stubs0-dev:amd64.
+#20 124.9 Preparing to unpack .../38-libpthread-stubs0-dev_0.3-4_amd64.deb ...
+#20 124.9 Unpacking libpthread-stubs0-dev:amd64 (0.3-4) ...
+#20 124.9 Selecting previously unselected package libxcb1-dev:amd64.
+#20 124.9 Preparing to unpack .../39-libxcb1-dev_1.13-2~ubuntu18.04_amd64.deb ...
+#20 124.9 Unpacking libxcb1-dev:amd64 (1.13-2~ubuntu18.04) ...
+#20 124.9 Selecting previously unselected package libx11-dev:amd64.
+#20 124.9 Preparing to unpack .../40-libx11-dev_2%3a1.6.4-3ubuntu0.4_amd64.deb ...
+#20 124.9 Unpacking libx11-dev:amd64 (2:1.6.4-3ubuntu0.4) ...
+#20 125.0 Selecting previously unselected package libxrender-dev:amd64.
+#20 125.0 Preparing to unpack .../41-libxrender-dev_1%3a0.9.10-1_amd64.deb ...
+#20 125.0 Unpacking libxrender-dev:amd64 (1:0.9.10-1) ...
+#20 125.1 Selecting previously unselected package x11proto-xext-dev.
+#20 125.1 Preparing to unpack .../42-x11proto-xext-dev_2018.4-4_all.deb ...
+#20 125.1 Unpacking x11proto-xext-dev (2018.4-4) ...
+#20 125.1 Selecting previously unselected package libxext-dev:amd64.
+#20 125.1 Preparing to unpack .../43-libxext-dev_2%3a1.3.3-1_amd64.deb ...
+#20 125.1 Unpacking libxext-dev:amd64 (2:1.3.3-1) ...
+#20 125.1 Selecting previously unselected package libice-dev:amd64.
+#20 125.1 Preparing to unpack .../44-libice-dev_2%3a1.0.9-2ubuntu0.18.04.1_amd64.deb ...
+#20 125.1 Unpacking libice-dev:amd64 (2:1.0.9-2ubuntu0.18.04.1) ...
+#20 125.1 Selecting previously unselected package libsm-dev:amd64.
+#20 125.1 Preparing to unpack .../45-libsm-dev_2%3a1.2.2-1_amd64.deb ...
+#20 125.1 Unpacking libsm-dev:amd64 (2:1.2.2-1) ...
+#20 125.1 Selecting previously unselected package libpixman-1-dev:amd64.
+#20 125.2 Preparing to unpack .../46-libpixman-1-dev_0.34.0-2ubuntu0.1_amd64.deb ...
+#20 125.2 Unpacking libpixman-1-dev:amd64 (0.34.0-2ubuntu0.1) ...
+#20 125.2 Selecting previously unselected package libxcb-render0-dev:amd64.
+#20 125.2 Preparing to unpack .../47-libxcb-render0-dev_1.13-2~ubuntu18.04_amd64.deb ...
+#20 125.2 Unpacking libxcb-render0-dev:amd64 (1.13-2~ubuntu18.04) ...
+#20 125.2 Selecting previously unselected package libxcb-shm0-dev:amd64.
+#20 125.2 Preparing to unpack .../48-libxcb-shm0-dev_1.13-2~ubuntu18.04_amd64.deb ...
+#20 125.2 Unpacking libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...
+#20 125.2 Selecting previously unselected package libcairo2-dev:amd64.
+#20 125.2 Preparing to unpack .../49-libcairo2-dev_1.15.10-2ubuntu0.1_amd64.deb ...
+#20 125.2 Unpacking libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...
+#20 125.3 Selecting previously unselected package libjpeg-turbo8-dev:amd64.
+#20 125.3 Preparing to unpack .../50-libjpeg-turbo8-dev_1.5.2-0ubuntu5.18.04.6_amd64.deb ...
+#20 125.3 Unpacking libjpeg-turbo8-dev:amd64 (1.5.2-0ubuntu5.18.04.6) ...
+#20 125.4 Selecting previously unselected package libjpeg8:amd64.
+#20 125.4 Preparing to unpack .../51-libjpeg8_8c-2ubuntu8_amd64.deb ...
+#20 125.4 Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+#20 125.4 Selecting previously unselected package libjpeg8-dev:amd64.
+#20 125.4 Preparing to unpack .../52-libjpeg8-dev_8c-2ubuntu8_amd64.deb ...
+#20 125.4 Unpacking libjpeg8-dev:amd64 (8c-2ubuntu8) ...
+#20 125.4 Selecting previously unselected package libjpeg-dev:amd64.
+#20 125.4 Preparing to unpack .../53-libjpeg-dev_8c-2ubuntu8_amd64.deb ...
+#20 125.4 Unpacking libjpeg-dev:amd64 (8c-2ubuntu8) ...
+#20 125.4 Selecting previously unselected package liblcms2-2:amd64.
+#20 125.4 Preparing to unpack .../54-liblcms2-2_2.9-1ubuntu0.1_amd64.deb ...
+#20 125.4 Unpacking liblcms2-2:amd64 (2.9-1ubuntu0.1) ...
+#20 125.5 Selecting previously unselected package liblcms2-dev:amd64.
+#20 125.5 Preparing to unpack .../55-liblcms2-dev_2.9-1ubuntu0.1_amd64.deb ...
+#20 125.5 Unpacking liblcms2-dev:amd64 (2.9-1ubuntu0.1) ...
+#20 125.7 Selecting previously unselected package libltdl7:amd64.
+#20 125.7 Preparing to unpack .../56-libltdl7_2.4.6-2_amd64.deb ...
+#20 125.7 Unpacking libltdl7:amd64 (2.4.6-2) ...
+#20 125.7 Selecting previously unselected package libltdl-dev:amd64.
+#20 125.7 Preparing to unpack .../57-libltdl-dev_2.4.6-2_amd64.deb ...
+#20 125.7 Unpacking libltdl-dev:amd64 (2.4.6-2) ...
+#20 125.7 Selecting previously unselected package libpng-tools.
+#20 125.7 Preparing to unpack .../58-libpng-tools_1.6.34-1ubuntu0.18.04.2_amd64.deb ...
+#20 125.7 Unpacking libpng-tools (1.6.34-1ubuntu0.18.04.2) ...
+#20 125.8 Selecting previously unselected package libjbig0:amd64.
+#20 125.8 Preparing to unpack .../59-libjbig0_2.1-3.1ubuntu0.18.04.1_amd64.deb ...
+#20 125.8 Unpacking libjbig0:amd64 (2.1-3.1ubuntu0.18.04.1) ...
+#20 125.8 Selecting previously unselected package libjbig-dev:amd64.
+#20 125.8 Preparing to unpack .../60-libjbig-dev_2.1-3.1ubuntu0.18.04.1_amd64.deb ...
+#20 125.8 Unpacking libjbig-dev:amd64 (2.1-3.1ubuntu0.18.04.1) ...
+#20 125.8 Selecting previously unselected package liblzma-dev:amd64.
+#20 125.8 Preparing to unpack .../61-liblzma-dev_5.2.2-1.3ubuntu0.1_amd64.deb ...
+#20 125.8 Unpacking liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 125.8 Selecting previously unselected package libtiff5:amd64.
+#20 125.8 Preparing to unpack .../62-libtiff5_4.0.9-5ubuntu0.10_amd64.deb ...
+#20 125.8 Unpacking libtiff5:amd64 (4.0.9-5ubuntu0.10) ...
+#20 125.9 Selecting previously unselected package libtiffxx5:amd64.
+#20 125.9 Preparing to unpack .../63-libtiffxx5_4.0.9-5ubuntu0.10_amd64.deb ...
+#20 125.9 Unpacking libtiffxx5:amd64 (4.0.9-5ubuntu0.10) ...
+#20 125.9 Selecting previously unselected package libtiff5-dev:amd64.
+#20 125.9 Preparing to unpack .../64-libtiff5-dev_4.0.9-5ubuntu0.10_amd64.deb ...
+#20 125.9 Unpacking libtiff5-dev:amd64 (4.0.9-5ubuntu0.10) ...
+#20 125.9 Selecting previously unselected package libtiff-dev.
+#20 125.9 Preparing to unpack .../65-libtiff-dev_4.0.9-5ubuntu0.10_amd64.deb ...
+#20 125.9 Unpacking libtiff-dev (4.0.9-5ubuntu0.10) ...
+#20 126.0 Selecting previously unselected package libtool.
+#20 126.0 Preparing to unpack .../66-libtool_2.4.6-2_all.deb ...
+#20 126.0 Unpacking libtool (2.4.6-2) ...
+#20 126.0 Selecting previously unselected package libx11-doc.
+#20 126.0 Preparing to unpack .../67-libx11-doc_2%3a1.6.4-3ubuntu0.4_all.deb ...
+#20 126.0 Unpacking libx11-doc (2:1.6.4-3ubuntu0.4) ...
+#20 126.2 Selecting previously unselected package libopenjp2-7:amd64.
+#20 126.2 Preparing to unpack .../68-libopenjp2-7_2.3.0-2+deb10u2build0.18.04.1_amd64.deb ...
+#20 126.2 Unpacking libopenjp2-7:amd64 (2.3.0-2+deb10u2build0.18.04.1) ...
+#20 126.3 Selecting previously unselected package libopenjp2-7-dev.
+#20 126.3 Preparing to unpack .../69-libopenjp2-7-dev_2.3.0-2+deb10u2build0.18.04.1_amd64.deb ...
+#20 126.3 Unpacking libopenjp2-7-dev (2.3.0-2+deb10u2build0.18.04.1) ...
+#20 126.3 Setting up libxcb-render0:amd64 (1.13-2~ubuntu18.04) ...
+#20 126.3 Setting up libopenjp2-7:amd64 (2.3.0-2+deb10u2build0.18.04.1) ...
+#20 126.3 Setting up liblcms2-2:amd64 (2.9-1ubuntu0.1) ...
+#20 126.3 Setting up libjbig0:amd64 (2.1-3.1ubuntu0.18.04.1) ...
+#20 126.3 Setting up libsigsegv2:amd64 (2.12-1) ...
+#20 126.3 Setting up libpthread-stubs0-dev:amd64 (0.3-4) ...
+#20 126.3 Setting up fonts-dejavu-core (2.37-1) ...
+#20 126.3 Setting up libuv1:amd64 (1.18.0-3) ...
+#20 126.3 Setting up libpng-tools (1.6.34-1ubuntu0.18.04.2) ...
+#20 126.3 Setting up xorg-sgml-doctools (1:1.11-1) ...
+#20 126.3 Setting up libopenjp2-7-dev (2.3.0-2+deb10u2build0.18.04.1) ...
+#20 126.3 Setting up cmake-data (3.10.2-1ubuntu2.18.04.2) ...
+#20 126.3 Setting up libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.6) ...
+#20 126.3 Setting up m4 (1.4.18-1) ...
+#20 126.3 Setting up ucf (3.0038) ...
+#20 126.4 debconf: unable to initialize frontend: Dialog
+#20 126.4 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 126.4 debconf: falling back to frontend: Readline
+#20 126.5 Setting up x11proto-dev (2018.4-4) ...
+#20 126.5 Setting up librhash0:amd64 (1.3.6-2) ...
+#20 126.5 Setting up libjbig-dev:amd64 (2.1-3.1ubuntu0.18.04.1) ...
+#20 126.5 Setting up libpixman-1-0:amd64 (0.34.0-2ubuntu0.1) ...
+#20 126.5 Setting up xtrans-dev (1.3.5-1) ...
+#20 126.5 Setting up x11proto-xext-dev (2018.4-4) ...
+#20 126.5 Setting up libjpeg-turbo8-dev:amd64 (1.5.2-0ubuntu5.18.04.6) ...
+#20 126.5 Setting up libxdmcp-dev:amd64 (1:1.1.2-3) ...
+#20 126.5 Setting up autotools-dev (20180224.1) ...
+#20 126.5 Setting up libpixman-1-dev:amd64 (0.34.0-2ubuntu0.1) ...
+#20 126.5 Setting up libltdl7:amd64 (2.4.6-2) ...
+#20 126.5 Setting up libxcb-shm0:amd64 (1.13-2~ubuntu18.04) ...
+#20 126.5 Setting up libx11-doc (2:1.6.4-3ubuntu0.4) ...
+#20 126.5 Setting up libxrender1:amd64 (1:0.9.10-1) ...
+#20 126.5 Setting up liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 126.5 Setting up libpng-dev:amd64 (1.6.34-1ubuntu0.18.04.2) ...
+#20 126.5 Setting up x11-common (1:7.7+19ubuntu7.1) ...
+#20 126.6 debconf: unable to initialize frontend: Dialog
+#20 126.6 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 126.6 debconf: falling back to frontend: Readline
+#20 126.6 update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+#20 126.6 invoke-rc.d: could not determine current runlevel
+#20 126.6 invoke-rc.d: policy-rc.d denied execution of start.
+#20 126.6 Setting up libboost1.65-dev:amd64 (1.65.1+dfsg-0ubuntu5) ...
+#20 126.6 Setting up liblzo2-2:amd64 (2.08-1.2) ...
+#20 126.6 Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+#20 126.6 Setting up libjsoncpp1:amd64 (1.7.4-3) ...
+#20 126.6 Setting up libtool (2.4.6-2) ...
+#20 126.6 Setting up fontconfig-config (2.12.6-0ubuntu2) ...
+#20 126.6 Setting up x11proto-core-dev (2018.4-4) ...
+#20 126.6 Setting up liblcms2-dev:amd64 (2.9-1ubuntu0.1) ...
+#20 126.6 Setting up libltdl-dev:amd64 (2.4.6-2) ...
+#20 126.6 Setting up libarchive13:amd64 (3.2.2-3.1ubuntu0.7) ...
+#20 126.6 Setting up libtiff5:amd64 (4.0.9-5ubuntu0.10) ...
+#20 126.6 Setting up libxau-dev:amd64 (1:1.0.8-1ubuntu1) ...
+#20 126.6 Setting up autoconf (2.69-11) ...
+#20 126.6 Setting up libjpeg8-dev:amd64 (8c-2ubuntu8) ...
+#20 126.6 Setting up libjpeg-dev:amd64 (8c-2ubuntu8) ...
+#20 126.6 Setting up libfreetype6-dev:amd64 (2.8.1-2ubuntu2.2) ...
+#20 126.6 Setting up automake (1:1.15.1-3ubuntu2) ...
+#20 126.6 update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode
+#20 126.6 update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist
+#20 126.6 update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist
+#20 126.6 Setting up libice6:amd64 (2:1.0.9-2ubuntu0.18.04.1) ...
+#20 126.7 Setting up libtiffxx5:amd64 (4.0.9-5ubuntu0.10) ...
+#20 126.7 Setting up libxcb1-dev:amd64 (1.13-2~ubuntu18.04) ...
+#20 126.7 Setting up libboost-dev:amd64 (1.65.1.0ubuntu1) ...
+#20 126.7 Setting up libx11-dev:amd64 (2:1.6.4-3ubuntu0.4) ...
+#20 126.7 Setting up cmake (3.10.2-1ubuntu2.18.04.2) ...
+#20 126.7 Setting up libfontconfig1:amd64 (2.12.6-0ubuntu2) ...
+#20 126.7 Setting up libsm6:amd64 (2:1.2.2-1) ...
+#20 126.7 Setting up libxcb-shm0-dev:amd64 (1.13-2~ubuntu18.04) ...
+#20 126.7 Setting up libtiff5-dev:amd64 (4.0.9-5ubuntu0.10) ...
+#20 126.7 Setting up libxrender-dev:amd64 (1:0.9.10-1) ...
+#20 126.7 Setting up libxcb-render0-dev:amd64 (1.13-2~ubuntu18.04) ...
+#20 126.7 Setting up libice-dev:amd64 (2:1.0.9-2ubuntu0.18.04.1) ...
+#20 126.7 Setting up libxext-dev:amd64 (2:1.3.3-1) ...
+#20 126.7 Setting up libfontconfig1-dev:amd64 (2.12.6-0ubuntu2) ...
+#20 126.7 Setting up libcairo2:amd64 (1.15.10-2ubuntu0.1) ...
+#20 126.7 Setting up libtiff-dev (4.0.9-5ubuntu0.10) ...
+#20 126.7 Setting up libsm-dev:amd64 (2:1.2.2-1) ...
+#20 126.7 Setting up libcairo-script-interpreter2:amd64 (1.15.10-2ubuntu0.1) ...
+#20 126.7 Setting up libcairo-gobject2:amd64 (1.15.10-2ubuntu0.1) ...
+#20 126.7 Setting up libcairo2-dev:amd64 (1.15.10-2ubuntu0.1) ...
+#20 126.7 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#20 DONE 127.0s
+
+#21 [17/19] RUN /magma/targets/poppler_pdfimages/fetch.sh
+#21 0.309 Cloning into '/magma/targets/poppler_pdfimages/repo'...
+#21 41.62 Note: checking out '1d23101ccebe14261c6afc024ea14f29d209e760'.
+#21 41.62 
+#21 41.62 You are in 'detached HEAD' state. You can look around, make experimental
+#21 41.62 changes and commit them, and you can discard any commits you make in this
+#21 41.62 state without impacting any branches by performing another checkout.
+#21 41.62 
+#21 41.62 If you want to create a new branch to retain commits you create, you may
+#21 41.62 do so (now or later) by using -b with the checkout command again. Example:
+#21 41.62 
+#21 41.62   git checkout -b <new-branch-name>
+#21 41.62 
+#21 41.62 HEAD is now at 1d23101c Update (C)
+#21 41.62 Cloning into '/magma/targets/poppler_pdfimages/freetype2'...
+#21 178.3 Note: checking out '50d0033f7ee600c5f5831b28877353769d1f7d48'.
+#21 178.3 
+#21 178.3 You are in 'detached HEAD' state. You can look around, make experimental
+#21 178.3 changes and commit them, and you can discard any commits you make in this
+#21 178.3 state without impacting any branches by performing another checkout.
+#21 178.3 
+#21 178.3 If you want to create a new branch to retain commits you create, you may
+#21 178.3 do so (now or later) by using -b with the checkout command again. Example:
+#21 178.3 
+#21 178.3   git checkout -b <new-branch-name>
+#21 178.3 
+#21 178.3 HEAD is now at 50d0033f7 meson.build: Minor doc fix.
+#21 DONE 178.4s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.520 find: '/magma/targets/poppler_pdfimages/patches/setup': No such file or directory
+#22 0.520 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF020.patch
+#22 0.522 patching file fofi/FoFiType1C.cc
+#22 0.522 Hunk #1 succeeded at 1285 (offset -76 lines).
+#22 0.522 Hunk #2 succeeded at 1529 (offset -74 lines).
+#22 0.525 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF018.patch
+#22 0.529 patching file poppler/Annot.cc
+#22 0.531 Hunk #1 succeeded at 6048 (offset 151 lines).
+#22 0.533 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF013.patch
+#22 0.534 patching file poppler/FileSpec.cc
+#22 0.534 Hunk #1 succeeded at 139 (offset 2 lines).
+#22 0.535 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF012.patch
+#22 0.536 patching file poppler/Parser.cc
+#22 0.536 Hunk #1 succeeded at 274 (offset 14 lines).
+#22 0.537 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF011.patch
+#22 0.539 patching file poppler/XRef.cc
+#22 0.539 Hunk #1 succeeded at 1668 (offset 100 lines).
+#22 0.540 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF001.patch
+#22 0.541 patching file poppler/SplashOutputDev.cc
+#22 0.543 Hunk #1 succeeded at 4280 (offset -301 lines).
+#22 0.545 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF009.patch
+#22 0.546 patching file poppler/Parser.cc
+#22 0.546 Hunk #1 succeeded at 304 (offset 21 lines).
+#22 0.546 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF017.patch
+#22 0.548 patching file fofi/FoFiTrueType.cc
+#22 0.548 Hunk #1 succeeded at 1397 (offset 170 lines).
+#22 0.549 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF021.patch
+#22 0.551 patching file poppler/Stream.cc
+#22 0.551 Hunk #1 succeeded at 583 (offset 36 lines).
+#22 0.551 Hunk #2 succeeded at 602 (offset 36 lines).
+#22 0.554 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF014.patch
+#22 0.556 patching file poppler/XRef.cc
+#22 0.556 Hunk #1 succeeded at 1680 with fuzz 2 (offset 75 lines).
+#22 0.557 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF005.patch
+#22 0.558 patching file poppler/JPEG2000Stream.cc
+#22 0.558 Hunk #1 succeeded at 294 (offset 40 lines).
+#22 0.559 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF007.patch
+#22 0.561 patching file poppler/Stream.cc
+#22 0.561 Hunk #1 succeeded at 658 with fuzz 2 (offset 162 lines).
+#22 0.563 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF003.patch
+#22 0.564 patching file utils/HtmlOutputDev.cc
+#22 0.565 Hunk #1 succeeded at 1396 (offset -38 lines).
+#22 0.565 patching file utils/ImageOutputDev.cc
+#22 0.565 Hunk #1 succeeded at 356 (offset -2 lines).
+#22 0.565 Hunk #2 succeeded at 403 (offset 1 line).
+#22 0.565 patching file poppler/GfxState.h
+#22 0.566 Hunk #1 succeeded at 1208 (offset 16 lines).
+#22 0.568 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF004.patch
+#22 0.569 patching file splash/SplashXPathScanner.cc
+#22 0.569 Hunk #1 succeeded at 446 (offset -9 lines).
+#22 0.570 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF008.patch
+#22 0.573 patching file poppler/GfxState.cc
+#22 0.573 Hunk #1 succeeded at 4796 with fuzz 1 (offset -131 lines).
+#22 0.574 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF002.patch
+#22 0.576 patching file poppler/JPEG2000Stream.cc
+#22 0.576 Hunk #1 succeeded at 247 (offset 28 lines).
+#22 0.577 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF016.patch
+#22 0.578 patching file poppler/Parser.cc
+#22 0.578 Hunk #1 succeeded at 181 (offset 27 lines).
+#22 0.579 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF015.patch
+#22 0.580 patching file poppler/FileSpec.cc
+#22 0.580 Hunk #1 succeeded at 99 with fuzz 1 (offset 2 lines).
+#22 0.582 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF019.patch
+#22 0.584 patching file poppler/JBIG2Stream.cc
+#22 0.584 Hunk #1 succeeded at 808 (offset -94 lines).
+#22 0.586 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF010.patch
+#22 0.588 patching file poppler/SplashOutputDev.cc
+#22 0.588 Hunk #1 succeeded at 2453 (offset -174 lines).
+#22 0.589 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF006.patch
+#22 0.591 patching file splash/Splash.cc
+#22 0.592 Hunk #1 succeeded at 5666 (offset -196 lines).
+#22 0.592 Hunk #2 succeeded at 5684 (offset -196 lines).
+#22 0.594 Applying /magma/targets/poppler_pdfimages/patches/bugs/PDF022.patch
+#22 0.595 patching file poppler/GfxState.cc
+#22 0.595 Hunk #1 succeeded at 2665 with fuzz 1 (offset -36 lines).
+#22 0.595 Hunk #2 succeeded at 2692 with fuzz 1 (offset -35 lines).
+#22 0.595 Hunk #3 succeeded at 2727 with fuzz 1 (offset -34 lines).
+#22 DONE 0.6s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/Calculate.sh
+#23 0.672 /magma/targets/poppler_pdfimages/freetype2 /
+#23 0.942 FreeType 2.10.4:
+#23 0.942 generating `configure.ac'
+#23 0.944 running `aclocal -I . --force'
+#23 1.628 running `libtoolize --force --copy --install'
+#23 1.817 libtoolize: putting auxiliary files in '.'.
+#23 1.817 libtoolize: copying file './config.guess'
+#23 1.822 libtoolize: copying file './config.sub'
+#23 1.827 libtoolize: copying file './install-sh'
+#23 1.835 libtoolize: copying file './ltmain.sh'
+#23 2.004 libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+#23 2.004 libtoolize: and rerunning libtoolize and aclocal.
+#23 2.004 libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+#23 2.006 running `autoconf --force'
+#23 2.576 Checking out submodule in `subprojects/dlg':
+#23 2.599 Submodule 'dlg' (https://github.com/nyorain/dlg.git) registered for path 'subprojects/dlg'
+#23 2.624 Cloning into '/magma/targets/poppler_pdfimages/freetype2/subprojects/dlg'...
+#23 4.254 Submodule path 'subprojects/dlg': checked out '6e83f637efd10b736350496c565c24a86a98b07b'
+#23 4.255 Copying files from `subprojects/dlg' to `src/dlg' and `include/dlg'
+#23 4.285 
+#23 4.285 FreeType build system -- automatic system detection
+#23 4.285 
+#23 4.285 The following settings are used:
+#23 4.285 
+#23 4.285   platform                    unix
+#23 4.285   compiler                    /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 4.285   configuration directory     ./builds/unix
+#23 4.285   configuration rules         ./builds/unix/unix.mk
+#23 4.285 
+#23 4.285 If this does not correspond to your system or settings please remove the file
+#23 4.285 `config.mk' from this directory then read the INSTALL file for help.
+#23 4.285 
+#23 4.285 Otherwise, simply type `make' again to build the library,
+#23 4.285 or `make refdoc' to build the API reference (this needs Python >= 3.5).
+#23 4.285 
+#23 4.286 Generating modules list in ./objs/ftmodule.h...
+#23 4.287 done.
+#23 4.290 * module: truetype  (Windows/Mac font files with extension *.ttf or *.ttc)
+#23 4.291 * module: type1     (Postscript font files with extension *.pfa or *.pfb)
+#23 4.296 * module: cff       (OpenType fonts with extension *.otf)
+#23 4.299 * module: cid       (Postscript CID-keyed fonts, no known extension)
+#23 4.300 * module: pfr       (PFR/TrueDoc font files with extension *.pfr)
+#23 4.303 * module: type42    (Type 42 font files with no known extension)
+#23 4.305 * module: winfnt    (Windows bitmap fonts with extension *.fnt or *.fon)
+#23 4.306 * module: pcf       (pcf bitmap fonts)
+#23 4.308 * module: bdf       (bdf bitmap fonts)
+#23 4.309 * module: sfnt      (helper module for TrueType & OpenType formats)
+#23 4.311 * module: autofit   (automatic hinting module)
+#23 4.314 * module: pshinter  (Postscript hinter module)
+#23 4.315 * module: smooth    (anti-aliased bitmap renderer)
+#23 4.317 * module: raster    (monochrome bitmap renderer)
+#23 4.318 * module: sdf       (signed distance field renderer)
+#23 4.320 * module: bsdf      (bitmap to signed distance field converter)
+#23 4.322 * module: psaux     (Postscript Type 1 & Type 2 helper module)
+#23 4.324 * module: psnames   (Postscript & Unicode Glyph name handling)
+#23 4.325 cd builds/unix; \
+#23 4.325         ./configure  '--prefix=/magma/targets/poppler_pdfimages/work' '--disable-shared' 'PKG_CONFIG_PATH=/magma/targets/poppler_pdfimages/work/lib/pkgconfig'
+#23 4.498 checking build system type... x86_64-pc-linux-gnu
+#23 4.566 checking host system type... x86_64-pc-linux-gnu
+#23 4.567 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 4.711 checking whether the C compiler works... yes
+#23 4.807 checking for C compiler default output file name... a.out
+#23 4.808 checking for suffix of executables... 
+#23 4.896 checking whether we are cross compiling... no
+#23 4.997 checking for suffix of object files... o
+#23 5.030 checking whether we are using the GNU C compiler... yes
+#23 5.065 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 5.104 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 5.159 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 5.305 checking for pkg-config... /usr/bin/pkg-config
+#23 5.305 checking pkg-config is at least version 0.24... yes
+#23 5.307 checking how to print strings... printf
+#23 5.334 checking for a sed that does not truncate output... /bin/sed
+#23 5.339 checking for grep that handles long lines and -e... /bin/grep
+#23 5.341 checking for egrep... /bin/grep -E
+#23 5.343 checking for fgrep... /bin/grep -F
+#23 5.344 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 5.372 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 5.389 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 5.390 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 5.441 checking whether ln -s works... yes
+#23 5.441 checking the maximum length of command line arguments... 1572864
+#23 5.450 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 5.450 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 5.450 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 5.450 checking for objdump... objdump
+#23 5.451 checking how to recognize dependent libraries... pass_all
+#23 5.452 checking for dlltool... no
+#23 5.452 checking how to associate runtime and link libraries... printf %s\n
+#23 5.453 checking for archiver @FILE support... @
+#23 5.521 checking for strip... strip
+#23 5.522 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 5.522 checking for gawk... no
+#23 5.522 checking for mawk... mawk
+#23 5.523 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 5.702 checking for sysroot... no
+#23 5.702 checking for a working dd... /bin/dd
+#23 5.707 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 5.743 checking for mt... no
+#23 5.743 checking if : is a manifest tool... no
+#23 5.749 checking for ANSI C header files... yes
+#23 5.965 checking for sys/types.h... yes
+#23 6.020 checking for sys/stat.h... yes
+#23 6.074 checking for stdlib.h... yes
+#23 6.126 checking for string.h... yes
+#23 6.179 checking for memory.h... yes
+#23 6.233 checking for strings.h... yes
+#23 6.284 checking for inttypes.h... yes
+#23 6.339 checking for stdint.h... yes
+#23 6.403 checking for unistd.h... yes
+#23 6.459 checking for dlfcn.h... yes
+#23 6.509 checking for objdir... .libs
+#23 6.652 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 6.692 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 6.692 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 6.735 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 6.833 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 6.882 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 6.882 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 6.955 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 7.120 checking how to hardcode library paths into programs... immediate
+#23 7.120 checking whether stripping libraries is possible... yes
+#23 7.122 checking if libtool supports shared libraries... yes
+#23 7.122 checking whether to build shared libraries... no
+#23 7.122 checking whether to build static libraries... yes
+#23 7.123 checking windows.h usability... no
+#23 7.178 checking windows.h presence... no
+#23 7.213 checking for windows.h... no
+#23 7.214 checking for a BSD-compatible install... /usr/bin/install -c
+#23 7.223 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 7.228 checking fcntl.h usability... yes
+#23 7.279 checking fcntl.h presence... yes
+#23 7.310 checking for fcntl.h... yes
+#23 7.319 checking for unistd.h... (cached) yes
+#23 7.323 checking for an ANSI C-conforming const... yes
+#23 7.363 checking size of int... 4
+#23 7.488 checking size of long... 8
+#23 7.615 checking for unsigned long long int... yes
+#23 7.716 checking for long long int... yes
+#23 7.814 checking whether cpp computation of bit length in ftconfig.h.in works... yes
+#23 7.855 checking for special C compiler options needed for large files... no
+#23 7.855 checking for _FILE_OFFSET_BITS value needed for large files... no
+#23 7.897 checking for stdlib.h... (cached) yes
+#23 7.905 checking for unistd.h... (cached) yes
+#23 7.912 checking for sys/param.h... yes
+#23 7.967 checking for getpagesize... yes
+#23 8.068 checking for working mmap... yes
+#23 8.215 checking whether munmap is declared... yes
+#23 8.256 checking for munmap's first parameter type... void *
+#23 8.299 checking for memcpy... yes
+#23 8.420 checking for memmove... yes
+#23 8.528 checking /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto compiler flag -pedantic to assure ANSI C99 works correctly... ok, adding to XX_ANSIFLAGS
+#23 8.571 checking /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto compiler flag -std=c99 to assure ANSI C99 works correctly... ok, adding to XX_ANSIFLAGS
+#23 8.614 checking for -fvisibility=hidden compiler flag... yes
+#23 8.722 checking for ZLIB... yes
+#23 8.755 checking for BZIP2... no
+#23 8.764 checking for BZ2_bzDecompress in -lbz2... no
+#23 8.852 checking for LIBPNG... yes
+#23 8.865 checking for HARFBUZZ... no
+#23 8.877 checking for BROTLI... no
+#23 8.887 checking for library containing clock_gettime... none required
+#23 8.992 checking target system type... x86_64-pc-linux-gnu
+#23 8.993 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto is Clang... yes
+#23 9.031 checking whether pthreads work with "-pthread" and "-lpthread"... yes
+#23 9.143 checking whether Clang needs flag to prevent "argument unused" warning when linking with -pthread... no
+#23 9.347 checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+#23 9.451 checking whether more special flags are required for pthreads... no
+#23 9.451 checking for PTHREAD_PRIO_INHERIT... yes
+#23 9.548 checking for python3... python3
+#23 9.549 checking for python version... 3.6.9
+#23 9.563 checking for `docwriter' Python module... no
+#23 9.624 configure: creating ./config.status
+#23 10.34 config.status: creating ftoption.h
+#23 10.36 config.status: creating unix-cc.mk
+#23 10.37 config.status: creating unix-def.mk
+#23 10.38 config.status: creating ftconfig.h
+#23 10.39 config.status: executing libtool commands
+#23 10.41 configure:
+#23 10.41 
+#23 10.41 Library configuration:
+#23 10.41   external zlib: yes (pkg-config)
+#23 10.41   bzip2:         no
+#23 10.41   libpng:        yes (pkg-config)
+#23 10.41   harfbuzz:      no
+#23 10.41   brotli:        no
+#23 10.41   pthread:       yes
+#23 10.41 
+#23 10.41 configure: WARNING:
+#23 10.41   `make refdoc' will fail since pip package `docwriter' is not installed.
+#23 10.41   To install, run `python3 -m pip install docwriter', or to use a Python
+#23 10.41   virtual environment, run `make refdoc-venv' (requires pip package
+#23 10.41   `virtualenv').  These operations require Python >= 3.5.
+#23 10.41   
+#23 10.47 ./builds/unix/libtool --mode=clean rm -f  /magma/targets/poppler_pdfimages/freetype2/objs/ftsystem.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftdebug.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftinit.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbase.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbbox.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbdf.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbitmap.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftcid.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftfstype.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftgasp.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftglyph.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftgxval.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftmm.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftotval.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftpatent.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftpfr.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftstroke.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftsynth.lo /magma/targets/poppler_pdfimages/freetype2/objs/fttype1.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftwinfnt.lo /magma/targets/poppler_pdfimages/freetype2/objs/truetype.lo /magma/targets/poppler_pdfimages/freetype2/objs/type1.lo /magma/targets/poppler_pdfimages/freetype2/objs/cff.lo /magma/targets/poppler_pdfimages/freetype2/objs/type1cid.lo /magma/targets/poppler_pdfimages/freetype2/objs/pfr.lo /magma/targets/poppler_pdfimages/freetype2/objs/type42.lo /magma/targets/poppler_pdfimages/freetype2/objs/winfnt.lo /magma/targets/poppler_pdfimages/freetype2/objs/pcf.lo /magma/targets/poppler_pdfimages/freetype2/objs/bdf.lo /magma/targets/poppler_pdfimages/freetype2/objs/sfnt.lo /magma/targets/poppler_pdfimages/freetype2/objs/autofit.lo /magma/targets/poppler_pdfimages/freetype2/objs/pshinter.lo /magma/targets/poppler_pdfimages/freetype2/objs/smooth.lo /magma/targets/poppler_pdfimages/freetype2/objs/raster.lo /magma/targets/poppler_pdfimages/freetype2/objs/sdf.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftcache.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftgzip.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftlzw.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbzip2.lo /magma/targets/poppler_pdfimages/freetype2/objs/psaux.lo /magma/targets/poppler_pdfimages/freetype2/objs/psnames.lo /magma/targets/poppler_pdfimages/freetype2/objs/dlg.lo
+#23 10.59 rm -f ./builds/unix/freetype-config ./builds/unix/freetype2.pc /magma/targets/poppler_pdfimages/freetype2/objs/ftexport.sym /magma/targets/poppler_pdfimages/freetype2/objs/apinames
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftsystem.lo builds/unix/ftsystem.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftdebug.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftdebug.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftinit.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftinit.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbase.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftbase.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbbox.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftbbox.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbdf.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftbdf.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbitmap.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftbitmap.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftcid.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftcid.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftfstype.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftfstype.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftgasp.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftgasp.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftglyph.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftglyph.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftgxval.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftgxval.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftmm.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftmm.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftotval.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftotval.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftpatent.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftpatent.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftpfr.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftpfr.c
+#23 10.63 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftstroke.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftstroke.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftsynth.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftsynth.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/fttype1.lo /magma/targets/poppler_pdfimages/freetype2/src/base/fttype1.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftwinfnt.lo /magma/targets/poppler_pdfimages/freetype2/src/base/ftwinfnt.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/truetype -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/truetype.lo /magma/targets/poppler_pdfimages/freetype2/src/truetype/truetype.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/type1 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/type1.lo /magma/targets/poppler_pdfimages/freetype2/src/type1/type1.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/cff -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/cff.lo /magma/targets/poppler_pdfimages/freetype2/src/cff/cff.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/cid -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/type1cid.lo /magma/targets/poppler_pdfimages/freetype2/src/cid/type1cid.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/pfr -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/pfr.lo /magma/targets/poppler_pdfimages/freetype2/src/pfr/pfr.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/type42 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/type42.lo /magma/targets/poppler_pdfimages/freetype2/src/type42/type42.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/winfonts -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/winfnt.lo /magma/targets/poppler_pdfimages/freetype2/src/winfonts/winfnt.c
+#23 10.64 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/pcf -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/pcf.lo /magma/targets/poppler_pdfimages/freetype2/src/pcf/pcf.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/bdf -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/bdf.lo /magma/targets/poppler_pdfimages/freetype2/src/bdf/bdf.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/sfnt -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/sfnt.lo /magma/targets/poppler_pdfimages/freetype2/src/sfnt/sfnt.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/autofit -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/autofit.lo /magma/targets/poppler_pdfimages/freetype2/src/autofit/autofit.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/pshinter -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/pshinter.lo /magma/targets/poppler_pdfimages/freetype2/src/pshinter/pshinter.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/smooth -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/smooth.lo /magma/targets/poppler_pdfimages/freetype2/src/smooth/smooth.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/raster -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/raster.lo /magma/targets/poppler_pdfimages/freetype2/src/raster/raster.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/sdf -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/sdf.lo /magma/targets/poppler_pdfimages/freetype2/src/sdf/sdf.c
+#23 10.65 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/cache -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftcache.lo /magma/targets/poppler_pdfimages/freetype2/src/cache/ftcache.c
+#23 10.66 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftgzip.lo /magma/targets/poppler_pdfimages/freetype2/src/gzip/ftgzip.c
+#23 10.66 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/lzw -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftlzw.lo /magma/targets/poppler_pdfimages/freetype2/src/lzw/ftlzw.c
+#23 10.66 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbzip2.lo /magma/targets/poppler_pdfimages/freetype2/src/bzip2/ftbzip2.c
+#23 10.66 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/psaux -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/psaux.lo /magma/targets/poppler_pdfimages/freetype2/src/psaux/psaux.c
+#23 10.66 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/psnames -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/psnames.lo /magma/targets/poppler_pdfimages/freetype2/src/psnames/psnames.c
+#23 10.66 ./builds/unix/libtool --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/dlg -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include  -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -fvisibility=hidden  -I/usr/include/libpng16 -pthread -DFT_CONFIG_CONFIG_H="<ftconfig.h>" -DFT_CONFIG_MODULES_H="<ftmodule.h>" -DFT_CONFIG_OPTIONS_H="<ftoption.h>" -DFT2_BUILD_LIBRARY -o /magma/targets/poppler_pdfimages/freetype2/objs/dlg.lo /magma/targets/poppler_pdfimages/freetype2/src/dlg/dlgwrap.c
+#23 10.66 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto		  -o /magma/targets/poppler_pdfimages/freetype2/objs/apinames /magma/targets/poppler_pdfimages/freetype2/src/tools/apinames.c 
+#23 10.66 rm -f builds/unix/freetype-config builds/unix/freetype-config.tmp
+#23 10.66 rm -f builds/unix/freetype2.pc builds/unix/freetype2.pc.tmp
+#23 10.66 sed -e 's|%REQUIRES_PRIVATE%|zlib, libpng|'     \
+#23 10.66     -e 's|%LIBS_PRIVATE%||'             \
+#23 10.66     -e 's|%build_libtool_libs%||' \
+#23 10.66     -e 's|%exec_prefix%|/magma/targets/poppler_pdfimages/work|'             \
+#23 10.66     -e 's|%ft_version%|23.4.17|'                 \
+#23 10.66     -e 's|%includedir%|/magma/targets/poppler_pdfimages/work/include|'               \
+#23 10.66     -e 's|%libdir%|/magma/targets/poppler_pdfimages/work/lib|'                       \
+#23 10.66     -e 's|%prefix%|/magma/targets/poppler_pdfimages/work|'                       \
+#23 10.66     /magma/targets/poppler_pdfimages/freetype2/builds/unix/freetype2.in                                                 \
+#23 10.66     > builds/unix/freetype2.pc.tmp
+#23 10.68 sed -e 's|%LIBSSTATIC_CONFIG%|-lfreetype -lz -lpng16 -lm -lz -lm -lz|'   \
+#23 10.68     -e 's|%PKG_CONFIG%|/usr/bin/pkg-config|'                 \
+#23 10.68     -e 's|%build_libtool_libs%||' \
+#23 10.68     -e 's|%exec_prefix%|/magma/targets/poppler_pdfimages/work|'               \
+#23 10.68     -e 's|%ft_version%|23.4.17|'                 \
+#23 10.68     -e 's|%includedir%|/magma/targets/poppler_pdfimages/work/include|'                 \
+#23 10.68     -e 's|%libdir%|/magma/targets/poppler_pdfimages/work/lib|'                         \
+#23 10.68     -e 's|%prefix%|/magma/targets/poppler_pdfimages/work|'                         \
+#23 10.68     /magma/targets/poppler_pdfimages/freetype2/builds/unix/freetype-config.in                                                 \
+#23 10.68     > builds/unix/freetype-config.tmp
+#23 10.68 chmod a-w builds/unix/freetype2.pc.tmp
+#23 10.69 mv builds/unix/freetype2.pc.tmp builds/unix/freetype2.pc
+#23 10.69 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftbbox.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbbox.o
+#23 10.70 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftbitmap.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbitmap.o
+#23 10.70 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY builds/unix/ftsystem.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftsystem.o
+#23 10.70 chmod +x builds/unix/freetype-config.tmp
+#23 10.70 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftinit.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftinit.o
+#23 10.70 chmod go-w builds/unix/freetype-config.tmp
+#23 10.70 mv builds/unix/freetype-config.tmp builds/unix/freetype-config
+#23 10.70 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftgasp.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftgasp.o
+#23 10.71 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftbase.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbase.o
+#23 10.71 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftgxval.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftgxval.o
+#23 10.71 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftdebug.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftdebug.o
+#23 10.72 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftcid.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftcid.o
+#23 10.73 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftstroke.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftstroke.o
+#23 10.73 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftbdf.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbdf.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/pcf -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/pcf/pcf.c -o /magma/targets/poppler_pdfimages/freetype2/objs/pcf.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/cff -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/cff/cff.c -o /magma/targets/poppler_pdfimages/freetype2/objs/cff.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftpfr.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftpfr.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/autofit -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/autofit/autofit.c -o /magma/targets/poppler_pdfimages/freetype2/objs/autofit.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/truetype -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/truetype/truetype.c -o /magma/targets/poppler_pdfimages/freetype2/objs/truetype.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/pfr -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/pfr/pfr.c -o /magma/targets/poppler_pdfimages/freetype2/objs/pfr.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/sdf -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/sdf/sdf.c -o /magma/targets/poppler_pdfimages/freetype2/objs/sdf.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/type1 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/type1/type1.c -o /magma/targets/poppler_pdfimages/freetype2/objs/type1.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftotval.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftotval.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftmm.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftmm.o
+#23 10.75 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftsynth.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftsynth.o
+#23 10.76 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/bdf -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/bdf/bdf.c -o /magma/targets/poppler_pdfimages/freetype2/objs/bdf.o
+#23 10.76 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/cid -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/cid/type1cid.c -o /magma/targets/poppler_pdfimages/freetype2/objs/type1cid.o
+#23 10.76 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/winfonts -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/winfonts/winfnt.c -o /magma/targets/poppler_pdfimages/freetype2/objs/winfnt.o
+#23 10.76 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/psnames -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/psnames/psnames.c -o /magma/targets/poppler_pdfimages/freetype2/objs/psnames.o
+#23 10.77 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftfstype.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftfstype.o
+#23 10.77 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftglyph.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftglyph.o
+#23 10.77 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/bzip2/ftbzip2.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftbzip2.o
+#23 10.77 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftpatent.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftpatent.o
+#23 10.77 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/smooth -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/smooth/smooth.c -o /magma/targets/poppler_pdfimages/freetype2/objs/smooth.o
+#23 10.78 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/sfnt -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/sfnt/sfnt.c -o /magma/targets/poppler_pdfimages/freetype2/objs/sfnt.o
+#23 10.78 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/fttype1.c -o /magma/targets/poppler_pdfimages/freetype2/objs/fttype1.o
+#23 10.78 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/cache -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/cache/ftcache.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftcache.o
+#23 10.78 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/dlg -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/dlg/dlgwrap.c -o /magma/targets/poppler_pdfimages/freetype2/objs/dlg.o
+#23 10.80 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/base -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/base/ftwinfnt.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftwinfnt.o
+#23 10.81 In file included from /magma/targets/poppler_pdfimages/freetype2/src/sdf/sdf.c:26:
+#23 10.81 /magma/targets/poppler_pdfimages/freetype2/src/sdf/ftsdf.c:932:5: warning: variable 'cbox' is used uninitialized whenever switch default is taken [-Wsometimes-uninitialized]
+#23 10.81   932 |     default:
+#23 10.81       |     ^~~~~~~
+#23 10.81 /magma/targets/poppler_pdfimages/freetype2/src/sdf/ftsdf.c:936:12: note: uninitialized use occurs here
+#23 10.81   936 |     return cboxlibtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/raster -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/raster/raster.c -o /magma/targets/poppler_pdfimages/freetype2/objs/raster.o
+#23 10.81 ;
+#23 10.81       |            ^~~~
+#23 10.81 /magma/targets/poppler_pdfimages/freetype2/src/sdf/ftsdf.c:848:5: note: variable 'cbox' is declared here
+#23 10.81   848 |     FT_CBox  cbox;
+#23 10.81       |     ^
+#23 10.82 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/lzw -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/lzw/ftlzw.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftlzw.o
+#23 10.82 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/gzip/ftgzip.c -o /magma/targets/poppler_pdfimages/freetype2/objs/ftgzip.o
+#23 10.82 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/pshinter -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/pshinter/pshinter.c -o /magma/targets/poppler_pdfimages/freetype2/objs/pshinter.o
+#23 10.84 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/psaux -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/psaux/psaux.c -o /magma/targets/poppler_pdfimages/freetype2/objs/psaux.o
+#23 10.85 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -pedantic -std=c99 -I/magma/targets/poppler_pdfimages/freetype2/src/type42 -I/magma/targets/poppler_pdfimages/freetype2/objs -I./builds/unix -I/magma/targets/poppler_pdfimages/freetype2/include -c -Wall -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -fvisibility=hidden -I/usr/include/libpng16 -pthread "-DFT_CONFIG_CONFIG_H=<ftconfig.h>" "-DFT_CONFIG_MODULES_H=<ftmodule.h>" "-DFT_CONFIG_OPTIONS_H=<ftoption.h>" -DFT2_BUILD_LIBRARY /magma/targets/poppler_pdfimages/freetype2/src/type42/type42.c -o /magma/targets/poppler_pdfimages/freetype2/objs/type42.o
+#23 10.85 1 warning generated.
+#23 10.89 
+#23 10.89 === AFL++ LTO Instrumentation Statistics ===
+#23 10.89 Total Basic Blocks: 180
+#23 10.89 Instrumented Times: 0
+#23 10.89 Instrumented Basic Blocks: 37
+#23 10.89 Instrumentation Ratio: 20.56%
+#23 10.89 Total Predecessors: 98
+#23 10.89 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 10.89   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 10.89   Instrumented BasicBlocks with 2 predecessor(s): 31
+#23 10.89   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 10.89   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 10.89   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 10.89   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 10.89   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.89   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 10.89   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 10.89   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 10.89 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 10.89   Non-Instrumented BasicBlocks with 1 predecessor(s): 58
+#23 10.89   Non-Instrumented BasicBlocks with 2 predecessor(s): 7
+#23 10.89   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 10.89   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 10.89 Average Global Entropy: 1.45
+#23 10.89 =======================================
+#23 10.89 
+#23 10.96 /magma/targets/poppler_pdfimages/freetype2/objs/apinames -o/magma/targets/poppler_pdfimages/freetype2/objs/ftexport.sym  /magma/targets/poppler_pdfimages/freetype2/include/freetype/tttables.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlcdfil.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftfntfmt.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftstroke.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/t1tables.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fterrors.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlzw.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftcolor.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftparams.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftglyph.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftcid.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbitmap.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmodapi.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsystem.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftoutln.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fttrigon.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftpfr.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsizes.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlogging.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftrender.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsynth.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbzip2.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlist.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftchapters.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbdf.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fterrdef.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftcache.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftgxval.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftgzip.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftdriver.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/freetype.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftwinfnt.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fttypes.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftotval.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbbox.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmm.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftadvanc.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmoderr.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftgasp.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsnames.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/tttags.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftincrem.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftimage.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ttnameid.h
+#23 11.15 ./builds/unix/libtool --mode=link /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -o /magma/targets/poppler_pdfimages/freetype2/objs/libfreetype.la  /magma/targets/poppler_pdfimages/freetype2/objs/ftsystem.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftdebug.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftinit.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbase.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbbox.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbdf.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbitmap.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftcid.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftfstype.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftgasp.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftglyph.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftgxval.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftmm.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftotval.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftpatent.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftpfr.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftstroke.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftsynth.lo /magma/targets/poppler_pdfimages/freetype2/objs/fttype1.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftwinfnt.lo /magma/targets/poppler_pdfimages/freetype2/objs/truetype.lo /magma/targets/poppler_pdfimages/freetype2/objs/type1.lo /magma/targets/poppler_pdfimages/freetype2/objs/cff.lo /magma/targets/poppler_pdfimages/freetype2/objs/type1cid.lo /magma/targets/poppler_pdfimages/freetype2/objs/pfr.lo /magma/targets/poppler_pdfimages/freetype2/objs/type42.lo /magma/targets/poppler_pdfimages/freetype2/objs/winfnt.lo /magma/targets/poppler_pdfimages/freetype2/objs/pcf.lo /magma/targets/poppler_pdfimages/freetype2/objs/bdf.lo /magma/targets/poppler_pdfimages/freetype2/objs/sfnt.lo /magma/targets/poppler_pdfimages/freetype2/objs/autofit.lo /magma/targets/poppler_pdfimages/freetype2/objs/pshinter.lo /magma/targets/poppler_pdfimages/freetype2/objs/smooth.lo /magma/targets/poppler_pdfimages/freetype2/objs/raster.lo /magma/targets/poppler_pdfimages/freetype2/objs/sdf.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftcache.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftgzip.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftlzw.lo /magma/targets/poppler_pdfimages/freetype2/objs/ftbzip2.lo /magma/targets/poppler_pdfimages/freetype2/objs/psaux.lo /magma/targets/poppler_pdfimages/freetype2/objs/psnames.lo /magma/targets/poppler_pdfimages/freetype2/objs/dlg.lo -rpath /magma/targets/poppler_pdfimages/work/lib -version-info 23:4:17 -L/magma_out -g -L/magma_out/afl -lz -lpng16 -lz -pthread -lpthread -no-undefined -export-symbols /magma/targets/poppler_pdfimages/freetype2/objs/ftexport.sym
+#23 11.36 libtool: link: /usr/lib/llvm-18/bin/llvm-ar cru /magma/targets/poppler_pdfimages/freetype2/objs/.libs/libfreetype.a  /magma/targets/poppler_pdfimages/freetype2/objs/ftsystem.o /magma/targets/poppler_pdfimages/freetype2/objs/ftdebug.o /magma/targets/poppler_pdfimages/freetype2/objs/ftinit.o /magma/targets/poppler_pdfimages/freetype2/objs/ftbase.o /magma/targets/poppler_pdfimages/freetype2/objs/ftbbox.o /magma/targets/poppler_pdfimages/freetype2/objs/ftbdf.o /magma/targets/poppler_pdfimages/freetype2/objs/ftbitmap.o /magma/targets/poppler_pdfimages/freetype2/objs/ftcid.o /magma/targets/poppler_pdfimages/freetype2/objs/ftfstype.o /magma/targets/poppler_pdfimages/freetype2/objs/ftgasp.o /magma/targets/poppler_pdfimages/freetype2/objs/ftglyph.o /magma/targets/poppler_pdfimages/freetype2/objs/ftgxval.o /magma/targets/poppler_pdfimages/freetype2/objs/ftmm.o /magma/targets/poppler_pdfimages/freetype2/objs/ftotval.o /magma/targets/poppler_pdfimages/freetype2/objs/ftpatent.o /magma/targets/poppler_pdfimages/freetype2/objs/ftpfr.o /magma/targets/poppler_pdfimages/freetype2/objs/ftstroke.o /magma/targets/poppler_pdfimages/freetype2/objs/ftsynth.o /magma/targets/poppler_pdfimages/freetype2/objs/fttype1.o /magma/targets/poppler_pdfimages/freetype2/objs/ftwinfnt.o /magma/targets/poppler_pdfimages/freetype2/objs/truetype.o /magma/targets/poppler_pdfimages/freetype2/objs/type1.o /magma/targets/poppler_pdfimages/freetype2/objs/cff.o /magma/targets/poppler_pdfimages/freetype2/objs/type1cid.o /magma/targets/poppler_pdfimages/freetype2/objs/pfr.o /magma/targets/poppler_pdfimages/freetype2/objs/type42.o /magma/targets/poppler_pdfimages/freetype2/objs/winfnt.o /magma/targets/poppler_pdfimages/freetype2/objs/pcf.o /magma/targets/poppler_pdfimages/freetype2/objs/bdf.o /magma/targets/poppler_pdfimages/freetype2/objs/sfnt.o /magma/targets/poppler_pdfimages/freetype2/objs/autofit.o /magma/targets/poppler_pdfimages/freetype2/objs/pshinter.o /magma/targets/poppler_pdfimages/freetype2/objs/smooth.o /magma/targets/poppler_pdfimages/freetype2/objs/raster.o /magma/targets/poppler_pdfimages/freetype2/objs/sdf.o /magma/targets/poppler_pdfimages/freetype2/objs/ftcache.o /magma/targets/poppler_pdfimages/freetype2/objs/ftgzip.o /magma/targets/poppler_pdfimages/freetype2/objs/ftlzw.o /magma/targets/poppler_pdfimages/freetype2/objs/ftbzip2.o /magma/targets/poppler_pdfimages/freetype2/objs/psaux.o /magma/targets/poppler_pdfimages/freetype2/objs/psnames.o /magma/targets/poppler_pdfimages/freetype2/objs/dlg.o
+#23 11.41 libtool: link: /usr/lib/llvm-18/bin/llvm-ranlib /magma/targets/poppler_pdfimages/freetype2/objs/.libs/libfreetype.a
+#23 11.44 libtool: link: ( cd "/magma/targets/poppler_pdfimages/freetype2/objs/.libs" && rm -f "libfreetype.la" && ln -s "../libfreetype.la" "libfreetype.la" )
+#23 11.49 rm -rf /magma/targets/poppler_pdfimages/work/include/freetype2
+#23 11.50 rm -f /magma/targets/poppler_pdfimages/work/include/ft2build.h
+#23 11.50 /bin/mkdir -p /magma/targets/poppler_pdfimages/work/lib                               \
+#23 11.50                          /magma/targets/poppler_pdfimages/work/lib/pkgconfig                     \
+#23 11.50                          /magma/targets/poppler_pdfimages/work/include/freetype2/freetype/config \
+#23 11.50                          /magma/targets/poppler_pdfimages/work/share/aclocal
+#23 11.50 ./builds/unix/libtool --mode=install /usr/bin/install -c                             \
+#23 11.50                                   /magma/targets/poppler_pdfimages/freetype2/objs/libfreetype.la /magma/targets/poppler_pdfimages/work/lib
+#23 11.55 libtool: install: /usr/bin/install -c /magma/targets/poppler_pdfimages/freetype2/objs/.libs/libfreetype.lai /magma/targets/poppler_pdfimages/work/lib/libfreetype.la
+#23 11.55 libtool: install: /usr/bin/install -c /magma/targets/poppler_pdfimages/freetype2/objs/.libs/libfreetype.a /magma/targets/poppler_pdfimages/work/lib/libfreetype.a
+#23 11.56 libtool: install: chmod 644 /magma/targets/poppler_pdfimages/work/lib/libfreetype.a
+#23 11.57 libtool: install: /usr/lib/llvm-18/bin/llvm-ranlib /magma/targets/poppler_pdfimages/work/lib/libfreetype.a
+#23 11.64 libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin" ldconfig -n /magma/targets/poppler_pdfimages/work/lib
+#23 11.64 ----------------------------------------------------------------------
+#23 11.64 Libraries have been installed in:
+#23 11.64    /magma/targets/poppler_pdfimages/work/lib
+#23 11.64 
+#23 11.64 If you ever happen to want to link against installed libraries
+#23 11.64 in a given directory, LIBDIR, you must either use libtool, and
+#23 11.64 specify the full pathname of the library, or use the '-LLIBDIR'
+#23 11.64 flag during linking and do at least one of the following:
+#23 11.64    - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+#23 11.64      during execution
+#23 11.64    - add LIBDIR to the 'LD_RUN_PATH' environment variable
+#23 11.64      during linking
+#23 11.64    - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+#23 11.64    - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+#23 11.64 
+#23 11.64 See any operating system documentation about shared libraries for
+#23 11.64 more information, such as the ld(1) and ld.so(8) manual pages.
+#23 11.64 ----------------------------------------------------------------------
+#23 11.64 for P in /magma/targets/poppler_pdfimages/freetype2/include/freetype/tttables.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlcdfil.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftfntfmt.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftstroke.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/t1tables.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fterrors.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlzw.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftcolor.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftparams.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftglyph.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftcid.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbitmap.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmodapi.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsystem.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftoutln.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fttrigon.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftpfr.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsizes.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlogging.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftrender.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsynth.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbzip2.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftlist.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftchapters.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbdf.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fterrdef.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftcache.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftgxval.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftgzip.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftdriver.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmac.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/freetype.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftwinfnt.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/fttypes.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftotval.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftbbox.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmm.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftadvanc.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftmoderr.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftgasp.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftsnames.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/tttags.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftincrem.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ftimage.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/ttnameid.h ; do                           \
+#23 11.64           /usr/bin/install -c -m 644                                    \
+#23 11.64             $P /magma/targets/poppler_pdfimages/work/include/freetype2/freetype ; \
+#23 11.64         done
+#23 11.70 for P in /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/ftstdlib.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/public-macros.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/ftconfig.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/mac-support.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/ftmodule.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/ftoption.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/ftheader.h /magma/targets/poppler_pdfimages/freetype2/include/freetype/config/integer-types.h  /magma/targets/poppler_pdfimages/freetype2/objs/ftmodule.h ./builds/unix/ftoption.h ; do                                  \
+#23 11.70           /usr/bin/install -c -m 644                                           \
+#23 11.70             $P /magma/targets/poppler_pdfimages/work/include/freetype2/freetype/config ; \
+#23 11.70         done
+#23 11.72 /usr/bin/install -c -m 644 /magma/targets/poppler_pdfimages/freetype2/include/ft2build.h                  \
+#23 11.72           /magma/targets/poppler_pdfimages/work/include/freetype2/ft2build.h
+#23 11.72 /usr/bin/install -c -m 644 ./builds/unix/ftconfig.h                        \
+#23 11.72           /magma/targets/poppler_pdfimages/work/include/freetype2/freetype/config/ftconfig.h
+#23 11.73 /usr/bin/install -c -m 644 /magma/targets/poppler_pdfimages/freetype2/objs/ftmodule.h                          \
+#23 11.73           /magma/targets/poppler_pdfimages/work/include/freetype2/freetype/config/ftmodule.h
+#23 11.73 /usr/bin/install -c -m 644 ./builds/unix/ftoption.h                        \
+#23 11.73           /magma/targets/poppler_pdfimages/work/include/freetype2/freetype/config/ftoption.h
+#23 11.73 /usr/bin/install -c -m 644 ./builds/unix/freetype2.m4          \
+#23 11.73           /magma/targets/poppler_pdfimages/work/share/aclocal/freetype2.m4
+#23 11.73 /usr/bin/install -c -m 644 ./builds/unix/freetype2.pc             \
+#23 11.73           /magma/targets/poppler_pdfimages/work/lib/pkgconfig/freetype2.pc
+#23 11.87 -- The C compiler identification is Clang 18.1.0
+#23 11.98 -- The CXX compiler identification is Clang 18.1.0
+#23 11.99 -- Check for working C compiler: /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 12.12 -- Check for working C compiler: /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -- works
+#23 12.12 -- Detecting C compiler ABI info
+#23 12.25 -- Detecting C compiler ABI info - done
+#23 12.25 -- Detecting C compile features
+#23 12.59 -- Detecting C compile features - failed
+#23 12.59 -- Check for working CXX compiler: /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++
+#23 12.73 -- Check for working CXX compiler: /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto++ -- works
+#23 12.73 -- Detecting CXX compiler ABI info
+#23 12.87 -- Detecting CXX compiler ABI info - done
+#23 12.88 -- Detecting CXX compile features
+#23 13.50 -- Detecting CXX compile features - done
+#23 13.50 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+#23 13.50 -- Looking for pthread.h
+#23 13.65 -- Looking for pthread.h - found
+#23 13.65 -- Looking for pthread_create
+#23 13.80 -- Looking for pthread_create - not found
+#23 13.80 -- Check if compiler accepts -pthread
+#23 13.94 -- Check if compiler accepts -pthread - yes
+#23 13.95 -- Found Threads: TRUE  
+#23 13.95 -- Check if the system is big endian
+#23 13.95 -- Searching 16 bit integer
+#23 13.95 -- Looking for sys/types.h
+#23 14.10 -- Looking for sys/types.h - found
+#23 14.10 -- Looking for stdint.h
+#23 14.24 -- Looking for stdint.h - found
+#23 14.24 -- Looking for stddef.h
+#23 14.38 -- Looking for stddef.h - found
+#23 14.38 -- Check size of unsigned short
+#23 14.54 -- Check size of unsigned short - done
+#23 14.54 -- Using unsigned short
+#23 14.69 -- Check if the system is big endian - little endian
+#23 14.69 -- Checking _FILE_OFFSET_BITS for large files
+#23 14.83 -- Checking _FILE_OFFSET_BITS for large files - not needed
+#23 14.84 CMake Warning at CMakeLists.txt:90 (message):
+#23 14.84   
+#23 14.84 
+#23 14.84    No test data found in $testdatadir.
+#23 14.84    You will not be able to run 'make test' successfully.
+#23 14.84 
+#23 14.84   
+#23 14.84 
+#23 14.84    The test data is not included in the source packages
+#23 14.84    and is also not part of the main git repository. Instead,
+#23 14.84    you can checkout the test data from its own git
+#23 14.84    repository with:
+#23 14.84 
+#23 14.84   
+#23 14.84 
+#23 14.84      git clone git://git.freedesktop.org/git/poppler/test
+#23 14.84 
+#23 14.84   
+#23 14.84 
+#23 14.84    You should checkout the test data as a sibling of your
+#23 14.84    poppler source folder or specify the location of your
+#23 14.84    checkout with -DTESTDATADIR=/path/to/checkoutdir/test.
+#23 14.84     
+#23 14.84 
+#23 14.84 
+#23 14.84 -- no fontconfig or win32 specific code
+#23 14.85 -- Found Freetype: /magma/targets/poppler_pdfimages/work/lib/libfreetype.a (found version "2.8.1") 
+#23 14.85 -- Found JPEG: /usr/lib/x86_64-linux-gnu/libjpeg.so  
+#23 14.86 -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.2.11") 
+#23 14.86 -- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.34") 
+#23 14.87 -- Found TIFF: /usr/lib/x86_64-linux-gnu/libtiff.so (found version "4.0.9") 
+#23 14.87 -- Package Qt6Core or Qt6Gui or Qt6Widgets or Qt6Test not found
+#23 14.88 -- Checking for module 'cairo>=1.10.0'
+#23 14.89 --   Found cairo, version 1.15.10
+#23 14.94 -- Found Cairo: /usr/lib/x86_64-linux-gnu/libcairo.so (Required is at least version "1.10.0") 
+#23 14.96 -- Boost version: 1.65.1
+#23 14.96 -- Performing Test ICONV_SECOND_ARGUMENT_IS_CONST
+#23 15.01 -- Performing Test ICONV_SECOND_ARGUMENT_IS_CONST - Failed
+#23 15.01 -- Found Iconv: /usr/lib/x86_64-linux-gnu/libc.so
+#23 15.02 -- The imported target "openjp2_static" references the file
+#23 15.02    "/usr/lib/x86_64-linux-gnu/libopenjp2.a"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "openjpip" references the file
+#23 15.02    "/usr/lib/x86_64-linux-gnu/libopenjpip.so.2.3.0"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "openjpip_server" references the file
+#23 15.02    "/usr/lib/x86_64-linux-gnu/libopenjpip_server.a"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_decompress" references the file
+#23 15.02    "/usr/bin/opj_decompress"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_compress" references the file
+#23 15.02    "/usr/bin/opj_compress"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_dump" references the file
+#23 15.02    "/usr/bin/opj_dump"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_jpip_addxml" references the file
+#23 15.02    "/usr/bin/opj_jpip_addxml"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_server" references the file
+#23 15.02    "/usr/bin/opj_server"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_dec_server" references the file
+#23 15.02    "/usr/bin/opj_dec_server"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_jpip_transcode" references the file
+#23 15.02    "/usr/bin/opj_jpip_transcode"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- The imported target "opj_jpip_test" references the file
+#23 15.02    "/usr/bin/opj_jpip_test"
+#23 15.02 but this file does not exist.  Possible reasons include:
+#23 15.02 * The file was deleted, renamed, or moved to another location.
+#23 15.02 * An install or uninstall procedure did not complete successfully.
+#23 15.02 * The installation package was faulty and contained
+#23 15.02    "/usr/lib/x86_64-linux-gnu/openjpeg-2.3/OpenJPEGTargets.cmake"
+#23 15.02 but not all the files it references.
+#23 15.02 
+#23 15.02 -- Checking for module 'poppler-data'
+#23 15.03 --   No package 'poppler-data' found
+#23 15.03 -- Looking for include file dlfcn.h
+#23 15.17 -- Looking for include file dlfcn.h - found
+#23 15.17 -- Looking for include file fcntl.h
+#23 15.31 -- Looking for include file fcntl.h - found
+#23 15.31 -- Looking for include file stdlib.h
+#23 15.44 -- Looking for include file stdlib.h - found
+#23 15.45 -- Looking for include file sys/mman.h
+#23 15.59 -- Looking for include file sys/mman.h - found
+#23 15.59 -- Looking for include file sys/stat.h
+#23 15.73 -- Looking for include file sys/stat.h - found
+#23 15.73 -- Looking for include file unistd.h
+#23 15.87 -- Looking for include file unistd.h - found
+#23 15.87 -- Looking for fseek64
+#23 16.00 -- Looking for fseek64 - not found
+#23 16.00 -- Looking for fseeko
+#23 16.15 -- Looking for fseeko - found
+#23 16.15 -- Looking for ftell64
+#23 16.30 -- Looking for ftell64 - not found
+#23 16.30 -- Looking for pread64
+#23 16.44 -- Looking for pread64 - found
+#23 16.44 -- Looking for lseek64
+#23 16.59 -- Looking for lseek64 - found
+#23 16.59 -- Looking for gmtime_r
+#23 16.75 -- Looking for gmtime_r - found
+#23 16.75 -- Looking for timegm
+#23 16.89 -- Looking for timegm - found
+#23 16.89 -- Looking for gettimeofday
+#23 17.02 -- Looking for gettimeofday - found
+#23 17.02 -- Looking for localtime_r
+#23 17.17 -- Looking for localtime_r - found
+#23 17.17 -- Looking for popen
+#23 17.31 -- Looking for popen - found
+#23 17.31 -- Looking for mkstemp
+#23 17.45 -- Looking for mkstemp - found
+#23 17.45 -- Looking for strtok_r
+#23 17.58 -- Looking for strtok_r - found
+#23 17.59 -- Performing Test HAVE_DIRENT_H
+#23 17.73 -- Performing Test HAVE_DIRENT_H - Success
+#23 17.73 -- Performing Test HAVE_NDIR_H
+#23 17.78 -- Performing Test HAVE_NDIR_H - Failed
+#23 17.78 -- Performing Test HAVE_SYS_DIR_H
+#23 17.92 -- Performing Test HAVE_SYS_DIR_H - Success
+#23 17.92 -- Performing Test HAVE_SYS_NDIR_H
+#23 17.97 -- Performing Test HAVE_SYS_NDIR_H - Failed
+#23 17.97 -- Looking for nanosleep
+#23 18.11 -- Looking for nanosleep - found
+#23 18.12 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+#23 18.25 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+#23 18.26 -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+#23 18.40 -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+#23 18.40 -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+#23 18.54 -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+#23 18.55 Building Poppler with support for:
+#23 18.55   font configuration:   generic
+#23 18.55   use boost (Splash):   yes
+#23 18.55   cairo output:         yes
+#23 18.55   qt5 wrapper:          no
+#23 18.55   qt6 wrapper:          no
+#23 18.55   glib wrapper:         no
+#23 18.55     introspection:      no
+#23 18.55     gtk-doc:            no
+#23 18.55   cpp wrapper:          yes
+#23 18.55   use libjpeg:          yes
+#23 18.55   use libpng:           yes
+#23 18.55   use libtiff:          yes
+#23 18.55   use zlib compress:    yes
+#23 18.55   use zlib uncompress:  no
+#23 18.55   use nss3:             no
+#23 18.55   use curl:             no
+#23 18.55   use libopenjpeg2:     yes
+#23 18.55   use lcms2:            no
+#23 18.55   command line utils:   yes
+#23 18.55   fuzz target:          no
+#23 18.55   test data dir:        /magma/targets/poppler_pdfimages/repo/../test
+#23 18.55 -- Configuring done
+#23 18.65 -- Generating done
+#23 18.65 CMake Warning:
+#23 18.65   Manually-specified variables were not used by the project:
+#23 18.65 
+#23 18.65     ENABLE_SPLASH
+#23 18.65 
+#23 18.65 
+#23 18.65 -- Build files have been written to: /magma/targets/poppler_pdfimages/work/poppler
+#23 18.88 Scanning dependencies of target poppler
+#23 18.91 [  0%] Building CXX object CMakeFiles/poppler.dir/goo/gbasename.cc.o
+#23 18.91 [  1%] Building CXX object CMakeFiles/poppler.dir/goo/gfile.cc.o
+#23 18.91 [  1%] Building CXX object CMakeFiles/poppler.dir/goo/GooTimer.cc.o
+#23 18.91 [  3%] Building CXX object CMakeFiles/poppler.dir/goo/GooString.cc.o
+#23 18.91 [  3%] Building CXX object CMakeFiles/poppler.dir/goo/PNGWriter.cc.o
+#23 18.91 [  3%] Building CXX object CMakeFiles/poppler.dir/goo/JpegWriter.cc.o
+#23 18.91 [  5%] Building CXX object CMakeFiles/poppler.dir/goo/TiffWriter.cc.o
+#23 18.91 [  5%] Building CXX object CMakeFiles/poppler.dir/goo/NetPBMWriter.cc.o
+#23 18.91 [  6%] Building CXX object CMakeFiles/poppler.dir/goo/ImgWriter.cc.o
+#23 18.91 [  8%] Building CXX object CMakeFiles/poppler.dir/goo/grandom.cc.o
+#23 18.91 [ 10%] Building CXX object CMakeFiles/poppler.dir/goo/glibc_strtok_r.cc.o
+#23 18.91 [ 10%] Building CXX object CMakeFiles/poppler.dir/fofi/FoFiBase.cc.o
+#23 18.91 [ 12%] Building CXX object CMakeFiles/poppler.dir/fofi/FoFiEncodings.cc.o
+#23 18.91 [ 12%] Building CXX object CMakeFiles/poppler.dir/fofi/FoFiType1C.cc.o
+#23 18.91 [ 12%] Building CXX object CMakeFiles/poppler.dir/goo/glibc.cc.o
+#23 18.91 [ 13%] Building CXX object CMakeFiles/poppler.dir/fofi/FoFiType1.cc.o
+#23 18.91 [ 15%] Building CXX object CMakeFiles/poppler.dir/poppler/Array.cc.o
+#23 18.91 [ 15%] Building CXX object CMakeFiles/poppler.dir/fofi/FoFiTrueType.cc.o
+#23 18.91 [ 15%] Building CXX object CMakeFiles/poppler.dir/poppler/Annot.cc.o
+#23 18.91 [ 17%] Building CXX object CMakeFiles/poppler.dir/fofi/FoFiIdentifier.cc.o
+#23 18.91 [ 17%] Building CXX object CMakeFiles/poppler.dir/goo/gstrtod.cc.o
+#23 18.91 [ 18%] Building CXX object CMakeFiles/poppler.dir/poppler/CMap.cc.o
+#23 18.91 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/Decrypt.cc.o
+#23 18.92 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/CharCodeToUnicode.cc.o
+#23 18.92 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/CachedFile.cc.o
+#23 18.92 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/GfxFont.cc.o
+#23 18.92 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/Dict.cc.o
+#23 18.92 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/Hints.cc.o
+#23 18.92 [ 20%] Building CXX object CMakeFiles/poppler.dir/poppler/Form.cc.o
+#23 18.92 [ 22%] Building CXX object CMakeFiles/poppler.dir/poppler/JSInfo.cc.o
+#23 18.92 [ 24%] Building CXX object CMakeFiles/poppler.dir/goo/gbase64.cc.o
+#23 18.92 [ 25%] Building CXX object CMakeFiles/poppler.dir/poppler/FontInfo.cc.o
+#23 18.92 [ 27%] Building CXX object CMakeFiles/poppler.dir/poppler/Gfx.cc.o
+#23 18.92 [ 27%] Building CXX object CMakeFiles/poppler.dir/poppler/MarkedContentOutputDev.cc.o
+#23 18.92 [ 27%] Building CXX object CMakeFiles/poppler.dir/poppler/FileSpec.cc.o
+#23 18.93 [ 27%] Building CXX object CMakeFiles/poppler.dir/poppler/DateInfo.cc.o
+#23 18.93 [ 32%] Building CXX object CMakeFiles/poppler.dir/poppler/LocalPDFDocBuilder.cc.o
+#23 18.93 [ 32%] Building CXX object CMakeFiles/poppler.dir/poppler/Link.cc.o
+#23 18.93 [ 32%] Building CXX object CMakeFiles/poppler.dir/poppler/GfxState.cc.o
+#23 18.93 [ 32%] Building CXX object CMakeFiles/poppler.dir/poppler/PreScanOutputDev.cc.o
+#23 18.93 [ 34%] Building CXX object CMakeFiles/poppler.dir/poppler/Catalog.cc.o
+#23 18.93 [ 34%] Building CXX object CMakeFiles/poppler.dir/poppler/PDFDoc.cc.o
+#23 18.93 [ 36%] Building CXX object CMakeFiles/poppler.dir/poppler/FontEncodingTables.cc.o
+#23 18.94 [ 36%] Building CXX object CMakeFiles/poppler.dir/poppler/Linearization.cc.o
+#23 18.94 [ 36%] Building CXX object CMakeFiles/poppler.dir/poppler/Parser.cc.o
+#23 18.94 [ 37%] Building CXX object CMakeFiles/poppler.dir/poppler/Stream.cc.o
+#23 18.94 [ 37%] Building CXX object CMakeFiles/poppler.dir/poppler/PDFDocBuilder.cc.o
+#23 18.94 [ 37%] Building CXX object CMakeFiles/poppler.dir/poppler/UTF.cc.o
+#23 18.94 [ 39%] Building CXX object CMakeFiles/poppler.dir/poppler/JArithmeticDecoder.cc.o
+#23 18.95 [ 39%] Building CXX object CMakeFiles/poppler.dir/poppler/Sound.cc.o
+#23 18.95 [ 39%] Building CXX object CMakeFiles/poppler.dir/poppler/Outline.cc.o
+#23 18.95 [ 41%] Building CXX object CMakeFiles/poppler.dir/poppler/PSTokenizer.cc.o
+#23 18.95 [ 43%] Building CXX object CMakeFiles/poppler.dir/poppler/ProfileData.cc.o
+#23 18.95 [ 44%] Building CXX object CMakeFiles/poppler.dir/poppler/Error.cc.o
+#23 18.96 [ 44%] Building CXX object CMakeFiles/poppler.dir/poppler/SplashOutputDev.cc.o
+#23 18.96 [ 44%] Building CXX object CMakeFiles/poppler.dir/poppler/Movie.cc.o
+#23 18.96 [ 44%] Building CXX object CMakeFiles/poppler.dir/poppler/UnicodeMap.cc.o
+#23 18.96 [ 44%] Building CXX object CMakeFiles/poppler.dir/poppler/StructTreeRoot.cc.o
+#23 18.96 [ 46%] Building CXX object CMakeFiles/poppler.dir/poppler/BBoxOutputDev.cc.o
+#23 18.96 [ 48%] Building CXX object CMakeFiles/poppler.dir/poppler/XRef.cc.o
+#23 18.96 [ 48%] Building CXX object CMakeFiles/poppler.dir/poppler/PageLabelInfo.cc.o
+#23 18.97 [ 48%] Building CXX object CMakeFiles/poppler.dir/poppler/Function.cc.o
+#23 18.98 [ 50%] Building CXX object CMakeFiles/poppler.dir/poppler/StdinPDFDocBuilder.cc.o
+#23 18.98 [ 51%] Building CXX object CMakeFiles/poppler.dir/splash/SplashPath.cc.o
+#23 18.98 [ 56%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFont.cc.o
+#23 18.98 [ 56%] Building CXX object CMakeFiles/poppler.dir/poppler/UnicodeTypeTable.cc.o
+#23 18.98 [ 56%] Building CXX object CMakeFiles/poppler.dir/poppler/Rendition.cc.o
+#23 18.99 [ 56%] Building CXX object CMakeFiles/poppler.dir/poppler/PageTransition.cc.o
+#23 19.00 [ 56%] Building CXX object CMakeFiles/poppler.dir/poppler/CertificateInfo.cc.o
+#23 19.00 [ 56%] Building CXX object CMakeFiles/poppler.dir/splash/SplashPattern.cc.o
+#23 19.01 [ 56%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFTFontFile.cc.o
+#23 19.02 [ 58%] Building CXX object CMakeFiles/poppler.dir/splash/Splash.cc.o
+#23 19.02 [ 60%] Building CXX object CMakeFiles/poppler.dir/poppler/StructElement.cc.o
+#23 19.02 [ 58%] Building CXX object CMakeFiles/poppler.dir/poppler/Lexer.cc.o
+#23 19.03 [ 62%] Building CXX object CMakeFiles/poppler.dir/poppler/OutputDev.cc.o
+#23 19.03 [ 63%] Building CXX object CMakeFiles/poppler.dir/poppler/GlobalParams.cc.o
+#23 19.03 [ 63%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFTFont.cc.o
+#23 19.03 [ 63%] Building CXX object CMakeFiles/poppler.dir/poppler/PSOutputDev.cc.o
+#23 19.03 [ 65%] Building CXX object CMakeFiles/poppler.dir/poppler/TextOutputDev.cc.o
+#23 19.04 [ 65%] Building CXX object CMakeFiles/poppler.dir/poppler/PDFDocFactory.cc.o
+#23 19.04 [ 65%] Building CXX object CMakeFiles/poppler.dir/poppler/Page.cc.o
+#23 19.04 [ 65%] Building CXX object CMakeFiles/poppler.dir/splash/SplashBitmap.cc.o
+#23 19.04 [ 67%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFontFileID.cc.o
+#23 19.04 [ 67%] Building CXX object CMakeFiles/poppler.dir/poppler/NameToCharCode.cc.o
+#23 19.04 [ 67%] Building CXX object CMakeFiles/poppler.dir/poppler/Object.cc.o
+#23 19.04 [ 68%] Building CXX object CMakeFiles/poppler.dir/splash/SplashClip.cc.o
+#23 19.05 [ 70%] Building CXX object CMakeFiles/poppler.dir/poppler/PDFDocEncoding.cc.o
+#23 19.05 [ 70%] Building CXX object CMakeFiles/poppler.dir/poppler/StdinCachedFile.cc.o
+#23 19.07 [ 70%] Building CXX object CMakeFiles/poppler.dir/splash/SplashState.cc.o
+#23 19.07 [ 72%] Building CXX object CMakeFiles/poppler.dir/poppler/ViewerPreferences.cc.o
+#23 19.09 [ 74%] Building CXX object CMakeFiles/poppler.dir/poppler/OptionalContent.cc.o
+#23 19.09 [ 74%] Building CXX object CMakeFiles/poppler.dir/poppler/JBIG2Stream.cc.o
+#23 19.10 [ 75%] Building CXX object CMakeFiles/poppler.dir/poppler/SecurityHandler.cc.o
+#23 19.10 [ 77%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFTFontEngine.cc.o
+#23 19.10 [ 79%] Building CXX object CMakeFiles/poppler.dir/poppler/UnicodeMapFuncs.cc.o
+#23 19.11 [ 79%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFontEngine.cc.o
+#23 19.12 [ 79%] Building CXX object CMakeFiles/poppler.dir/splash/SplashXPathScanner.cc.o
+#23 19.13 [ 81%] Building CXX object CMakeFiles/poppler.dir/splash/SplashXPath.cc.o
+#23 19.14 [ 82%] Building CXX object CMakeFiles/poppler.dir/poppler/DCTStream.cc.o
+#23 19.14 [ 84%] Building CXX object CMakeFiles/poppler.dir/splash/SplashScreen.cc.o
+#23 19.19 [ 84%] Building CXX object CMakeFiles/poppler.dir/poppler/SignatureInfo.cc.o
+#23 19.21 [ 86%] Building CXX object CMakeFiles/poppler.dir/poppler/JPEG2000Stream.cc.o
+#23 19.21 [ 86%] Building CXX object CMakeFiles/poppler.dir/poppler/FlateEncoder.cc.o
+#23 19.23 [ 87%] Building C object CMakeFiles/poppler.dir/poppler/CourierBoldObliqueWidths.pregenerated.c.o
+#23 19.24 [ 87%] Building C object CMakeFiles/poppler.dir/poppler/CourierBoldWidths.pregenerated.c.o
+#23 19.26 [ 87%] Building C object CMakeFiles/poppler.dir/poppler/HelveticaObliqueWidths.pregenerated.c.o
+#23 19.28 [ 89%] Building CXX object CMakeFiles/poppler.dir/splash/SplashFontFile.cc.o
+#23 19.29 [ 91%] Building C object CMakeFiles/poppler.dir/poppler/HelveticaWidths.pregenerated.c.o
+#23 19.30 [ 91%] Building C object CMakeFiles/poppler.dir/poppler/CourierObliqueWidths.pregenerated.c.o
+#23 19.34 [ 93%] Building C object CMakeFiles/poppler.dir/poppler/HelveticaBoldObliqueWidths.pregenerated.c.o
+#23 19.37 [ 93%] Building C object CMakeFiles/poppler.dir/poppler/HelveticaBoldWidths.pregenerated.c.o
+#23 19.37 [ 93%] Building C object CMakeFiles/poppler.dir/poppler/CourierWidths.pregenerated.c.o
+#23 19.40 [ 94%] Building C object CMakeFiles/poppler.dir/poppler/SymbolWidths.pregenerated.c.o
+#23 19.42 [ 96%] Building C object CMakeFiles/poppler.dir/poppler/TimesBoldWidths.pregenerated.c.o
+#23 19.42 [ 96%] Building C object CMakeFiles/poppler.dir/poppler/TimesBoldItalicWidths.pregenerated.c.o
+#23 19.44 [ 96%] Building C object CMakeFiles/poppler.dir/poppler/TimesItalicWidths.pregenerated.c.o
+#23 19.44 [ 96%] Building C object CMakeFiles/poppler.dir/poppler/ZapfDingbatsWidths.pregenerated.c.o
+#23 19.44 [ 98%] Building C object CMakeFiles/poppler.dir/poppler/TimesRomanWidths.pregenerated.c.o
+#23 20.38 /magma/targets/poppler_pdfimages/repo/poppler/GfxState.cc:670:20: warning: unused function 'bradford_transform_to_d50' [-Wunused-function]
+#23 20.38   670 | static void inline bradford_transform_to_d50(double &X, double &Y, double &Z, const double source_whiteX, const double source_whiteY, const double source_whiteZ)
+#23 20.38       |                    ^~~~~~~~~~~~~~~~~~~~~~~~~
+#23 20.54 1 warning generated.
+#23 21.52 [100%] Linking CXX static library libpoppler.a
+#23 21.83 [100%] Built target poppler
+#23 21.95 [ 89%] Built target poppler
+#23 21.98 Scanning dependencies of target poppler-cpp
+#23 22.00 [ 89%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-embedded-file.cpp.o
+#23 22.00 [ 89%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-page-transition.cpp.o
+#23 22.00 [ 90%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-version.cpp.o
+#23 22.00 [ 92%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-toc.cpp.o
+#23 22.00 [ 93%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-private.cpp.o
+#23 22.00 [ 93%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-rectangle.cpp.o
+#23 22.00 [ 93%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-image.cpp.o
+#23 22.00 [ 95%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-global.cpp.o
+#23 22.00 [ 95%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-font.cpp.o
+#23 22.00 [ 95%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-destination.cpp.o
+#23 22.01 [ 95%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-page.cpp.o
+#23 22.01 [ 98%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-page-renderer.cpp.o
+#23 22.01 [ 98%] Building CXX object cpp/CMakeFiles/poppler-cpp.dir/poppler-document.cpp.o
+#23 23.23 [100%] Linking CXX static library libpoppler-cpp.a
+#23 23.32 [100%] Built target poppler-cpp
+#23 23.44 [ 96%] Built target poppler
+#23 23.46 Scanning dependencies of target pdfimages
+#23 23.47 [ 98%] Building CXX object utils/CMakeFiles/pdfimages.dir/parseargs.cc.o
+#23 23.47 [ 98%] Building CXX object utils/CMakeFiles/pdfimages.dir/pdfimages.cc.o
+#23 23.47 [100%] Building CXX object utils/CMakeFiles/pdfimages.dir/ImageOutputDev.cc.o
+#23 23.47 [100%] Building CXX object utils/CMakeFiles/pdfimages.dir/Win32Console.cc.o
+#23 24.51 [100%] Linking CXX executable pdfimages
+#23 26.41 
+#23 26.41 === AFL++ LTO Instrumentation Statistics ===
+#23 26.41 Total Basic Blocks: 38209
+#23 26.41 Instrumented Times: 0
+#23 26.41 Instrumented Basic Blocks: 4349
+#23 26.41 Instrumentation Ratio: 11.38%
+#23 26.41 Total Predecessors: 10449
+#23 26.41 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 26.41   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 26.41   Instrumented BasicBlocks with 2 predecessor(s): 3609
+#23 26.41   Instrumented BasicBlocks with 3 predecessor(s): 429
+#23 26.41   Instrumented BasicBlocks with 4 predecessor(s): 119
+#23 26.41   Instrumented BasicBlocks with 5 predecessor(s): 71
+#23 26.41   Instrumented BasicBlocks with 6 predecessor(s): 47
+#23 26.41   Instrumented BasicBlocks with 7 predecessor(s): 14
+#23 26.41   Instrumented BasicBlocks with 8 predecessor(s): 18
+#23 26.41   Instrumented BasicBlocks with 9 predecessor(s): 10
+#23 26.41   Instrumented BasicBlocks with >=10 predecessors: 3
+#23 26.41 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 26.41   Non-Instrumented BasicBlocks with 1 predecessor(s): 15399
+#23 26.41   Non-Instrumented BasicBlocks with 2 predecessor(s): 3671
+#23 26.41   Non-Instrumented BasicBlocks with 3 predecessor(s): 97
+#23 26.41   Non-Instrumented BasicBlocks with 4 predecessor(s): 25
+#23 26.41   Non-Instrumented BasicBlocks with 5 predecessor(s): 23
+#23 26.41   Non-Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 26.41   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 26.41   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 26.41   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 26.41   Non-Instrumented BasicBlocks with >=10 predecessors: 3
+#23 26.41 Average Global Entropy: 1.42
+#23 26.41 =======================================
+#23 26.41 
+#23 33.78 [100%] Built target pdfimages
+#23 33.79 cp: cannot stat '/magma/targets/poppler_pdfimages/work/poppler/utils/{pdfimages}': No such file or directory
+#23 ERROR: process "/bin/sh -c ${FUZZER}/Calculate.sh" did not complete successfully: exit code: 1
+------
+ > [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/Calculate.sh:
+26.41   Non-Instrumented BasicBlocks with 6 predecessor(s): 4
+26.41   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+26.41   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+26.41   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+26.41   Non-Instrumented BasicBlocks with >=10 predecessors: 3
+26.41 Average Global Entropy: 1.42
+26.41 =======================================
+26.41 
+33.78 [100%] Built target pdfimages
+33.79 cp: cannot stat '/magma/targets/poppler_pdfimages/work/poppler/utils/{pdfimages}': No such file or directory
+------
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
+Dockerfile:94
+--------------------
+  92 |     
+  93 |     #RUN ${FUZZER}/instrument.sh
+  94 | >>> RUN ${FUZZER}/Calculate.sh
+  95 |     
+  96 |     ENTRYPOINT "${MAGMA}/run.sh"
+--------------------
+ERROR: failed to solve: process "/bin/sh -c ${FUZZER}/Calculate.sh" did not complete successfully: exit code: 1

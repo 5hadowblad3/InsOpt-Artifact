@@ -1,0 +1,852 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/libxml2_reader_for_file_fuzzer --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=libxml2_reader_for_file_fuzzer --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 1.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 12.87MB 0.4s done
+#5 DONE 0.4s
+
+#6 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#6 CACHED
+
+#7 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#7 CACHED
+
+#8 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#8 CACHED
+
+#9 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#9 CACHED
+
+#10 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#10 CACHED
+
+#11 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#11 CACHED
+
+#12 [ 8/19] RUN /magma/magma/preinstall.sh
+#12 CACHED
+
+#13 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#13 CACHED
+
+#14 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#14 CACHED
+
+#15 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#15 CACHED
+
+#16 [ 9/19] RUN /magma/magma/prebuild.sh
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/libxml2_reader_for_file_fuzzer && chown magma:magma /magma/targets/libxml2_reader_for_file_fuzzer
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/libxml2_reader_for_file_fuzzer /magma/targets/libxml2_reader_for_file_fuzzer/
+#19 DONE 0.4s
+
+#20 [16/19] RUN /magma/targets/libxml2_reader_for_file_fuzzer/preinstall.sh
+#20 1.039 Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.069 Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.296 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.408 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 1.520 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 1.625 Reading package lists...
+#20 3.097 Reading package lists...
+#20 4.539 Building dependency tree...
+#20 4.779 Reading state information...
+#20 4.986 make is already the newest version (4.1-9.1ubuntu1).
+#20 4.986 pkg-config is already the newest version (0.29.1-0ubuntu2).
+#20 4.986 pkg-config set to manually installed.
+#20 4.986 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 4.986 zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2.2).
+#20 4.986 zlib1g-dev set to manually installed.
+#20 4.986 The following additional packages will be installed:
+#20 4.987   autotools-dev libltdl-dev libltdl7 libsigsegv2 m4
+#20 4.989 Suggested packages:
+#20 4.989   autoconf-archive gnu-standards autoconf-doc gettext libtool-doc liblzma-doc
+#20 4.989   gfortran | fortran95-compiler gcj-jdk m4-doc
+#20 5.031 The following NEW packages will be installed:
+#20 5.032   autoconf automake autotools-dev libltdl-dev libltdl7 liblzma-dev libsigsegv2
+#20 5.033   libtool m4
+#20 5.715 0 upgraded, 9 newly installed, 0 to remove and 1 not upgraded.
+#20 5.715 Need to get 1622 kB of archives.
+#20 5.715 After this operation, 7291 kB of additional disk space will be used.
+#20 5.715 Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]
+#20 6.100 Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]
+#20 6.714 Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]
+#20 6.973 Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+#20 7.086 Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]
+#20 7.961 Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl7 amd64 2.4.6-2 [38.8 kB]
+#20 7.961 Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl-dev amd64 2.4.6-2 [162 kB]
+#20 7.969 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]
+#20 8.224 Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblzma-dev amd64 5.2.2-1.3ubuntu0.1 [145 kB]
+#20 8.415 debconf: unable to initialize frontend: Dialog
+#20 8.415 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 8.415 debconf: falling back to frontend: Readline
+#20 8.423 debconf: unable to initialize frontend: Readline
+#20 8.423 debconf: (This frontend requires a controlling tty.)
+#20 8.423 debconf: falling back to frontend: Teletype
+#20 8.427 dpkg-preconfigure: unable to re-open stdin: 
+#20 8.454 Fetched 1622 kB in 3s (507 kB/s)
+#20 8.470 Selecting previously unselected package libsigsegv2:amd64.
+#20 8.470 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24447 files and directories currently installed.)
+#20 8.485 Preparing to unpack .../0-libsigsegv2_2.12-1_amd64.deb ...
+#20 8.486 Unpacking libsigsegv2:amd64 (2.12-1) ...
+#20 8.501 Selecting previously unselected package m4.
+#20 8.503 Preparing to unpack .../1-m4_1.4.18-1_amd64.deb ...
+#20 8.503 Unpacking m4 (1.4.18-1) ...
+#20 8.539 Selecting previously unselected package autoconf.
+#20 8.541 Preparing to unpack .../2-autoconf_2.69-11_all.deb ...
+#20 8.541 Unpacking autoconf (2.69-11) ...
+#20 8.589 Selecting previously unselected package autotools-dev.
+#20 8.591 Preparing to unpack .../3-autotools-dev_20180224.1_all.deb ...
+#20 8.592 Unpacking autotools-dev (20180224.1) ...
+#20 8.610 Selecting previously unselected package automake.
+#20 8.612 Preparing to unpack .../4-automake_1%3a1.15.1-3ubuntu2_all.deb ...
+#20 8.614 Unpacking automake (1:1.15.1-3ubuntu2) ...
+#20 8.675 Selecting previously unselected package libltdl7:amd64.
+#20 8.677 Preparing to unpack .../5-libltdl7_2.4.6-2_amd64.deb ...
+#20 8.678 Unpacking libltdl7:amd64 (2.4.6-2) ...
+#20 8.694 Selecting previously unselected package libltdl-dev:amd64.
+#20 8.696 Preparing to unpack .../6-libltdl-dev_2.4.6-2_amd64.deb ...
+#20 8.696 Unpacking libltdl-dev:amd64 (2.4.6-2) ...
+#20 8.725 Selecting previously unselected package libtool.
+#20 8.727 Preparing to unpack .../7-libtool_2.4.6-2_all.deb ...
+#20 8.728 Unpacking libtool (2.4.6-2) ...
+#20 8.760 Selecting previously unselected package liblzma-dev:amd64.
+#20 8.762 Preparing to unpack .../8-liblzma-dev_5.2.2-1.3ubuntu0.1_amd64.deb ...
+#20 8.763 Unpacking liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 8.803 Setting up libsigsegv2:amd64 (2.12-1) ...
+#20 8.804 Setting up m4 (1.4.18-1) ...
+#20 8.805 Setting up autotools-dev (20180224.1) ...
+#20 8.806 Setting up libltdl7:amd64 (2.4.6-2) ...
+#20 8.807 Setting up liblzma-dev:amd64 (5.2.2-1.3ubuntu0.1) ...
+#20 8.808 Setting up libtool (2.4.6-2) ...
+#20 8.809 Setting up libltdl-dev:amd64 (2.4.6-2) ...
+#20 8.809 Setting up autoconf (2.69-11) ...
+#20 8.811 Setting up automake (1:1.15.1-3ubuntu2) ...
+#20 8.819 update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode
+#20 8.820 update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist
+#20 8.820 update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist
+#20 8.821 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#20 DONE 8.9s
+
+#21 [17/19] RUN /magma/targets/libxml2_reader_for_file_fuzzer/fetch.sh
+#21 0.537 Cloning into '/magma/targets/libxml2_reader_for_file_fuzzer/repo'...
+#21 19.03 Note: checking out 'ec6e3efb06d7b15cf5a2328fabd3845acea4c815'.
+#21 19.03 
+#21 19.03 You are in 'detached HEAD' state. You can look around, make experimental
+#21 19.03 changes and commit them, and you can discard any commits you make in this
+#21 19.03 state without impacting any branches by performing another checkout.
+#21 19.03 
+#21 19.03 If you want to create a new branch to retain commits you create, you may
+#21 19.03 do so (now or later) by using -b with the checkout command again. Example:
+#21 19.03 
+#21 19.03   git checkout -b <new-branch-name>
+#21 19.03 
+#21 19.03 HEAD is now at ec6e3efb Patch to forbid epsilon-reduction of final states
+#21 DONE 19.1s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.464 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/setup/libxml2.patch
+#22 0.466 patching file Makefile.am
+#22 0.467 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML004.patch
+#22 0.468 patching file xzlib.c
+#22 0.468 Hunk #1 succeeded at 591 (offset 4 lines).
+#22 0.469 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML016.patch
+#22 0.471 patching file xmlregexp.c
+#22 0.473 Hunk #1 succeeded at 5137 (offset 72 lines).
+#22 0.475 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML009.patch
+#22 0.477 patching file parser.c
+#22 0.479 Hunk #1 succeeded at 10432 (offset 102 lines).
+#22 0.481 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML011.patch
+#22 0.483 patching file xmlstring.c
+#22 0.483 Hunk #1 succeeded at 460 (offset 3 lines).
+#22 0.483 Hunk #2 succeeded at 499 (offset 3 lines).
+#22 0.483 Hunk #3 succeeded at 510 (offset 3 lines).
+#22 0.484 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML013.patch
+#22 0.485 patching file HTMLparser.c
+#22 0.485 Hunk #1 succeeded at 2964 (offset 164 lines).
+#22 0.485 Hunk #2 succeeded at 2977 (offset 164 lines).
+#22 0.485 Hunk #3 succeeded at 2998 (offset 164 lines).
+#22 0.485 Hunk #4 succeeded at 3028 (offset 164 lines).
+#22 0.485 Hunk #5 succeeded at 3044 (offset 164 lines).
+#22 0.486 Hunk #6 succeeded at 3065 (offset 164 lines).
+#22 0.488 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML010.patch
+#22 0.490 patching file parser.c
+#22 0.490 Hunk #1 succeeded at 2758 (offset 53 lines).
+#22 0.490 Hunk #2 succeeded at 2771 (offset 53 lines).
+#22 0.492 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML014.patch
+#22 0.494 patching file HTMLparser.c
+#22 0.494 Hunk #1 succeeded at 2651 (offset 178 lines).
+#22 0.495 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML003.patch
+#22 0.497 patching file parser.c
+#22 0.499 Hunk #1 succeeded at 8001 with fuzz 2 (offset 87 lines).
+#22 0.499 Hunk #2 succeeded at 8010 (offset 87 lines).
+#22 0.500 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML006.patch
+#22 0.501 patching file valid.c
+#22 0.501 Hunk #1 succeeded at 1367 (offset 43 lines).
+#22 0.504 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML002.patch
+#22 0.508 patching file valid.c
+#22 0.508 Hunk #1 succeeded at 4705 (offset 48 lines).
+#22 0.509 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML017.patch
+#22 0.512 patching file parser.c
+#22 0.512 Hunk #1 succeeded at 8414 (offset 103 lines).
+#22 0.513 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML007.patch
+#22 0.516 patching file HTMLparser.c
+#22 0.516 Hunk #1 succeeded at 5523 with fuzz 2 (offset 131 lines).
+#22 0.518 patching file parser.c
+#22 0.518 Hunk #1 succeeded at 12601 (offset 110 lines).
+#22 0.519 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML008.patch
+#22 0.522 patching file parser.c
+#22 0.523 Hunk #1 succeeded at 5033 (offset 55 lines).
+#22 0.525 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML012.patch
+#22 0.528 patching file parser.c
+#22 0.528 Hunk #1 succeeded at 3402 (offset 53 lines).
+#22 0.528 Hunk #2 succeeded at 3413 (offset 53 lines).
+#22 0.528 Hunk #3 succeeded at 3435 (offset 53 lines).
+#22 0.528 Hunk #4 succeeded at 3449 (offset 53 lines).
+#22 0.528 Hunk #5 succeeded at 3458 (offset 53 lines).
+#22 0.529 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML015.patch
+#22 0.532 patching file HTMLparser.c
+#22 0.532 Hunk #1 succeeded at 2701 (offset 182 lines).
+#22 0.532 Hunk #2 succeeded at 2709 (offset 182 lines).
+#22 0.533 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML001.patch
+#22 0.535 patching file valid.c
+#22 0.535 Hunk #1 succeeded at 1310 (offset 43 lines).
+#22 0.535 Hunk #2 succeeded at 1319 (offset 43 lines).
+#22 0.537 Applying /magma/targets/libxml2_reader_for_file_fuzzer/patches/bugs/XML005.patch
+#22 0.539 patching file xmlmemory.c
+#22 DONE 0.6s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/Calculate.sh
+#23 4.197 libtoolize: putting auxiliary files in '.'.
+#23 4.197 libtoolize: copying file './ltmain.sh'
+#23 4.229 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+#23 4.229 libtoolize: copying file 'm4/libtool.m4'
+#23 4.254 libtoolize: copying file 'm4/ltoptions.m4'
+#23 4.279 libtoolize: copying file 'm4/ltsugar.m4'
+#23 4.312 libtoolize: copying file 'm4/ltversion.m4'
+#23 4.338 libtoolize: copying file 'm4/lt~obsolete.m4'
+#23 7.593 configure.ac:66: installing './compile'
+#23 7.595 configure.ac:13: installing './config.guess'
+#23 7.597 configure.ac:13: installing './config.sub'
+#23 7.599 configure.ac:58: installing './install-sh'
+#23 7.601 configure.ac:58: installing './missing'
+#23 7.675 Makefile.am: installing './depcomp'
+#23 8.228 checking whether to enable maintainer-specific portions of Makefiles... yes
+#23 8.241 checking build system type... x86_64-pc-linux-gnu
+#23 8.308 checking host system type... x86_64-pc-linux-gnu
+#23 8.317 extra=v2.9.12-13-gec6e3efb
+#23 8.317 checking for a BSD-compatible install... /usr/bin/install -c
+#23 8.327 checking whether build environment is sane... yes
+#23 8.339 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 8.341 checking for gawk... no
+#23 8.342 checking for mawk... mawk
+#23 8.342 checking whether make sets $(MAKE)... yes
+#23 8.355 checking whether make supports nested variables... yes
+#23 8.366 checking whether make supports nested variables... (cached) yes
+#23 8.366 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 8.515 checking whether the C compiler works... yes
+#23 8.609 checking for C compiler default output file name... a.out
+#23 8.610 checking for suffix of executables... 
+#23 8.703 checking whether we are cross compiling... no
+#23 8.799 checking for suffix of object files... o
+#23 8.835 checking whether we are using the GNU C compiler... yes
+#23 8.869 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 8.904 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 8.948 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 9.016 checking for style of include used by make... GNU
+#23 9.021 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 9.077 checking whether ln -s works... yes
+#23 9.077 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 9.216 checking for mv... /bin/mv
+#23 9.216 checking for tar... /bin/tar
+#23 9.216 checking for perl... /usr/bin/perl
+#23 9.217 checking for wget... /usr/bin/wget
+#23 9.217 checking for xmllint... /usr/bin/xmllint
+#23 9.217 checking for xsltproc... /usr/bin/xsltproc
+#23 9.218 checking for pkg-config... /usr/bin/pkg-config
+#23 9.218 checking pkg-config is at least version 0.9.0... yes
+#23 9.221 checking how to print strings... printf
+#23 9.247 checking for a sed that does not truncate output... /bin/sed
+#23 9.253 checking for grep that handles long lines and -e... /bin/grep
+#23 9.255 checking for egrep... /bin/grep -E
+#23 9.258 checking for fgrep... /bin/grep -F
+#23 9.260 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 9.289 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 9.306 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 9.306 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 9.359 checking the maximum length of command line arguments... 1572864
+#23 9.366 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 9.367 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 9.367 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 9.367 checking for objdump... objdump
+#23 9.367 checking how to recognize dependent libraries... pass_all
+#23 9.368 checking for dlltool... no
+#23 9.369 checking how to associate runtime and link libraries... printf %s\n
+#23 9.369 checking for archiver @FILE support... @
+#23 9.440 checking for strip... strip
+#23 9.440 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 9.440 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 9.628 checking for sysroot... no
+#23 9.628 checking for a working dd... /bin/dd
+#23 9.636 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 9.677 checking for mt... no
+#23 9.677 checking if : is a manifest tool... no
+#23 9.683 checking for ANSI C header files... yes
+#23 9.897 checking for sys/types.h... yes
+#23 9.950 checking for sys/stat.h... yes
+#23 10.00 checking for stdlib.h... yes
+#23 10.05 checking for string.h... yes
+#23 10.10 checking for memory.h... yes
+#23 10.16 checking for strings.h... yes
+#23 10.21 checking for inttypes.h... yes
+#23 10.26 checking for stdint.h... yes
+#23 10.32 checking for unistd.h... yes
+#23 10.37 checking for dlfcn.h... yes
+#23 10.42 checking for objdir... .libs
+#23 10.59 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 10.63 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 10.63 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 10.67 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 10.77 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 10.81 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 10.81 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 10.88 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 11.04 checking how to hardcode library paths into programs... immediate
+#23 11.04 checking whether stripping libraries is possible... yes
+#23 11.05 checking if libtool supports shared libraries... yes
+#23 11.05 checking whether to build shared libraries... no
+#23 11.05 checking whether to build static libraries... yes
+#23 11.05 Checking zlib
+#23 11.05 checking for Z... yes
+#23 11.06 Checking lzma
+#23 11.06 checking for LZMA... yes
+#23 11.07 Checking headers
+#23 11.07 checking for dirent.h that defines DIR... yes
+#23 11.11 checking for library containing opendir... none required
+#23 11.21 checking for ANSI C header files... (cached) yes
+#23 11.21 checking fcntl.h usability... yes
+#23 11.26 checking fcntl.h presence... yes
+#23 11.30 checking for fcntl.h... yes
+#23 11.30 checking for unistd.h... (cached) yes
+#23 11.30 checking ctype.h usability... yes
+#23 11.36 checking ctype.h presence... yes
+#23 11.39 checking for ctype.h... yes
+#23 11.39 checking dirent.h usability... yes
+#23 11.44 checking dirent.h presence... yes
+#23 11.48 checking for dirent.h... yes
+#23 11.48 checking errno.h usability... yes
+#23 11.53 checking errno.h presence... yes
+#23 11.56 checking for errno.h... yes
+#23 11.56 checking malloc.h usability... yes
+#23 11.61 checking malloc.h presence... yes
+#23 11.64 checking for malloc.h... yes
+#23 11.64 checking stdarg.h usability... yes
+#23 11.69 checking stdarg.h presence... yes
+#23 11.72 checking for stdarg.h... yes
+#23 11.72 checking for sys/stat.h... (cached) yes
+#23 11.72 checking for sys/types.h... (cached) yes
+#23 11.73 checking for stdint.h... (cached) yes
+#23 11.73 checking for inttypes.h... (cached) yes
+#23 11.73 checking time.h usability... yes
+#23 11.79 checking time.h presence... yes
+#23 11.82 checking for time.h... yes
+#23 11.83 checking math.h usability... yes
+#23 11.88 checking math.h presence... yes
+#23 11.93 checking for math.h... yes
+#23 11.93 checking limits.h usability... yes
+#23 11.98 checking limits.h presence... yes
+#23 12.01 checking for limits.h... yes
+#23 12.02 checking float.h usability... yes
+#23 12.06 checking float.h presence... yes
+#23 12.10 checking for float.h... yes
+#23 12.10 checking for stdlib.h... (cached) yes
+#23 12.10 checking for sys/socket.h... yes
+#23 12.14 checking for netinet/in.h... yes
+#23 12.18 checking for arpa/inet.h... yes
+#23 12.23 checking netdb.h usability... yes
+#23 12.28 checking netdb.h presence... yes
+#23 12.31 checking for netdb.h... yes
+#23 12.31 checking sys/time.h usability... yes
+#23 12.36 checking sys/time.h presence... yes
+#23 12.39 checking for sys/time.h... yes
+#23 12.39 checking sys/select.h usability... yes
+#23 12.44 checking sys/select.h presence... yes
+#23 12.49 checking for sys/select.h... yes
+#23 12.49 checking poll.h usability... yes
+#23 12.54 checking poll.h presence... yes
+#23 12.57 checking for poll.h... yes
+#23 12.58 checking sys/mman.h usability... yes
+#23 12.63 checking sys/mman.h presence... yes
+#23 12.66 checking for sys/mman.h... yes
+#23 12.66 checking sys/timeb.h usability... yes
+#23 12.71 checking sys/timeb.h presence... yes
+#23 12.74 checking for sys/timeb.h... yes
+#23 12.74 checking signal.h usability... yes
+#23 12.79 checking signal.h presence... yes
+#23 12.83 checking for signal.h... yes
+#23 12.83 checking for arpa/nameser.h... yes
+#23 12.88 checking for resolv.h... yes
+#23 12.93 checking dl.h usability... no
+#23 12.98 checking dl.h presence... no
+#23 13.02 checking for dl.h... no
+#23 13.02 checking for dlfcn.h... (cached) yes
+#23 13.02 Checking types
+#23 13.02 checking for uint32_t... yes
+#23 13.08 Checking libraries
+#23 13.09 checking for strftime... yes
+#23 13.19 checking for strftime... (cached) yes
+#23 13.20 checking for localtime... yes
+#23 13.31 checking for gettimeofday... yes
+#23 13.41 checking for ftime... yes
+#23 13.52 checking for stat... yes
+#23 13.63 checking for signal... yes
+#23 13.73 checking for rand... yes
+#23 13.84 checking for rand_r... yes
+#23 13.94 checking for srand... yes
+#23 14.05 checking for time... yes
+#23 14.16 checking for isascii... yes
+#23 14.27 checking for mmap... yes
+#23 14.37 checking for munmap... yes
+#23 14.48 checking for putenv... yes
+#23 14.61 checking for va_copy... yes
+#23 14.71 checking whether va_list is an array type... yes
+#23 14.78 checking for library containing gethostent... none required
+#23 14.88 checking for library containing setsockopt... none required
+#23 14.98 checking for library containing connect... none required
+#23 15.07 checking for type of socket length (socklen_t)... socklen_t *
+#23 15.15 checking for const gethostbyname() argument... yes
+#23 15.25 checking for const send() second argument... yes
+#23 15.35 checking whether __attribute__((destructor)) is accepted... yes
+#23 15.42 checking whether to enable IPv6... yes
+#23 15.45 checking struct sockaddr::ss_family... yes
+#23 15.49 checking for getaddrinfo... yes
+#23 15.59 checking for isnan... yes
+#23 15.69 checking for isinf... yes
+#23 15.79 checking for shl_load... no
+#23 15.90 checking for shl_load in -ldld... no
+#23 15.98 checking for dlopen... no
+#23 16.10 checking for dlopen in -ldl... yes
+#23 16.20 Checking configuration requirements
+#23 16.20 Disabling multithreaded support
+#23 16.20 Disabling HTTP support
+#23 16.20 Enabled Schematron support
+#23 16.20 checking iconv.h usability... yes
+#23 16.25 checking iconv.h presence... yes
+#23 16.28 checking for iconv.h... yes
+#23 16.28 checking for iconv... yes
+#23 16.38 checking for iconv declaration... 
+#23 16.42 	extern size_t iconv (iconv_t cd,  char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#23 16.42 Disabling ICU support
+#23 16.42 Enabled Schemas/Relax-NG support
+#23 16.43 checking for printf... yes
+#23 16.54 checking for sprintf... yes
+#23 16.65 checking for fprintf... yes
+#23 16.75 checking for snprintf... yes
+#23 16.86 checking for vfprintf... yes
+#23 16.96 checking for vsprintf... yes
+#23 17.07 checking for vsnprintf... yes
+#23 17.17 checking for sscanf... yes
+#23 17.27 Disabling code coverage for GCC
+#23 17.30 checking that generated files are newer than configure... done
+#23 17.30 configure: creating ./config.status
+#23 17.87 config.status: creating libxml2.spec
+#23 17.88 config.status: creating Makefile
+#23 17.89 config.status: creating include/Makefile
+#23 17.91 config.status: creating include/libxml/Makefile
+#23 17.92 config.status: creating doc/Makefile
+#23 17.94 config.status: creating doc/examples/Makefile
+#23 17.95 config.status: creating doc/devhelp/Makefile
+#23 17.97 config.status: creating example/Makefile
+#23 17.99 config.status: creating fuzz/Makefile
+#23 18.00 config.status: creating python/Makefile
+#23 18.02 config.status: creating python/tests/Makefile
+#23 18.03 config.status: creating xstc/Makefile
+#23 18.05 config.status: creating include/libxml/xmlversion.h
+#23 18.07 config.status: creating libxml-2.0.pc
+#23 18.08 config.status: creating libxml-2.0-uninstalled.pc
+#23 18.09 config.status: creating libxml2-config.cmake
+#23 18.11 config.status: creating python/setup.py
+#23 18.13 config.status: creating xml2-config
+#23 18.15 config.status: creating config.h
+#23 18.16 config.status: executing depfiles commands
+#23 18.53 config.status: executing libtool commands
+#23 18.54 Done configuring
+#23 18.57 
+#23 18.57 Now type 'make' to compile libxml2.
+#23 18.58 Making clean in include
+#23 18.58 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.59 Making clean in libxml
+#23 18.59 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 18.59 rm -rf .libs _libs
+#23 18.59 rm -f *.lo
+#23 18.59 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 18.60 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.60 rm -rf .libs _libs
+#23 18.60 rm -f *.lo
+#23 18.60 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.60 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.60 Making clean in .
+#23 18.60 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 18.60 test -z "runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res" || rm -f runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res
+#23 18.60 test -z "libxml2.la" || rm -f libxml2.la
+#23 18.60 rm -rf .libs _libs
+#23 18.60 test -z "testdso.la" || rm -f testdso.la
+#23 18.61 rm -f *.o
+#23 18.61 rm -f *.lo
+#23 18.61  rm -f testSchemas testRelax testSAX testHTML testXPath testURI testThreads testC14N testAutomata testRegexp testReader testapi testModule runtest runsuite testchar testdict runxmlconf testrecurse testlimits
+#23 18.61  rm -f xmllint xmlcatalog
+#23 18.61 rm -f ./so_locations
+#23 18.61 rm -f ./so_locations
+#23 18.61 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 18.61 Making clean in doc
+#23 18.62 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 18.62 Making clean in .
+#23 18.62 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 18.62 rm -rf .libs _libs
+#23 18.62 rm -f *~ *.bak *.hierarchy *.signals *-unused.txt
+#23 18.62 rm -f *.lo
+#23 18.63 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 18.63 Making clean in devhelp
+#23 18.63 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 18.63 rm -rf .libs _libs
+#23 18.63 rm -f *.lo
+#23 18.64 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 18.64 Making clean in examples
+#23 18.64 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 18.64 test -z "*.tmp" || rm -f *.tmp
+#23 18.64 rm -rf .libs _libs
+#23 18.64 test -f Makefile.am || rm -f test?.xml
+#23 18.64 rm -f *.o
+#23 18.64 rm -f *.lo
+#23 18.64  rm -f io1 io2 parse1 parse2 parse3 parse4 reader1 reader2 reader3 reader4 testWriter tree1 tree2 xpath1 xpath2
+#23 18.65 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 18.65 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 18.65 Making clean in example
+#23 18.65 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 18.65 rm -rf .libs _libs
+#23 18.65 rm -f *.o
+#23 18.65 rm -f *.lo
+#23 18.65  rm -f gjobread
+#23 18.66 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 18.66 Making clean in fuzz
+#23 18.66 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 18.66 test -z "genSeed html regexp schema uri xml xpath" || rm -f genSeed html regexp schema uri xml xpath
+#23 18.66 rm -rf .libs _libs
+#23 18.66 rm -f *.o
+#23 18.66 rm -f *.lo
+#23 18.66  rm -f testFuzzer
+#23 18.66 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 18.66 Making clean in xstc
+#23 18.66 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 18.66 test -z "nist-test.py ms-test.py sun-test.py test.log" || rm -f nist-test.py ms-test.py sun-test.py test.log
+#23 18.66 rm -rf .libs _libs
+#23 18.66 rm -f *.lo
+#23 18.67 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 18.68 make  all-recursive
+#23 18.69 make[1]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 18.69 Making all in include
+#23 18.70 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.70 Making all in libxml
+#23 18.71 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 18.71 make[3]: Nothing to be done for 'all'.
+#23 18.71 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include/libxml'
+#23 18.71 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.71 make[3]: Nothing to be done for 'all-am'.
+#23 18.71 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.71 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/include'
+#23 18.71 Making all in .
+#23 18.72 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 18.72   CC       SAX.lo
+#23 18.72   CC       entities.lo
+#23 18.72   CC       encoding.lo
+#23 18.72   CC       error.lo
+#23 18.72   CC       parserInternals.lo
+#23 18.72   CC       parser.lo
+#23 18.72   CC       tree.lo
+#23 18.72   CC       hash.lo
+#23 18.72   CC       list.lo
+#23 18.72   CC       xmlIO.lo
+#23 18.72   CC       xmlmemory.lo
+#23 18.72   CC       uri.lo
+#23 18.72   CC       valid.lo
+#23 18.72   CC       xlink.lo
+#23 18.72   CC       HTMLparser.lo
+#23 18.72   CC       HTMLtree.lo
+#23 18.72   CC       debugXML.lo
+#23 18.72   CC       xpath.lo
+#23 18.72   CC       xinclude.lo
+#23 18.72   CC       nanohttp.lo
+#23 18.72   CC       nanoftp.lo
+#23 18.72   CC       globals.lo
+#23 18.72   CC       c14n.lo
+#23 18.72   CC       threads.lo
+#23 18.72   CC       buf.lo
+#23 18.73   CC       xmlregexp.lo
+#23 18.73   CC       catalog.lo
+#23 18.73   CC       xmlschemas.lo
+#23 18.73   CC       xmlschemastypes.lo
+#23 18.73   CC       xmlstring.lo
+#23 18.73   CC       relaxng.lo
+#23 18.73   CC       dict.lo
+#23 18.73   CC       xmlunicode.lo
+#23 18.73   CC       chvalid.lo
+#23 18.73   CC       legacy.lo
+#23 18.73   CC       SAX2.lo
+#23 18.73   CC       xmlwriter.lo
+#23 18.73   CC       xmlmodule.lo
+#23 18.73 sed -e 's?\@XML_LIBDIR\@?-L/usr/local/lib?g' \
+#23 18.73     -e 's?\@XML_INCLUDEDIR\@?-I/usr/local/include/libxml2?g' \
+#23 18.73     -e 's?\@VERSION\@?2.9.12?g' \
+#23 18.73     -e 's?\@XML_LIBS\@?-lxml2?g' \
+#23 18.73     -e 's?\@XML_PRIVATE_LIBS\@?-lz -llzma    -lm -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a?g' \
+#23 18.73        < ./xml2Conf.sh.in > xml2Conf.tmp \
+#23 18.73 && mv xml2Conf.tmp xml2Conf.sh
+#23 18.73   CC       xmllint.o
+#23 18.73   CC       xmlsave.lo
+#23 18.73   CC       xmlcatalog.o
+#23 18.73   CC       xmlreader.lo
+#23 18.73   CC       schematron.lo
+#23 18.73   CC       testdso.lo
+#23 18.73   CC       xzlib.lo
+#23 18.73   CC       pattern.lo
+#23 18.74   CC       xpointer.lo
+#23 18.88   CCLD     testdso.la
+#23 18.89 encoding.c:505:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.89   505 |     unsigned short* in = (unsigned short*) inb;
+#23 18.89       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 18.89 encoding.c:592:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.89   592 |     unsigned short* out = (unsigned short*) outb;
+#23 18.89       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 18.89 encoding.c:748:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.89   748 |     unsigned short* in = (unsigned short*) inb;
+#23 18.89       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 18.89 encoding.c:834:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.89   834 |     unsigned short* out = (unsigned short*) outb;
+#23 18.89       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 18.94 4 warnings generated.
+#23 18.95 catalog.c:2187:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 18.95  2187 |     int count = 0;
+#23 18.95       |         ^
+#23 18.97 xmlIO.c:3809:36: warning: unused parameter 'ctxt' [-Wunused-parameter]
+#23 18.97  3809 | xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
+#23 18.97       |                                    ^
+#23 18.98 dict.c:1006:30: warning: variable 'nbi' set but not used [-Wunused-but-set-variable]
+#23 18.98  1006 |     unsigned long key, okey, nbi = 0;
+#23 18.98       |                              ^
+#23 18.99 1 warning generated.
+#23 18.99 1 warning generated.
+#23 19.01 1 warning generated.
+#23 19.04 xmlschemas.c:21858:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 19.04  21858 |     int count = 0;
+#23 19.04        |         ^
+#23 19.05 HTMLparser.c:2976:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.05  2976 |     size_t len = 0, startPosition = 0;
+#23 19.05       |            ^
+#23 19.05 HTMLparser.c:2978:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 19.05  2978 |     int err = 0;
+#23 19.05       |         ^
+#23 19.05 HTMLparser.c:3040:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.05  3040 |     size_t len = 0, startPosition = 0;
+#23 19.05       |            ^
+#23 19.05 HTMLparser.c:3042:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 19.05  3042 |     int err = 0;
+#23 19.05       |         ^
+#23 19.08 xpath.c:10506:9: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 19.08  10506 |     int len = 0, l;
+#23 19.08        |         ^
+#23 19.11 xpath.c:13650:9: warning: variable 'nb_nodes' set but not used [-Wunused-but-set-variable]
+#23 19.11  13650 |     int nb_nodes = 0;
+#23 19.11        |         ^
+#23 19.12 
+#23 19.12 *** Warning: Linking the shared library testdso.la against the
+#23 19.12 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 19.18 4 warnings generated.
+#23 19.26 2 warnings generated.
+#23 19.37 1 warning generated.
+#23 19.39   CCLD     libxml2.la
+#23 19.59 
+#23 19.59 *** Warning: Linking the shared library libxml2.la against the
+#23 19.59 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 19.71   CCLD     xmlcatalog
+#23 19.72   CCLD     xmllint
+#23 19.89 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 19.89 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 20.44 
+#23 20.44 === AFL++ LTO Instrumentation Statistics ===
+#23 20.44 Total Basic Blocks: 32931
+#23 20.44 Instrumented Times: 0
+#23 20.44 Instrumented Basic Blocks: 5182
+#23 20.44 Instrumentation Ratio: 15.74%
+#23 20.44 Total Predecessors: 14976
+#23 20.44 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 20.44   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 20.44   Instrumented BasicBlocks with 2 predecessor(s): 3475
+#23 20.44   Instrumented BasicBlocks with 3 predecessor(s): 889
+#23 20.44   Instrumented BasicBlocks with 4 predecessor(s): 335
+#23 20.44   Instrumented BasicBlocks with 5 predecessor(s): 142
+#23 20.44   Instrumented BasicBlocks with 6 predecessor(s): 106
+#23 20.44   Instrumented BasicBlocks with 7 predecessor(s): 65
+#23 20.44   Instrumented BasicBlocks with 8 predecessor(s): 38
+#23 20.44   Instrumented BasicBlocks with 9 predecessor(s): 35
+#23 20.44   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 20.44 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 20.44   Non-Instrumented BasicBlocks with 1 predecessor(s): 15146
+#23 20.44   Non-Instrumented BasicBlocks with 2 predecessor(s): 2184
+#23 20.44   Non-Instrumented BasicBlocks with 3 predecessor(s): 87
+#23 20.44   Non-Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 20.44   Non-Instrumented BasicBlocks with 5 predecessor(s): 12
+#23 20.44   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 20.44   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 20.44   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 20.44   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 20.44   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 20.44 Average Global Entropy: 2.05
+#23 20.44 =======================================
+#23 20.44 
+#23 21.19 
+#23 21.19 === AFL++ LTO Instrumentation Statistics ===
+#23 21.19 Total Basic Blocks: 84079
+#23 21.19 Instrumented Times: 0
+#23 21.19 Instrumented Basic Blocks: 13428
+#23 21.19 Instrumentation Ratio: 15.97%
+#23 21.19 Total Predecessors: 38605
+#23 21.19 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 21.19   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 21.19   Instrumented BasicBlocks with 2 predecessor(s): 9074
+#23 21.19   Instrumented BasicBlocks with 3 predecessor(s): 2212
+#23 21.19   Instrumented BasicBlocks with 4 predecessor(s): 874
+#23 21.19   Instrumented BasicBlocks with 5 predecessor(s): 431
+#23 21.19   Instrumented BasicBlocks with 6 predecessor(s): 280
+#23 21.19   Instrumented BasicBlocks with 7 predecessor(s): 142
+#23 21.19   Instrumented BasicBlocks with 8 predecessor(s): 83
+#23 21.19   Instrumented BasicBlocks with 9 predecessor(s): 72
+#23 21.19   Instrumented BasicBlocks with >=10 predecessors: 16
+#23 21.19 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 21.19   Non-Instrumented BasicBlocks with 1 predecessor(s): 39673
+#23 21.19   Non-Instrumented BasicBlocks with 2 predecessor(s): 5560
+#23 21.19   Non-Instrumented BasicBlocks with 3 predecessor(s): 241
+#23 21.19   Non-Instrumented BasicBlocks with 4 predecessor(s): 43
+#23 21.19   Non-Instrumented BasicBlocks with 5 predecessor(s): 18
+#23 21.19   Non-Instrumented BasicBlocks with 6 predecessor(s): 7
+#23 21.19   Non-Instrumented BasicBlocks with 7 predecessor(s): 4
+#23 21.19   Non-Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 21.19   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 21.19   Non-Instrumented BasicBlocks with >=10 predecessors: 16
+#23 21.19 Average Global Entropy: 2.17
+#23 21.19 =======================================
+#23 21.19 
+#23 27.62 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 27.62 Making all in doc
+#23 27.62 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 27.63 Making all in .
+#23 27.63 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 27.63 make[3]: Nothing to be done for 'all-am'.
+#23 27.63 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 27.63 Making all in devhelp
+#23 27.64 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 27.64 make[3]: Nothing to be done for 'all'.
+#23 27.64 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/devhelp'
+#23 27.64 Making all in examples
+#23 27.64 make[3]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 27.64 make[3]: Nothing to be done for 'all'.
+#23 27.64 make[3]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc/examples'
+#23 27.64 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/doc'
+#23 27.64 Making all in example
+#23 27.64 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 27.64 make[2]: Nothing to be done for 'all'.
+#23 27.64 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/example'
+#23 27.64 Making all in fuzz
+#23 27.65 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 27.65 make[2]: Nothing to be done for 'all'.
+#23 27.65 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/fuzz'
+#23 27.65 Making all in xstc
+#23 27.65 make[2]: Entering directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 27.65 make[2]: Nothing to be done for 'all'.
+#23 27.65 make[2]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo/xstc'
+#23 27.65 make[1]: Leaving directory '/magma/targets/libxml2_reader_for_file_fuzzer/repo'
+#23 27.99 ld.lld: warning: .libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 28.81 
+#23 28.81 === AFL++ LTO Instrumentation Statistics ===
+#23 28.81 Total Basic Blocks: 48165
+#23 28.81 Instrumented Times: 0
+#23 28.81 Instrumented Basic Blocks: 7756
+#23 28.81 Instrumentation Ratio: 16.10%
+#23 28.81 Total Predecessors: 22330
+#23 28.81 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 28.81   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 28.81   Instrumented BasicBlocks with 2 predecessor(s): 5255
+#23 28.81   Instrumented BasicBlocks with 3 predecessor(s): 1307
+#23 28.81   Instrumented BasicBlocks with 4 predecessor(s): 468
+#23 28.81   Instrumented BasicBlocks with 5 predecessor(s): 213
+#23 28.81   Instrumented BasicBlocks with 6 predecessor(s): 175
+#23 28.81   Instrumented BasicBlocks with 7 predecessor(s): 93
+#23 28.81   Instrumented BasicBlocks with 8 predecessor(s): 51
+#23 28.81   Instrumented BasicBlocks with 9 predecessor(s): 45
+#23 28.81   Instrumented BasicBlocks with >=10 predecessors: 5
+#23 28.81 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 28.81   Non-Instrumented BasicBlocks with 1 predecessor(s): 22493
+#23 28.81   Non-Instrumented BasicBlocks with 2 predecessor(s): 3006
+#23 28.81   Non-Instrumented BasicBlocks with 3 predecessor(s): 138
+#23 28.81   Non-Instrumented BasicBlocks with 4 predecessor(s): 23
+#23 28.81   Non-Instrumented BasicBlocks with 5 predecessor(s): 10
+#23 28.81   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 28.81   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 28.81   Non-Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 28.81   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 28.81   Non-Instrumented BasicBlocks with >=10 predecessors: 5
+#23 28.81 Average Global Entropy: 1.98
+#23 28.81 =======================================
+#23 28.81 
+#23 DONE 32.6s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 0.4s done
+#24 writing image sha256:39583839d707045f5ed9ef4f7b20886cab09ab1eeb71f80ff65bee24e8c2d464 done
+#24 naming to docker.io/magma/aflplusplus_lto_entropy/libxml2_reader_for_file_fuzzer done
+#24 DONE 0.4s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_lto_entropy/libxml2_reader_for_file_fuzzer

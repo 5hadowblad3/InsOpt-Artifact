@@ -1,0 +1,1482 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/libxml2 --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=libxml2 --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.63kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 12.78MB 0.3s done
+#5 DONE 0.4s
+
+#6 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#6 CACHED
+
+#7 [ 8/19] RUN /magma/magma/preinstall.sh
+#7 CACHED
+
+#8 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#8 CACHED
+
+#9 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#9 CACHED
+
+#10 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#10 CACHED
+
+#11 [15/19] COPY --chown=magma:magma .//targets/libxml2 /magma/targets/libxml2/
+#11 CACHED
+
+#12 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#12 CACHED
+
+#13 [ 9/19] RUN /magma/magma/prebuild.sh
+#13 CACHED
+
+#14 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#14 CACHED
+
+#15 [17/19] RUN /magma/targets/libxml2/fetch.sh
+#15 CACHED
+
+#16 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#16 CACHED
+
+#17 [16/19] RUN /magma/targets/libxml2/preinstall.sh
+#17 CACHED
+
+#18 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#18 CACHED
+
+#19 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#19 CACHED
+
+#20 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#20 CACHED
+
+#21 [14/19] RUN mkdir -p /magma/targets/libxml2 && chown magma:magma /magma/targets/libxml2
+#21 CACHED
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 CACHED
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/instrument.sh
+#23 3.559 libtoolize: putting auxiliary files in '.'.
+#23 3.559 libtoolize: copying file './ltmain.sh'
+#23 3.589 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+#23 3.589 libtoolize: copying file 'm4/libtool.m4'
+#23 3.610 libtoolize: copying file 'm4/ltoptions.m4'
+#23 3.636 libtoolize: copying file 'm4/ltsugar.m4'
+#23 3.665 libtoolize: copying file 'm4/ltversion.m4'
+#23 3.693 libtoolize: copying file 'm4/lt~obsolete.m4'
+#23 7.043 configure.ac:66: installing './compile'
+#23 7.045 configure.ac:13: installing './config.guess'
+#23 7.047 configure.ac:13: installing './config.sub'
+#23 7.049 configure.ac:58: installing './install-sh'
+#23 7.052 configure.ac:58: installing './missing'
+#23 7.115 Makefile.am: installing './depcomp'
+#23 7.686 checking whether to enable maintainer-specific portions of Makefiles... yes
+#23 7.699 checking build system type... x86_64-pc-linux-gnu
+#23 7.761 checking host system type... x86_64-pc-linux-gnu
+#23 7.769 extra=v2.9.12-13-gec6e3efb
+#23 7.769 checking for a BSD-compatible install... /usr/bin/install -c
+#23 7.779 checking whether build environment is sane... yes
+#23 7.791 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 7.794 checking for gawk... no
+#23 7.794 checking for mawk... mawk
+#23 7.794 checking whether make sets $(MAKE)... yes
+#23 7.806 checking whether make supports nested variables... yes
+#23 7.819 checking whether make supports nested variables... (cached) yes
+#23 7.819 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 7.959 checking whether the C compiler works... yes
+#23 8.045 checking for C compiler default output file name... a.out
+#23 8.046 checking for suffix of executables... 
+#23 8.134 checking whether we are cross compiling... no
+#23 8.231 checking for suffix of object files... o
+#23 8.267 checking whether we are using the GNU C compiler... yes
+#23 8.303 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 8.336 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 8.390 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 8.458 checking for style of include used by make... GNU
+#23 8.463 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 8.515 checking whether ln -s works... yes
+#23 8.515 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 8.653 checking for mv... /bin/mv
+#23 8.653 checking for tar... /bin/tar
+#23 8.653 checking for perl... /usr/bin/perl
+#23 8.654 checking for wget... /usr/bin/wget
+#23 8.654 checking for xmllint... /usr/bin/xmllint
+#23 8.654 checking for xsltproc... /usr/bin/xsltproc
+#23 8.655 checking for pkg-config... /usr/bin/pkg-config
+#23 8.655 checking pkg-config is at least version 0.9.0... yes
+#23 8.658 checking how to print strings... printf
+#23 8.687 checking for a sed that does not truncate output... /bin/sed
+#23 8.693 checking for grep that handles long lines and -e... /bin/grep
+#23 8.695 checking for egrep... /bin/grep -E
+#23 8.696 checking for fgrep... /bin/grep -F
+#23 8.698 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 8.729 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 8.748 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 8.749 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 8.811 checking the maximum length of command line arguments... 1572864
+#23 8.819 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 8.819 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 8.819 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 8.820 checking for objdump... objdump
+#23 8.820 checking how to recognize dependent libraries... pass_all
+#23 8.821 checking for dlltool... no
+#23 8.821 checking how to associate runtime and link libraries... printf %s\n
+#23 8.822 checking for archiver @FILE support... @
+#23 8.891 checking for strip... strip
+#23 8.892 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 8.892 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 9.091 checking for sysroot... no
+#23 9.092 checking for a working dd... /bin/dd
+#23 9.097 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 9.134 checking for mt... no
+#23 9.134 checking if : is a manifest tool... no
+#23 9.140 checking for ANSI C header files... yes
+#23 9.435 checking for sys/types.h... yes
+#23 9.479 checking for sys/stat.h... yes
+#23 9.524 checking for stdlib.h... yes
+#23 9.574 checking for string.h... yes
+#23 9.627 checking for memory.h... yes
+#23 9.680 checking for strings.h... yes
+#23 9.752 checking for inttypes.h... yes
+#23 9.801 checking for stdint.h... yes
+#23 9.864 checking for unistd.h... yes
+#23 9.920 checking for dlfcn.h... yes
+#23 9.977 checking for objdir... .libs
+#23 10.11 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 10.15 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 10.15 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 10.19 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 10.29 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 10.33 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 10.33 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 10.41 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 10.58 checking how to hardcode library paths into programs... immediate
+#23 10.58 checking whether stripping libraries is possible... yes
+#23 10.58 checking if libtool supports shared libraries... yes
+#23 10.58 checking whether to build shared libraries... no
+#23 10.58 checking whether to build static libraries... yes
+#23 10.58 Checking zlib
+#23 10.58 checking for Z... yes
+#23 10.59 Checking lzma
+#23 10.59 checking for LZMA... yes
+#23 10.60 Checking headers
+#23 10.61 checking for dirent.h that defines DIR... yes
+#23 10.65 checking for library containing opendir... none required
+#23 10.73 checking for ANSI C header files... (cached) yes
+#23 10.74 checking fcntl.h usability... yes
+#23 10.78 checking fcntl.h presence... yes
+#23 10.81 checking for fcntl.h... yes
+#23 10.81 checking for unistd.h... (cached) yes
+#23 10.81 checking ctype.h usability... yes
+#23 10.87 checking ctype.h presence... yes
+#23 10.90 checking for ctype.h... yes
+#23 10.90 checking dirent.h usability... yes
+#23 10.94 checking dirent.h presence... yes
+#23 10.97 checking for dirent.h... yes
+#23 10.98 checking errno.h usability... yes
+#23 11.02 checking errno.h presence... yes
+#23 11.05 checking for errno.h... yes
+#23 11.05 checking malloc.h usability... yes
+#23 11.10 checking malloc.h presence... yes
+#23 11.13 checking for malloc.h... yes
+#23 11.13 checking stdarg.h usability... yes
+#23 11.17 checking stdarg.h presence... yes
+#23 11.22 checking for stdarg.h... yes
+#23 11.22 checking for sys/stat.h... (cached) yes
+#23 11.22 checking for sys/types.h... (cached) yes
+#23 11.23 checking for stdint.h... (cached) yes
+#23 11.23 checking for inttypes.h... (cached) yes
+#23 11.23 checking time.h usability... yes
+#23 11.27 checking time.h presence... yes
+#23 11.30 checking for time.h... yes
+#23 11.30 checking math.h usability... yes
+#23 11.36 checking math.h presence... yes
+#23 11.39 checking for math.h... yes
+#23 11.39 checking limits.h usability... yes
+#23 11.45 checking limits.h presence... yes
+#23 11.49 checking for limits.h... yes
+#23 11.49 checking float.h usability... yes
+#23 11.53 checking float.h presence... yes
+#23 11.56 checking for float.h... yes
+#23 11.56 checking for stdlib.h... (cached) yes
+#23 11.56 checking for sys/socket.h... yes
+#23 11.60 checking for netinet/in.h... yes
+#23 11.65 checking for arpa/inet.h... yes
+#23 11.70 checking netdb.h usability... yes
+#23 11.74 checking netdb.h presence... yes
+#23 11.77 checking for netdb.h... yes
+#23 11.77 checking sys/time.h usability... yes
+#23 11.82 checking sys/time.h presence... yes
+#23 11.85 checking for sys/time.h... yes
+#23 11.85 checking sys/select.h usability... yes
+#23 11.90 checking sys/select.h presence... yes
+#23 11.93 checking for sys/select.h... yes
+#23 11.93 checking poll.h usability... yes
+#23 11.97 checking poll.h presence... yes
+#23 12.00 checking for poll.h... yes
+#23 12.01 checking sys/mman.h usability... yes
+#23 12.06 checking sys/mman.h presence... yes
+#23 12.09 checking for sys/mman.h... yes
+#23 12.09 checking sys/timeb.h usability... yes
+#23 12.13 checking sys/timeb.h presence... yes
+#23 12.16 checking for sys/timeb.h... yes
+#23 12.16 checking signal.h usability... yes
+#23 12.21 checking signal.h presence... yes
+#23 12.24 checking for signal.h... yes
+#23 12.24 checking for arpa/nameser.h... yes
+#23 12.28 checking for resolv.h... yes
+#23 12.33 checking dl.h usability... no
+#23 12.39 checking dl.h presence... no
+#23 12.42 checking for dl.h... no
+#23 12.42 checking for dlfcn.h... (cached) yes
+#23 12.43 Checking types
+#23 12.43 checking for uint32_t... yes
+#23 12.50 Checking libraries
+#23 12.50 checking for strftime... yes
+#23 12.60 checking for strftime... (cached) yes
+#23 12.61 checking for localtime... yes
+#23 12.72 checking for gettimeofday... yes
+#23 12.81 checking for ftime... yes
+#23 12.92 checking for stat... yes
+#23 13.02 checking for signal... yes
+#23 13.12 checking for rand... yes
+#23 13.22 checking for rand_r... yes
+#23 13.32 checking for srand... yes
+#23 13.42 checking for time... yes
+#23 13.52 checking for isascii... yes
+#23 13.62 checking for mmap... yes
+#23 13.72 checking for munmap... yes
+#23 13.81 checking for putenv... yes
+#23 13.91 checking for va_copy... yes
+#23 14.01 checking whether va_list is an array type... yes
+#23 14.08 checking for library containing gethostent... none required
+#23 14.18 checking for library containing setsockopt... none required
+#23 14.29 checking for library containing connect... none required
+#23 14.41 checking for type of socket length (socklen_t)... socklen_t *
+#23 14.49 checking for const gethostbyname() argument... yes
+#23 14.59 checking for const send() second argument... yes
+#23 14.69 checking whether __attribute__((destructor)) is accepted... yes
+#23 14.75 checking whether to enable IPv6... yes
+#23 14.79 checking struct sockaddr::ss_family... yes
+#23 14.83 checking for getaddrinfo... yes
+#23 14.93 checking for isnan... yes
+#23 15.05 checking for isinf... yes
+#23 15.14 checking for shl_load... no
+#23 15.26 checking for shl_load in -ldld... no
+#23 15.35 checking for dlopen... no
+#23 15.46 checking for dlopen in -ldl... yes
+#23 15.58 Checking configuration requirements
+#23 15.58 Disabling multithreaded support
+#23 15.58 Disabling HTTP support
+#23 15.58 Enabled Schematron support
+#23 15.58 checking iconv.h usability... yes
+#23 15.63 checking iconv.h presence... yes
+#23 15.66 checking for iconv.h... yes
+#23 15.66 checking for iconv... yes
+#23 15.77 checking for iconv declaration... 
+#23 15.81 	extern size_t iconv (iconv_t cd,  char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#23 15.82 Disabling ICU support
+#23 15.82 Enabled Schemas/Relax-NG support
+#23 15.82 checking for printf... yes
+#23 15.94 checking for sprintf... yes
+#23 16.05 checking for fprintf... yes
+#23 16.18 checking for snprintf... yes
+#23 16.28 checking for vfprintf... yes
+#23 16.40 checking for vsprintf... yes
+#23 16.52 checking for vsnprintf... yes
+#23 16.64 checking for sscanf... yes
+#23 16.74 Disabling code coverage for GCC
+#23 16.77 checking that generated files are newer than configure... done
+#23 16.77 configure: creating ./config.status
+#23 17.34 config.status: creating libxml2.spec
+#23 17.36 config.status: creating Makefile
+#23 17.37 config.status: creating include/Makefile
+#23 17.39 config.status: creating include/libxml/Makefile
+#23 17.41 config.status: creating doc/Makefile
+#23 17.43 config.status: creating doc/examples/Makefile
+#23 17.45 config.status: creating doc/devhelp/Makefile
+#23 17.47 config.status: creating example/Makefile
+#23 17.49 config.status: creating fuzz/Makefile
+#23 17.50 config.status: creating python/Makefile
+#23 17.52 config.status: creating python/tests/Makefile
+#23 17.54 config.status: creating xstc/Makefile
+#23 17.56 config.status: creating include/libxml/xmlversion.h
+#23 17.58 config.status: creating libxml-2.0.pc
+#23 17.60 config.status: creating libxml-2.0-uninstalled.pc
+#23 17.61 config.status: creating libxml2-config.cmake
+#23 17.63 config.status: creating python/setup.py
+#23 17.66 config.status: creating xml2-config
+#23 17.67 config.status: creating config.h
+#23 17.68 config.status: executing depfiles commands
+#23 18.07 config.status: executing libtool commands
+#23 18.08 Done configuring
+#23 18.12 
+#23 18.12 Now type 'make' to compile libxml2.
+#23 18.13 Making clean in include
+#23 18.14 make[1]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 18.14 Making clean in libxml
+#23 18.14 make[2]: Entering directory '/magma/targets/libxml2/repo/include/libxml'
+#23 18.14 rm -rf .libs _libs
+#23 18.14 rm -f *.lo
+#23 18.14 make[2]: Leaving directory '/magma/targets/libxml2/repo/include/libxml'
+#23 18.15 make[2]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 18.15 rm -rf .libs _libs
+#23 18.15 rm -f *.lo
+#23 18.15 make[2]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 18.15 make[1]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 18.15 Making clean in .
+#23 18.16 make[1]: Entering directory '/magma/targets/libxml2/repo'
+#23 18.16 test -z "runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res" || rm -f runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res
+#23 18.16 test -z "libxml2.la" || rm -f libxml2.la
+#23 18.16 rm -rf .libs _libs
+#23 18.16 test -z "testdso.la" || rm -f testdso.la
+#23 18.16 rm -f *.o
+#23 18.16 rm -f *.lo
+#23 18.16  rm -f xmllint xmlcatalog
+#23 18.16  rm -f testSchemas testRelax testSAX testHTML testXPath testURI testThreads testC14N testAutomata testRegexp testReader testapi testModule runtest runsuite testchar testdict runxmlconf testrecurse testlimits
+#23 18.17 rm -f ./so_locations
+#23 18.17 rm -f ./so_locations
+#23 18.17 make[1]: Leaving directory '/magma/targets/libxml2/repo'
+#23 18.17 Making clean in doc
+#23 18.17 make[1]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 18.18 Making clean in .
+#23 18.18 make[2]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 18.18 rm -rf .libs _libs
+#23 18.18 rm -f *~ *.bak *.hierarchy *.signals *-unused.txt
+#23 18.18 rm -f *.lo
+#23 18.18 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 18.18 Making clean in devhelp
+#23 18.19 make[2]: Entering directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 18.19 rm -rf .libs _libs
+#23 18.19 rm -f *.lo
+#23 18.19 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 18.19 Making clean in examples
+#23 18.19 make[2]: Entering directory '/magma/targets/libxml2/repo/doc/examples'
+#23 18.19 test -z "*.tmp" || rm -f *.tmp
+#23 18.19 rm -rf .libs _libs
+#23 18.19 test -f Makefile.am || rm -f test?.xml
+#23 18.19 rm -f *.o
+#23 18.19 rm -f *.lo
+#23 18.19  rm -f io1 io2 parse1 parse2 parse3 parse4 reader1 reader2 reader3 reader4 testWriter tree1 tree2 xpath1 xpath2
+#23 18.20 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc/examples'
+#23 18.20 make[1]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 18.20 Making clean in example
+#23 18.21 make[1]: Entering directory '/magma/targets/libxml2/repo/example'
+#23 18.21 rm -rf .libs _libs
+#23 18.21 rm -f *.o
+#23 18.21 rm -f *.lo
+#23 18.21  rm -f gjobread
+#23 18.21 make[1]: Leaving directory '/magma/targets/libxml2/repo/example'
+#23 18.21 Making clean in fuzz
+#23 18.21 make[1]: Entering directory '/magma/targets/libxml2/repo/fuzz'
+#23 18.21 test -z "genSeed html regexp schema uri xml xpath" || rm -f genSeed html regexp schema uri xml xpath
+#23 18.21 rm -rf .libs _libs
+#23 18.21 rm -f *.o
+#23 18.21 rm -f *.lo
+#23 18.21  rm -f testFuzzer
+#23 18.22 make[1]: Leaving directory '/magma/targets/libxml2/repo/fuzz'
+#23 18.22 Making clean in xstc
+#23 18.22 make[1]: Entering directory '/magma/targets/libxml2/repo/xstc'
+#23 18.22 test -z "nist-test.py ms-test.py sun-test.py test.log" || rm -f nist-test.py ms-test.py sun-test.py test.log
+#23 18.22 rm -rf .libs _libs
+#23 18.22 rm -f *.lo
+#23 18.22 make[1]: Leaving directory '/magma/targets/libxml2/repo/xstc'
+#23 18.23 make  all-recursive
+#23 18.24 make[1]: Entering directory '/magma/targets/libxml2/repo'
+#23 18.25 Making all in include
+#23 18.25 make[2]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 18.25 Making all in libxml
+#23 18.25 make[3]: Entering directory '/magma/targets/libxml2/repo/include/libxml'
+#23 18.25 make[3]: Nothing to be done for 'all'.
+#23 18.25 make[3]: Leaving directory '/magma/targets/libxml2/repo/include/libxml'
+#23 18.26 make[3]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 18.26 make[3]: Nothing to be done for 'all-am'.
+#23 18.26 make[3]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 18.26 make[2]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 18.26 Making all in .
+#23 18.26 make[2]: Entering directory '/magma/targets/libxml2/repo'
+#23 18.26   CC       SAX.lo
+#23 18.26   CC       entities.lo
+#23 18.26   CC       encoding.lo
+#23 18.26   CC       error.lo
+#23 18.26   CC       parser.lo
+#23 18.26   CC       tree.lo
+#23 18.26   CC       parserInternals.lo
+#23 18.27   CC       hash.lo
+#23 18.27   CC       list.lo
+#23 18.27   CC       xmlIO.lo
+#23 18.27   CC       xmlmemory.lo
+#23 18.27   CC       uri.lo
+#23 18.27   CC       valid.lo
+#23 18.27   CC       xlink.lo
+#23 18.27   CC       HTMLparser.lo
+#23 18.27   CC       HTMLtree.lo
+#23 18.27   CC       debugXML.lo
+#23 18.27   CC       xpath.lo
+#23 18.27   CC       xpointer.lo
+#23 18.27   CC       nanoftp.lo
+#23 18.27   CC       catalog.lo
+#23 18.27   CC       nanohttp.lo
+#23 18.27   CC       xinclude.lo
+#23 18.27   CC       globals.lo
+#23 18.27   CC       threads.lo
+#23 18.27   CC       c14n.lo
+#23 18.27   CC       buf.lo
+#23 18.27   CC       xmlstring.lo
+#23 18.27   CC       xmlschemas.lo
+#23 18.27   CC       relaxng.lo
+#23 18.27   CC       xmlunicode.lo
+#23 18.27   CC       xmlreader.lo
+#23 18.27   CC       xmlregexp.lo
+#23 18.27   CC       xmlschemastypes.lo
+#23 18.27   CC       xmlwriter.lo
+#23 18.27   CC       legacy.lo
+#23 18.27   CC       pattern.lo
+#23 18.28   CC       dict.lo
+#23 18.28 sed -e 's?\@XML_LIBDIR\@?-L/usr/local/lib?g' \
+#23 18.28     -e 's?\@XML_INCLUDEDIR\@?-I/usr/local/include/libxml2?g' \
+#23 18.28     -e 's?\@VERSION\@?2.9.12?g' \
+#23 18.28     -e 's?\@XML_LIBS\@?-lxml2?g' \
+#23 18.28     -e 's?\@XML_PRIVATE_LIBS\@?-lz -llzma    -lm -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a?g' \
+#23 18.28        < ./xml2Conf.sh.in > xml2Conf.tmp \
+#23 18.28 && mv xml2Conf.tmp xml2Conf.sh
+#23 18.28   CC       schematron.lo
+#23 18.28   CC       SAX2.lo
+#23 18.28   CC       testdso.lo
+#23 18.28   CC       chvalid.lo
+#23 18.28   CC       xmlmodule.lo
+#23 18.28   CC       xmlsave.lo
+#23 18.28   CC       xzlib.lo
+#23 18.28   CC       xmllint.o
+#23 18.28   CC       xmlcatalog.o
+#23 18.41 encoding.c:505:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.41   505 |     unsigned short* in = (unsigned short*) inb;
+#23 18.41       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 18.41 encoding.c:592:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.41   592 |     unsigned short* out = (unsigned short*) outb;
+#23 18.41       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 18.41 encoding.c:748:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.41   748 |     unsigned short* in = (unsigned short*) inb;
+#23 18.41       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 18.41 encoding.c:834:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 18.41   834 |     unsigned short* out = (unsigned short*) outb;
+#23 18.41       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 18.43 dict.c:1006:30: warning: variable 'nbi' set but not used [-Wunused-but-set-variable]
+#23 18.43  1006 |     unsigned long key, okey, nbi = 0;
+#23 18.43       |                              ^
+#23 18.43   CCLD     testdso.la
+#23 18.44 1 warning generated.
+#23 18.44 catalog.c:2187:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 18.44  2187 |     int count = 0;
+#23 18.44       |         ^
+#23 18.46 4 warnings generated.
+#23 18.48 xmlIO.c:3809:36: warning: unused parameter 'ctxt' [-Wunused-parameter]
+#23 18.48  3809 | xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
+#23 18.48       |                                    ^
+#23 18.48 HTMLparser.c:2976:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 18.48  2976 |     size_t len = 0, startPosition = 0;
+#23 18.48       |            ^
+#23 18.48 HTMLparser.c:2978:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 18.48  2978 |     int err = 0;
+#23 18.48       |         ^
+#23 18.48 HTMLparser.c:3040:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 18.48  3040 |     size_t len = 0, startPosition = 0;
+#23 18.48       |            ^
+#23 18.48 HTMLparser.c:3042:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 18.48  3042 |     int err = 0;
+#23 18.48       |         ^
+#23 18.50 1 warning generated.
+#23 18.51 1 warning generated.
+#23 18.56 xmlschemas.c:21858:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 18.56  21858 |     int count = 0;
+#23 18.56        |         ^
+#23 18.56 xpath.c:10506:9: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 18.56  10506 |     int len = 0, l;
+#23 18.56        |         ^
+#23 18.57 
+#23 18.57 *** Warning: Linking the shared library testdso.la against the
+#23 18.57 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 18.59 xpath.c:13650:9: warning: variable 'nb_nodes' set but not used [-Wunused-but-set-variable]
+#23 18.59  13650 |     int nb_nodes = 0;
+#23 18.59        |         ^
+#23 18.61 4 warnings generated.
+#23 18.75 2 warnings generated.
+#23 18.91 1 warning generated.
+#23 18.93   CCLD     libxml2.la
+#23 19.12 
+#23 19.12 *** Warning: Linking the shared library libxml2.la against the
+#23 19.12 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 19.26   CCLD     xmllint
+#23 19.26   CCLD     xmlcatalog
+#23 19.42 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 19.42 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 20.01 
+#23 20.01 === AFL++ LTO Instrumentation Statistics ===
+#23 20.01 Total Basic Blocks: 32931
+#23 20.01 Instrumented Times: 0
+#23 20.01 Instrumented Basic Blocks: 5182
+#23 20.01 Instrumentation Ratio: 15.74%
+#23 20.01 Total Predecessors: 14976
+#23 20.01 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 20.01   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 20.01   Instrumented BasicBlocks with 2 predecessor(s): 3475
+#23 20.01   Instrumented BasicBlocks with 3 predecessor(s): 889
+#23 20.01   Instrumented BasicBlocks with 4 predecessor(s): 335
+#23 20.01   Instrumented BasicBlocks with 5 predecessor(s): 142
+#23 20.01   Instrumented BasicBlocks with 6 predecessor(s): 106
+#23 20.01   Instrumented BasicBlocks with 7 predecessor(s): 65
+#23 20.01   Instrumented BasicBlocks with 8 predecessor(s): 38
+#23 20.01   Instrumented BasicBlocks with 9 predecessor(s): 35
+#23 20.01   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 20.01 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 20.01   Non-Instrumented BasicBlocks with 1 predecessor(s): 15146
+#23 20.01   Non-Instrumented BasicBlocks with 2 predecessor(s): 2184
+#23 20.01   Non-Instrumented BasicBlocks with 3 predecessor(s): 87
+#23 20.01   Non-Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 20.01   Non-Instrumented BasicBlocks with 5 predecessor(s): 12
+#23 20.01   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 20.01   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 20.01   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 20.01   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 20.01   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 20.01 Average Global Entropy: 2.05
+#23 20.01 =======================================
+#23 20.01 
+#23 20.42 
+#23 20.42 === AFL++ LTO Instrumentation Statistics ===
+#23 20.42 Total Basic Blocks: 84079
+#23 20.42 Instrumented Times: 0
+#23 20.42 Instrumented Basic Blocks: 13428
+#23 20.42 Instrumentation Ratio: 15.97%
+#23 20.42 Total Predecessors: 38605
+#23 20.42 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 20.42   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 20.42   Instrumented BasicBlocks with 2 predecessor(s): 9074
+#23 20.42   Instrumented BasicBlocks with 3 predecessor(s): 2212
+#23 20.42   Instrumented BasicBlocks with 4 predecessor(s): 874
+#23 20.42   Instrumented BasicBlocks with 5 predecessor(s): 431
+#23 20.42   Instrumented BasicBlocks with 6 predecessor(s): 280
+#23 20.42   Instrumented BasicBlocks with 7 predecessor(s): 142
+#23 20.42   Instrumented BasicBlocks with 8 predecessor(s): 83
+#23 20.42   Instrumented BasicBlocks with 9 predecessor(s): 72
+#23 20.42   Instrumented BasicBlocks with >=10 predecessors: 16
+#23 20.42 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 20.42   Non-Instrumented BasicBlocks with 1 predecessor(s): 39673
+#23 20.42   Non-Instrumented BasicBlocks with 2 predecessor(s): 5560
+#23 20.42   Non-Instrumented BasicBlocks with 3 predecessor(s): 241
+#23 20.42   Non-Instrumented BasicBlocks with 4 predecessor(s): 43
+#23 20.42   Non-Instrumented BasicBlocks with 5 predecessor(s): 18
+#23 20.42   Non-Instrumented BasicBlocks with 6 predecessor(s): 7
+#23 20.42   Non-Instrumented BasicBlocks with 7 predecessor(s): 4
+#23 20.42   Non-Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 20.42   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 20.42   Non-Instrumented BasicBlocks with >=10 predecessors: 16
+#23 20.42 Average Global Entropy: 2.17
+#23 20.42 =======================================
+#23 20.42 
+#23 25.95 make[2]: Leaving directory '/magma/targets/libxml2/repo'
+#23 25.95 Making all in doc
+#23 25.96 make[2]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 25.96 Making all in .
+#23 25.96 make[3]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 25.96 make[3]: Nothing to be done for 'all-am'.
+#23 25.96 make[3]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 25.96 Making all in devhelp
+#23 25.97 make[3]: Entering directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 25.97 make[3]: Nothing to be done for 'all'.
+#23 25.97 make[3]: Leaving directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 25.97 Making all in examples
+#23 25.97 make[3]: Entering directory '/magma/targets/libxml2/repo/doc/examples'
+#23 25.97 make[3]: Nothing to be done for 'all'.
+#23 25.97 make[3]: Leaving directory '/magma/targets/libxml2/repo/doc/examples'
+#23 25.97 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 25.97 Making all in example
+#23 25.97 make[2]: Entering directory '/magma/targets/libxml2/repo/example'
+#23 25.97 make[2]: Nothing to be done for 'all'.
+#23 25.97 make[2]: Leaving directory '/magma/targets/libxml2/repo/example'
+#23 25.97 Making all in fuzz
+#23 25.98 make[2]: Entering directory '/magma/targets/libxml2/repo/fuzz'
+#23 25.98 make[2]: Nothing to be done for 'all'.
+#23 25.98 make[2]: Leaving directory '/magma/targets/libxml2/repo/fuzz'
+#23 25.98 Making all in xstc
+#23 25.98 make[2]: Entering directory '/magma/targets/libxml2/repo/xstc'
+#23 25.98 make[2]: Nothing to be done for 'all'.
+#23 25.98 make[2]: Leaving directory '/magma/targets/libxml2/repo/xstc'
+#23 25.98 make[1]: Leaving directory '/magma/targets/libxml2/repo'
+#23 26.18 ld.lld: warning: .libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 26.58 
+#23 26.58 === AFL++ LTO Instrumentation Statistics ===
+#23 26.58 Total Basic Blocks: 31465
+#23 26.58 Instrumented Times: 0
+#23 26.58 Instrumented Basic Blocks: 4969
+#23 26.58 Instrumentation Ratio: 15.79%
+#23 26.58 Total Predecessors: 14376
+#23 26.58 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 26.58   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 26.58   Instrumented BasicBlocks with 2 predecessor(s): 3319
+#23 26.58   Instrumented BasicBlocks with 3 predecessor(s): 859
+#23 26.58   Instrumented BasicBlocks with 4 predecessor(s): 326
+#23 26.58   Instrumented BasicBlocks with 5 predecessor(s): 136
+#23 26.58   Instrumented BasicBlocks with 6 predecessor(s): 105
+#23 26.58   Instrumented BasicBlocks with 7 predecessor(s): 64
+#23 26.58   Instrumented BasicBlocks with 8 predecessor(s): 37
+#23 26.58   Instrumented BasicBlocks with 9 predecessor(s): 33
+#23 26.58   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 26.58 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 26.58   Non-Instrumented BasicBlocks with 1 predecessor(s): 14494
+#23 26.58   Non-Instrumented BasicBlocks with 2 predecessor(s): 2031
+#23 26.58   Non-Instrumented BasicBlocks with 3 predecessor(s): 82
+#23 26.58   Non-Instrumented BasicBlocks with 4 predecessor(s): 15
+#23 26.58   Non-Instrumented BasicBlocks with 5 predecessor(s): 11
+#23 26.58   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 26.58   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 26.58   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 26.58   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 26.58   Non-Instrumented BasicBlocks with >=10 predecessors: 2
+#23 26.58 Average Global Entropy: 2.04
+#23 26.58 =======================================
+#23 26.58 
+#23 29.07 ld.lld: warning: .libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 29.85 
+#23 29.85 === AFL++ LTO Instrumentation Statistics ===
+#23 29.85 Total Basic Blocks: 48165
+#23 29.85 Instrumented Times: 0
+#23 29.85 Instrumented Basic Blocks: 7756
+#23 29.85 Instrumentation Ratio: 16.10%
+#23 29.85 Total Predecessors: 22330
+#23 29.85 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 29.85   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 29.85   Instrumented BasicBlocks with 2 predecessor(s): 5255
+#23 29.85   Instrumented BasicBlocks with 3 predecessor(s): 1307
+#23 29.85   Instrumented BasicBlocks with 4 predecessor(s): 468
+#23 29.85   Instrumented BasicBlocks with 5 predecessor(s): 213
+#23 29.85   Instrumented BasicBlocks with 6 predecessor(s): 175
+#23 29.85   Instrumented BasicBlocks with 7 predecessor(s): 93
+#23 29.85   Instrumented BasicBlocks with 8 predecessor(s): 51
+#23 29.85   Instrumented BasicBlocks with 9 predecessor(s): 45
+#23 29.85   Instrumented BasicBlocks with >=10 predecessors: 5
+#23 29.85 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 29.85   Non-Instrumented BasicBlocks with 1 predecessor(s): 22493
+#23 29.85   Non-Instrumented BasicBlocks with 2 predecessor(s): 3006
+#23 29.85   Non-Instrumented BasicBlocks with 3 predecessor(s): 138
+#23 29.85   Non-Instrumented BasicBlocks with 4 predecessor(s): 23
+#23 29.85   Non-Instrumented BasicBlocks with 5 predecessor(s): 10
+#23 29.85   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 29.85   Non-Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 29.85   Non-Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 29.85   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 29.85   Non-Instrumented BasicBlocks with >=10 predecessors: 5
+#23 29.85 Average Global Entropy: 1.98
+#23 29.85 =======================================
+#23 29.85 
+#23 33.55 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 33.55 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 33.55 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 33.60 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 33.60 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 33.60 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 36.91 libtoolize: putting auxiliary files in '.'.
+#23 36.91 libtoolize: copying file './ltmain.sh'
+#23 36.94 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+#23 36.94 libtoolize: copying file 'm4/libtool.m4'
+#23 36.96 libtoolize: copying file 'm4/ltoptions.m4'
+#23 36.97 libtoolize: copying file 'm4/ltsugar.m4'
+#23 36.99 libtoolize: copying file 'm4/ltversion.m4'
+#23 37.00 libtoolize: copying file 'm4/lt~obsolete.m4'
+#23 39.75 configure.ac:66: installing './compile'
+#23 39.76 configure.ac:58: installing './missing'
+#23 39.83 Makefile.am: installing './depcomp'
+#23 40.35 checking whether to enable maintainer-specific portions of Makefiles... yes
+#23 40.36 checking build system type... x86_64-pc-linux-gnu
+#23 40.43 checking host system type... x86_64-pc-linux-gnu
+#23 40.44 extra=v2.9.12-13-gec6e3efb
+#23 40.44 checking for a BSD-compatible install... /usr/bin/install -c
+#23 40.45 checking whether build environment is sane... yes
+#23 40.46 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 40.46 checking for gawk... no
+#23 40.46 checking for mawk... mawk
+#23 40.46 checking whether make sets $(MAKE)... yes
+#23 40.48 checking whether make supports nested variables... yes
+#23 40.49 checking whether make supports nested variables... (cached) yes
+#23 40.49 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 40.65 checking whether the C compiler works... yes
+#23 40.76 checking for C compiler default output file name... a.out
+#23 40.76 checking for suffix of executables... 
+#23 40.86 checking whether we are cross compiling... no
+#23 40.96 checking for suffix of object files... o
+#23 41.00 checking whether we are using the GNU C compiler... yes
+#23 41.04 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 41.08 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 41.16 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 41.24 checking for style of include used by make... GNU
+#23 41.24 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 41.30 checking whether ln -s works... yes
+#23 41.30 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 41.45 checking for mv... /bin/mv
+#23 41.45 checking for tar... /bin/tar
+#23 41.45 checking for perl... /usr/bin/perl
+#23 41.45 checking for wget... /usr/bin/wget
+#23 41.46 checking for xmllint... /usr/bin/xmllint
+#23 41.46 checking for xsltproc... /usr/bin/xsltproc
+#23 41.46 checking for pkg-config... /usr/bin/pkg-config
+#23 41.46 checking pkg-config is at least version 0.9.0... yes
+#23 41.46 checking how to print strings... printf
+#23 41.48 checking for a sed that does not truncate output... /bin/sed
+#23 41.49 checking for grep that handles long lines and -e... /bin/grep
+#23 41.49 checking for egrep... /bin/grep -E
+#23 41.49 checking for fgrep... /bin/grep -F
+#23 41.49 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 41.52 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 41.54 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 41.54 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 41.60 checking the maximum length of command line arguments... 1572864
+#23 41.61 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 41.61 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 41.61 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 41.61 checking for objdump... objdump
+#23 41.61 checking how to recognize dependent libraries... pass_all
+#23 41.61 checking for dlltool... no
+#23 41.61 checking how to associate runtime and link libraries... printf %s\n
+#23 41.61 checking for archiver @FILE support... @
+#23 41.68 checking for strip... strip
+#23 41.68 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 41.68 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 41.87 checking for sysroot... no
+#23 41.87 checking for a working dd... /bin/dd
+#23 41.87 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 41.91 checking for mt... no
+#23 41.91 checking if : is a manifest tool... no
+#23 41.92 checking for ANSI C header files... yes
+#23 42.13 checking for sys/types.h... yes
+#23 42.17 checking for sys/stat.h... yes
+#23 42.23 checking for stdlib.h... yes
+#23 42.27 checking for string.h... yes
+#23 42.32 checking for memory.h... yes
+#23 42.37 checking for strings.h... yes
+#23 42.43 checking for inttypes.h... yes
+#23 42.47 checking for stdint.h... yes
+#23 42.52 checking for unistd.h... yes
+#23 42.57 checking for dlfcn.h... yes
+#23 42.61 checking for objdir... .libs
+#23 42.76 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 42.80 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 42.80 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 42.85 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 42.98 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 43.03 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 43.03 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 43.11 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 43.31 checking how to hardcode library paths into programs... immediate
+#23 43.31 checking whether stripping libraries is possible... yes
+#23 43.31 checking if libtool supports shared libraries... yes
+#23 43.31 checking whether to build shared libraries... no
+#23 43.31 checking whether to build static libraries... yes
+#23 43.31 Checking zlib
+#23 43.31 checking for Z... yes
+#23 43.32 Checking lzma
+#23 43.32 checking for LZMA... yes
+#23 43.33 Checking headers
+#23 43.33 checking for dirent.h that defines DIR... yes
+#23 43.39 checking for library containing opendir... none required
+#23 43.48 checking for ANSI C header files... (cached) yes
+#23 43.48 checking fcntl.h usability... yes
+#23 43.52 checking fcntl.h presence... yes
+#23 43.55 checking for fcntl.h... yes
+#23 43.55 checking for unistd.h... (cached) yes
+#23 43.55 checking ctype.h usability... yes
+#23 43.60 checking ctype.h presence... yes
+#23 43.64 checking for ctype.h... yes
+#23 43.64 checking dirent.h usability... yes
+#23 43.69 checking dirent.h presence... yes
+#23 43.73 checking for dirent.h... yes
+#23 43.73 checking errno.h usability... yes
+#23 43.78 checking errno.h presence... yes
+#23 43.81 checking for errno.h... yes
+#23 43.81 checking malloc.h usability... yes
+#23 43.86 checking malloc.h presence... yes
+#23 43.89 checking for malloc.h... yes
+#23 43.90 checking stdarg.h usability... yes
+#23 43.94 checking stdarg.h presence... yes
+#23 43.97 checking for stdarg.h... yes
+#23 43.98 checking for sys/stat.h... (cached) yes
+#23 43.98 checking for sys/types.h... (cached) yes
+#23 43.98 checking for stdint.h... (cached) yes
+#23 43.98 checking for inttypes.h... (cached) yes
+#23 43.98 checking time.h usability... yes
+#23 44.03 checking time.h presence... yes
+#23 44.06 checking for time.h... yes
+#23 44.06 checking math.h usability... yes
+#23 44.11 checking math.h presence... yes
+#23 44.14 checking for math.h... yes
+#23 44.15 checking limits.h usability... yes
+#23 44.19 checking limits.h presence... yes
+#23 44.22 checking for limits.h... yes
+#23 44.23 checking float.h usability... yes
+#23 44.27 checking float.h presence... yes
+#23 44.30 checking for float.h... yes
+#23 44.30 checking for stdlib.h... (cached) yes
+#23 44.30 checking for sys/socket.h... yes
+#23 44.34 checking for netinet/in.h... yes
+#23 44.37 checking for arpa/inet.h... yes
+#23 44.41 checking netdb.h usability... yes
+#23 44.46 checking netdb.h presence... yes
+#23 44.49 checking for netdb.h... yes
+#23 44.49 checking sys/time.h usability... yes
+#23 44.54 checking sys/time.h presence... yes
+#23 44.56 checking for sys/time.h... yes
+#23 44.57 checking sys/select.h usability... yes
+#23 44.62 checking sys/select.h presence... yes
+#23 44.65 checking for sys/select.h... yes
+#23 44.65 checking poll.h usability... yes
+#23 44.70 checking poll.h presence... yes
+#23 44.72 checking for poll.h... yes
+#23 44.73 checking sys/mman.h usability... yes
+#23 44.77 checking sys/mman.h presence... yes
+#23 44.80 checking for sys/mman.h... yes
+#23 44.80 checking sys/timeb.h usability... yes
+#23 44.84 checking sys/timeb.h presence... yes
+#23 44.88 checking for sys/timeb.h... yes
+#23 44.88 checking signal.h usability... yes
+#23 44.93 checking signal.h presence... yes
+#23 44.96 checking for signal.h... yes
+#23 44.96 checking for arpa/nameser.h... yes
+#23 45.00 checking for resolv.h... yes
+#23 45.05 checking dl.h usability... no
+#23 45.10 checking dl.h presence... no
+#23 45.13 checking for dl.h... no
+#23 45.13 checking for dlfcn.h... (cached) yes
+#23 45.14 Checking types
+#23 45.14 checking for uint32_t... yes
+#23 45.18 Checking libraries
+#23 45.18 checking for strftime... yes
+#23 45.29 checking for strftime... (cached) yes
+#23 45.29 checking for localtime... yes
+#23 45.40 checking for gettimeofday... yes
+#23 45.50 checking for ftime... yes
+#23 45.60 checking for stat... yes
+#23 45.72 checking for signal... yes
+#23 45.82 checking for rand... yes
+#23 45.91 checking for rand_r... yes
+#23 46.02 checking for srand... yes
+#23 46.12 checking for time... yes
+#23 46.23 checking for isascii... yes
+#23 46.33 checking for mmap... yes
+#23 46.44 checking for munmap... yes
+#23 46.54 checking for putenv... yes
+#23 46.64 checking for va_copy... yes
+#23 46.73 checking whether va_list is an array type... yes
+#23 46.80 checking for library containing gethostent... none required
+#23 46.90 checking for library containing setsockopt... none required
+#23 47.00 checking for library containing connect... none required
+#23 47.09 checking for type of socket length (socklen_t)... socklen_t *
+#23 47.16 checking for const gethostbyname() argument... yes
+#23 47.26 checking for const send() second argument... yes
+#23 47.36 checking whether __attribute__((destructor)) is accepted... yes
+#23 47.43 checking whether to enable IPv6... yes
+#23 47.47 checking struct sockaddr::ss_family... yes
+#23 47.51 checking for getaddrinfo... yes
+#23 47.60 checking for isnan... yes
+#23 47.69 checking for isinf... yes
+#23 47.79 checking for shl_load... no
+#23 47.89 checking for shl_load in -ldld... no
+#23 47.97 checking for dlopen... no
+#23 48.08 checking for dlopen in -ldl... yes
+#23 48.18 Checking configuration requirements
+#23 48.18 Disabling multithreaded support
+#23 48.18 Disabling HTTP support
+#23 48.18 Enabled Schematron support
+#23 48.18 checking iconv.h usability... yes
+#23 48.22 checking iconv.h presence... yes
+#23 48.26 checking for iconv.h... yes
+#23 48.26 checking for iconv... yes
+#23 48.36 checking for iconv declaration... 
+#23 48.40 	extern size_t iconv (iconv_t cd,  char * *inbuf, size_t *inbytesleft, char * *outbuf, size_t *outbytesleft);
+#23 48.40 Disabling ICU support
+#23 48.40 Enabled Schemas/Relax-NG support
+#23 48.41 checking for printf... yes
+#23 48.51 checking for sprintf... yes
+#23 48.62 checking for fprintf... yes
+#23 48.73 checking for snprintf... yes
+#23 48.83 checking for vfprintf... yes
+#23 48.93 checking for vsprintf... yes
+#23 49.02 checking for vsnprintf... yes
+#23 49.13 checking for sscanf... yes
+#23 49.24 Disabling code coverage for GCC
+#23 49.27 checking that generated files are newer than configure... done
+#23 49.27 configure: creating ./config.status
+#23 49.81 config.status: creating libxml2.spec
+#23 49.83 config.status: creating Makefile
+#23 49.84 config.status: creating include/Makefile
+#23 49.86 config.status: creating include/libxml/Makefile
+#23 49.87 config.status: creating doc/Makefile
+#23 49.89 config.status: creating doc/examples/Makefile
+#23 49.91 config.status: creating doc/devhelp/Makefile
+#23 49.93 config.status: creating example/Makefile
+#23 49.94 config.status: creating fuzz/Makefile
+#23 49.96 config.status: creating python/Makefile
+#23 49.98 config.status: creating python/tests/Makefile
+#23 49.99 config.status: creating xstc/Makefile
+#23 50.01 config.status: creating include/libxml/xmlversion.h
+#23 50.03 config.status: creating libxml-2.0.pc
+#23 50.04 config.status: creating libxml-2.0-uninstalled.pc
+#23 50.06 config.status: creating libxml2-config.cmake
+#23 50.07 config.status: creating python/setup.py
+#23 50.09 config.status: creating xml2-config
+#23 50.11 config.status: creating config.h
+#23 50.11 config.status: config.h is unchanged
+#23 50.11 config.status: executing depfiles commands
+#23 50.29 config.status: executing libtool commands
+#23 50.30 Done configuring
+#23 50.33 
+#23 50.33 Now type 'make' to compile libxml2.
+#23 50.35 Making clean in include
+#23 50.35 make[1]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 50.36 Making clean in libxml
+#23 50.36 make[2]: Entering directory '/magma/targets/libxml2/repo/include/libxml'
+#23 50.36 rm -rf .libs _libs
+#23 50.36 rm -f *.lo
+#23 50.36 make[2]: Leaving directory '/magma/targets/libxml2/repo/include/libxml'
+#23 50.36 make[2]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 50.36 rm -rf .libs _libs
+#23 50.36 rm -f *.lo
+#23 50.37 make[2]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 50.37 make[1]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 50.37 Making clean in .
+#23 50.38 make[1]: Entering directory '/magma/targets/libxml2/repo'
+#23 50.38 test -z "runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res" || rm -f runxmlconf.log test.out xml2Conf.sh *.gcda *.gcno *.res
+#23 50.38 test -z "libxml2.la" || rm -f libxml2.la
+#23 50.38 rm -rf .libs _libs
+#23 50.38 test -z "testdso.la" || rm -f testdso.la
+#23 50.38 rm -f *.o
+#23 50.38 rm -f *.lo
+#23 50.38  rm -f xmllint xmlcatalog
+#23 50.38  rm -f testSchemas testRelax testSAX testHTML testXPath testURI testThreads testC14N testAutomata testRegexp testReader testapi testModule runtest runsuite testchar testdict runxmlconf testrecurse testlimits
+#23 50.39 rm -f ./so_locations
+#23 50.39 rm -f ./so_locations
+#23 50.39 make[1]: Leaving directory '/magma/targets/libxml2/repo'
+#23 50.39 Making clean in doc
+#23 50.39 make[1]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 50.39 Making clean in .
+#23 50.40 make[2]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 50.40 rm -rf .libs _libs
+#23 50.40 rm -f *~ *.bak *.hierarchy *.signals *-unused.txt
+#23 50.40 rm -f *.lo
+#23 50.40 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 50.40 Making clean in devhelp
+#23 50.40 make[2]: Entering directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 50.40 rm -rf .libs _libs
+#23 50.40 rm -f *.lo
+#23 50.40 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 50.40 Making clean in examples
+#23 50.41 make[2]: Entering directory '/magma/targets/libxml2/repo/doc/examples'
+#23 50.41 test -z "*.tmp" || rm -f *.tmp
+#23 50.41 rm -rf .libs _libs
+#23 50.41 test -f Makefile.am || rm -f test?.xml
+#23 50.41 rm -f *.o
+#23 50.41 rm -f *.lo
+#23 50.41  rm -f io1 io2 parse1 parse2 parse3 parse4 reader1 reader2 reader3 reader4 testWriter tree1 tree2 xpath1 xpath2
+#23 50.41 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc/examples'
+#23 50.41 make[1]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 50.41 Making clean in example
+#23 50.41 make[1]: Entering directory '/magma/targets/libxml2/repo/example'
+#23 50.41 rm -rf .libs _libs
+#23 50.42 rm -f *.o
+#23 50.42 rm -f *.lo
+#23 50.42  rm -f gjobread
+#23 50.42 make[1]: Leaving directory '/magma/targets/libxml2/repo/example'
+#23 50.42 Making clean in fuzz
+#23 50.42 make[1]: Entering directory '/magma/targets/libxml2/repo/fuzz'
+#23 50.42 test -z "genSeed html regexp schema uri xml xpath" || rm -f genSeed html regexp schema uri xml xpath
+#23 50.42 rm -rf .libs _libs
+#23 50.42 rm -f *.o
+#23 50.42 rm -f *.lo
+#23 50.42  rm -f testFuzzer
+#23 50.43 make[1]: Leaving directory '/magma/targets/libxml2/repo/fuzz'
+#23 50.43 Making clean in xstc
+#23 50.43 make[1]: Entering directory '/magma/targets/libxml2/repo/xstc'
+#23 50.43 test -z "nist-test.py ms-test.py sun-test.py test.log" || rm -f nist-test.py ms-test.py sun-test.py test.log
+#23 50.43 rm -rf .libs _libs
+#23 50.43 rm -f *.lo
+#23 50.43 make[1]: Leaving directory '/magma/targets/libxml2/repo/xstc'
+#23 50.45 make  all-recursive
+#23 50.47 make[1]: Entering directory '/magma/targets/libxml2/repo'
+#23 50.47 Making all in include
+#23 50.47 make[2]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 50.48 Making all in libxml
+#23 50.48 make[3]: Entering directory '/magma/targets/libxml2/repo/include/libxml'
+#23 50.48 make[3]: Nothing to be done for 'all'.
+#23 50.48 make[3]: Leaving directory '/magma/targets/libxml2/repo/include/libxml'
+#23 50.48 make[3]: Entering directory '/magma/targets/libxml2/repo/include'
+#23 50.48 make[3]: Nothing to be done for 'all-am'.
+#23 50.48 make[3]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 50.48 make[2]: Leaving directory '/magma/targets/libxml2/repo/include'
+#23 50.48 Making all in .
+#23 50.50 make[2]: Entering directory '/magma/targets/libxml2/repo'
+#23 50.51 sed -e 's?\@XML_LIBDIR\@?-L/usr/local/lib?g' \
+#23 50.51     -e 's?\@XML_INCLUDEDIR\@?-I/usr/local/include/libxml2?g' \
+#23 50.51     -e 's?\@VERSION\@?2.9.12?g' \
+#23 50.51     -e 's?\@XML_LIBS\@?-lxml2?g' \
+#23 50.51     -e 's?\@XML_PRIVATE_LIBS\@?-lz -llzma    -lm -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a?g' \
+#23 50.51        < ./xml2Conf.sh.in > xml2Conf.tmp \
+#23 50.51 && mv xml2Conf.tmp xml2Conf.sh
+#23 50.51   CC       testdso.lo
+#23 50.51   CC       SAX.lo
+#23 50.51   CC       entities.lo
+#23 50.51   CC       encoding.lo
+#23 50.51   CC       error.lo
+#23 50.51   CC       parserInternals.lo
+#23 50.52   CC       parser.lo
+#23 50.52   CC       tree.lo
+#23 50.52   CC       hash.lo
+#23 50.52   CC       xmlIO.lo
+#23 50.52   CC       list.lo
+#23 50.52   CC       xmlmemory.lo
+#23 50.52   CC       uri.lo
+#23 50.52   CC       valid.lo
+#23 50.52   CC       xlink.lo
+#23 50.52   CC       HTMLparser.lo
+#23 50.52   CC       HTMLtree.lo
+#23 50.52   CC       debugXML.lo
+#23 50.52   CC       xpath.lo
+#23 50.52   CC       xinclude.lo
+#23 50.52   CC       nanohttp.lo
+#23 50.52   CC       xpointer.lo
+#23 50.52   CC       catalog.lo
+#23 50.52   CC       globals.lo
+#23 50.52   CC       nanoftp.lo
+#23 50.52   CC       threads.lo
+#23 50.52   CC       c14n.lo
+#23 50.52   CC       buf.lo
+#23 50.52   CC       xmlregexp.lo
+#23 50.52   CC       xmlschemas.lo
+#23 50.52   CC       xmlstring.lo
+#23 50.52   CC       xmlschemastypes.lo
+#23 50.52   CC       xmlunicode.lo
+#23 50.52   CC       relaxng.lo
+#23 50.52   CC       dict.lo
+#23 50.52   CC       SAX2.lo
+#23 50.52   CC       xmlreader.lo
+#23 50.53   CC       xmlwriter.lo
+#23 50.53   CC       legacy.lo
+#23 50.53   CC       xmlsave.lo
+#23 50.53   CC       xmlmodule.lo
+#23 50.53   CC       chvalid.lo
+#23 50.53   CC       pattern.lo
+#23 50.53   CC       schematron.lo
+#23 50.53   CC       xmllint.o
+#23 50.53   CC       xzlib.lo
+#23 50.53   CC       xmlcatalog.o
+#23 50.61 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.61 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.61 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.63 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.63 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.63 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.64 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.64 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.64 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.64 encoding.c:505:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 50.64   505 |     unsigned short* in = (unsigned short*) inb;
+#23 50.64       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 50.64 encoding.c:592:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.64 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.64 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.64 
+#23 50.64   592 |     unsigned short* out = (unsigned short*) outb;
+#23 50.64       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 50.65 encoding.c:748:26: warning: cast from 'const unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 50.65   748 |     unsigned short* in = (unsigned short*) inb;
+#23 50.65       |                          ^~~~~~~~~~~~~~~~~~~~~
+#23 50.65 encoding.c:834:27: warning: cast from 'unsigned char *' to 'unsigned short *' increases required alignment from 1 to 2 [-Wcast-align]
+#23 50.65   834 |     unsigned short* out = (unsigned short*) outb;
+#23 50.65       |                           ^~~~~~~~~~~~~~~~~~~~~~
+#23 50.65 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.65 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.66   CCLD     testdso.la
+#23 50.66 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.66 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.66 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.67 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.67 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.67 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.67 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.67 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.67 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.69 xmlIO.c:3809:36: warning: unused parameter 'ctxt' [-Wunused-parameter]
+#23 50.69  3809 | xmlCheckHTTPInput(xmlParserCtxtPtr ctxt, xmlParserInputPtr ret) {
+#23 50.69       |                                    ^
+#23 50.69 dict.c:1006:30: warning: variable 'nbi' set but not used [-Wunused-but-set-variable]
+#23 50.69  1006 |     unsigned long key, okey, nbi = 0;
+#23 50.69       |                              ^
+#23 50.69 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.69 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.69 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.69 HTMLparser.c:2976:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 50.69  2976 |     size_t len = 0, startPosition = 0;
+#23 50.69       |            ^
+#23 50.69 HTMLparser.c:2978:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 50.69  2978 |     int err = 0;
+#23 50.69       |         ^
+#23 50.69 HTMLparser.c:3040:12: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 50.69  3040 |     size_t len = 0, startPosition = 0;
+#23 50.69       |            ^
+#23 50.69 HTMLparser.c:3042:9: warning: variable 'err' set but not used [-Wunused-but-set-variable]
+#23 50.69  3042 |     int err = 0;
+#23 50.69       |         ^
+#23 50.70 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.70 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.71 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.71 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.71 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.72 4 warnings generated.
+#23 50.72 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.72 catalog.c:2187:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 50.72  2187 |     int count = 0;
+#23 50.72       |         ^
+#23 50.72 1 warning generated.
+#23 50.72 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.72 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.73 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.73 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.73 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.73 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.73 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.73 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 1 warning generated.
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.74 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.75 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.75 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.75 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.75 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.75 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.75 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.76 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.76 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.76 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.76 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.76 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.76 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.79 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.79 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.79 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.79 
+#23 50.79 *** Warning: Linking the shared library testdso.la against the
+#23 50.79 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 50.79 xpath.c:10506:9: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+#23 50.79  10506 |     int len = 0, l;
+#23 50.79        |         ^
+#23 50.80 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.80 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.80 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.81 xmlschemas.c:21858:9: warning: variable 'count' set but not used [-Wunused-but-set-variable]
+#23 50.81  21858 |     int count = 0;
+#23 50.81        |         ^
+#23 50.82 xpath.c:13650:9: warning: variable 'nb_nodes' set but not used [-Wunused-but-set-variable]
+#23 50.82  13650 |     int nb_nodes = 0;
+#23 50.82        |         ^
+#23 50.83 1 warning generated.
+#23 50.83 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.83 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.83 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.84 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.84 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.84 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.85 4 warnings generated.
+#23 50.85 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.85 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.85 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.87 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.87 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.87 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.89 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.89 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.89 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.89 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.89 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.89 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.96 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.96 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.96 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 50.98 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 50.98 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 50.98 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 51.08 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 51.08 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 51.08 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 51.17 2 warnings generated.
+#23 51.17 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 51.17 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 51.17 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 51.48 1 warning generated.
+#23 51.48 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 51.48 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 51.48 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 51.50   CCLD     libxml2.la
+#23 51.71 
+#23 51.71 *** Warning: Linking the shared library libxml2.la against the
+#23 51.71 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 51.84   CCLD     xmllint
+#23 51.84   CCLD     xmlcatalog
+#23 51.99 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 52.01 ld.lld: warning: ./.libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 52.90 
+#23 52.90 === AFL++ LTO Instrumentation Statistics ===
+#23 52.90 Total Basic Blocks: 82065
+#23 52.90 Instrumented Times: 0
+#23 52.90 Instrumented Basic Blocks: 19742
+#23 52.90 Instrumentation Ratio: 24.06%
+#23 52.90 Total Predecessors: 45183
+#23 52.90 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 52.90   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 52.90   Instrumented BasicBlocks with 2 predecessor(s): 17914
+#23 52.90   Instrumented BasicBlocks with 3 predecessor(s): 922
+#23 52.90   Instrumented BasicBlocks with 4 predecessor(s): 335
+#23 52.90   Instrumented BasicBlocks with 5 predecessor(s): 149
+#23 52.90   Instrumented BasicBlocks with 6 predecessor(s): 108
+#23 52.90   Instrumented BasicBlocks with 7 predecessor(s): 95
+#23 52.90   Instrumented BasicBlocks with 8 predecessor(s): 42
+#23 52.90   Instrumented BasicBlocks with 9 predecessor(s): 38
+#23 52.90   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 52.90 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 52.90   Non-Instrumented BasicBlocks with 1 predecessor(s): 32420
+#23 52.90   Non-Instrumented BasicBlocks with 2 predecessor(s): 3073
+#23 52.90   Non-Instrumented BasicBlocks with 3 predecessor(s): 54
+#23 52.90   Non-Instrumented BasicBlocks with 4 predecessor(s): 17
+#23 52.90   Non-Instrumented BasicBlocks with 5 predecessor(s): 9
+#23 52.90   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 52.90   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 52.90   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 52.90   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 52.90   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 52.90 Average Global Entropy: 1.24
+#23 52.90 =======================================
+#23 52.90 
+#23 53.95 
+#23 53.95 === AFL++ LTO Instrumentation Statistics ===
+#23 53.95 Total Basic Blocks: 216788
+#23 53.95 Instrumented Times: 0
+#23 53.95 Instrumented Basic Blocks: 52536
+#23 53.95 Instrumentation Ratio: 24.23%
+#23 53.95 Total Predecessors: 119964
+#23 53.95 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 53.95   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 53.95   Instrumented BasicBlocks with 2 predecessor(s): 47864
+#23 53.95   Instrumented BasicBlocks with 3 predecessor(s): 2284
+#23 53.95   Instrumented BasicBlocks with 4 predecessor(s): 873
+#23 53.95   Instrumented BasicBlocks with 5 predecessor(s): 453
+#23 53.95   Instrumented BasicBlocks with 6 predecessor(s): 289
+#23 53.95   Instrumented BasicBlocks with 7 predecessor(s): 181
+#23 53.95   Instrumented BasicBlocks with 8 predecessor(s): 105
+#23 53.95   Instrumented BasicBlocks with 9 predecessor(s): 87
+#23 53.95   Instrumented BasicBlocks with >=10 predecessors: 12
+#23 53.95 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 53.95   Non-Instrumented BasicBlocks with 1 predecessor(s): 86636
+#23 53.95   Non-Instrumented BasicBlocks with 2 predecessor(s): 7810
+#23 53.95   Non-Instrumented BasicBlocks with 3 predecessor(s): 169
+#23 53.95   Non-Instrumented BasicBlocks with 4 predecessor(s): 44
+#23 53.95   Non-Instrumented BasicBlocks with 5 predecessor(s): 16
+#23 53.95   Non-Instrumented BasicBlocks with 6 predecessor(s): 14
+#23 53.95   Non-Instrumented BasicBlocks with 7 predecessor(s): 9
+#23 53.95   Non-Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 53.95   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 53.95   Non-Instrumented BasicBlocks with >=10 predecessors: 12
+#23 53.95 Average Global Entropy: 1.25
+#23 53.95 =======================================
+#23 53.95 
+#23 65.63 make[2]: Leaving directory '/magma/targets/libxml2/repo'
+#23 65.63 Making all in doc
+#23 65.63 make[2]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 65.63 Making all in .
+#23 65.64 make[3]: Entering directory '/magma/targets/libxml2/repo/doc'
+#23 65.64 make[3]: Nothing to be done for 'all-am'.
+#23 65.64 make[3]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 65.64 Making all in devhelp
+#23 65.64 make[3]: Entering directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 65.64 make[3]: Nothing to be done for 'all'.
+#23 65.64 make[3]: Leaving directory '/magma/targets/libxml2/repo/doc/devhelp'
+#23 65.64 Making all in examples
+#23 65.64 make[3]: Entering directory '/magma/targets/libxml2/repo/doc/examples'
+#23 65.64 make[3]: Nothing to be done for 'all'.
+#23 65.64 make[3]: Leaving directory '/magma/targets/libxml2/repo/doc/examples'
+#23 65.64 make[2]: Leaving directory '/magma/targets/libxml2/repo/doc'
+#23 65.64 Making all in example
+#23 65.65 make[2]: Entering directory '/magma/targets/libxml2/repo/example'
+#23 65.65 make[2]: Nothing to be done for 'all'.
+#23 65.65 make[2]: Leaving directory '/magma/targets/libxml2/repo/example'
+#23 65.65 Making all in fuzz
+#23 65.65 make[2]: Entering directory '/magma/targets/libxml2/repo/fuzz'
+#23 65.65 make[2]: Nothing to be done for 'all'.
+#23 65.65 make[2]: Leaving directory '/magma/targets/libxml2/repo/fuzz'
+#23 65.65 Making all in xstc
+#23 65.66 make[2]: Entering directory '/magma/targets/libxml2/repo/xstc'
+#23 65.66 make[2]: Nothing to be done for 'all'.
+#23 65.66 make[2]: Leaving directory '/magma/targets/libxml2/repo/xstc'
+#23 65.66 make[1]: Leaving directory '/magma/targets/libxml2/repo'
+#23 65.88 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 65.88 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 65.88 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 65.90 ld.lld: warning: .libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 66.72 
+#23 66.72 === AFL++ LTO Instrumentation Statistics ===
+#23 66.72 Total Basic Blocks: 77580
+#23 66.72 Instrumented Times: 0
+#23 66.72 Instrumented Basic Blocks: 18669
+#23 66.72 Instrumentation Ratio: 24.06%
+#23 66.72 Total Predecessors: 42765
+#23 66.72 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 66.72   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 66.72   Instrumented BasicBlocks with 2 predecessor(s): 16902
+#23 66.72   Instrumented BasicBlocks with 3 predecessor(s): 894
+#23 66.72   Instrumented BasicBlocks with 4 predecessor(s): 327
+#23 66.72   Instrumented BasicBlocks with 5 predecessor(s): 143
+#23 66.72   Instrumented BasicBlocks with 6 predecessor(s): 106
+#23 66.72   Instrumented BasicBlocks with 7 predecessor(s): 94
+#23 66.72   Instrumented BasicBlocks with 8 predecessor(s): 41
+#23 66.72   Instrumented BasicBlocks with 9 predecessor(s): 36
+#23 66.72   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 66.72 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 66.72   Non-Instrumented BasicBlocks with 1 predecessor(s): 30659
+#23 66.72   Non-Instrumented BasicBlocks with 2 predecessor(s): 2888
+#23 66.72   Non-Instrumented BasicBlocks with 3 predecessor(s): 47
+#23 66.72   Non-Instrumented BasicBlocks with 4 predecessor(s): 14
+#23 66.72   Non-Instrumented BasicBlocks with 5 predecessor(s): 8
+#23 66.72   Non-Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 66.72   Non-Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 66.72   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 66.72   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 66.72   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 66.72 Average Global Entropy: 1.24
+#23 66.72 =======================================
+#23 66.72 
+#23 71.18 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 71.18 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 71.18 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 71.20 ld.lld: warning: .libs/libxml2.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 72.07 
+#23 72.07 === AFL++ LTO Instrumentation Statistics ===
+#23 72.07 Total Basic Blocks: 120036
+#23 72.07 Instrumented Times: 0
+#23 72.07 Instrumented Basic Blocks: 28971
+#23 72.07 Instrumentation Ratio: 24.14%
+#23 72.07 Total Predecessors: 66497
+#23 72.07 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 72.07   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 72.07   Instrumented BasicBlocks with 2 predecessor(s): 26276
+#23 72.07   Instrumented BasicBlocks with 3 predecessor(s): 1365
+#23 72.07   Instrumented BasicBlocks with 4 predecessor(s): 467
+#23 72.07   Instrumented BasicBlocks with 5 predecessor(s): 224
+#23 72.07   Instrumented BasicBlocks with 6 predecessor(s): 179
+#23 72.07   Instrumented BasicBlocks with 7 predecessor(s): 118
+#23 72.07   Instrumented BasicBlocks with 8 predecessor(s): 60
+#23 72.07   Instrumented BasicBlocks with 9 predecessor(s): 54
+#23 72.07   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 72.07 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 72.07   Non-Instrumented BasicBlocks with 1 predecessor(s): 47914
+#23 72.07   Non-Instrumented BasicBlocks with 2 predecessor(s): 4226
+#23 72.07   Non-Instrumented BasicBlocks with 3 predecessor(s): 80
+#23 72.07   Non-Instrumented BasicBlocks with 4 predecessor(s): 24
+#23 72.07   Non-Instrumented BasicBlocks with 5 predecessor(s): 11
+#23 72.07   Non-Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 72.07   Non-Instrumented BasicBlocks with 7 predecessor(s): 5
+#23 72.07   Non-Instrumented BasicBlocks with 8 predecessor(s): 2
+#23 72.07   Non-Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 72.07   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 72.07 Average Global Entropy: 1.25
+#23 72.07 =======================================
+#23 72.07 
+#23 DONE 77.8s
+
+#24 exporting to image
+#24 exporting layers 0.1s done
+#24 writing image sha256:e84f65e01ccb507aa44a8726bdb6d3bbddd03f6a7c18b77156960f94335a1919 done
+#24 naming to docker.io/magma/aflplusplus_lto_entropy/libxml2 done
+#24 DONE 0.1s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 95)
++ set +x
+magma/aflplusplus_lto_entropy/libxml2

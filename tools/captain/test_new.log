@@ -1,0 +1,68 @@
+[2025-02-12 21:30] Building magma/afl_entropy/libpng
+[2025-02-12 21:31] Starting campaigns for libpng_read_fuzzer 
+[2025-02-12 21:31] Building magma/afl_entropy/libsndfile
+[2025-02-12 21:31] Container afl_entropy/libpng/libpng_read_fuzzer/0 started on CPU 0
+[2025-02-12 21:32] Starting campaigns for sndfile_fuzzer @@
+[2025-02-12 21:32] Building magma/afl_entropy/libtiff
+[2025-02-12 21:32] Container afl_entropy/libsndfile/sndfile_fuzzer/0 started on CPU 1
+[2025-02-12 21:34] Failed to build magma/afl_entropy/libtiff. Check build log for info.
+[2025-02-12 21:34] Building magma/afl_entropy/libxml2
+[2025-02-12 21:35] Starting campaigns for libxml2_xml_read_memory_fuzzer 
+[2025-02-12 21:35] Starting campaigns for xmllint --valid --oldxml10 --push --memory @@
+[2025-02-12 21:35] Building magma/afl_entropy/lua
+[2025-02-12 21:35] Container afl_entropy/libxml2/libxml2_xml_read_memory_fuzzer/0 started on CPU 2
+[2025-02-12 21:35] Container afl_entropy/libxml2/xmllint/0 started on CPU 3
+[2025-02-12 21:35] Starting campaigns for lua 
+[2025-02-12 21:35] Building magma/afl_entropy/openssl
+[2025-02-12 21:35] Container afl_entropy/lua/lua/0 started on CPU 4
+[2025-02-12 21:40] Starting campaigns for asn1 
+[2025-02-12 21:40] Starting campaigns for asn1parse 
+[2025-02-12 21:40] Container afl_entropy/openssl/asn1/0 started on CPU 5
+[2025-02-12 21:40] Starting campaigns for bignum 
+[2025-02-12 21:40] Container afl_entropy/openssl/asn1parse/0 started on CPU 6
+[2025-02-12 21:40] Starting campaigns for server 
+[2025-02-12 21:40] Container afl_entropy/openssl/bignum/0 started on CPU 7
+[2025-02-12 21:40] Starting campaigns for client 
+[2025-02-12 21:40] Container afl_entropy/openssl/server/0 started on CPU 8
+[2025-02-12 21:40] Starting campaigns for x509 
+[2025-02-12 21:40] Container afl_entropy/openssl/client/0 started on CPU 9
+[2025-02-12 21:40] Building magma/afl_entropy/php
+[2025-02-12 21:40] Container afl_entropy/openssl/x509/0 started on CPU 10
+[2025-02-12 21:53] Starting campaigns for json 
+[2025-02-12 21:53] Starting campaigns for exif 
+[2025-02-12 21:53] Container afl_entropy/php/json/0 started on CPU 11
+[2025-02-12 21:53] Starting campaigns for unserialize 
+[2025-02-12 21:53] Container afl_entropy/php/exif/0 started on CPU 12
+[2025-02-12 21:53] Starting campaigns for parser 
+[2025-02-12 21:53] Container afl_entropy/php/unserialize/0 started on CPU 13
+[2025-02-12 21:53] Building magma/afl_entropy/poppler
+[2025-02-12 21:53] Container afl_entropy/php/parser/0 started on CPU 14
+[2025-02-12 21:56] Starting campaigns for pdf_fuzzer 
+[2025-02-12 21:56] Starting campaigns for pdfimages @@ /tmp/out
+[2025-02-12 21:56] Container afl_entropy/poppler/pdf_fuzzer/0 started on CPU 15
+[2025-02-12 21:56] Starting campaigns for pdftoppm -mono -cropbox @@
+[2025-02-12 21:56] Container afl_entropy/poppler/pdfimages/0 started on CPU 16
+[2025-02-12 21:56] Building magma/afl_entropy/sqlite3
+[2025-02-12 21:56] Container afl_entropy/poppler/pdftoppm/0 started on CPU 17
+[2025-02-12 22:00] Starting campaigns for sqlite3_fuzz 
+[2025-02-12 22:00] Waiting for jobs to finish
+[2025-02-12 22:00] Container afl_entropy/sqlite3/sqlite3_fuzz/0 started on CPU 18
+[2025-02-13 06:31] Container afl_entropy/libpng/libpng_read_fuzzer/0 stopped
+[2025-02-13 06:33] Container afl_entropy/libsndfile/sndfile_fuzzer/0 stopped
+[2025-02-13 06:35] Container afl_entropy/lua/lua/0 stopped
+[2025-02-13 06:35] Container afl_entropy/libxml2/libxml2_xml_read_memory_fuzzer/0 stopped
+[2025-02-13 06:36] Container afl_entropy/libxml2/xmllint/0 stopped
+[2025-02-13 06:40] Container afl_entropy/openssl/asn1parse/0 stopped
+[2025-02-13 06:40] Container afl_entropy/openssl/bignum/0 stopped
+[2025-02-13 06:41] Container afl_entropy/openssl/x509/0 stopped
+[2025-02-13 06:41] Container afl_entropy/openssl/asn1/0 stopped
+[2025-02-13 06:41] Container afl_entropy/openssl/client/0 stopped
+[2025-02-13 06:41] Container afl_entropy/openssl/server/0 stopped
+[2025-02-13 06:53] Container afl_entropy/php/unserialize/0 stopped
+[2025-02-13 06:53] Container afl_entropy/php/json/0 stopped
+[2025-02-13 06:53] Container afl_entropy/php/exif/0 stopped
+[2025-02-13 06:54] Container afl_entropy/php/parser/0 stopped
+[2025-02-13 06:56] Container afl_entropy/poppler/pdfimages/0 stopped
+[2025-02-13 06:56] Container afl_entropy/poppler/pdf_fuzzer/0 stopped
+[2025-02-13 06:56] Container afl_entropy/poppler/pdftoppm/0 stopped
+[2025-02-13 07:01] Container afl_entropy/sqlite3/sqlite3_fuzz/0 stopped

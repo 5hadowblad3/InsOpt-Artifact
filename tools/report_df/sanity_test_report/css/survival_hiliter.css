@@ -1,0 +1,26 @@
+    #T_survival_table tr:nth-child(even) {
+          background-color: #ececec;
+    }    #T_survival_table tbody tr:hover {
+          background-color: #d9edfd;
+    }    #T_survival_table thead tr:not(:last-child) .index_name {
+          visibility: hidden;
+    }    #T_survival_table thead tr:nth-child(3) {
+          display: none;
+    }    #T_survival_table tbody td {
+          padding: 2px 5px 2px 15px;
+          text-align: right;
+    }    #T_survival_table th {
+          padding: 2px 5px 2px 5px;
+          text-align: center;
+    }    #T_survival_table th, td, tr {
+          border-top: none;
+          border-bottom: none;
+          border-radius: 0px;
+    }    #T_survival_table thead tr:first-child th:not(:last-child), th:nth-child(odd):not(:last-child), td:nth-child(odd):not(:last-child) {
+          border-right: 1px solid #888888;
+    }    #T_survival_table  {
+          border-collapse: collapse;
+    }#T_survival_tablerow0_col0,#T_survival_tablerow0_col1,#T_survival_tablerow1_col0,#T_survival_tablerow1_col1,#T_survival_tablerow2_col0,#T_survival_tablerow2_col1,#T_survival_tablerow3_col0,#T_survival_tablerow3_col1,#T_survival_tablerow4_col0,#T_survival_tablerow4_col1,#T_survival_tablerow5_col0,#T_survival_tablerow5_col1,#T_survival_tablerow6_col0,#T_survival_tablerow6_col1,#T_survival_tablerow7_col0,#T_survival_tablerow7_col1,#T_survival_tablerow8_col0,#T_survival_tablerow8_col1,#T_survival_tablerow9_col0,#T_survival_tablerow9_col1,#T_survival_tablerow10_col0,#T_survival_tablerow10_col1,#T_survival_tablerow11_col0,#T_survival_tablerow11_col1,#T_survival_tablerow12_col0,#T_survival_tablerow12_col1,#T_survival_tablerow13_col0,#T_survival_tablerow13_col1,#T_survival_tablerow14_col0,#T_survival_tablerow14_col1,#T_survival_tablerow15_col0,#T_survival_tablerow15_col1,#T_survival_tablerow16_col0,#T_survival_tablerow16_col1,#T_survival_tablerow17_col0,#T_survival_tablerow17_col1,#T_survival_tablerow18_col0,#T_survival_tablerow18_col1,#T_survival_tablerow19_col0,#T_survival_tablerow19_col1,#T_survival_tablerow20_col0,#T_survival_tablerow20_col1,#T_survival_tablerow21_col0,#T_survival_tablerow21_col1,#T_survival_tablerow22_col0,#T_survival_tablerow22_col1,#T_survival_tablerow23_col0,#T_survival_tablerow23_col1,#T_survival_tablerow24_col0,#T_survival_tablerow24_col1,#T_survival_tablerow25_col0,#T_survival_tablerow25_col1,#T_survival_tablerow26_col0,#T_survival_tablerow26_col1,#T_survival_tablerow27_col0,#T_survival_tablerow28_col0,#T_survival_tablerow29_col0,#T_survival_tablerow30_col0,#T_survival_tablerow31_col0,#T_survival_tablerow32_col0,#T_survival_tablerow33_col0,#T_survival_tablerow34_col0,#T_survival_tablerow35_col0,#T_survival_tablerow36_col0,#T_survival_tablerow37_col0,#T_survival_tablerow38_col0,#T_survival_tablerow39_col0,#T_survival_tablerow40_col0,#T_survival_tablerow41_col0,#T_survival_tablerow42_col0,#T_survival_tablerow43_col0,#T_survival_tablerow44_col0,#T_survival_tablerow45_col0,#T_survival_tablerow46_col0,#T_survival_tablerow47_col0,#T_survival_tablerow48_col0,#T_survival_tablerow49_col0,#T_survival_tablerow50_col0,#T_survival_tablerow51_col0,#T_survival_tablerow52_col0,#T_survival_tablerow53_col0,#T_survival_tablerow54_col0,#T_survival_tablerow55_col0,#T_survival_tablerow56_col0,#T_survival_tablerow57_col0,#T_survival_tablerow58_col0,#T_survival_tablerow59_col0,#T_survival_tablerow60_col0,#T_survival_tablerow61_col0,#T_survival_tablerow62_col0,#T_survival_tablerow63_col0,#T_survival_tablerow64_col0,#T_survival_tablerow65_col0,#T_survival_tablerow66_col0,#T_survival_tablerow67_col0{
+            background-color:  #e2ea67;
+        }#T_survival_tablerow27_col1,#T_survival_tablerow28_col1,#T_survival_tablerow29_col1,#T_survival_tablerow30_col1,#T_survival_tablerow31_col1,#T_survival_tablerow32_col1,#T_survival_tablerow33_col1,#T_survival_tablerow34_col1,#T_survival_tablerow35_col1,#T_survival_tablerow36_col1,#T_survival_tablerow37_col1,#T_survival_tablerow38_col1,#T_survival_tablerow39_col1,#T_survival_tablerow40_col1,#T_survival_tablerow41_col1,#T_survival_tablerow42_col1,#T_survival_tablerow43_col1,#T_survival_tablerow44_col1,#T_survival_tablerow45_col1,#T_survival_tablerow46_col1,#T_survival_tablerow47_col1,#T_survival_tablerow48_col1,#T_survival_tablerow49_col1,#T_survival_tablerow50_col1,#T_survival_tablerow51_col1,#T_survival_tablerow52_col1,#T_survival_tablerow53_col1,#T_survival_tablerow54_col1,#T_survival_tablerow55_col1,#T_survival_tablerow56_col1,#T_survival_tablerow57_col1,#T_survival_tablerow58_col1,#T_survival_tablerow59_col1,#T_survival_tablerow60_col1,#T_survival_tablerow61_col1,#T_survival_tablerow62_col1,#T_survival_tablerow63_col1,#T_survival_tablerow64_col1,#T_survival_tablerow65_col1,#T_survival_tablerow66_col1,#T_survival_tablerow67_col1{
+            background-color:  #efa2a2;}

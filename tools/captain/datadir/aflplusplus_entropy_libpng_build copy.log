@@ -1,0 +1,1256 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_entropy/libpng --build-arg fuzzer_name=aflplusplus_entropy --build-arg target_name=libpng --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.65kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 1.5s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 109.95kB 0.1s done
+#5 DONE 0.1s
+
+#6 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#6 CACHED
+
+#7 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#7 CACHED
+
+#8 [ 8/19] RUN /magma/magma/preinstall.sh
+#8 CACHED
+
+#9 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#9 CACHED
+
+#10 [ 9/19] RUN /magma/magma/prebuild.sh
+#10 CACHED
+
+#11 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#11 CACHED
+
+#12 [12/19] RUN /magma/fuzzers/aflplusplus_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_entropy
+#12 CACHED
+
+#13 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#13 CACHED
+
+#14 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#14 CACHED
+
+#15 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_entropy && chown magma:magma /magma/fuzzers/aflplusplus_entropy
+#15 CACHED
+
+#16 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_entropy /magma/fuzzers/aflplusplus_entropy/
+#16 CACHED
+
+#17 [13/19] RUN /magma/fuzzers/aflplusplus_entropy/build.sh
+#17 CACHED
+
+#18 [14/19] RUN mkdir -p /magma/targets/libpng && chown magma:magma /magma/targets/libpng
+#18 DONE 0.3s
+
+#19 [15/19] COPY --chown=magma:magma .//targets/libpng /magma/targets/libpng/
+#19 DONE 0.0s
+
+#20 [16/19] RUN /magma/targets/libpng/preinstall.sh
+#20 1.258 Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+#20 1.381 Hit:3 http://security.ubuntu.com/ubuntu bionic-security InRelease
+#20 1.470 Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+#20 1.687 Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+#20 2.236 Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-18 InRelease
+#20 2.335 Reading package lists...
+#20 3.800 Reading package lists...
+#20 5.120 Building dependency tree...
+#20 5.328 Reading state information...
+#20 5.476 make is already the newest version (4.1-9.1ubuntu1).
+#20 5.476 git is already the newest version (1:2.17.1-1ubuntu0.18).
+#20 5.476 zlib1g-dev is already the newest version (1:1.2.11.dfsg-0ubuntu2.2).
+#20 5.476 zlib1g-dev set to manually installed.
+#20 5.476 The following additional packages will be installed:
+#20 5.476   autotools-dev libltdl-dev libltdl7 libsigsegv2 m4
+#20 5.477 Suggested packages:
+#20 5.477   autoconf-archive gnu-standards autoconf-doc gettext libtool-doc gfortran
+#20 5.477   | fortran95-compiler gcj-jdk m4-doc
+#20 5.504 The following NEW packages will be installed:
+#20 5.505   autoconf automake autotools-dev libltdl-dev libltdl7 libsigsegv2 libtool m4
+#20 6.151 0 upgraded, 8 newly installed, 0 to remove and 1 not upgraded.
+#20 6.151 Need to get 1477 kB of archives.
+#20 6.151 After this operation, 6621 kB of additional disk space will be used.
+#20 6.151 Get:1 http://archive.ubuntu.com/ubuntu bionic/main amd64 libsigsegv2 amd64 2.12-1 [14.7 kB]
+#20 6.592 Get:2 http://archive.ubuntu.com/ubuntu bionic/main amd64 m4 amd64 1.4.18-1 [197 kB]
+#20 7.360 Get:3 http://archive.ubuntu.com/ubuntu bionic/main amd64 autoconf all 2.69-11 [322 kB]
+#20 7.773 Get:4 http://archive.ubuntu.com/ubuntu bionic/main amd64 autotools-dev all 20180224.1 [39.6 kB]
+#20 7.910 Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 automake all 1:1.15.1-3ubuntu2 [509 kB]
+#20 8.149 Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl7 amd64 2.4.6-2 [38.8 kB]
+#20 8.153 Get:7 http://archive.ubuntu.com/ubuntu bionic/main amd64 libltdl-dev amd64 2.4.6-2 [162 kB]
+#20 8.184 Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 libtool all 2.4.6-2 [194 kB]
+#20 8.393 debconf: unable to initialize frontend: Dialog
+#20 8.393 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#20 8.393 debconf: falling back to frontend: Readline
+#20 8.400 debconf: unable to initialize frontend: Readline
+#20 8.400 debconf: (This frontend requires a controlling tty.)
+#20 8.400 debconf: falling back to frontend: Teletype
+#20 8.405 dpkg-preconfigure: unable to re-open stdin: 
+#20 8.431 Fetched 1477 kB in 3s (546 kB/s)
+#20 8.449 Selecting previously unselected package libsigsegv2:amd64.
+#20 8.449 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22653 files and directories currently installed.)
+#20 8.462 Preparing to unpack .../0-libsigsegv2_2.12-1_amd64.deb ...
+#20 8.463 Unpacking libsigsegv2:amd64 (2.12-1) ...
+#20 8.477 Selecting previously unselected package m4.
+#20 8.479 Preparing to unpack .../1-m4_1.4.18-1_amd64.deb ...
+#20 8.479 Unpacking m4 (1.4.18-1) ...
+#20 8.510 Selecting previously unselected package autoconf.
+#20 8.512 Preparing to unpack .../2-autoconf_2.69-11_all.deb ...
+#20 8.512 Unpacking autoconf (2.69-11) ...
+#20 8.556 Selecting previously unselected package autotools-dev.
+#20 8.558 Preparing to unpack .../3-autotools-dev_20180224.1_all.deb ...
+#20 8.558 Unpacking autotools-dev (20180224.1) ...
+#20 8.574 Selecting previously unselected package automake.
+#20 8.576 Preparing to unpack .../4-automake_1%3a1.15.1-3ubuntu2_all.deb ...
+#20 8.578 Unpacking automake (1:1.15.1-3ubuntu2) ...
+#20 8.634 Selecting previously unselected package libltdl7:amd64.
+#20 8.637 Preparing to unpack .../5-libltdl7_2.4.6-2_amd64.deb ...
+#20 8.637 Unpacking libltdl7:amd64 (2.4.6-2) ...
+#20 8.653 Selecting previously unselected package libltdl-dev:amd64.
+#20 8.655 Preparing to unpack .../6-libltdl-dev_2.4.6-2_amd64.deb ...
+#20 8.655 Unpacking libltdl-dev:amd64 (2.4.6-2) ...
+#20 8.684 Selecting previously unselected package libtool.
+#20 8.686 Preparing to unpack .../7-libtool_2.4.6-2_all.deb ...
+#20 8.687 Unpacking libtool (2.4.6-2) ...
+#20 8.730 Setting up libsigsegv2:amd64 (2.12-1) ...
+#20 8.731 Setting up m4 (1.4.18-1) ...
+#20 8.732 Setting up autotools-dev (20180224.1) ...
+#20 8.733 Setting up libltdl7:amd64 (2.4.6-2) ...
+#20 8.734 Setting up libtool (2.4.6-2) ...
+#20 8.737 Setting up libltdl-dev:amd64 (2.4.6-2) ...
+#20 8.739 Setting up autoconf (2.69-11) ...
+#20 8.740 Setting up automake (1:1.15.1-3ubuntu2) ...
+#20 8.744 update-alternatives: using /usr/bin/automake-1.15 to provide /usr/bin/automake (automake) in auto mode
+#20 8.744 update-alternatives: warning: skip creation of /usr/share/man/man1/automake.1.gz because associated file /usr/share/man/man1/automake-1.15.1.gz (of link group automake) doesn't exist
+#20 8.744 update-alternatives: warning: skip creation of /usr/share/man/man1/aclocal.1.gz because associated file /usr/share/man/man1/aclocal-1.15.1.gz (of link group automake) doesn't exist
+#20 8.746 Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+#20 DONE 8.9s
+
+#21 [17/19] RUN /magma/targets/libpng/fetch.sh
+#21 0.603 Cloning into '/magma/targets/libpng/repo'...
+#21 41.00 Note: checking out 'a37d4836519517bdce6cb9d956092321eca3e73b'.
+#21 41.00 
+#21 41.00 You are in 'detached HEAD' state. You can look around, make experimental
+#21 41.00 changes and commit them, and you can discard any commits you make in this
+#21 41.00 state without impacting any branches by performing another checkout.
+#21 41.00 
+#21 41.00 If you want to create a new branch to retain commits you create, you may
+#21 41.00 do so (now or later) by using -b with the checkout command again. Example:
+#21 41.00 
+#21 41.00   git checkout -b <new-branch-name>
+#21 41.00 
+#21 41.00 HEAD is now at a37d48365 Eliminate spaces between function name and (
+#21 DONE 41.0s
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 0.605 Applying /magma/targets/libpng/patches/setup/libpng16.patch
+#22 0.611 patching file scripts/pnglibconf.dfa
+#22 0.611 patching file contrib/oss-fuzz/libpng_read_fuzzer.cc
+#22 0.611 Hunk #1 succeeded at 18 (offset 3 lines).
+#22 0.612 Applying /magma/targets/libpng/patches/bugs/PNG006.patch
+#22 0.614 patching file png.c
+#22 0.617 patching file pngrutil.c
+#22 0.617 Hunk #1 succeeded at 2058 (offset -1 lines).
+#22 0.618 Applying /magma/targets/libpng/patches/bugs/PNG001.patch
+#22 0.621 patching file pngrutil.c
+#22 0.621 Hunk #1 succeeded at 3164 (offset 1 line).
+#22 0.623 Applying /magma/targets/libpng/patches/bugs/PNG002.patch
+#22 0.624 patching file png.c
+#22 0.626 Hunk #1 succeeded at 4577 (offset 3 lines).
+#22 0.626 Hunk #2 succeeded at 4596 (offset 3 lines).
+#22 0.626 patching file png.h
+#22 0.626 patching file pngerror.c
+#22 0.627 Applying /magma/targets/libpng/patches/bugs/PNG005.patch
+#22 0.630 patching file png.c
+#22 0.630 Hunk #1 succeeded at 2585 (offset 3 lines).
+#22 0.632 patching file pngrutil.c
+#22 0.632 Hunk #1 succeeded at 4606 (offset 14 lines).
+#22 0.632 Applying /magma/targets/libpng/patches/bugs/PNG003.patch
+#22 0.638 patching file pngrutil.c
+#22 0.638 Hunk #1 succeeded at 983 (offset -1 lines).
+#22 0.640 patching file pngset.c
+#22 0.640 Applying /magma/targets/libpng/patches/bugs/PNG004.patch
+#22 0.642 patching file pngrutil.c
+#22 0.642 Hunk #1 succeeded at 3221 (offset 20 lines).
+#22 0.642 Hunk #2 succeeded at 3475 (offset 20 lines).
+#22 0.642 Hunk #3 succeeded at 3504 (offset 20 lines).
+#22 0.643 Hunk #4 succeeded at 3688 (offset 20 lines).
+#22 0.645 Applying /magma/targets/libpng/patches/bugs/PNG007.patch
+#22 0.646 patching file pngrtran.c
+#22 0.648 patching file pngset.c
+#22 0.648 Hunk #1 succeeded at 607 (offset 4 lines).
+#22 DONE 0.7s
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_entropy/Calculate.sh
+#23 0.636 
+#23 0.636 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.636 Total Basic Blocks: 19
+#23 0.636 Instrumented Times: 0
+#23 0.636 Instrumented Basic Blocks: 3
+#23 0.636 Instrumentation Ratio: 15.79%
+#23 0.636 Total Predecessors: 7
+#23 0.636 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.636   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.636   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 0.636   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.636   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.636 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.636   Non-Instrumented BasicBlocks with 1 predecessor(s): 8
+#23 0.636   Non-Instrumented BasicBlocks with 2 predecessor(s): 2
+#23 0.636   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.636   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.636 =======================================
+#23 0.636 
+#23 0.682 
+#23 0.682 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 0.682 Total Basic Blocks: 40
+#23 0.682 Instrumented Times: 0
+#23 0.682 Instrumented Basic Blocks: 8
+#23 0.682 Instrumentation Ratio: 20.00%
+#23 0.682 Total Predecessors: 16
+#23 0.682 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 0.682   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 2 predecessor(s): 8
+#23 0.682   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.682   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.682 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 0.682   Non-Instrumented BasicBlocks with 1 predecessor(s): 21
+#23 0.682   Non-Instrumented BasicBlocks with 2 predecessor(s): 3
+#23 0.682   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 0.682   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 0.682 =======================================
+#23 0.682 
+#23 3.814 libtoolize: putting auxiliary files in '.'.
+#23 3.814 libtoolize: copying file './ltmain.sh'
+#23 3.845 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'scripts'.
+#23 3.845 libtoolize: copying file 'scripts/libtool.m4'
+#23 3.859 libtoolize: copying file 'scripts/ltoptions.m4'
+#23 3.874 libtoolize: copying file 'scripts/ltsugar.m4'
+#23 3.888 libtoolize: copying file 'scripts/ltversion.m4'
+#23 3.913 libtoolize: copying file 'scripts/lt~obsolete.m4'
+#23 6.663 configure.ac:61: installing './compile'
+#23 6.670 configure.ac:37: installing './missing'
+#23 6.706 Makefile.am: installing './depcomp'
+#23 6.920 checking for a BSD-compatible install... /usr/bin/install -c
+#23 6.928 checking whether build environment is sane... yes
+#23 6.946 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 6.949 checking for gawk... no
+#23 6.949 checking for mawk... mawk
+#23 6.949 checking whether make sets $(MAKE)... yes
+#23 6.966 checking whether make supports nested variables... yes
+#23 6.976 checking whether to enable maintainer-specific portions of Makefiles... no
+#23 6.976 checking for gcc... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast
+#23 7.090 checking whether the C compiler works... yes
+#23 7.179 checking for C compiler default output file name... a.out
+#23 7.180 checking for suffix of executables... 
+#23 7.268 checking whether we are cross compiling... no
+#23 7.365 checking for suffix of object files... o
+#23 7.403 checking whether we are using the GNU C compiler... yes
+#23 7.444 checking whether /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast accepts -g... yes
+#23 7.591 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to accept ISO C89... none needed
+#23 7.641 checking whether /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast understands -c and -o together... yes
+#23 7.711 checking for style of include used by make... GNU
+#23 7.716 checking dependency style of /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... gcc3
+#23 7.777 checking dependency style of /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... gcc3
+#23 7.844 checking build system type... x86_64-pc-linux-gnu
+#23 7.911 checking host system type... x86_64-pc-linux-gnu
+#23 7.911 checking for a sed that does not truncate output... /bin/sed
+#23 7.917 checking for grep that handles long lines and -e... /bin/grep
+#23 7.919 checking for egrep... /bin/grep -E
+#23 7.921 checking for fgrep... /bin/grep -F
+#23 7.923 checking how to print strings... printf
+#23 7.950 checking for ld used by /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast... /usr/bin/ld
+#23 7.978 checking if the linker (/usr/bin/ld) is GNU ld... yes
+#23 7.981 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E
+#23 8.108 checking for gawk... (cached) mawk
+#23 8.108 checking whether ln -s works... yes
+#23 8.109 checking whether make sets $(MAKE)... (cached) yes
+#23 8.112 checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm
+#23 8.113 checking the name lister (/usr/bin/nm) interface... BSD nm
+#23 8.170 checking the maximum length of command line arguments... 1572864
+#23 8.180 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 8.180 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 8.180 checking for /usr/bin/ld option to reload object files... -r
+#23 8.181 checking for objdump... objdump
+#23 8.181 checking how to recognize dependent libraries... pass_all
+#23 8.182 checking for dlltool... no
+#23 8.182 checking how to associate runtime and link libraries... printf %s\n
+#23 8.183 checking for archiver @FILE support... @
+#23 8.246 checking for strip... strip
+#23 8.247 checking for ranlib... /usr/bin/ranlib
+#23 8.247 checking command to parse /usr/bin/nm output from /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast object... ok
+#23 8.415 checking for sysroot... no
+#23 8.415 checking for a working dd... /bin/dd
+#23 8.420 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 8.457 checking for mt... no
+#23 8.458 checking if : is a manifest tool... no
+#23 8.463 checking for ANSI C header files... yes
+#23 8.691 checking for sys/types.h... yes
+#23 8.746 checking for sys/stat.h... yes
+#23 8.803 checking for stdlib.h... yes
+#23 8.860 checking for string.h... yes
+#23 8.917 checking for memory.h... yes
+#23 8.973 checking for strings.h... yes
+#23 9.032 checking for inttypes.h... yes
+#23 9.090 checking for stdint.h... yes
+#23 9.147 checking for unistd.h... yes
+#23 9.203 checking for dlfcn.h... yes
+#23 9.258 checking for objdir... .libs
+#23 9.405 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -fno-rtti -fno-exceptions... yes
+#23 9.454 checking for /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast option to produce PIC... -fPIC -DPIC
+#23 9.455 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast PIC flag -fPIC -DPIC works... yes
+#23 9.497 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast static flag -static works... yes
+#23 9.622 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... yes
+#23 9.684 checking if /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast supports -c -o file.o... (cached) yes
+#23 9.684 checking whether the /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+#23 9.718 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 9.915 checking how to hardcode library paths into programs... immediate
+#23 9.915 checking whether stripping libraries is possible... yes
+#23 9.918 checking if libtool supports shared libraries... yes
+#23 9.918 checking whether to build shared libraries... no
+#23 9.918 checking whether to build static libraries... yes
+#23 9.919 checking that AWK works... ok
+#23 9.922 checking if we need to force back C standard to C89... no
+#23 9.970 checking for ANSI C header files... (cached) yes
+#23 9.970 checking for an ANSI C-conforming const... yes
+#23 10.01 checking for size_t... yes
+#23 10.12 checking whether struct tm is in sys/time.h or time.h... time.h
+#23 10.16 checking for C/C++ restrict keyword... __restrict
+#23 10.23 checking for working strtod... yes
+#23 10.35 checking for pow... no
+#23 10.44 checking for pow in -lm... yes
+#23 10.55 checking for clock_gettime... yes
+#23 10.66 checking for zlibVersion in -lz... yes
+#23 10.76 checking for feenableexcept in -lm... yes
+#23 10.87 checking for feenableexcept... yes
+#23 10.98 checking if using Solaris linker... no
+#23 10.98 checking if libraries can be versioned... yes
+#23 10.99 checking for symbol prefix... 
+#23 11.02 configure: pkgconfig directory is ${libdir}/pkgconfig
+#23 11.02 configure: Extra options for compiler: 
+#23 11.04 checking that generated files are newer than configure... done
+#23 11.04 configure: creating ./config.status
+#23 11.66 config.status: creating Makefile
+#23 11.67 config.status: creating libpng.pc
+#23 11.69 config.status: creating libpng-config
+#23 11.70 config.status: creating config.h
+#23 11.71 config.status: executing depfiles commands
+#23 11.82 config.status: executing libtool commands
+#23 11.87 test -z "*.tf? pngout.png libpng16.pc libpng16-config libpng.vers libpng.sym check.new pnglibconf.h pngprefix.h symbols.new pngtest-log.txt pnglibconf.out pnglibconf.c pnglibconf.pre pnglibconf.dfn scripts/*.out scripts/*.chk" || rm -f *.tf? pngout.png libpng16.pc libpng16-config libpng.vers libpng.sym check.new pnglibconf.h pngprefix.h symbols.new pngtest-log.txt pnglibconf.out pnglibconf.c pnglibconf.pre pnglibconf.dfn scripts/*.out scripts/*.chk
+#23 11.87 test -z "libpng16.la" || rm -f libpng16.la
+#23 11.87 rm -rf .libs _libs
+#23 11.87 rm -f *.o
+#23 11.87  rm -f pngfix png-fix-itxt
+#23 11.87 test -z "tests/pngtest-all.log tests/pngvalid-gamma-16-to-8.log tests/pngvalid-gamma-alpha-mode.log tests/pngvalid-gamma-background.log tests/pngvalid-gamma-expand16-alpha-mode.log tests/pngvalid-gamma-expand16-background.log tests/pngvalid-gamma-expand16-transform.log tests/pngvalid-gamma-sbit.log tests/pngvalid-gamma-threshold.log tests/pngvalid-gamma-transform.log tests/pngvalid-progressive-size.log tests/pngvalid-progressive-interlace-standard.log tests/pngvalid-transform.log tests/pngvalid-progressive-standard.log tests/pngvalid-standard.log tests/pngstest-1.8.log tests/pngstest-1.8-alpha.log tests/pngstest-linear.log tests/pngstest-linear-alpha.log tests/pngstest-none.log tests/pngstest-none-alpha.log tests/pngstest-sRGB.log tests/pngstest-sRGB-alpha.log tests/pngunknown-IDAT.log tests/pngunknown-discard.log tests/pngunknown-if-safe.log tests/pngunknown-sAPI.log tests/pngunknown-sTER.log tests/pngunknown-save.log tests/pngunknown-vpAg.log tests/pngimage-quick.log tests/pngimage-full.log" || rm -f tests/pngtest-all.log tests/pngvalid-gamma-16-to-8.log tests/pngvalid-gamma-alpha-mode.log tests/pngvalid-gamma-background.log tests/pngvalid-gamma-expand16-alpha-mode.log tests/pngvalid-gamma-expand16-background.log tests/pngvalid-gamma-expand16-transform.log tests/pngvalid-gamma-sbit.log tests/pngvalid-gamma-threshold.log tests/pngvalid-gamma-transform.log tests/pngvalid-progressive-size.log tests/pngvalid-progressive-interlace-standard.log tests/pngvalid-transform.log tests/pngvalid-progressive-standard.log tests/pngvalid-standard.log tests/pngstest-1.8.log tests/pngstest-1.8-alpha.log tests/pngstest-linear.log tests/pngstest-linear-alpha.log tests/pngstest-none.log tests/pngstest-none-alpha.log tests/pngstest-sRGB.log tests/pngstest-sRGB-alpha.log tests/pngunknown-IDAT.log tests/pngunknown-discard.log tests/pngunknown-if-safe.log tests/pngunknown-sAPI.log tests/pngunknown-sTER.log tests/pngunknown-save.log tests/pngunknown-vpAg.log tests/pngimage-quick.log tests/pngimage-full.log
+#23 11.87 rm -f *.lo
+#23 11.87  rm -f pngtest pngunknown pngstest pngvalid pngimage pngcp timepng
+#23 11.87 rm -rf arm/.libs arm/_libs
+#23 11.87 rm -rf intel/.libs intel/_libs
+#23 11.87 rm -f arm/*.o
+#23 11.88 rm -f arm/*.lo
+#23 11.88 rm -rf mips/.libs mips/_libs
+#23 11.88 rm -f contrib/libtests/*.o
+#23 11.88 rm -rf powerpc/.libs powerpc/_libs
+#23 11.88 test -z "tests/pngtest-all.trs tests/pngvalid-gamma-16-to-8.trs tests/pngvalid-gamma-alpha-mode.trs tests/pngvalid-gamma-background.trs tests/pngvalid-gamma-expand16-alpha-mode.trs tests/pngvalid-gamma-expand16-background.trs tests/pngvalid-gamma-expand16-transform.trs tests/pngvalid-gamma-sbit.trs tests/pngvalid-gamma-threshold.trs tests/pngvalid-gamma-transform.trs tests/pngvalid-progressive-size.trs tests/pngvalid-progressive-interlace-standard.trs tests/pngvalid-transform.trs tests/pngvalid-progressive-standard.trs tests/pngvalid-standard.trs tests/pngstest-1.8.trs tests/pngstest-1.8-alpha.trs tests/pngstest-linear.trs tests/pngstest-linear-alpha.trs tests/pngstest-none.trs tests/pngstest-none-alpha.trs tests/pngstest-sRGB.trs tests/pngstest-sRGB-alpha.trs tests/pngunknown-IDAT.trs tests/pngunknown-discard.trs tests/pngunknown-if-safe.trs tests/pngunknown-sAPI.trs tests/pngunknown-sTER.trs tests/pngunknown-save.trs tests/pngunknown-vpAg.trs tests/pngimage-quick.trs tests/pngimage-full.trs" || rm -f tests/pngtest-all.trs tests/pngvalid-gamma-16-to-8.trs tests/pngvalid-gamma-alpha-mode.trs tests/pngvalid-gamma-background.trs tests/pngvalid-gamma-expand16-alpha-mode.trs tests/pngvalid-gamma-expand16-background.trs tests/pngvalid-gamma-expand16-transform.trs tests/pngvalid-gamma-sbit.trs tests/pngvalid-gamma-threshold.trs tests/pngvalid-gamma-transform.trs tests/pngvalid-progressive-size.trs tests/pngvalid-progressive-interlace-standard.trs tests/pngvalid-transform.trs tests/pngvalid-progressive-standard.trs tests/pngvalid-standard.trs tests/pngstest-1.8.trs tests/pngstest-1.8-alpha.trs tests/pngstest-linear.trs tests/pngstest-linear-alpha.trs tests/pngstest-none.trs tests/pngstest-none-alpha.trs tests/pngstest-sRGB.trs tests/pngstest-sRGB-alpha.trs tests/pngunknown-IDAT.trs tests/pngunknown-discard.trs tests/pngunknown-if-safe.trs tests/pngunknown-sAPI.trs tests/pngunknown-sTER.trs tests/pngunknown-save.trs tests/pngunknown-vpAg.trs tests/pngimage-quick.trs tests/pngimage-full.trs
+#23 11.88 rm -f contrib/tools/*.o
+#23 11.89 test -z "test-suite.log" || rm -f test-suite.log
+#23 11.89 rm -f intel/*.o
+#23 11.89 rm -f ./so_locations
+#23 11.89 rm -f intel/*.lo
+#23 11.89 rm -f mips/*.o
+#23 11.90 rm -f mips/*.lo
+#23 11.90 rm -f powerpc/*.o
+#23 11.90 rm -f powerpc/*.lo
+#23 11.91 rm -f pnglibconf.c pnglibconf.tf[45]
+#23 11.91 mawk -f ./scripts/options.awk out=pnglibconf.tf4 version=search\
+#23 11.91     ./pngconf.h ./scripts/pnglibconf.dfa\
+#23 11.91     ./pngusr.dfa  1>&2
+#23 11.91 mawk -f ./scripts/options.awk out=pnglibconf.tf5 pnglibconf.tf4 1>&2
+#23 11.92 rm pnglibconf.tf4
+#23 11.93 mv pnglibconf.tf5 pnglibconf.c
+#23 11.93 rm -f pnglibconf.out pnglibconf.tf[12]
+#23 11.93 test -d scripts || mkdir scripts || test -d scripts
+#23 11.93 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E -DHAVE_CONFIG_H -I. \
+#23 11.93      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' pnglibconf.c > pnglibconf.tf1
+#23 11.97 mawk -f "./scripts/dfn.awk" out="pnglibconf.tf2" pnglibconf.tf1 1>&2
+#23 11.98 rm -f pnglibconf.tf1
+#23 11.98 mv pnglibconf.tf2 pnglibconf.out
+#23 11.99 rm -f scripts/prefix.out scripts/prefix.tf[12]
+#23 11.99 test -d scripts || mkdir scripts || test -d scripts
+#23 11.99 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E -DHAVE_CONFIG_H -I. \
+#23 11.99      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/prefix.c > scripts/prefix.tf1
+#23 12.02 mawk -f "./scripts/dfn.awk" out="scripts/prefix.tf2" scripts/prefix.tf1 1>&2
+#23 12.03 rm -f scripts/prefix.tf1
+#23 12.03 mv scripts/prefix.tf2 scripts/prefix.out
+#23 12.03 rm -f pnglibconf.h
+#23 12.04 mawk 's==0 && NR>1{print prev}\
+#23 12.04    s==0{prev=$0}\
+#23 12.04    s==1{print "#define", $1, "MAGMA_" $1}\
+#23 12.04    s==2{print "#define MAGMA_png_" $1, "PNG_" $1}\
+#23 12.04    END{print prev}' s=0 pnglibconf.out s=1 scripts/prefix.out\
+#23 12.04    s=2 ./scripts/macro.lst >pnglibconf.tf8
+#23 12.04 mv pnglibconf.tf8 pnglibconf.h
+#23 12.04 rm -f scripts/intprefix.out scripts/intprefix.tf[12]
+#23 12.04 rm -f scripts/vers.out scripts/vers.tf[12]
+#23 12.04 test -d scripts || mkdir scripts || test -d scripts
+#23 12.04 test -d scripts || mkdir scripts || test -d scripts
+#23 12.05 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E -DHAVE_CONFIG_H -I. \
+#23 12.05      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/intprefix.c > scripts/intprefix.tf1
+#23 12.05 /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -E -DHAVE_CONFIG_H -I. \
+#23 12.05      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/vers.c > scripts/vers.tf1
+#23 12.09 mawk -f "./scripts/dfn.awk" out="scripts/vers.tf2" scripts/vers.tf1 1>&2
+#23 12.09 rm -f scripts/vers.tf1
+#23 12.09 mawk -f "./scripts/dfn.awk" out="scripts/intprefix.tf2" scripts/intprefix.tf1 1>&2
+#23 12.10 mv scripts/vers.tf2 scripts/vers.out
+#23 12.10 rm -f libpng.vers
+#23 12.10 cp scripts/vers.out libpng.vers
+#23 12.10 rm -f scripts/intprefix.tf1
+#23 12.11 mv scripts/intprefix.tf2 scripts/intprefix.out
+#23 12.11 rm -f pngprefix.tf1
+#23 12.11 mawk '{print "#define", $1, "MAGMA_" $1}' scripts/intprefix.out >pngprefix.tf1
+#23 12.12 mv pngprefix.tf1 pngprefix.h
+#23 12.12 depbase=`echo png.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT png.lo -MD -MP -MF $depbase.Tpo -c -o png.lo png.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngerror.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngerror.lo -MD -MP -MF $depbase.Tpo -c -o pngerror.lo pngerror.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngget.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngget.lo -MD -MP -MF $depbase.Tpo -c -o pngget.lo pngget.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngmem.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngmem.lo -MD -MP -MF $depbase.Tpo -c -o pngmem.lo pngmem.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngpread.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngpread.lo -MD -MP -MF $depbase.Tpo -c -o pngpread.lo pngpread.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngread.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngread.lo -MD -MP -MF $depbase.Tpo -c -o pngread.lo pngread.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngrio.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrio.lo -MD -MP -MF $depbase.Tpo -c -o pngrio.lo pngrio.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngrtran.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrtran.lo -MD -MP -MF $depbase.Tpo -c -o pngrtran.lo pngrtran.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngrutil.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrutil.lo -MD -MP -MF $depbase.Tpo -c -o pngrutil.lo pngrutil.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngset.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngset.lo -MD -MP -MF $depbase.Tpo -c -o pngset.lo pngset.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngtrans.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngtrans.lo -MD -MP -MF $depbase.Tpo -c -o pngtrans.lo pngtrans.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngwio.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwio.lo -MD -MP -MF $depbase.Tpo -c -o pngwio.lo pngwio.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngwrite.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwrite.lo -MD -MP -MF $depbase.Tpo -c -o pngwrite.lo pngwrite.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngwtran.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwtran.lo -MD -MP -MF $depbase.Tpo -c -o pngwtran.lo pngwtran.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo pngwutil.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwutil.lo -MD -MP -MF $depbase.Tpo -c -o pngwutil.lo pngwutil.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.12 depbase=`echo mips/mips_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.12 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT mips/mips_init.lo -MD -MP -MF $depbase.Tpo -c -o mips/mips_init.lo mips/mips_init.c &&\
+#23 12.12 mv -f $depbase.Tpo $depbase.Plo
+#23 12.13 depbase=`echo mips/filter_msa_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.13 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT mips/filter_msa_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o mips/filter_msa_intrinsics.lo mips/filter_msa_intrinsics.c &&\
+#23 12.13 mv -f $depbase.Tpo $depbase.Plo
+#23 12.13 depbase=`echo intel/intel_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.13 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT intel/intel_init.lo -MD -MP -MF $depbase.Tpo -c -o intel/intel_init.lo intel/intel_init.c &&\
+#23 12.13 mv -f $depbase.Tpo $depbase.Plo
+#23 12.13 depbase=`echo intel/filter_sse2_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.13 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT intel/filter_sse2_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o intel/filter_sse2_intrinsics.lo intel/filter_sse2_intrinsics.c &&\
+#23 12.13 mv -f $depbase.Tpo $depbase.Plo
+#23 12.13 depbase=`echo powerpc/powerpc_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.13 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT powerpc/powerpc_init.lo -MD -MP -MF $depbase.Tpo -c -o powerpc/powerpc_init.lo powerpc/powerpc_init.c &&\
+#23 12.13 mv -f $depbase.Tpo $depbase.Plo
+#23 12.13 depbase=`echo powerpc/filter_vsx_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 12.13 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT powerpc/filter_vsx_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o powerpc/filter_vsx_intrinsics.lo powerpc/filter_vsx_intrinsics.c &&\
+#23 12.13 mv -f $depbase.Tpo $depbase.Plo
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwtran.lo -MD -MP -MF .deps/pngwtran.Tpo -c pngwtran.c -o pngwtran.o
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwio.lo -MD -MP -MF .deps/pngwio.Tpo -c pngwio.c -o pngwio.o
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngmem.lo -MD -MP -MF .deps/pngmem.Tpo -c pngmem.c -o pngmem.o
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngread.lo -MD -MP -MF .deps/pngread.Tpo -c pngread.c -o pngread.o
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngerror.lo -MD -MP -MF .deps/pngerror.Tpo -c pngerror.c -o pngerror.o
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrio.lo -MD -MP -MF .deps/pngrio.Tpo -c pngrio.c -o pngrio.o
+#23 12.18 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngset.lo -MD -MP -MF .deps/pngset.Tpo -c pngset.c -o pngset.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwutil.lo -MD -MP -MF .deps/pngwutil.Tpo -c pngwutil.c -o pngwutil.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT intel/filter_sse2_intrinsics.lo -MD -MP -MF intel/.deps/filter_sse2_intrinsics.Tpo -c intel/filter_sse2_intrinsics.c -o intel/filter_sse2_intrinsics.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngpread.lo -MD -MP -MF .deps/pngpread.Tpo -c pngpread.c -o pngpread.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwrite.lo -MD -MP -MF .deps/pngwrite.Tpo -c pngwrite.c -o pngwrite.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrutil.lo -MD -MP -MF .deps/pngrutil.Tpo -c pngrutil.c -o pngrutil.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT mips/mips_init.lo -MD -MP -MF mips/.deps/mips_init.Tpo -c mips/mips_init.c -o mips/mips_init.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT powerpc/powerpc_init.lo -MD -MP -MF powerpc/.deps/powerpc_init.Tpo -c powerpc/powerpc_init.c -o powerpc/powerpc_init.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT powerpc/filter_vsx_intrinsics.lo -MD -MP -MF powerpc/.deps/filter_vsx_intrinsics.Tpo -c powerpc/filter_vsx_intrinsics.c -o powerpc/filter_vsx_intrinsics.o
+#23 12.19 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngget.lo -MD -MP -MF .deps/pngget.Tpo -c pngget.c -o pngget.o
+#23 12.20 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngtrans.lo -MD -MP -MF .deps/pngtrans.Tpo -c pngtrans.c -o pngtrans.o
+#23 12.20 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT png.lo -MD -MP -MF .deps/png.Tpo -c png.c -o png.o
+#23 12.22 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT mips/filter_msa_intrinsics.lo -MD -MP -MF mips/.deps/filter_msa_intrinsics.Tpo -c mips/filter_msa_intrinsics.c -o mips/filter_msa_intrinsics.o
+#23 12.22 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT intel/intel_init.lo -MD -MP -MF intel/.deps/intel_init.Tpo -c intel/intel_init.c -o intel/intel_init.o
+#23 12.23 libtool: compile:  /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrtran.lo -MD -MP -MF .deps/pngrtran.Tpo -c pngrtran.c -o pngrtran.o
+#23 12.23 
+#23 12.23 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.23 Total Basic Blocks: 0
+#23 12.23 Instrumented Times: 0
+#23 12.23 Instrumented Basic Blocks: 0
+#23 12.23 Instrumentation Ratio: 0.00%
+#23 12.23 Total Predecessors: 0
+#23 12.23 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.23   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.23 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.23   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.23 =======================================
+#23 12.23 
+#23 12.23 
+#23 12.23 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.23 Total Basic Blocks: 0
+#23 12.23 Instrumented Times: 0
+#23 12.23 Instrumented Basic Blocks: 0
+#23 12.23 Instrumentation Ratio: 0.00%
+#23 12.23 Total Predecessors: 0
+#23 12.23 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.23   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.23   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.23 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.23   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.23   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.23 =======================================
+#23 12.23 
+#23 12.24 
+#23 12.24 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.24 Total Basic Blocks: 8
+#23 12.24 Instrumented Times: 0
+#23 12.24 Instrumented Basic Blocks: 0
+#23 12.24 Instrumentation Ratio: 0.00%
+#23 12.24 Total Predecessors: 0
+#23 12.24 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.24   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.24   Non-Instrumented BasicBlocks with 1 predecessor(s): 5
+#23 12.24   Non-Instrumented BasicBlocks with 2 predecessor(s): 1
+#23 12.24   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 =======================================
+#23 12.24 
+#23 12.24 
+#23 12.24 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.24 Total Basic Blocks: 0
+#23 12.24 Instrumented Times: 0
+#23 12.24 Instrumented Basic Blocks: 0
+#23 12.24 Instrumentation Ratio: 0.00%
+#23 12.24 Total Predecessors: 0
+#23 12.24 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.24   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.24   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 =======================================
+#23 12.24 
+#23 12.24 
+#23 12.24 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.24 Total Basic Blocks: 0
+#23 12.24 Instrumented Times: 0
+#23 12.24 Instrumented Basic Blocks: 0
+#23 12.24 Instrumentation Ratio: 0.00%
+#23 12.24 Total Predecessors: 0
+#23 12.24 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.24   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.24   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 =======================================
+#23 12.24 
+#23 12.24 
+#23 12.24 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.24 Total Basic Blocks: 95
+#23 12.24 Instrumented Times: 0
+#23 12.24 Instrumented Basic Blocks: 6
+#23 12.24 Instrumentation Ratio: 6.32%
+#23 12.24 Total Predecessors: 15
+#23 12.24 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.24   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 2 predecessor(s): 4
+#23 12.24   Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 12.24   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 12.24   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.24   Non-Instrumented BasicBlocks with 1 predecessor(s): 38
+#23 12.24   Non-Instrumented BasicBlocks with 2 predecessor(s): 15
+#23 12.24   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 12.24   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 =======================================
+#23 12.24 
+#23 12.24 
+#23 12.24 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.24 Total Basic Blocks: 0
+#23 12.24 Instrumented Times: 0
+#23 12.24 Instrumented Basic Blocks: 0
+#23 12.24 Instrumentation Ratio: 0.00%
+#23 12.24 Total Predecessors: 0
+#23 12.24 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.24   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.24   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.24   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.24 =======================================
+#23 12.24 
+#23 12.25 
+#23 12.25 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.25 Total Basic Blocks: 195
+#23 12.25 Instrumented Times: 0
+#23 12.25 Instrumented Basic Blocks: 27
+#23 12.25 Instrumentation Ratio: 13.85%
+#23 12.25 Total Predecessors: 63
+#23 12.25 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.25   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 2 predecessor(s): 21
+#23 12.25   Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 12.25   Instrumented BasicBlocks with 4 predecessor(s): 3
+#23 12.25   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.25 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.25   Non-Instrumented BasicBlocks with 1 predecessor(s): 91
+#23 12.25   Non-Instrumented BasicBlocks with 2 predecessor(s): 16
+#23 12.25   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 12.25   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 12.25   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.25 =======================================
+#23 12.25 
+#23 12.25 
+#23 12.25 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.25 Total Basic Blocks: 0
+#23 12.25 Instrumented Times: 0
+#23 12.25 Instrumented Basic Blocks: 0
+#23 12.25 Instrumentation Ratio: 0.00%
+#23 12.25 Total Predecessors: 0
+#23 12.25 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.25   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.25 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.25   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.25 =======================================
+#23 12.25 
+#23 12.25 
+#23 12.25 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.25 Total Basic Blocks: 0
+#23 12.25 Instrumented Times: 0
+#23 12.25 Instrumented Basic Blocks: 0
+#23 12.25 Instrumentation Ratio: 0.00%
+#23 12.25 Total Predecessors: 0
+#23 12.25 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.25   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.25   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.25 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.25   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.25   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.25 =======================================
+#23 12.25 
+#23 12.26 
+#23 12.26 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.26 Total Basic Blocks: 0
+#23 12.26 Instrumented Times: 0
+#23 12.26 Instrumented Basic Blocks: 0
+#23 12.26 Instrumentation Ratio: 0.00%
+#23 12.26 Total Predecessors: 0
+#23 12.26 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.26   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.26   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 =======================================
+#23 12.26 
+#23 12.26 
+#23 12.26 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.26 Total Basic Blocks: 541
+#23 12.26 Instrumented Times: 0
+#23 12.26 Instrumented Basic Blocks: 83
+#23 12.26 Instrumentation Ratio: 15.34%
+#23 12.26 Total Predecessors: 214
+#23 12.26 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.26   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 2 predecessor(s): 69
+#23 12.26   Instrumented BasicBlocks with 3 predecessor(s): 8
+#23 12.26   Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 12.26   Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 12.26   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 12.26   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 12.26 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.26   Non-Instrumented BasicBlocks with 1 predecessor(s): 303
+#23 12.26   Non-Instrumented BasicBlocks with 2 predecessor(s): 44
+#23 12.26   Non-Instrumented BasicBlocks with 3 predecessor(s): 1
+#23 12.26   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 =======================================
+#23 12.26 
+#23 12.26 
+#23 12.26 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.26 Total Basic Blocks: 640
+#23 12.26 Instrumented Times: 0
+#23 12.26 Instrumented Basic Blocks: 91
+#23 12.26 Instrumentation Ratio: 14.22%
+#23 12.26 Total Predecessors: 244
+#23 12.26 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.26   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 2 predecessor(s): 60
+#23 12.26   Instrumented BasicBlocks with 3 predecessor(s): 14
+#23 12.26   Instrumented BasicBlocks with 4 predecessor(s): 11
+#23 12.26   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 12.26   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 12.26   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 9 predecessor(s): 1
+#23 12.26   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.26   Non-Instrumented BasicBlocks with 1 predecessor(s): 290
+#23 12.26   Non-Instrumented BasicBlocks with 2 predecessor(s): 54
+#23 12.26   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 12.26   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 12.26   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 =======================================
+#23 12.26 
+#23 12.26 
+#23 12.26 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.26 Total Basic Blocks: 273
+#23 12.26 Instrumented Times: 0
+#23 12.26 Instrumented Basic Blocks: 36
+#23 12.26 Instrumentation Ratio: 13.19%
+#23 12.26 Total Predecessors: 85
+#23 12.26 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.26   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 2 predecessor(s): 27
+#23 12.26   Instrumented BasicBlocks with 3 predecessor(s): 6
+#23 12.26   Instrumented BasicBlocks with 4 predecessor(s): 2
+#23 12.26   Instrumented BasicBlocks with 5 predecessor(s): 1
+#23 12.26   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.26   Non-Instrumented BasicBlocks with 1 predecessor(s): 153
+#23 12.26   Non-Instrumented BasicBlocks with 2 predecessor(s): 31
+#23 12.26   Non-Instrumented BasicBlocks with 3 predecessor(s): 2
+#23 12.26   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.26   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.26 =======================================
+#23 12.26 
+#23 12.27 
+#23 12.27 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.27 Total Basic Blocks: 700
+#23 12.27 Instrumented Times: 0
+#23 12.27 Instrumented Basic Blocks: 92
+#23 12.27 Instrumentation Ratio: 13.14%
+#23 12.27 Total Predecessors: 256
+#23 12.27 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.27   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 2 predecessor(s): 58
+#23 12.27   Instrumented BasicBlocks with 3 predecessor(s): 10
+#23 12.27   Instrumented BasicBlocks with 4 predecessor(s): 20
+#23 12.27   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 12.27   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 12.27   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 12.27 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.27   Non-Instrumented BasicBlocks with 1 predecessor(s): 251
+#23 12.27   Non-Instrumented BasicBlocks with 2 predecessor(s): 71
+#23 12.27   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.27 =======================================
+#23 12.27 
+#23 12.27 
+#23 12.27 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.27 Total Basic Blocks: 0
+#23 12.27 Instrumented Times: 0
+#23 12.27 Instrumented Basic Blocks: 0
+#23 12.27 Instrumentation Ratio: 0.00%
+#23 12.27 Total Predecessors: 0
+#23 12.27 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.27   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.27   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.27 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.27   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.27   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.27 =======================================
+#23 12.27 
+#23 12.28 
+#23 12.28 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.28 Total Basic Blocks: 0
+#23 12.28 Instrumented Times: 0
+#23 12.28 Instrumented Basic Blocks: 0
+#23 12.28 Instrumentation Ratio: 0.00%
+#23 12.28 Total Predecessors: 0
+#23 12.28 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.28   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.28   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.28 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.28   Non-Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 2 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.28   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.28 =======================================
+#23 12.28 
+#23 12.30 
+#23 12.30 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.30 Total Basic Blocks: 1504
+#23 12.30 Instrumented Times: 0
+#23 12.30 Instrumented Basic Blocks: 238
+#23 12.30 Instrumentation Ratio: 15.82%
+#23 12.30 Total Predecessors: 536
+#23 12.30 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.30   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.30   Instrumented BasicBlocks with 2 predecessor(s): 207
+#23 12.30   Instrumented BasicBlocks with 3 predecessor(s): 17
+#23 12.30   Instrumented BasicBlocks with 4 predecessor(s): 8
+#23 12.30   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 12.30   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.30   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 12.30   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.30   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.30   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 12.30 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.30   Non-Instrumented BasicBlocks with 1 predecessor(s): 801
+#23 12.30   Non-Instrumented BasicBlocks with 2 predecessor(s): 165
+#23 12.30   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 12.30   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 12.30   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.30 =======================================
+#23 12.30 
+#23 12.30 
+#23 12.30 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.30 Total Basic Blocks: 1399
+#23 12.30 Instrumented Times: 0
+#23 12.30 Instrumented Basic Blocks: 196
+#23 12.30 Instrumentation Ratio: 14.01%
+#23 12.30 Total Predecessors: 570
+#23 12.30 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.30   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.30   Instrumented BasicBlocks with 2 predecessor(s): 147
+#23 12.30   Instrumented BasicBlocks with 3 predecessor(s): 22
+#23 12.30   Instrumented BasicBlocks with 4 predecessor(s): 10
+#23 12.30   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 12.30   Instrumented BasicBlocks with 6 predecessor(s): 2
+#23 12.30   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.30   Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 12.30   Instrumented BasicBlocks with 9 predecessor(s): 3
+#23 12.30   Instrumented BasicBlocks with >=10 predecessors: 6
+#23 12.30 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.30   Non-Instrumented BasicBlocks with 1 predecessor(s): 681
+#23 12.30   Non-Instrumented BasicBlocks with 2 predecessor(s): 104
+#23 12.30   Non-Instrumented BasicBlocks with 3 predecessor(s): 9
+#23 12.30   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.30   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.30 =======================================
+#23 12.30 
+#23 12.34 
+#23 12.34 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.34 Total Basic Blocks: 1632
+#23 12.34 Instrumented Times: 0
+#23 12.34 Instrumented Basic Blocks: 255
+#23 12.34 Instrumentation Ratio: 15.62%
+#23 12.34 Total Predecessors: 647
+#23 12.34 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.34   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.34   Instrumented BasicBlocks with 2 predecessor(s): 206
+#23 12.34   Instrumented BasicBlocks with 3 predecessor(s): 21
+#23 12.34   Instrumented BasicBlocks with 4 predecessor(s): 7
+#23 12.34   Instrumented BasicBlocks with 5 predecessor(s): 6
+#23 12.34   Instrumented BasicBlocks with 6 predecessor(s): 6
+#23 12.34   Instrumented BasicBlocks with 7 predecessor(s): 2
+#23 12.34   Instrumented BasicBlocks with 8 predecessor(s): 3
+#23 12.34   Instrumented BasicBlocks with 9 predecessor(s): 2
+#23 12.34   Instrumented BasicBlocks with >=10 predecessors: 2
+#23 12.34 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.34   Non-Instrumented BasicBlocks with 1 predecessor(s): 895
+#23 12.34   Non-Instrumented BasicBlocks with 2 predecessor(s): 122
+#23 12.34   Non-Instrumented BasicBlocks with 3 predecessor(s): 3
+#23 12.34   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.34   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 12.34   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.34   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.34   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.34   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.34   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.34 =======================================
+#23 12.34 
+#23 12.36 
+#23 12.36 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 12.36 Total Basic Blocks: 1831
+#23 12.36 Instrumented Times: 0
+#23 12.36 Instrumented Basic Blocks: 320
+#23 12.36 Instrumentation Ratio: 17.48%
+#23 12.36 Total Predecessors: 741
+#23 12.36 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.36   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.36   Instrumented BasicBlocks with 2 predecessor(s): 257
+#23 12.36   Instrumented BasicBlocks with 3 predecessor(s): 39
+#23 12.36   Instrumented BasicBlocks with 4 predecessor(s): 16
+#23 12.36   Instrumented BasicBlocks with 5 predecessor(s): 3
+#23 12.36   Instrumented BasicBlocks with 6 predecessor(s): 4
+#23 12.36   Instrumented BasicBlocks with 7 predecessor(s): 1
+#23 12.36   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.36   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.36   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.36 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.36   Non-Instrumented BasicBlocks with 1 predecessor(s): 965
+#23 12.36   Non-Instrumented BasicBlocks with 2 predecessor(s): 165
+#23 12.36   Non-Instrumented BasicBlocks with 3 predecessor(s): 4
+#23 12.36   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 12.36   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 12.36   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.36   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.36   Non-Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 12.36   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.36   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.36 =======================================
+#23 12.36 
+#23 12.46 /bin/bash ./libtool  --tag=CC   --mode=link /magma/fuzzers/aflplusplus_entropy/repo/afl-clang-fast  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -no-undefined -export-dynamic -version-number 16:38:0  -Wl,--version-script=libpng.vers  -L/magma_out -g -L/magma_out/afl -o libpng16.la -rpath /usr/local/lib png.lo pngerror.lo pngget.lo pngmem.lo pngpread.lo pngread.lo pngrio.lo pngrtran.lo pngrutil.lo pngset.lo pngtrans.lo pngwio.lo pngwrite.lo pngwtran.lo pngwutil.lo  mips/mips_init.lo mips/filter_msa_intrinsics.lo intel/intel_init.lo intel/filter_sse2_intrinsics.lo powerpc/powerpc_init.lo powerpc/filter_vsx_intrinsics.lo   -lm -lz -lm -l:magma.o -lrt -lc++ -lc++abi /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a
+#23 12.60 
+#23 12.60 *** Warning: Linking the shared library libpng16.la against the
+#23 12.60 *** static library /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 12.63 libtool: link: /usr/bin/ar cru .libs/libpng16.a /magma/fuzzers/aflplusplus_entropy/repo/utils/aflpp_driver/libAFLDriver.a  png.o pngerror.o pngget.o pngmem.o pngpread.o pngread.o pngrio.o pngrtran.o pngrutil.o pngset.o pngtrans.o pngwio.o pngwrite.o pngwtran.o pngwutil.o mips/mips_init.o mips/filter_msa_intrinsics.o intel/intel_init.o intel/filter_sse2_intrinsics.o powerpc/powerpc_init.o powerpc/filter_vsx_intrinsics.o
+#23 12.63 /usr/bin/ar: `u' modifier ignored since `D' is the default (see `U')
+#23 12.65 libtool: link: /usr/bin/ranlib .libs/libpng16.a
+#23 12.69 libtool: link: ( cd ".libs" && rm -f "libpng16.la" && ln -s "../libpng16.la" "libpng16.la" )
+#23 13.46 
+#23 13.46 === AFL++ LLVM_MODE Instrumentation Statistics ===
+#23 13.46 Total Basic Blocks: 333
+#23 13.46 Instrumented Times: 0
+#23 13.46 Instrumented Basic Blocks: 22
+#23 13.46 Instrumentation Ratio: 6.61%
+#23 13.46 Total Predecessors: 96
+#23 13.46 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 13.46   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with 2 predecessor(s): 20
+#23 13.46   Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 13.46   Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with 8 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 13.46   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 13.46 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 13.46   Non-Instrumented BasicBlocks with 1 predecessor(s): 170
+#23 13.46   Non-Instrumented BasicBlocks with 2 predecessor(s): 26
+#23 13.46   Non-Instrumented BasicBlocks with 3 predecessor(s): 0
+#23 13.46   Non-Instrumented BasicBlocks with 4 predecessor(s): 0
+#23 13.46   Non-Instrumented BasicBlocks with 5 predecessor(s): 0
+#23 13.46   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 13.46   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 13.46   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 13.46   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 13.46   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 13.46 =======================================
+#23 13.46 
+#23 DONE 13.6s
+
+#24 exporting to image
+#24 exporting layers
+#24 exporting layers 0.2s done
+#24 writing image sha256:66d281cd12e675da4bb3a2ee39292cba9c8447d9cd19008bc70cdb5f32b26fe2 done
+#24 naming to docker.io/magma/aflplusplus_entropy/libpng done
+#24 DONE 0.2s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 96)
++ set +x
+magma/aflplusplus_entropy/libpng

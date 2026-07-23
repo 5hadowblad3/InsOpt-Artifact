@@ -1,0 +1,804 @@
+++ id -u yfhong
+++ id -g yfhong
++ docker build -t magma/aflplusplus_lto_entropy/libpng --build-arg fuzzer_name=aflplusplus_lto_entropy --build-arg target_name=libpng --build-arg USER_ID=1003 --build-arg GROUP_ID=1003 --build-arg canaries=1 -f /data1/yifan/yf-docker/magma/docker/Dockerfile /data1/yifan/yf-docker/magma
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.63kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:18.04
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 47B done
+#3 DONE 0.0s
+
+#4 [ 1/19] FROM docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98
+#4 resolve docker.io/library/ubuntu:18.04@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 48.01MB 0.3s done
+#5 DONE 0.3s
+
+#6 [ 8/19] RUN /magma/magma/preinstall.sh
+#6 CACHED
+
+#7 [14/19] RUN mkdir -p /magma/targets/libpng && chown magma:magma /magma/targets/libpng
+#7 CACHED
+
+#8 [ 4/19] RUN	ECHO "magma:amgam" | chpasswd && usermod -a -G sudo magma
+#8 CACHED
+
+#9 [12/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/preinstall.sh &&     chown -R magma:magma /magma/fuzzers/aflplusplus_lto_entropy &&     chmod -R 777 /magma/fuzzers/aflplusplus_lto_entropy
+#9 CACHED
+
+#10 [13/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/build.sh
+#10 CACHED
+
+#11 [17/19] RUN /magma/targets/libpng/fetch.sh
+#11 CACHED
+
+#12 [ 3/19] RUN mkdir -p /home && 	groupadd -g 1003 magma && 	useradd -l -u 1003 -K UMASK=0000 -d /home -g magma magma && 	chown magma:magma /home
+#12 CACHED
+
+#13 [15/19] COPY --chown=magma:magma .//targets/libpng /magma/targets/libpng/
+#13 CACHED
+
+#14 [ 7/19] COPY --chown=magma:magma .//magma /magma/magma/
+#14 CACHED
+
+#15 [11/19] COPY --chown=magma:magma .//fuzzers/aflplusplus_lto_entropy /magma/fuzzers/aflplusplus_lto_entropy/
+#15 CACHED
+
+#16 [16/19] RUN /magma/targets/libpng/preinstall.sh
+#16 CACHED
+
+#17 [ 5/19] RUN mkdir -p /magma_shared /magma_out && 	chown magma:magma /magma_shared /magma_out && 	chmod 744 /magma_shared /magma_out
+#17 CACHED
+
+#18 [10/19] RUN mkdir -p /magma/fuzzers/aflplusplus_lto_entropy && chown magma:magma /magma/fuzzers/aflplusplus_lto_entropy
+#18 CACHED
+
+#19 [ 9/19] RUN /magma/magma/prebuild.sh
+#19 CACHED
+
+#20 [ 6/19] RUN mkdir -p /magma/magma && chown magma:magma /magma/magma
+#20 CACHED
+
+#21 [ 2/19] RUN apt-get update && apt-get install -y sudo
+#21 CACHED
+
+#22 [18/19] RUN /magma/magma/apply_patches.sh
+#22 CACHED
+
+#23 [19/19] RUN /magma/fuzzers/aflplusplus_lto_entropy/instrument.sh
+#23 3.690 libtoolize: putting auxiliary files in '.'.
+#23 3.690 libtoolize: copying file './ltmain.sh'
+#23 3.723 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'scripts'.
+#23 3.723 libtoolize: copying file 'scripts/libtool.m4'
+#23 3.737 libtoolize: copying file 'scripts/ltoptions.m4'
+#23 3.759 libtoolize: copying file 'scripts/ltsugar.m4'
+#23 3.782 libtoolize: copying file 'scripts/ltversion.m4'
+#23 3.797 libtoolize: copying file 'scripts/lt~obsolete.m4'
+#23 6.769 configure.ac:61: installing './compile'
+#23 6.778 configure.ac:37: installing './missing'
+#23 6.819 Makefile.am: installing './depcomp'
+#23 7.080 checking for a BSD-compatible install... /usr/bin/install -c
+#23 7.091 checking whether build environment is sane... yes
+#23 7.106 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 7.108 checking for gawk... no
+#23 7.109 checking for mawk... mawk
+#23 7.109 checking whether make sets $(MAKE)... yes
+#23 7.126 checking whether make supports nested variables... yes
+#23 7.139 checking whether to enable maintainer-specific portions of Makefiles... no
+#23 7.140 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 7.308 checking whether the C compiler works... yes
+#23 7.396 checking for C compiler default output file name... a.out
+#23 7.397 checking for suffix of executables... 
+#23 7.484 checking whether we are cross compiling... no
+#23 7.569 checking for suffix of object files... o
+#23 7.607 checking whether we are using the GNU C compiler... yes
+#23 7.639 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 7.673 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 7.713 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 7.775 checking for style of include used by make... GNU
+#23 7.779 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 7.828 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 7.889 checking build system type... x86_64-pc-linux-gnu
+#23 7.947 checking host system type... x86_64-pc-linux-gnu
+#23 7.947 checking for a sed that does not truncate output... /bin/sed
+#23 7.955 checking for grep that handles long lines and -e... /bin/grep
+#23 7.957 checking for egrep... /bin/grep -E
+#23 7.959 checking for fgrep... /bin/grep -F
+#23 7.960 checking how to print strings... printf
+#23 7.982 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 8.009 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 8.024 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 8.186 checking for gawk... (cached) mawk
+#23 8.186 checking whether ln -s works... yes
+#23 8.186 checking whether make sets $(MAKE)... (cached) yes
+#23 8.190 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 8.190 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 8.249 checking the maximum length of command line arguments... 1572864
+#23 8.257 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 8.257 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 8.257 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 8.257 checking for objdump... objdump
+#23 8.257 checking how to recognize dependent libraries... pass_all
+#23 8.258 checking for dlltool... no
+#23 8.258 checking how to associate runtime and link libraries... printf %s\n
+#23 8.259 checking for archiver @FILE support... @
+#23 8.324 checking for strip... strip
+#23 8.325 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 8.325 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 8.510 checking for sysroot... no
+#23 8.510 checking for a working dd... /bin/dd
+#23 8.515 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 8.560 checking for mt... no
+#23 8.561 checking if : is a manifest tool... no
+#23 8.567 checking for ANSI C header files... yes
+#23 8.781 checking for sys/types.h... yes
+#23 8.828 checking for sys/stat.h... yes
+#23 8.876 checking for stdlib.h... yes
+#23 8.923 checking for string.h... yes
+#23 8.973 checking for memory.h... yes
+#23 9.037 checking for strings.h... yes
+#23 9.096 checking for inttypes.h... yes
+#23 9.142 checking for stdint.h... yes
+#23 9.206 checking for unistd.h... yes
+#23 9.261 checking for dlfcn.h... yes
+#23 9.304 checking for objdir... .libs
+#23 9.445 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 9.495 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 9.495 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 9.533 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 9.637 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 9.696 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 9.697 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 9.780 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 9.943 checking how to hardcode library paths into programs... immediate
+#23 9.943 checking whether stripping libraries is possible... yes
+#23 9.945 checking if libtool supports shared libraries... yes
+#23 9.945 checking whether to build shared libraries... no
+#23 9.945 checking whether to build static libraries... yes
+#23 9.946 checking that AWK works... ok
+#23 9.949 checking if we need to force back C standard to C89... no
+#23 9.984 checking for ANSI C header files... (cached) yes
+#23 9.984 checking for an ANSI C-conforming const... yes
+#23 10.03 checking for size_t... yes
+#23 10.14 checking whether struct tm is in sys/time.h or time.h... time.h
+#23 10.19 checking for C/C++ restrict keyword... __restrict
+#23 10.23 checking for working strtod... yes
+#23 10.35 checking for pow... no
+#23 10.46 checking for pow in -lm... yes
+#23 10.57 checking for clock_gettime... yes
+#23 10.67 checking for zlibVersion in -lz... yes
+#23 10.78 checking for feenableexcept in -lm... yes
+#23 10.89 checking for feenableexcept... yes
+#23 10.99 checking if using Solaris linker... no
+#23 11.01 checking if libraries can be versioned... yes
+#23 11.03 checking for symbol prefix... 
+#23 11.06 configure: pkgconfig directory is ${libdir}/pkgconfig
+#23 11.06 configure: Extra options for compiler: 
+#23 11.08 checking that generated files are newer than configure... done
+#23 11.08 configure: creating ./config.status
+#23 11.57 config.status: creating Makefile
+#23 11.59 config.status: creating libpng.pc
+#23 11.60 config.status: creating libpng-config
+#23 11.61 config.status: creating config.h
+#23 11.62 config.status: executing depfiles commands
+#23 11.71 config.status: executing libtool commands
+#23 11.75 test -z "*.tf? pngout.png libpng16.pc libpng16-config libpng.vers libpng.sym check.new pnglibconf.h pngprefix.h symbols.new pngtest-log.txt pnglibconf.out pnglibconf.c pnglibconf.pre pnglibconf.dfn scripts/*.out scripts/*.chk" || rm -f *.tf? pngout.png libpng16.pc libpng16-config libpng.vers libpng.sym check.new pnglibconf.h pngprefix.h symbols.new pngtest-log.txt pnglibconf.out pnglibconf.c pnglibconf.pre pnglibconf.dfn scripts/*.out scripts/*.chk
+#23 11.75 test -z "libpng16.la" || rm -f libpng16.la
+#23 11.75 rm -rf .libs _libs
+#23 11.75 rm -f *.o
+#23 11.75 test -z "tests/pngtest-all.log tests/pngvalid-gamma-16-to-8.log tests/pngvalid-gamma-alpha-mode.log tests/pngvalid-gamma-background.log tests/pngvalid-gamma-expand16-alpha-mode.log tests/pngvalid-gamma-expand16-background.log tests/pngvalid-gamma-expand16-transform.log tests/pngvalid-gamma-sbit.log tests/pngvalid-gamma-threshold.log tests/pngvalid-gamma-transform.log tests/pngvalid-progressive-size.log tests/pngvalid-progressive-interlace-standard.log tests/pngvalid-transform.log tests/pngvalid-progressive-standard.log tests/pngvalid-standard.log tests/pngstest-1.8.log tests/pngstest-1.8-alpha.log tests/pngstest-linear.log tests/pngstest-linear-alpha.log tests/pngstest-none.log tests/pngstest-none-alpha.log tests/pngstest-sRGB.log tests/pngstest-sRGB-alpha.log tests/pngunknown-IDAT.log tests/pngunknown-discard.log tests/pngunknown-if-safe.log tests/pngunknown-sAPI.log tests/pngunknown-sTER.log tests/pngunknown-save.log tests/pngunknown-vpAg.log tests/pngimage-quick.log tests/pngimage-full.log" || rm -f tests/pngtest-all.log tests/pngvalid-gamma-16-to-8.log tests/pngvalid-gamma-alpha-mode.log tests/pngvalid-gamma-background.log tests/pngvalid-gamma-expand16-alpha-mode.log tests/pngvalid-gamma-expand16-background.log tests/pngvalid-gamma-expand16-transform.log tests/pngvalid-gamma-sbit.log tests/pngvalid-gamma-threshold.log tests/pngvalid-gamma-transform.log tests/pngvalid-progressive-size.log tests/pngvalid-progressive-interlace-standard.log tests/pngvalid-transform.log tests/pngvalid-progressive-standard.log tests/pngvalid-standard.log tests/pngstest-1.8.log tests/pngstest-1.8-alpha.log tests/pngstest-linear.log tests/pngstest-linear-alpha.log tests/pngstest-none.log tests/pngstest-none-alpha.log tests/pngstest-sRGB.log tests/pngstest-sRGB-alpha.log tests/pngunknown-IDAT.log tests/pngunknown-discard.log tests/pngunknown-if-safe.log tests/pngunknown-sAPI.log tests/pngunknown-sTER.log tests/pngunknown-save.log tests/pngunknown-vpAg.log tests/pngimage-quick.log tests/pngimage-full.log
+#23 11.75 rm -f *.lo
+#23 11.75  rm -f pngfix png-fix-itxt
+#23 11.75  rm -f pngtest pngunknown pngstest pngvalid pngimage pngcp timepng
+#23 11.75 rm -rf arm/.libs arm/_libs
+#23 11.75 rm -f arm/*.o
+#23 11.75 test -z "tests/pngtest-all.trs tests/pngvalid-gamma-16-to-8.trs tests/pngvalid-gamma-alpha-mode.trs tests/pngvalid-gamma-background.trs tests/pngvalid-gamma-expand16-alpha-mode.trs tests/pngvalid-gamma-expand16-background.trs tests/pngvalid-gamma-expand16-transform.trs tests/pngvalid-gamma-sbit.trs tests/pngvalid-gamma-threshold.trs tests/pngvalid-gamma-transform.trs tests/pngvalid-progressive-size.trs tests/pngvalid-progressive-interlace-standard.trs tests/pngvalid-transform.trs tests/pngvalid-progressive-standard.trs tests/pngvalid-standard.trs tests/pngstest-1.8.trs tests/pngstest-1.8-alpha.trs tests/pngstest-linear.trs tests/pngstest-linear-alpha.trs tests/pngstest-none.trs tests/pngstest-none-alpha.trs tests/pngstest-sRGB.trs tests/pngstest-sRGB-alpha.trs tests/pngunknown-IDAT.trs tests/pngunknown-discard.trs tests/pngunknown-if-safe.trs tests/pngunknown-sAPI.trs tests/pngunknown-sTER.trs tests/pngunknown-save.trs tests/pngunknown-vpAg.trs tests/pngimage-quick.trs tests/pngimage-full.trs" || rm -f tests/pngtest-all.trs tests/pngvalid-gamma-16-to-8.trs tests/pngvalid-gamma-alpha-mode.trs tests/pngvalid-gamma-background.trs tests/pngvalid-gamma-expand16-alpha-mode.trs tests/pngvalid-gamma-expand16-background.trs tests/pngvalid-gamma-expand16-transform.trs tests/pngvalid-gamma-sbit.trs tests/pngvalid-gamma-threshold.trs tests/pngvalid-gamma-transform.trs tests/pngvalid-progressive-size.trs tests/pngvalid-progressive-interlace-standard.trs tests/pngvalid-transform.trs tests/pngvalid-progressive-standard.trs tests/pngvalid-standard.trs tests/pngstest-1.8.trs tests/pngstest-1.8-alpha.trs tests/pngstest-linear.trs tests/pngstest-linear-alpha.trs tests/pngstest-none.trs tests/pngstest-none-alpha.trs tests/pngstest-sRGB.trs tests/pngstest-sRGB-alpha.trs tests/pngunknown-IDAT.trs tests/pngunknown-discard.trs tests/pngunknown-if-safe.trs tests/pngunknown-sAPI.trs tests/pngunknown-sTER.trs tests/pngunknown-save.trs tests/pngunknown-vpAg.trs tests/pngimage-quick.trs tests/pngimage-full.trs
+#23 11.75 rm -rf intel/.libs intel/_libs
+#23 11.75 rm -f arm/*.lo
+#23 11.75 test -z "test-suite.log" || rm -f test-suite.log
+#23 11.75 rm -f ./so_locations
+#23 11.75 rm -rf mips/.libs mips/_libs
+#23 11.75 rm -f contrib/libtests/*.o
+#23 11.76 rm -rf powerpc/.libs powerpc/_libs
+#23 11.76 rm -f contrib/tools/*.o
+#23 11.76 rm -f intel/*.o
+#23 11.76 rm -f intel/*.lo
+#23 11.76 rm -f mips/*.o
+#23 11.76 rm -f mips/*.lo
+#23 11.77 rm -f powerpc/*.o
+#23 11.77 rm -f powerpc/*.lo
+#23 11.77 rm -f pnglibconf.c pnglibconf.tf[45]
+#23 11.78 mawk -f ./scripts/options.awk out=pnglibconf.tf4 version=search\
+#23 11.78     ./pngconf.h ./scripts/pnglibconf.dfa\
+#23 11.78     ./pngusr.dfa  1>&2
+#23 11.78 mawk -f ./scripts/options.awk out=pnglibconf.tf5 pnglibconf.tf4 1>&2
+#23 11.79 rm pnglibconf.tf4
+#23 11.79 mv pnglibconf.tf5 pnglibconf.c
+#23 11.79 rm -f pnglibconf.out pnglibconf.tf[12]
+#23 11.79 test -d scripts || mkdir scripts || test -d scripts
+#23 11.80 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 11.80      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' pnglibconf.c > pnglibconf.tf1
+#23 11.83 mawk -f "./scripts/dfn.awk" out="pnglibconf.tf2" pnglibconf.tf1 1>&2
+#23 11.84 rm -f pnglibconf.tf1
+#23 11.84 mv pnglibconf.tf2 pnglibconf.out
+#23 11.84 rm -f scripts/prefix.out scripts/prefix.tf[12]
+#23 11.84 test -d scripts || mkdir scripts || test -d scripts
+#23 11.84 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 11.84      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/prefix.c > scripts/prefix.tf1
+#23 11.87 mawk -f "./scripts/dfn.awk" out="scripts/prefix.tf2" scripts/prefix.tf1 1>&2
+#23 11.88 rm -f scripts/prefix.tf1
+#23 11.88 mv scripts/prefix.tf2 scripts/prefix.out
+#23 11.88 rm -f pnglibconf.h
+#23 11.89 mawk 's==0 && NR>1{print prev}\
+#23 11.89    s==0{prev=$0}\
+#23 11.89    s==1{print "#define", $1, "MAGMA_" $1}\
+#23 11.89    s==2{print "#define MAGMA_png_" $1, "PNG_" $1}\
+#23 11.89    END{print prev}' s=0 pnglibconf.out s=1 scripts/prefix.out\
+#23 11.89    s=2 ./scripts/macro.lst >pnglibconf.tf8
+#23 11.89 mv pnglibconf.tf8 pnglibconf.h
+#23 11.89 rm -f scripts/intprefix.out scripts/intprefix.tf[12]
+#23 11.89 rm -f scripts/vers.out scripts/vers.tf[12]
+#23 11.89 test -d scripts || mkdir scripts || test -d scripts
+#23 11.89 test -d scripts || mkdir scripts || test -d scripts
+#23 11.90 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 11.90      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/intprefix.c > scripts/intprefix.tf1
+#23 11.90 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 11.90      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/vers.c > scripts/vers.tf1
+#23 11.92 mawk -f "./scripts/dfn.awk" out="scripts/vers.tf2" scripts/vers.tf1 1>&2
+#23 11.93 rm -f scripts/vers.tf1
+#23 11.93 mv scripts/vers.tf2 scripts/vers.out
+#23 11.93 rm -f libpng.vers
+#23 11.93 mawk -f "./scripts/dfn.awk" out="scripts/intprefix.tf2" scripts/intprefix.tf1 1>&2
+#23 11.93 cp scripts/vers.out libpng.vers
+#23 11.94 rm -f scripts/intprefix.tf1
+#23 11.94 mv scripts/intprefix.tf2 scripts/intprefix.out
+#23 11.94 rm -f pngprefix.tf1
+#23 11.94 mawk '{print "#define", $1, "MAGMA_" $1}' scripts/intprefix.out >pngprefix.tf1
+#23 11.95 mv pngprefix.tf1 pngprefix.h
+#23 11.95 depbase=`echo png.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT png.lo -MD -MP -MF $depbase.Tpo -c -o png.lo png.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngerror.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngerror.lo -MD -MP -MF $depbase.Tpo -c -o pngerror.lo pngerror.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngget.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngget.lo -MD -MP -MF $depbase.Tpo -c -o pngget.lo pngget.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngmem.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngmem.lo -MD -MP -MF $depbase.Tpo -c -o pngmem.lo pngmem.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngpread.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngpread.lo -MD -MP -MF $depbase.Tpo -c -o pngpread.lo pngpread.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngread.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngread.lo -MD -MP -MF $depbase.Tpo -c -o pngread.lo pngread.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngrio.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrio.lo -MD -MP -MF $depbase.Tpo -c -o pngrio.lo pngrio.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngrtran.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrtran.lo -MD -MP -MF $depbase.Tpo -c -o pngrtran.lo pngrtran.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngrutil.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrutil.lo -MD -MP -MF $depbase.Tpo -c -o pngrutil.lo pngrutil.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngset.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngset.lo -MD -MP -MF $depbase.Tpo -c -o pngset.lo pngset.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngtrans.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngtrans.lo -MD -MP -MF $depbase.Tpo -c -o pngtrans.lo pngtrans.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngwio.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwio.lo -MD -MP -MF $depbase.Tpo -c -o pngwio.lo pngwio.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngwrite.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwrite.lo -MD -MP -MF $depbase.Tpo -c -o pngwrite.lo pngwrite.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngwtran.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwtran.lo -MD -MP -MF $depbase.Tpo -c -o pngwtran.lo pngwtran.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo pngwutil.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwutil.lo -MD -MP -MF $depbase.Tpo -c -o pngwutil.lo pngwutil.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo mips/mips_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT mips/mips_init.lo -MD -MP -MF $depbase.Tpo -c -o mips/mips_init.lo mips/mips_init.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo mips/filter_msa_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT mips/filter_msa_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o mips/filter_msa_intrinsics.lo mips/filter_msa_intrinsics.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo intel/intel_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT intel/intel_init.lo -MD -MP -MF $depbase.Tpo -c -o intel/intel_init.lo intel/intel_init.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo intel/filter_sse2_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT intel/filter_sse2_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o intel/filter_sse2_intrinsics.lo intel/filter_sse2_intrinsics.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo powerpc/powerpc_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT powerpc/powerpc_init.lo -MD -MP -MF $depbase.Tpo -c -o powerpc/powerpc_init.lo powerpc/powerpc_init.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.95 depbase=`echo powerpc/filter_vsx_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 11.95 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT powerpc/filter_vsx_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o powerpc/filter_vsx_intrinsics.lo powerpc/filter_vsx_intrinsics.c &&\
+#23 11.95 mv -f $depbase.Tpo $depbase.Plo
+#23 11.99 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngmem.lo -MD -MP -MF .deps/pngmem.Tpo -c pngmem.c -o pngmem.o
+#23 11.99 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngpread.lo -MD -MP -MF .deps/pngpread.Tpo -c pngpread.c -o pngpread.o
+#23 11.99 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwrite.lo -MD -MP -MF .deps/pngwrite.Tpo -c pngwrite.c -o pngwrite.o
+#23 11.99 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrutil.lo -MD -MP -MF .deps/pngrutil.Tpo -c pngrutil.c -o pngrutil.o
+#23 11.99 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT intel/filter_sse2_intrinsics.lo -MD -MP -MF intel/.deps/filter_sse2_intrinsics.Tpo -c intel/filter_sse2_intrinsics.c -o intel/filter_sse2_intrinsics.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngerror.lo -MD -MP -MF .deps/pngerror.Tpo -c pngerror.c -o pngerror.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngread.lo -MD -MP -MF .deps/pngread.Tpo -c pngread.c -o pngread.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT png.lo -MD -MP -MF .deps/png.Tpo -c png.c -o png.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrio.lo -MD -MP -MF .deps/pngrio.Tpo -c pngrio.c -o pngrio.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwtran.lo -MD -MP -MF .deps/pngwtran.Tpo -c pngwtran.c -o pngwtran.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngget.lo -MD -MP -MF .deps/pngget.Tpo -c pngget.c -o pngget.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngset.lo -MD -MP -MF .deps/pngset.Tpo -c pngset.c -o pngset.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrtran.lo -MD -MP -MF .deps/pngrtran.Tpo -c pngrtran.c -o pngrtran.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngtrans.lo -MD -MP -MF .deps/pngtrans.Tpo -c pngtrans.c -o pngtrans.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT mips/mips_init.lo -MD -MP -MF mips/.deps/mips_init.Tpo -c mips/mips_init.c -o mips/mips_init.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT powerpc/powerpc_init.lo -MD -MP -MF powerpc/.deps/powerpc_init.Tpo -c powerpc/powerpc_init.c -o powerpc/powerpc_init.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwutil.lo -MD -MP -MF .deps/pngwutil.Tpo -c pngwutil.c -o pngwutil.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT intel/intel_init.lo -MD -MP -MF intel/.deps/intel_init.Tpo -c intel/intel_init.c -o intel/intel_init.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT mips/filter_msa_intrinsics.lo -MD -MP -MF mips/.deps/filter_msa_intrinsics.Tpo -c mips/filter_msa_intrinsics.c -o mips/filter_msa_intrinsics.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwio.lo -MD -MP -MF .deps/pngwio.Tpo -c pngwio.c -o pngwio.o
+#23 12.00 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT powerpc/filter_vsx_intrinsics.lo -MD -MP -MF powerpc/.deps/filter_vsx_intrinsics.Tpo -c powerpc/filter_vsx_intrinsics.c -o powerpc/filter_vsx_intrinsics.o
+#23 12.14 /bin/bash ./libtool  --tag=CC   --mode=link /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -no-undefined -export-dynamic -version-number 16:38:0  -Wl,--version-script=libpng.vers  -L/magma_out -g -L/magma_out/afl -o libpng16.la -rpath /usr/local/lib png.lo pngerror.lo pngget.lo pngmem.lo pngpread.lo pngread.lo pngrio.lo pngrtran.lo pngrutil.lo pngset.lo pngtrans.lo pngwio.lo pngwrite.lo pngwtran.lo pngwutil.lo  mips/mips_init.lo mips/filter_msa_intrinsics.lo intel/intel_init.lo intel/filter_sse2_intrinsics.lo powerpc/powerpc_init.lo powerpc/filter_vsx_intrinsics.lo   -lm -lz -lm -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a
+#23 12.23 
+#23 12.23 *** Warning: Linking the shared library libpng16.la against the
+#23 12.23 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 12.25 libtool: link: /usr/lib/llvm-18/bin/llvm-ar cru .libs/libpng16.a /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a  png.o pngerror.o pngget.o pngmem.o pngpread.o pngread.o pngrio.o pngrtran.o pngrutil.o pngset.o pngtrans.o pngwio.o pngwrite.o pngwtran.o pngwutil.o mips/mips_init.o mips/filter_msa_intrinsics.o intel/intel_init.o intel/filter_sse2_intrinsics.o powerpc/powerpc_init.o powerpc/filter_vsx_intrinsics.o
+#23 12.27 libtool: link: /usr/lib/llvm-18/bin/llvm-ranlib .libs/libpng16.a
+#23 12.30 libtool: link: ( cd ".libs" && rm -f "libpng16.la" && ln -s "../libpng16.la" "libpng16.la" )
+#23 12.44 ld.lld: warning: .libs/libpng16.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 12.53 
+#23 12.53 === AFL++ LTO Instrumentation Statistics ===
+#23 12.53 Total Basic Blocks: 5665
+#23 12.53 Instrumented Times: 0
+#23 12.53 Instrumented Basic Blocks: 856
+#23 12.53 Instrumentation Ratio: 15.11%
+#23 12.53 Total Predecessors: 2214
+#23 12.53 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 12.53   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 12.53   Instrumented BasicBlocks with 2 predecessor(s): 672
+#23 12.53   Instrumented BasicBlocks with 3 predecessor(s): 90
+#23 12.53   Instrumented BasicBlocks with 4 predecessor(s): 45
+#23 12.53   Instrumented BasicBlocks with 5 predecessor(s): 13
+#23 12.53   Instrumented BasicBlocks with 6 predecessor(s): 12
+#23 12.53   Instrumented BasicBlocks with 7 predecessor(s): 5
+#23 12.53   Instrumented BasicBlocks with 8 predecessor(s): 5
+#23 12.53   Instrumented BasicBlocks with 9 predecessor(s): 5
+#23 12.53   Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.53 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 12.53   Non-Instrumented BasicBlocks with 1 predecessor(s): 2946
+#23 12.53   Non-Instrumented BasicBlocks with 2 predecessor(s): 491
+#23 12.53   Non-Instrumented BasicBlocks with 3 predecessor(s): 17
+#23 12.53   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 12.53   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 12.53   Non-Instrumented BasicBlocks with 6 predecessor(s): 0
+#23 12.53   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 12.53   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 12.53   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 12.53   Non-Instrumented BasicBlocks with >=10 predecessors: 0
+#23 12.53 Average Global Entropy: 2.20
+#23 12.53 =======================================
+#23 12.53 
+#23 12.94 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 12.94 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 12.94 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 12.97 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 12.97 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 12.97 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 16.10 libtoolize: putting auxiliary files in '.'.
+#23 16.10 libtoolize: copying file './ltmain.sh'
+#23 16.13 libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'scripts'.
+#23 16.13 libtoolize: copying file 'scripts/libtool.m4'
+#23 16.14 libtoolize: copying file 'scripts/ltoptions.m4'
+#23 16.15 libtoolize: copying file 'scripts/ltsugar.m4'
+#23 16.16 libtoolize: copying file 'scripts/ltversion.m4'
+#23 16.18 libtoolize: copying file 'scripts/lt~obsolete.m4'
+#23 18.85 configure.ac:61: installing './compile'
+#23 18.86 configure.ac:37: installing './missing'
+#23 18.90 Makefile.am: installing './depcomp'
+#23 19.13 checking for a BSD-compatible install... /usr/bin/install -c
+#23 19.14 checking whether build environment is sane... yes
+#23 19.15 checking for a thread-safe mkdir -p... /bin/mkdir -p
+#23 19.15 checking for gawk... no
+#23 19.15 checking for mawk... mawk
+#23 19.15 checking whether make sets $(MAKE)... yes
+#23 19.17 checking whether make supports nested variables... yes
+#23 19.18 checking whether to enable maintainer-specific portions of Makefiles... no
+#23 19.18 checking for gcc... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto
+#23 19.34 checking whether the C compiler works... yes
+#23 19.45 checking for C compiler default output file name... a.out
+#23 19.45 checking for suffix of executables... 
+#23 19.56 checking whether we are cross compiling... no
+#23 19.68 checking for suffix of object files... o
+#23 19.72 checking whether we are using the GNU C compiler... yes
+#23 19.76 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto accepts -g... yes
+#23 19.80 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to accept ISO C89... none needed
+#23 19.85 checking whether /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto understands -c and -o together... yes
+#23 19.92 checking for style of include used by make... GNU
+#23 19.93 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 19.98 checking dependency style of /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... gcc3
+#23 20.05 checking build system type... x86_64-pc-linux-gnu
+#23 20.13 checking host system type... x86_64-pc-linux-gnu
+#23 20.13 checking for a sed that does not truncate output... /bin/sed
+#23 20.13 checking for grep that handles long lines and -e... /bin/grep
+#23 20.13 checking for egrep... /bin/grep -E
+#23 20.14 checking for fgrep... /bin/grep -F
+#23 20.14 checking how to print strings... printf
+#23 20.17 checking for ld used by /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto... /usr/lib/llvm-18/bin/ld.lld
+#23 20.20 checking if the linker (/usr/lib/llvm-18/bin/ld.lld) is GNU ld... yes
+#23 20.22 checking how to run the C preprocessor... /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E
+#23 20.36 checking for gawk... (cached) mawk
+#23 20.36 checking whether ln -s works... yes
+#23 20.36 checking whether make sets $(MAKE)... (cached) yes
+#23 20.36 checking for BSD- or MS-compatible name lister (nm)... /usr/lib/llvm-18/bin/llvm-nm
+#23 20.36 checking the name lister (/usr/lib/llvm-18/bin/llvm-nm) interface... BSD nm
+#23 20.42 checking the maximum length of command line arguments... 1572864
+#23 20.43 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+#23 20.43 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+#23 20.43 checking for /usr/lib/llvm-18/bin/ld.lld option to reload object files... -r
+#23 20.43 checking for objdump... objdump
+#23 20.43 checking how to recognize dependent libraries... pass_all
+#23 20.43 checking for dlltool... no
+#23 20.43 checking how to associate runtime and link libraries... printf %s\n
+#23 20.43 checking for archiver @FILE support... @
+#23 20.51 checking for strip... strip
+#23 20.51 checking for ranlib... /usr/lib/llvm-18/bin/llvm-ranlib
+#23 20.51 checking command to parse /usr/lib/llvm-18/bin/llvm-nm output from /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto object... ok
+#23 20.70 checking for sysroot... no
+#23 20.70 checking for a working dd... /bin/dd
+#23 20.71 checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+#23 20.75 checking for mt... no
+#23 20.75 checking if : is a manifest tool... no
+#23 20.76 checking for ANSI C header files... yes
+#23 20.99 checking for sys/types.h... yes
+#23 21.05 checking for sys/stat.h... yes
+#23 21.10 checking for stdlib.h... yes
+#23 21.16 checking for string.h... yes
+#23 21.22 checking for memory.h... yes
+#23 21.28 checking for strings.h... yes
+#23 21.33 checking for inttypes.h... yes
+#23 21.39 checking for stdint.h... yes
+#23 21.46 checking for unistd.h... yes
+#23 21.51 checking for dlfcn.h... yes
+#23 21.57 checking for objdir... .libs
+#23 21.73 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -fno-rtti -fno-exceptions... yes
+#23 21.77 checking for /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto option to produce PIC... -fPIC -DPIC
+#23 21.77 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto PIC flag -fPIC -DPIC works... yes
+#23 21.81 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto static flag -static works... yes
+#23 21.93 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... yes
+#23 21.98 checking if /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto supports -c -o file.o... (cached) yes
+#23 21.98 checking whether the /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto linker (/usr/lib/llvm-18/bin/ld.lld) supports shared libraries... yes
+#23 22.06 checking dynamic linker characteristics... GNU/Linux ld.so
+#23 22.24 checking how to hardcode library paths into programs... immediate
+#23 22.24 checking whether stripping libraries is possible... yes
+#23 22.24 checking if libtool supports shared libraries... yes
+#23 22.24 checking whether to build shared libraries... no
+#23 22.24 checking whether to build static libraries... yes
+#23 22.24 checking that AWK works... ok
+#23 22.25 checking if we need to force back C standard to C89... no
+#23 22.29 checking for ANSI C header files... (cached) yes
+#23 22.30 checking for an ANSI C-conforming const... yes
+#23 22.34 checking for size_t... yes
+#23 22.46 checking whether struct tm is in sys/time.h or time.h... time.h
+#23 22.50 checking for C/C++ restrict keyword... __restrict
+#23 22.54 checking for working strtod... yes
+#23 22.66 checking for pow... no
+#23 22.77 checking for pow in -lm... yes
+#23 22.87 checking for clock_gettime... yes
+#23 22.98 checking for zlibVersion in -lz... yes
+#23 23.09 checking for feenableexcept in -lm... yes
+#23 23.19 checking for feenableexcept... yes
+#23 23.30 checking if using Solaris linker... no
+#23 23.32 checking if libraries can be versioned... yes
+#23 23.34 checking for symbol prefix... 
+#23 23.37 configure: pkgconfig directory is ${libdir}/pkgconfig
+#23 23.37 configure: Extra options for compiler: 
+#23 23.40 checking that generated files are newer than configure... done
+#23 23.40 configure: creating ./config.status
+#23 24.00 config.status: creating Makefile
+#23 24.02 config.status: creating libpng.pc
+#23 24.03 config.status: creating libpng-config
+#23 24.05 config.status: creating config.h
+#23 24.05 config.status: config.h is unchanged
+#23 24.05 config.status: executing depfiles commands
+#23 24.08 config.status: executing libtool commands
+#23 24.14 test -z "*.tf? pngout.png libpng16.pc libpng16-config libpng.vers libpng.sym check.new pnglibconf.h pngprefix.h symbols.new pngtest-log.txt pnglibconf.out pnglibconf.c pnglibconf.pre pnglibconf.dfn scripts/*.out scripts/*.chk" || rm -f *.tf? pngout.png libpng16.pc libpng16-config libpng.vers libpng.sym check.new pnglibconf.h pngprefix.h symbols.new pngtest-log.txt pnglibconf.out pnglibconf.c pnglibconf.pre pnglibconf.dfn scripts/*.out scripts/*.chk
+#23 24.14 test -z "libpng16.la" || rm -f libpng16.la
+#23 24.14 rm -rf .libs _libs
+#23 24.14 rm -f *.o
+#23 24.14 test -z "tests/pngtest-all.log tests/pngvalid-gamma-16-to-8.log tests/pngvalid-gamma-alpha-mode.log tests/pngvalid-gamma-background.log tests/pngvalid-gamma-expand16-alpha-mode.log tests/pngvalid-gamma-expand16-background.log tests/pngvalid-gamma-expand16-transform.log tests/pngvalid-gamma-sbit.log tests/pngvalid-gamma-threshold.log tests/pngvalid-gamma-transform.log tests/pngvalid-progressive-size.log tests/pngvalid-progressive-interlace-standard.log tests/pngvalid-transform.log tests/pngvalid-progressive-standard.log tests/pngvalid-standard.log tests/pngstest-1.8.log tests/pngstest-1.8-alpha.log tests/pngstest-linear.log tests/pngstest-linear-alpha.log tests/pngstest-none.log tests/pngstest-none-alpha.log tests/pngstest-sRGB.log tests/pngstest-sRGB-alpha.log tests/pngunknown-IDAT.log tests/pngunknown-discard.log tests/pngunknown-if-safe.log tests/pngunknown-sAPI.log tests/pngunknown-sTER.log tests/pngunknown-save.log tests/pngunknown-vpAg.log tests/pngimage-quick.log tests/pngimage-full.log" || rm -f tests/pngtest-all.log tests/pngvalid-gamma-16-to-8.log tests/pngvalid-gamma-alpha-mode.log tests/pngvalid-gamma-background.log tests/pngvalid-gamma-expand16-alpha-mode.log tests/pngvalid-gamma-expand16-background.log tests/pngvalid-gamma-expand16-transform.log tests/pngvalid-gamma-sbit.log tests/pngvalid-gamma-threshold.log tests/pngvalid-gamma-transform.log tests/pngvalid-progressive-size.log tests/pngvalid-progressive-interlace-standard.log tests/pngvalid-transform.log tests/pngvalid-progressive-standard.log tests/pngvalid-standard.log tests/pngstest-1.8.log tests/pngstest-1.8-alpha.log tests/pngstest-linear.log tests/pngstest-linear-alpha.log tests/pngstest-none.log tests/pngstest-none-alpha.log tests/pngstest-sRGB.log tests/pngstest-sRGB-alpha.log tests/pngunknown-IDAT.log tests/pngunknown-discard.log tests/pngunknown-if-safe.log tests/pngunknown-sAPI.log tests/pngunknown-sTER.log tests/pngunknown-save.log tests/pngunknown-vpAg.log tests/pngimage-quick.log tests/pngimage-full.log
+#23 24.14 rm -f *.lo
+#23 24.14  rm -f pngfix png-fix-itxt
+#23 24.14  rm -f pngtest pngunknown pngstest pngvalid pngimage pngcp timepng
+#23 24.14 rm -rf arm/.libs arm/_libs
+#23 24.14 test -z "tests/pngtest-all.trs tests/pngvalid-gamma-16-to-8.trs tests/pngvalid-gamma-alpha-mode.trs tests/pngvalid-gamma-background.trs tests/pngvalid-gamma-expand16-alpha-mode.trs tests/pngvalid-gamma-expand16-background.trs tests/pngvalid-gamma-expand16-transform.trs tests/pngvalid-gamma-sbit.trs tests/pngvalid-gamma-threshold.trs tests/pngvalid-gamma-transform.trs tests/pngvalid-progressive-size.trs tests/pngvalid-progressive-interlace-standard.trs tests/pngvalid-transform.trs tests/pngvalid-progressive-standard.trs tests/pngvalid-standard.trs tests/pngstest-1.8.trs tests/pngstest-1.8-alpha.trs tests/pngstest-linear.trs tests/pngstest-linear-alpha.trs tests/pngstest-none.trs tests/pngstest-none-alpha.trs tests/pngstest-sRGB.trs tests/pngstest-sRGB-alpha.trs tests/pngunknown-IDAT.trs tests/pngunknown-discard.trs tests/pngunknown-if-safe.trs tests/pngunknown-sAPI.trs tests/pngunknown-sTER.trs tests/pngunknown-save.trs tests/pngunknown-vpAg.trs tests/pngimage-quick.trs tests/pngimage-full.trs" || rm -f tests/pngtest-all.trs tests/pngvalid-gamma-16-to-8.trs tests/pngvalid-gamma-alpha-mode.trs tests/pngvalid-gamma-background.trs tests/pngvalid-gamma-expand16-alpha-mode.trs tests/pngvalid-gamma-expand16-background.trs tests/pngvalid-gamma-expand16-transform.trs tests/pngvalid-gamma-sbit.trs tests/pngvalid-gamma-threshold.trs tests/pngvalid-gamma-transform.trs tests/pngvalid-progressive-size.trs tests/pngvalid-progressive-interlace-standard.trs tests/pngvalid-transform.trs tests/pngvalid-progressive-standard.trs tests/pngvalid-standard.trs tests/pngstest-1.8.trs tests/pngstest-1.8-alpha.trs tests/pngstest-linear.trs tests/pngstest-linear-alpha.trs tests/pngstest-none.trs tests/pngstest-none-alpha.trs tests/pngstest-sRGB.trs tests/pngstest-sRGB-alpha.trs tests/pngunknown-IDAT.trs tests/pngunknown-discard.trs tests/pngunknown-if-safe.trs tests/pngunknown-sAPI.trs tests/pngunknown-sTER.trs tests/pngunknown-save.trs tests/pngunknown-vpAg.trs tests/pngimage-quick.trs tests/pngimage-full.trs
+#23 24.14 rm -f arm/*.o
+#23 24.14 rm -rf intel/.libs intel/_libs
+#23 24.14 rm -f arm/*.lo
+#23 24.14 test -z "test-suite.log" || rm -f test-suite.log
+#23 24.14 rm -f ./so_locations
+#23 24.15 rm -rf mips/.libs mips/_libs
+#23 24.15 rm -f contrib/libtests/*.o
+#23 24.15 rm -rf powerpc/.libs powerpc/_libs
+#23 24.15 rm -f contrib/tools/*.o
+#23 24.15 rm -f intel/*.o
+#23 24.15 rm -f intel/*.lo
+#23 24.15 rm -f mips/*.o
+#23 24.16 rm -f mips/*.lo
+#23 24.16 rm -f powerpc/*.o
+#23 24.16 rm -f powerpc/*.lo
+#23 24.18 rm -f pnglibconf.c pnglibconf.tf[45]
+#23 24.18 mawk -f ./scripts/options.awk out=pnglibconf.tf4 version=search\
+#23 24.18     ./pngconf.h ./scripts/pnglibconf.dfa\
+#23 24.18     ./pngusr.dfa  1>&2
+#23 24.19 mawk -f ./scripts/options.awk out=pnglibconf.tf5 pnglibconf.tf4 1>&2
+#23 24.20 rm pnglibconf.tf4
+#23 24.20 mv pnglibconf.tf5 pnglibconf.c
+#23 24.20 rm -f pnglibconf.out pnglibconf.tf[12]
+#23 24.20 test -d scripts || mkdir scripts || test -d scripts
+#23 24.21 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 24.21      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' pnglibconf.c > pnglibconf.tf1
+#23 24.24 mawk -f "./scripts/dfn.awk" out="pnglibconf.tf2" pnglibconf.tf1 1>&2
+#23 24.25 rm -f pnglibconf.tf1
+#23 24.25 mv pnglibconf.tf2 pnglibconf.out
+#23 24.26 rm -f scripts/prefix.out scripts/prefix.tf[12]
+#23 24.26 test -d scripts || mkdir scripts || test -d scripts
+#23 24.26 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 24.26      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/prefix.c > scripts/prefix.tf1
+#23 24.30 mawk -f "./scripts/dfn.awk" out="scripts/prefix.tf2" scripts/prefix.tf1 1>&2
+#23 24.31 rm -f scripts/prefix.tf1
+#23 24.31 mv scripts/prefix.tf2 scripts/prefix.out
+#23 24.31 rm -f pnglibconf.h
+#23 24.31 mawk 's==0 && NR>1{print prev}\
+#23 24.31    s==0{prev=$0}\
+#23 24.31    s==1{print "#define", $1, "MAGMA_" $1}\
+#23 24.31    s==2{print "#define MAGMA_png_" $1, "PNG_" $1}\
+#23 24.31    END{print prev}' s=0 pnglibconf.out s=1 scripts/prefix.out\
+#23 24.31    s=2 ./scripts/macro.lst >pnglibconf.tf8
+#23 24.32 mv pnglibconf.tf8 pnglibconf.h
+#23 24.32 rm -f scripts/intprefix.out scripts/intprefix.tf[12]
+#23 24.32 rm -f scripts/vers.out scripts/vers.tf[12]
+#23 24.32 test -d scripts || mkdir scripts || test -d scripts
+#23 24.32 test -d scripts || mkdir scripts || test -d scripts
+#23 24.32 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 24.32      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/intprefix.c > scripts/intprefix.tf1
+#23 24.32 /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -E -DHAVE_CONFIG_H -I. \
+#23 24.32      -DPNGLIB_LIBNAME='PNG16_0' -DPNGLIB_VERSION='1.6.38.git' -DSYMBOL_PREFIX='' -DPNG_NO_USE_READ_MACROS -DPNG_BUILDING_SYMBOL_TABLE -DPNG_PREFIX='MAGMA_' scripts/vers.c > scripts/vers.tf1
+#23 24.36 mawk -f "./scripts/dfn.awk" out="scripts/vers.tf2" scripts/vers.tf1 1>&2
+#23 24.36 rm -f scripts/vers.tf1
+#23 24.36 mv scripts/vers.tf2 scripts/vers.out
+#23 24.37 rm -f libpng.vers
+#23 24.37 cp scripts/vers.out libpng.vers
+#23 24.37 mawk -f "./scripts/dfn.awk" out="scripts/intprefix.tf2" scripts/intprefix.tf1 1>&2
+#23 24.38 rm -f scripts/intprefix.tf1
+#23 24.38 mv scripts/intprefix.tf2 scripts/intprefix.out
+#23 24.38 rm -f pngprefix.tf1
+#23 24.39 mawk '{print "#define", $1, "MAGMA_" $1}' scripts/intprefix.out >pngprefix.tf1
+#23 24.39 mv pngprefix.tf1 pngprefix.h
+#23 24.39 depbase=`echo png.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT png.lo -MD -MP -MF $depbase.Tpo -c -o png.lo png.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngerror.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngerror.lo -MD -MP -MF $depbase.Tpo -c -o pngerror.lo pngerror.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngget.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngget.lo -MD -MP -MF $depbase.Tpo -c -o pngget.lo pngget.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngmem.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngmem.lo -MD -MP -MF $depbase.Tpo -c -o pngmem.lo pngmem.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngpread.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngpread.lo -MD -MP -MF $depbase.Tpo -c -o pngpread.lo pngpread.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngread.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngread.lo -MD -MP -MF $depbase.Tpo -c -o pngread.lo pngread.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngrio.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrio.lo -MD -MP -MF $depbase.Tpo -c -o pngrio.lo pngrio.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.39 depbase=`echo pngrtran.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.39 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrtran.lo -MD -MP -MF $depbase.Tpo -c -o pngrtran.lo pngrtran.c &&\
+#23 24.39 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngrutil.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngrutil.lo -MD -MP -MF $depbase.Tpo -c -o pngrutil.lo pngrutil.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngset.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngset.lo -MD -MP -MF $depbase.Tpo -c -o pngset.lo pngset.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngtrans.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngtrans.lo -MD -MP -MF $depbase.Tpo -c -o pngtrans.lo pngtrans.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngwio.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwio.lo -MD -MP -MF $depbase.Tpo -c -o pngwio.lo pngwio.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngwrite.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwrite.lo -MD -MP -MF $depbase.Tpo -c -o pngwrite.lo pngwrite.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngwtran.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwtran.lo -MD -MP -MF $depbase.Tpo -c -o pngwtran.lo pngwtran.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo pngwutil.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT pngwutil.lo -MD -MP -MF $depbase.Tpo -c -o pngwutil.lo pngwutil.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo mips/mips_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT mips/mips_init.lo -MD -MP -MF $depbase.Tpo -c -o mips/mips_init.lo mips/mips_init.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo mips/filter_msa_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT mips/filter_msa_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o mips/filter_msa_intrinsics.lo mips/filter_msa_intrinsics.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo intel/intel_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT intel/intel_init.lo -MD -MP -MF $depbase.Tpo -c -o intel/intel_init.lo intel/intel_init.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo intel/filter_sse2_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT intel/filter_sse2_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o intel/filter_sse2_intrinsics.lo intel/filter_sse2_intrinsics.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo powerpc/powerpc_init.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT powerpc/powerpc_init.lo -MD -MP -MF $depbase.Tpo -c -o powerpc/powerpc_init.lo powerpc/powerpc_init.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.40 depbase=`echo powerpc/filter_vsx_intrinsics.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
+#23 24.40 /bin/bash ./libtool  --tag=CC   --mode=compile /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I.     -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -MT powerpc/filter_vsx_intrinsics.lo -MD -MP -MF $depbase.Tpo -c -o powerpc/filter_vsx_intrinsics.lo powerpc/filter_vsx_intrinsics.c &&\
+#23 24.40 mv -f $depbase.Tpo $depbase.Plo
+#23 24.44 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT png.lo -MD -MP -MF .deps/png.Tpo -c png.c -o png.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngerror.lo -MD -MP -MF .deps/pngerror.Tpo -c pngerror.c -o pngerror.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngread.lo -MD -MP -MF .deps/pngread.Tpo -c pngread.c -o pngread.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngget.lo -MD -MP -MF .deps/pngget.Tpo -c pngget.c -o pngget.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrio.lo -MD -MP -MF .deps/pngrio.Tpo -c pngrio.c -o pngrio.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngmem.lo -MD -MP -MF .deps/pngmem.Tpo -c pngmem.c -o pngmem.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrutil.lo -MD -MP -MF .deps/pngrutil.Tpo -c pngrutil.c -o pngrutil.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngtrans.lo -MD -MP -MF .deps/pngtrans.Tpo -c pngtrans.c -o pngtrans.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngrtran.lo -MD -MP -MF .deps/pngrtran.Tpo -c pngrtran.c -o pngrtran.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwio.lo -MD -MP -MF .deps/pngwio.Tpo -c pngwio.c -o pngwio.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwtran.lo -MD -MP -MF .deps/pngwtran.Tpo -c pngwtran.c -o pngwtran.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngpread.lo -MD -MP -MF .deps/pngpread.Tpo -c pngpread.c -o pngpread.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwutil.lo -MD -MP -MF .deps/pngwutil.Tpo -c pngwutil.c -o pngwutil.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngset.lo -MD -MP -MF .deps/pngset.Tpo -c pngset.c -o pngset.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT mips/mips_init.lo -MD -MP -MF mips/.deps/mips_init.Tpo -c mips/mips_init.c -o mips/mips_init.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT intel/intel_init.lo -MD -MP -MF intel/.deps/intel_init.Tpo -c intel/intel_init.c -o intel/intel_init.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT intel/filter_sse2_intrinsics.lo -MD -MP -MF intel/.deps/filter_sse2_intrinsics.Tpo -c intel/filter_sse2_intrinsics.c -o intel/filter_sse2_intrinsics.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT pngwrite.lo -MD -MP -MF .deps/pngwrite.Tpo -c pngwrite.c -o pngwrite.o
+#23 24.45 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT mips/filter_msa_intrinsics.lo -MD -MP -MF mips/.deps/filter_msa_intrinsics.Tpo -c mips/filter_msa_intrinsics.c -o mips/filter_msa_intrinsics.o
+#23 24.46 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT powerpc/filter_vsx_intrinsics.lo -MD -MP -MF powerpc/.deps/filter_vsx_intrinsics.Tpo -c powerpc/filter_vsx_intrinsics.c -o powerpc/filter_vsx_intrinsics.o
+#23 24.46 libtool: compile:  /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto -DHAVE_CONFIG_H -I. -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES -g -O0 -MT powerpc/powerpc_init.lo -MD -MP -MF powerpc/.deps/powerpc_init.Tpo -c powerpc/powerpc_init.c -o powerpc/powerpc_init.o
+#23 24.50 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.50 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.51 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.52 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.52 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.52 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.53 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.53 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.53 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.53 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.53 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.53 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.54 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.55 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.55 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.55 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.61 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.61 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.61 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.62 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.62 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.62 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.63 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.63 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.63 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.66 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 24.66 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 24.66 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 24.68 /bin/bash ./libtool  --tag=CC   --mode=link /magma/fuzzers/aflplusplus_lto_entropy/repo/afl-clang-lto  -include /magma/magma/src/canary.h -DMAGMA_ENABLE_CANARIES    -g -O0 -no-undefined -export-dynamic -version-number 16:38:0  -Wl,--version-script=libpng.vers  -L/magma_out -g -L/magma_out/cmplog -o libpng16.la -rpath /usr/local/lib png.lo pngerror.lo pngget.lo pngmem.lo pngpread.lo pngread.lo pngrio.lo pngrtran.lo pngrutil.lo pngset.lo pngtrans.lo pngwio.lo pngwrite.lo pngwtran.lo pngwutil.lo  mips/mips_init.lo mips/filter_msa_intrinsics.lo intel/intel_init.lo intel/filter_sse2_intrinsics.lo powerpc/powerpc_init.lo powerpc/filter_vsx_intrinsics.lo   -lm -lz -lm -l:magma.o -lrt -lstdc++ /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a
+#23 24.82 
+#23 24.82 *** Warning: Linking the shared library libpng16.la against the
+#23 24.82 *** static library /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a is not portable!
+#23 24.84 libtool: link: /usr/lib/llvm-18/bin/llvm-ar cru .libs/libpng16.a /magma/fuzzers/aflplusplus_lto_entropy/repo/utils/aflpp_driver/libAFLDriver.a  png.o pngerror.o pngget.o pngmem.o pngpread.o pngread.o pngrio.o pngrtran.o pngrutil.o pngset.o pngtrans.o pngwio.o pngwrite.o pngwtran.o pngwutil.o mips/mips_init.o mips/filter_msa_intrinsics.o intel/intel_init.o intel/filter_sse2_intrinsics.o powerpc/powerpc_init.o powerpc/filter_vsx_intrinsics.o
+#23 24.87 libtool: link: /usr/lib/llvm-18/bin/llvm-ranlib .libs/libpng16.a
+#23 24.90 libtool: link: ( cd ".libs" && rm -f "libpng16.la" && ln -s "../libpng16.la" "libpng16.la" )
+#23 25.09 Running cmplog-switches-pass by andreafioraldi@gmail.com
+#23 25.09 Running cmplog-instructions-pass by andreafioraldi@gmail.com
+#23 25.09 Running cmplog-routines-pass by andreafioraldi@gmail.com
+#23 25.11 ld.lld: warning: .libs/libpng16.a: archive member 'libAFLDriver.a' is neither ET_REL nor LLVM bitcode
+#23 25.29 
+#23 25.29 === AFL++ LTO Instrumentation Statistics ===
+#23 25.29 Total Basic Blocks: 12921
+#23 25.29 Instrumented Times: 0
+#23 25.29 Instrumented Basic Blocks: 2977
+#23 25.29 Instrumentation Ratio: 23.04%
+#23 25.29 Total Predecessors: 6618
+#23 25.29 Predecessor Count Distribution for Instrumented Basic Blocks:
+#23 25.29   Instrumented BasicBlocks with 1 predecessor(s): 0
+#23 25.29   Instrumented BasicBlocks with 2 predecessor(s): 2762
+#23 25.29   Instrumented BasicBlocks with 3 predecessor(s): 98
+#23 25.29   Instrumented BasicBlocks with 4 predecessor(s): 45
+#23 25.29   Instrumented BasicBlocks with 5 predecessor(s): 14
+#23 25.29   Instrumented BasicBlocks with 6 predecessor(s): 19
+#23 25.29   Instrumented BasicBlocks with 7 predecessor(s): 10
+#23 25.29   Instrumented BasicBlocks with 8 predecessor(s): 9
+#23 25.29   Instrumented BasicBlocks with 9 predecessor(s): 7
+#23 25.29   Instrumented BasicBlocks with >=10 predecessors: 1
+#23 25.29 Predecessor Count Distribution for Non-Instrumented Basic Blocks:
+#23 25.29   Non-Instrumented BasicBlocks with 1 predecessor(s): 5493
+#23 25.29   Non-Instrumented BasicBlocks with 2 predecessor(s): 635
+#23 25.29   Non-Instrumented BasicBlocks with 3 predecessor(s): 9
+#23 25.29   Non-Instrumented BasicBlocks with 4 predecessor(s): 1
+#23 25.29   Non-Instrumented BasicBlocks with 5 predecessor(s): 2
+#23 25.29   Non-Instrumented BasicBlocks with 6 predecessor(s): 1
+#23 25.29   Non-Instrumented BasicBlocks with 7 predecessor(s): 0
+#23 25.29   Non-Instrumented BasicBlocks with 8 predecessor(s): 1
+#23 25.29   Non-Instrumented BasicBlocks with 9 predecessor(s): 0
+#23 25.29   Non-Instrumented BasicBlocks with >=10 predecessors: 1
+#23 25.29 Average Global Entropy: 1.18
+#23 25.29 =======================================
+#23 25.29 
+#23 DONE 26.4s
+
+#24 exporting to image
+#24 exporting layers 0.0s done
+#24 writing image sha256:353fde45b4ff0e2b9ae1312e27a3a406b7abd4ccfe39866553e1efa572dcba66 done
+#24 naming to docker.io/magma/aflplusplus_lto_entropy/libpng done
+#24 DONE 0.0s
+
+ [33m18 warnings found (use --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 16)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 18)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 19)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 20)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 21)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 22)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 23)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 24)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 39)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 49)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 65)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 86)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 87)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 88)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 89)
+ - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 95)
++ set +x
+magma/aflplusplus_lto_entropy/libpng
