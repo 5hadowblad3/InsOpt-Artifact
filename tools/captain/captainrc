@@ -32,7 +32,6 @@ WORKERS=1
 # (default: 1m)
 
 TIMEOUT=1d
-#TIMEOUT=5s
 
 # [POLL]: time (in seconds) between polls (default: 5)
 POLL=5
@@ -85,7 +84,7 @@ FUZZERS=(insopt)
 
 # Instrumentation evaluation ONLY
 
-insopt_TARGETS=(poppler)
+insopt_TARGETS=(libpng)
 
 # aflplusplus_lto_entropy_TARGETS=(libxml2_xml_read_memory_fuzzer libxml2_reader_for_file_fuzzer poppler_pdfimages poppler_pdftoppm poppler_poppler libpng libsndfile libxml2 lua sqlite3 openssl php poppler)
 # aflplusplus_entropy_TARGETS=(libxml2_xml_read_memory_fuzzer libxml2_reader_for_file_fuzzer poppler_pdfimages poppler_pdftoppm poppler_poppler libpng libsndfile libxml2 lua sqlite3 openssl php poppler)
