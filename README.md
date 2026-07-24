@@ -49,48 +49,37 @@ Dependency (You can also find it [here](fuzzers/insopt/preinstall.sh), which is 
 set -e
 
 apt-get update && \
-    apt-get install -y make build-essential git wget libexpat1-dev
-
-apt-get install -y apt-utils apt-transport-https ca-certificates gnupg
-
-echo deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-18 main >> /etc/apt/sources.list
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-
-apt-get update && \
-    apt-get install -y clang-18 clangd-18 clang-tools-18 libc++1-18 libc++-18-dev \
-      libc++abi1-18 libc++abi-18-dev libclang1-18 libclang-18-dev libclang-common-18-dev \
-      libclang-cpp18 libclang-cpp18-dev liblld-18 liblld-18-dev liblldb-18 \
-      liblldb-18-dev libllvm18 libomp-18-dev libomp5-18 lld-18 lldb-18 \
-      llvm-18 llvm-18-dev llvm-18-runtime llvm-18-tools
+    apt-get install -y make clang-9 llvm-9-dev libc++-9-dev libc++abi-9-dev \
+        build-essential git wget gcc-7-plugin-dev
 
 update-alternatives \
-  --install /usr/lib/llvm              llvm             /usr/lib/llvm-18  200 \
-  --slave   /usr/bin/llvm-config       llvm-config      /usr/bin/llvm-config-18  \
-    --slave   /usr/bin/llvm-ar           llvm-ar          /usr/bin/llvm-ar-18 \
-    --slave   /usr/bin/llvm-as           llvm-as          /usr/bin/llvm-as-18 \
-    --slave   /usr/bin/llvm-bcanalyzer   llvm-bcanalyzer  /usr/bin/llvm-bcanalyzer-18 \
-    --slave   /usr/bin/llvm-c-test       llvm-c-test      /usr/bin/llvm-c-test-18 \
-    --slave   /usr/bin/llvm-cov          llvm-cov         /usr/bin/llvm-cov-18 \
-    --slave   /usr/bin/llvm-diff         llvm-diff        /usr/bin/llvm-diff-18 \
-    --slave   /usr/bin/llvm-dis          llvm-dis         /usr/bin/llvm-dis-18 \
-    --slave   /usr/bin/llvm-dwarfdump    llvm-dwarfdump   /usr/bin/llvm-dwarfdump-18 \
-    --slave   /usr/bin/llvm-extract      llvm-extract     /usr/bin/llvm-extract-18 \
-    --slave   /usr/bin/llvm-link         llvm-link        /usr/bin/llvm-link-18 \
-    --slave   /usr/bin/llvm-mc           llvm-mc          /usr/bin/llvm-mc-18 \
-    --slave   /usr/bin/llvm-nm           llvm-nm          /usr/bin/llvm-nm-18 \
-    --slave   /usr/bin/llvm-objdump      llvm-objdump     /usr/bin/llvm-objdump-18 \
-    --slave   /usr/bin/llvm-ranlib       llvm-ranlib      /usr/bin/llvm-ranlib-18 \
-    --slave   /usr/bin/llvm-readobj      llvm-readobj     /usr/bin/llvm-readobj-18 \
-    --slave   /usr/bin/llvm-rtdyld       llvm-rtdyld      /usr/bin/llvm-rtdyld-18 \
-    --slave   /usr/bin/llvm-size         llvm-size        /usr/bin/llvm-size-18 \
-    --slave   /usr/bin/llvm-stress       llvm-stress      /usr/bin/llvm-stress-18 \
-    --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-18 \
-    --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-18
+  --install /usr/lib/llvm              llvm             /usr/lib/llvm-9  20 \
+  --slave   /usr/bin/llvm-config       llvm-config      /usr/bin/llvm-config-9  \
+    --slave   /usr/bin/llvm-ar           llvm-ar          /usr/bin/llvm-ar-9 \
+    --slave   /usr/bin/llvm-as           llvm-as          /usr/bin/llvm-as-9 \
+    --slave   /usr/bin/llvm-bcanalyzer   llvm-bcanalyzer  /usr/bin/llvm-bcanalyzer-9 \
+    --slave   /usr/bin/llvm-c-test       llvm-c-test      /usr/bin/llvm-c-test-9 \
+    --slave   /usr/bin/llvm-cov          llvm-cov         /usr/bin/llvm-cov-9 \
+    --slave   /usr/bin/llvm-diff         llvm-diff        /usr/bin/llvm-diff-9 \
+    --slave   /usr/bin/llvm-dis          llvm-dis         /usr/bin/llvm-dis-9 \
+    --slave   /usr/bin/llvm-dwarfdump    llvm-dwarfdump   /usr/bin/llvm-dwarfdump-9 \
+    --slave   /usr/bin/llvm-extract      llvm-extract     /usr/bin/llvm-extract-9 \
+    --slave   /usr/bin/llvm-link         llvm-link        /usr/bin/llvm-link-9 \
+    --slave   /usr/bin/llvm-mc           llvm-mc          /usr/bin/llvm-mc-9 \
+    --slave   /usr/bin/llvm-nm           llvm-nm          /usr/bin/llvm-nm-9 \
+    --slave   /usr/bin/llvm-objdump      llvm-objdump     /usr/bin/llvm-objdump-9 \
+    --slave   /usr/bin/llvm-ranlib       llvm-ranlib      /usr/bin/llvm-ranlib-9 \
+    --slave   /usr/bin/llvm-readobj      llvm-readobj     /usr/bin/llvm-readobj-9 \
+    --slave   /usr/bin/llvm-rtdyld       llvm-rtdyld      /usr/bin/llvm-rtdyld-9 \
+    --slave   /usr/bin/llvm-size         llvm-size        /usr/bin/llvm-size-9 \
+    --slave   /usr/bin/llvm-stress       llvm-stress      /usr/bin/llvm-stress-9 \
+    --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-9 \
+    --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-9
 
 update-alternatives \
-  --install /usr/bin/clang                 clang                  /usr/bin/clang-18     200 \
-  --slave   /usr/bin/clang++               clang++                /usr/bin/clang++-18 \
-  --slave   /usr/bin/clang-cpp             clang-cpp              /usr/bin/clang-cpp-18
+  --install /usr/bin/clang                 clang                  /usr/bin/clang-9     20 \
+  --slave   /usr/bin/clang++               clang++                /usr/bin/clang++-9 \
+  --slave   /usr/bin/clang-cpp             clang-cpp              /usr/bin/clang-cpp-9
 
 ````
 
@@ -106,7 +95,7 @@ If there is no error message appear (warning is acceptable, especially those com
 
 ### Reproduce procedure
 
-To reproduce the evaluation shown in the paper, here are the main steps to run (You can also find more explanation according to the document of Magma on [the Magma homepage](https://hexhive.epfl.ch/magma/docs/getting-started.html).):
+To reproduce the evaluation shown in the paper, here are the main steps to run (You can also find more explanation according to the document of Magma on [the Magma homepage](https://hexhive.epfl.ch/magma/docs/getting-started.html):
 
 1. Modify the `captinrc` file in `tools/captain` and with the following settings for changing the fuzzer under test to InsOpt. You can change to other baselines mentioned in the paper.
    ````
@@ -130,9 +119,9 @@ To reproduce the evaluation shown in the paper, here are the main steps to run (
 
 ## Result
 
-**If the previous step runs properly, the result can be found in `workdir/insopt`.**
+**If the previous step runs properly, the result can be found in `./workdir_CURRENT_DATE/` (`workdir` is set according to the previous configuration in step 1).**
 
-**The `workdir/log` directory contains the build and run logs of the campaign.** 
+**The `workdir_CURRENT_DATE/log` directory contains the build and run logs of the campaign.** 
 
 The instrumentation results can be found in `workdir/instrumentation_stats` to evaluate RQ(1-2) for checking the number of instrumentation node selected by our method, which is also the main contribution of this paper. The related statistics are shown in Figures 5-6 of the paper.
 
@@ -148,7 +137,7 @@ We also provide the raw data previously collected as an example. The compilation
 `tools/captain/datadir/`
 which can help validate the instrumented node mentioned in RQ1-2 and the compilation time.
 
-For project `xxx`, e.g., libsndfile, you can find its data in the log file `tools/captain/datadir/aflplusplus_entropy_libsndfile_build.log`.
+For each project, e.g., libsndfile, you can find its data in the log file `tools/captain/datadir/aflplusplus_entropy_libsndfile_build.log`.
 The data can be found through searching the following keywords as an indicator:
 ````
 === AFL++ LLVM_MODE Instrumentation Statistics ===
