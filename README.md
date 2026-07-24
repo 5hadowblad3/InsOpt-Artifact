@@ -26,7 +26,7 @@ The first layer of the project inherits the basic structure of the Magma benchma
    ├── findings.sh             Build script in magma format
    ├── instrument.sh           Build script in magma format
    ├── preinstall.sh           Build script in magma format
-   ├── repo                    Source code of Insopt
+   ├── repo                    Source code of Insopt, integrated with AFL++
    ├── runonce.sh              Build script in magma format
    └── run.sh                  Build script in magma format
 
