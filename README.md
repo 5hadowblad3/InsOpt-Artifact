@@ -111,6 +111,13 @@ To reproduce the evaluation shown in the paper, here are the main steps to run (
 
     TIMEOUT=1d
 
+   # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
+   # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
+   # (default: all targets)
+
+   # if you want evaluate specific target with fuzzer, here is an example.
+   # insopt_TARGETS=(libpng)
+
    ````
 2. Run the fuzzer Insopt stored in `fuzzer/insopt` using the script provided:
    ````
