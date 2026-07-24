@@ -97,7 +97,7 @@ If there is no error message appear (warning is acceptable, especially those com
 
 To reproduce the evaluation shown in the paper, here are the main steps to run (You can also find more explanation according to the document of Magma on [the Magma homepage](https://hexhive.epfl.ch/magma/docs/getting-started.html):
 
-1. Modify the `captinrc` file in `tools/captain` and with the following settings for changing the fuzzer under test to InsOpt. You can change to other baselines mentioned in the paper.
+1. Modify the `captinrc` file in `tools/captain` and with the following settings for changing the fuzzer under test to InsOpt. You can change to other baselines mentioned in the paper by modifying the fuzzers used in `FUZZERS`.
    ````
     # WORKDIR: path to the directory where shared volumes will be created
     WORKDIR=./workdir
