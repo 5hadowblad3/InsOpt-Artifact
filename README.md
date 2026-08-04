@@ -15,7 +15,7 @@ As InsOpt has been successfully integrated with the state-of-the-art fuzzer, AFL
 
 ### Structure 
 
-The first layer of the project inherits the basic structure of the Magma benchmark. Our instrumentation code has been integrated with AFL++ so that you can find it in `fuzzers/insopt/repo`
+The first layer of the project inherits the basic structure of the [Magma benchmark](https://github.com/HexHive/magma). Our instrumentation code has been integrated with AFL++ so that you can find it in `fuzzers/insopt/repo`. 
 
 ````
    .
@@ -32,36 +32,39 @@ The first layer of the project inherits the basic structure of the Magma benchma
 
 ````
 
-Specifically, you can find the implementation of our instrumentation in the following two files (the rest are conventional AFL++):
+#### Code location
+As we only focus on the instrumentation algorithm, the modification scope is not large. You can find the implementation of our instrumentation in the following two files (the rest are conventional AFL++):
 ````
 fuzzers/insopt/repo/instrumentation/SanitizerCoveragePCGUARD.so.cc
 fuzzers/insopt/repo/instrumentation/SanitizerCoverageLTO.so.cc
 ````
 to support regular compilation and LTO compilation, respectively.
 
+
 ### Kick-the-Tires Instructions
 
 The basic functionality and compilation correctness:
 
-Dependency (You can also find it [here](fuzzers/insopt/preinstall.sh), which is the same in the Magma benchmark and will be automatically setup during reproduction):
+First, preinstall for dependency (You can also find it [here](fuzzers/insopt/preinstall.sh), which is the same in the Magma benchmark and will be automatically setup during reproduction):
 ````
 #!/bin/bash
-set -e
+# set -e
 
+# 1. Environment setting
 apt-get update && \
     apt-get install -y make \
-        build-essential git gcc-7-plugin-dev cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools cargo libgtk-3-dev
+        build-essential git gcc-7-plugin-dev cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools cargo libgtk-3-dev wget software-properties-common
 
-# for Ubuntu 18.04 only
+# 2. LLVM source update for Ubuntu 18.04 only
 wget https://apt.llvm.org/llvm-snapshot.gpg.key
 apt-key add llvm-snapshot.gpg.key
-sudo add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main"
+add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main"
 
-# install llvm
+# 3. Install llvm
 apt-get update --fix-missing && \
     apt-get install -y make llvm-13 clang-13 llvm-13-dev lld-13
 
-
+# 4. Set update-alternatives for LLVM
 update-alternatives \
   --install /usr/lib/llvm              llvm             /usr/lib/llvm-13  20 \
   --slave   /usr/bin/llvm-config       llvm-config      /usr/bin/llvm-config-13  \
@@ -86,6 +89,7 @@ update-alternatives \
     --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-13 \
     --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-13
 
+# 5. Set update-alternatives for LLVM
 update-alternatives \
   --install /usr/bin/clang                 clang                  /usr/bin/clang-13     20 \
   --slave   /usr/bin/clang++               clang++                /usr/bin/clang++-13 \
@@ -93,15 +97,20 @@ update-alternatives \
 
 ````
 
-After the dependecy has been properly installed, the instrumentaion code integrated with AFL++ can be correctly compiled with sanity check:
+Second, sanity test. After the dependency has been properly installed, the instrumentaion code integrated with AFL++ can be correctly compiled with sanity check:
 ````
-cp -r fuzzers/insopt/repo sanitity-test
-cd sanitity-test
+cp -r fuzzers/insopt/repo sanity-test
+cd sanity-test
 make
 ````
 
 If there is no error message appear (warning is acceptable, especially those coming from AFL++), then everything should work.
 
+#### Dockerfile
+You can find the Dockerfile to build the prototype integrated with AFL++ by running:
+> docker build -t InsOpt_Prototype . 
+
+The logic is exactly the same as the Kick-the-Tires Instructions.
 
 ### Reproduce procedure
 
