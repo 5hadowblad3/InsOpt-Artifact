@@ -50,7 +50,7 @@ set -e
 
 apt-get update && \
     apt-get install -y make \
-        build-essential git gcc-7-plugin-dev cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools cargo libgtk-3-dev wget
+        build-essential git gcc-7-plugin-dev cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools cargo libgtk-3-dev wget software-properties-common
 
 # for Ubuntu 18.04 only
 wget https://apt.llvm.org/llvm-snapshot.gpg.key
