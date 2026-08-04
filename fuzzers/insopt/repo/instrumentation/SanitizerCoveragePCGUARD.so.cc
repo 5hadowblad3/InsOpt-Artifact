@@ -13,6 +13,14 @@
 #include "llvm/Transforms/Instrumentation/SanitizerCoverage.h"
 #include "llvm/ADT/ArrayRef.h"
 #include "llvm/ADT/SmallVector.h"
+
+#include "llvm/ADT/StringRef.h"
+#include "llvm/ADT/Twine.h"
+#include "llvm/Support/raw_ostream.h"
+#include "llvm/ADT/SmallString.h"
+#include <mutex>
+#include "llvm/Support/raw_ostream.h" 
+
 #if LLVM_VERSION_MAJOR >= 15
   #if LLVM_VERSION_MAJOR < 17
     #include "llvm/ADT/Triple.h"
@@ -34,6 +42,7 @@
 #include "llvm/IR/Dominators.h"
 #if LLVM_VERSION_MAJOR >= 17
   #include "llvm/IR/EHPersonalities.h"
+  #include "llvm/ADT/DenseMap.h"
 #else
   #include "llvm/Analysis/EHPersonalities.h"
 #endif
@@ -83,10 +92,16 @@
 #include "config.h"
 #include "debug.h"
 #include "afl-llvm-common.h"
+#include "llvm/ADT/Statistic.h"
+
 
 using namespace llvm;
 
 #define DEBUG_TYPE "sancov"
+
+//adding Entropy
+//STATISTIC(TotalBBCount, "Total basic blocks processed");
+//STATISTIC(InstrumentedBBCount, "Basic blocks instrumented");
 
 static const uint64_t SanCtorAndDtorPriority = 2;
 
@@ -116,6 +131,8 @@ const char SanCovLowestStackName[] = "__sancov_lowest_stack";
 
 static const char *skip_nozero;
 static const char *use_threadsafe_counters;
+
+
 
 namespace {
 
@@ -147,6 +164,9 @@ class ModuleSanitizerCoverageAFL
                                      PostDomTreeCallback PDTCallback);
 
  private:
+
+  // 在这里添加新的成员函数
+
   void instrumentFunction(Function &F, DomTreeCallback DTCallback,
                           PostDomTreeCallback PDTCallback);
   void InjectTraceForCmp(Function &F, ArrayRef<Instruction *> CmpTraceTargets);
@@ -211,6 +231,97 @@ class ModuleSanitizerCoverageAFL
   ConstantInt    *One = NULL;
   ConstantInt    *Zero = NULL;
 
+  //Adding Entropy
+  struct GlobalCFGInfo {
+    DenseMap<const BasicBlock*, SmallVector<const BasicBlock*, 8>> Preds;
+    DenseMap<const BasicBlock*, SmallVector<const BasicBlock*, 8>> Succs;
+  } GlobalCFG;
+
+  DenseMap<const BasicBlock*, int> nodeOutputEntropies;
+
+  bool UseEntropy = true;
+  size_t TotalBBCount = 0;
+  size_t InstrumentedBBCount = 0;
+  DenseMap<unsigned, unsigned> PredCountsHistogram;
+  DenseMap<unsigned, unsigned> InstPredCountsHistogram;
+
+  void printFinalStats();
+
+  // 构建CFG
+  void buildGlobalCFG(Module &M) {
+    for (Function &F : M) {
+      if (F.isDeclaration()) continue;
+      for (const BasicBlock &BB : F) {
+        for (const BasicBlock *Succ : successors(&BB)) {
+          GlobalCFG.Succs[&BB].push_back(Succ);
+          GlobalCFG.Preds[Succ].push_back(&BB);
+        }
+      }
+    }
+  }
+
+  void calculateGlobalNodeOutputEntropies(Module &M) {
+    nodeOutputEntropies.clear();
+    std::deque<const BasicBlock*> worklist;
+    DenseSet<const BasicBlock*> worklistSet;
+
+    for (Function &F : M) {
+        if (F.isDeclaration()) continue;
+        for (const BasicBlock &BB_ref : F) {
+            const BasicBlock *BB_ptr = &BB_ref;
+            nodeOutputEntropies[BB_ptr] = 0; 
+            if (worklistSet.insert(BB_ptr).second) {
+                worklist.push_back(BB_ptr);
+            }
+        }
+    }
+
+    while (!worklist.empty()) {
+
+        const BasicBlock *currentBB = worklist.front();
+        worklist.pop_front();
+        worklistSet.erase(currentBB);
+
+        int old_entropy = nodeOutputEntropies.lookup(currentBB);
+        int new_entropy = old_entropy;
+
+        // Get predecessor and successor info from GlobalCFG
+        const SmallVector<const BasicBlock*, 8>& predecessorsVec = GlobalCFG.Preds.lookup(currentBB);
+        const SmallVector<const BasicBlock*, 8>& successorsVec = GlobalCFG.Succs.lookup(currentBB);
+
+        unsigned num_preds = predecessorsVec.size();
+        unsigned num_succs = successorsVec.size();
+
+        // Apply New Entropy Rules:
+        // Rule 2: multiple succ edges => Entropy = 1
+        if (num_succs > 1) {
+            new_entropy = 1;
+        }
+        // Rule 1: 1 pred, 1 succ => Entropy = Entropy of Predecessor
+        else if (num_preds == 1 && num_succs == 1) {
+            const BasicBlock *P = predecessorsVec[0];
+            new_entropy = nodeOutputEntropies.lookup(P);
+        }
+        // Rule 3: multiple pred edges, 1 succ edge => Entropy = 1 if sum(pred_entropies) == 1, else 0
+        else if (num_preds > 1 && num_succs == 1) {
+            int sum_pred_entropies = 0;
+            for (const BasicBlock *P : predecessorsVec) {
+                sum_pred_entropies += nodeOutputEntropies.lookup(P);
+            }
+            new_entropy = (sum_pred_entropies == 1) ? 1 : 0;
+        }
+
+        if (new_entropy != old_entropy) {
+            nodeOutputEntropies[currentBB] = new_entropy;
+            for (const BasicBlock *Succ : successorsVec) {
+                if (worklistSet.insert(Succ).second) { 
+                    worklist.push_back(Succ); 
+                }
+            }
+        }
+    }
+  }
+
 };
 
 }  // namespace
@@ -226,11 +337,7 @@ llvmGetPassPluginInfo() {
             using OptimizationLevel = typename PassBuilder::OptimizationLevel;
 #endif
 #if LLVM_VERSION_MAJOR >= 16
-  #if LLVM_VERSION_MAJOR >= 20
-            PB.registerPipelineStartEPCallback(
-  #else
             PB.registerOptimizerEarlyEPCallback(
-  #endif
 #else
             PB.registerOptimizerLastEPCallback(
 #endif
@@ -261,20 +368,8 @@ PreservedAnalyses ModuleSanitizerCoverageAFL::run(Module                &M,
 
   };
 
-  // TODO: Support LTO or llvm classic?
-  // Note we still need afl-compiler-rt so we just disable the instrumentation
-  // here.
-  if (!getenv("AFL_SAN_NO_INST")) {
-
-    if (ModuleSancov.instrumentModule(M, DTCallback, PDTCallback))
-      return PreservedAnalyses::none();
-
-  } else {
-
-    if (getenv("AFL_DEBUG")) { DEBUGF("Instrument disabled\n"); }
-
-  }
-
+  if (ModuleSancov.instrumentModule(M, DTCallback, PDTCallback))
+    return PreservedAnalyses::none();
   return PreservedAnalyses::all();
 
 }
@@ -326,7 +421,7 @@ Function *ModuleSanitizerCoverageAFL::CreateInitCallsForSections(
   Type     *PtrTy = PointerType::getUnqual(Ty);
   std::tie(CtorFunc, std::ignore) = createSanitizerCtorAndInitFunctions(
       M, CtorName, InitFunctionName, {PtrTy, PtrTy}, {SecStart, SecEnd});
-  // assert(CtorFunc->getName() == CtorName);
+  assert(CtorFunc->getName() == CtorName);
 
   if (TargetTriple.supportsCOMDAT()) {
 
@@ -342,7 +437,7 @@ Function *ModuleSanitizerCoverageAFL::CreateInitCallsForSections(
 
   if (TargetTriple.isOSBinFormatCOFF()) {
 
-    // In COFF files, if the constructors are set as COMDAT (they are because
+    // In COFF files, if the contructors are set as COMDAT (they are because
     // COFF supports COMDAT) and the linker flag /OPT:REF (strip unreferenced
     // functions and data) is used, the constructors get stripped. To prevent
     // this, give the constructors weak ODR linkage and ensure the linker knows
@@ -462,8 +557,15 @@ bool ModuleSanitizerCoverageAFL::instrumentModule(
   SanCovTracePCGuard =
       M.getOrInsertFunction(SanCovTracePCGuardName, VoidTy, Int32PtrTy);
 
+  //adding ENTROPY
+  buildGlobalCFG(M);
+  calculateGlobalNodeOutputEntropies(M);
+
   for (auto &F : M)
     instrumentFunction(F, DTCallback, PDTCallback);
+
+  // 在所有函数都插桩完成后打印统计信息
+  printFinalStats();
 
   Function *Ctor = nullptr;
 
@@ -644,10 +746,62 @@ void ModuleSanitizerCoverageAFL::instrumentFunction(
   const PostDominatorTree *PDT = PDTCallback(F);
   bool                     IsLeafFunc = true;
 
-  for (auto &BB : F) {
+/*
+  SmallVector<BasicBlock*, 32> Queue;
+  SmallPtrSet<BasicBlock*, 32> Visited;
 
-    if (shouldInstrumentBlock(F, &BB, DT, PDT, Options))
+  Queue.push_back(&F.getEntryBlock());
+  Visited.insert(&F.getEntryBlock());
+
+  
+  while (!Queue.empty()) {
+    BasicBlock *BB = Queue.front();
+    Queue.erase(Queue.begin());
+
+    
+    int entropy = calculateEntropy(BB);
+    BlockEntropy[BB] = entropy;
+
+    
+    for (BasicBlock *Succ : successors(BB)) {
+      if (Visited.insert(Succ).second) {
+        Queue.push_back(Succ);
+      }
+    }
+  }*/
+
+
+  for (auto &BB : F) {
+    
+    ++TotalBBCount;
+    UseEntropy = true;  // entropy
+
+    //ADDING ENTROPY
+    bool should_instrument = false;
+    unsigned num_actual_preds = 0;
+    SmallVector<const BasicBlock*, 8> current_preds_vec_for_stats;
+    current_preds_vec_for_stats = GlobalCFG.Preds.lookup(&BB);
+    num_actual_preds = current_preds_vec_for_stats.size();
+
+    unsigned pred_count_key = (num_actual_preds >= 10) ? 10 : num_actual_preds;
+    PredCountsHistogram[pred_count_key]++;
+
+    if (num_actual_preds > 1) {
+            int sum_incoming_entropies = 0;
+            for (const BasicBlock *P : current_preds_vec_for_stats) {
+                sum_incoming_entropies += nodeOutputEntropies.lookup(P);
+            }
+            if (sum_incoming_entropies > 1) {
+                should_instrument = true;
+            }
+    }
+
+    if (should_instrument) {
       BlocksToInstrument.push_back(&BB);
+      ++InstrumentedBBCount;
+      InstPredCountsHistogram[pred_count_key]++;
+    }
+      
     /*
         for (auto &Inst : BB) {
 
@@ -667,19 +821,56 @@ void ModuleSanitizerCoverageAFL::instrumentFunction(
 
   }
 
-  if (debug) {
-
-    fprintf(stderr, "SanitizerCoveragePCGUARD: instrumenting %s in %s\n",
-            F.getName().str().c_str(), F.getParent()->getName().str().c_str());
-
-  }
-
   InjectCoverage(F, BlocksToInstrument, IsLeafFunc);
   // InjectTraceForCmp(F, CmpTraceTargets);
   // InjectTraceForSwitch(F, SwitchTraceTargets);
 
   if (dump_cc) { calcCyclomaticComplexity(&F); }
 
+}
+
+//ADDING ENTROPY
+//adding thread_safe log 
+void ModuleSanitizerCoverageAFL::printFinalStats() {
+  std::string outputString;
+  llvm::raw_string_ostream OS(outputString);
+  OS << "=== AFL++ LTO Instrumentation Statistics ";
+  OS << " ===\n";
+
+  OS << "Total Basic Blocks: " << TotalBBCount << "\n";
+  OS << "Instrumented Basic Blocks: " << InstrumentedBBCount << "\n";
+
+  OS << "Predecessor Count Distribution for Instrumented Basic Blocks:\n";
+  for (unsigned i = 0; i <= 10; ++i) { // 迭代0到10
+    unsigned count = InstPredCountsHistogram.lookup(i);
+    OS << "  Instrumented BasicBlocks with ";
+    if (i == 10) {
+        OS << ">=10 predecessors: ";
+    } else {
+        OS << i << " predecessor(s): ";
+    }
+    OS << count << "\n";
+  }
+
+  OS << "Predecessor Count Distribution for Non-Instrumented Basic Blocks:\n";
+  for (unsigned i = 0; i <= 10; ++i) { // 迭代0到10
+    unsigned all_bbs_with_i_preds = PredCountsHistogram.lookup(i);
+    unsigned inst_bbs_with_i_preds = InstPredCountsHistogram.lookup(i);
+    unsigned non_inst_bbs_with_i_preds = 0;
+    
+    non_inst_bbs_with_i_preds = all_bbs_with_i_preds - inst_bbs_with_i_preds;
+    
+    OS << "  Non-Instrumented BasicBlocks with ";
+    if (i == 10) {
+        OS << ">=10 predecessors: ";
+    } else {
+        OS << i << " predecessor(s): ";
+    }
+    OS << non_inst_bbs_with_i_preds << "\n";
+  }
+
+  OS << "===========================================\n\n";
+  errs() << OS.str();
 }
 
 GlobalVariable *ModuleSanitizerCoverageAFL::CreateFunctionLocalArrayInSection(
