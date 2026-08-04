@@ -55,7 +55,7 @@ apt-get update && \
 # for Ubuntu 18.04 only
 wget https://apt.llvm.org/llvm-snapshot.gpg.key
 apt-key add llvm-snapshot.gpg.key
-sudo add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main"
+add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main"
 
 # install llvm
 apt-get update --fix-missing && \
