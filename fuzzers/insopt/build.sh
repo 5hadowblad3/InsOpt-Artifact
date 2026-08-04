@@ -9,6 +9,7 @@ set -e
 cd "$FUZZER/repo"
 export CC=clang
 export CXX=clang++
+export LLVM_CONFIG=llvm-config-13
 export AFL_NO_X86=1
 export PYTHON_INCLUDE=/
 make -j$(nproc) || exit 1
