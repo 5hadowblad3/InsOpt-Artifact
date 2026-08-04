@@ -96,11 +96,7 @@ wget https://apt.llvm.org/llvm-snapshot.gpg.key
 apt-key add llvm-snapshot.gpg.key
 sudo add-apt-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main"
 apt-get update  --fix-missing && \
-    apt-get install -y make llvm-13 clang-13 llvm-13-dev
-
-# wget https://llvm.org
-# chmod +x llvm.sh
-# sudo ./llvm.sh 13
+    apt-get install -y make llvm-13 clang-13 llvm-13-dev lld-13
 
 
 update-alternatives \
