@@ -1,6 +1,6 @@
 # InsOpt with Magma Benchmark
 
-This artifact accompanies the paper "Revisiting Path Coverage Tracing from a Node-centric View" and contains the implementation of InsOpt, our optimal node-centric instrumentation engine for edge coverage tracing. The artifact enables the reproduction of all experimental results presented in the paper, including:
+This artifact accompanies the OOPSLA'26 paper "Revisiting Path Coverage Tracing from a Node-centric View" and contains the implementation of InsOpt, our optimal node-centric instrumentation engine for edge coverage tracing. The artifact enables the reproduction of all experimental results presented in the paper, including:
 
 Instrumentation reduction measurements (RQ1-2)
 
